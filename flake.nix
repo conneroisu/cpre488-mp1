@@ -72,6 +72,7 @@
             [
               # Terminal Utilities
               pkgs.vhs
+              pkgs.moreutils
 
               # Nix
               pkgs.alejandra
@@ -84,9 +85,10 @@
               pkgs.pkg-config
               pkgs.zig
 
-              # Cross-Platform VHDL
+              # Cross-Platform VHDL Tools
               pkgs.vhd2vl
               pkgs.vhdl-ls
+              pkgs.gtkwave
             ]
             ++ lib.optionals isLinux [
               pkgs.ghdl
