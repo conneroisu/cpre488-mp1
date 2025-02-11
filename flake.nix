@@ -74,6 +74,11 @@
               pkgs.vhs
               pkgs.moreutils
 
+              # TCL
+              pkgs.tcl
+              pkgs.tclx
+              pkgs.tcllib
+
               # Nix
               pkgs.alejandra
               pkgs.nixd
