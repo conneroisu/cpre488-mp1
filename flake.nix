@@ -70,15 +70,20 @@
 
           packages =
             [
+              # Terminal Utilities
+              pkgs.vhs
+
               # Nix
               pkgs.alejandra
               pkgs.nixd
+
               # C/C++
               pkgs.ccls
               pkgs.clang-tools
-              pkgs.zig
               pkgs.gcc
               pkgs.pkg-config
+              pkgs.zig
+
               # Cross-Platform VHDL
               pkgs.vhd2vl
               pkgs.vhdl-ls
@@ -91,6 +96,24 @@
               rosettaPkgs.ghdl
               rosettaPkgs.nvc
             ];
+
+          env = rec {
+            C_INCLUDE_PATH = pkgs.lib.makeSearchPathOutput "dev" "include" (
+              [
+                pkgs.zlib
+              ]
+              ++ lib.optionals isLinux [
+                pkgs.glibc.dev
+              ]
+              ++ lib.optionals isDarwin [
+              ]
+            );
+            LD_LIBRARY_PATH = lib.makeLibraryPath [
+              pkgs.stdenv.cc.cc.lib
+              pkgs.zlib
+            ];
+            EXTRA_CCFLAGS = "-I${C_INCLUDE_PATH}";
+          };
 
           enterShell = ''export REPO_ROOT=$(git rev-parse --show-toplevel)'';
 
