@@ -2,15 +2,26 @@
   description = "MP1 CPRE488 Project";
 
   inputs = {
-    devenv-root = {
-      url = "file+file:///dev/null";
-      flake = false;
-    };
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/default";
+
+    devenv-root.url = "file+file:///dev/null";
+    devenv-root.flake = false;
+
     devenv.url = "github:cachix/devenv";
-    nix2container.url = "github:nlewo/nix2container";
-    nix2container.inputs.nixpkgs.follows = "nixpkgs";
+    devenv.inputs.nixpkgs.follows = "nixpkgs";
+
+    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.inputs.systems.follows = "systems";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    nix2container = {
+      url = "github:nlewo/nix2container";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
   };
 
@@ -41,7 +52,6 @@
         config,
         self',
         inputs',
-        # pkgs,
         system,
         ...
       }: {
