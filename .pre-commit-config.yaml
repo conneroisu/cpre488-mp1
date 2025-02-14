@@ -5,6 +5,6 @@ repos:
     hooks:
     -   id: ghdl-fmt
         name: Format VHDL files with GHDL
-        entry: bash -c 'find . -name "*.vhd" -print0 | xargs -0 -n1 ghdl --format'
+        entry: bash -c 'find . -name "*.vhd" -print0 | xargs -0 -n1 ghdl fmt'
         language: system
         files: \.vhd$
