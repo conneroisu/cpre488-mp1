@@ -100,6 +100,9 @@
               pkgs.pkg-config
               pkgs.zig
 
+              # Python
+              pkgs.uv
+
               # Cross-Platform VHDL Tools
               pkgs.vhd2vl
               pkgs.vhdl-ls
