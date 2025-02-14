@@ -1,0 +1,12 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: local
+    hooks:
+    -   id: ghdl-fmt
+        name: Format VHDL files with GHDL
+        entry: ./.venv/bin/python3 ./scripts/format.py 
+        language: system
+        files: \.vhd$
+        pass_filenames: true
+        verbose: true

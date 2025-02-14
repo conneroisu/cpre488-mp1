@@ -135,7 +135,10 @@
             EXTRA_CCFLAGS = "-I${C_INCLUDE_PATH}";
           };
 
-          enterShell = ''export REPO_ROOT=$(git rev-parse --show-toplevel)'';
+          enterShell = ''
+            export REPO_ROOT=$(git rev-parse --show-toplevel)
+            source $REPO_ROOT/.venv/bin/activate
+          '';
 
           scripts = {
             dx.exec = "$EDITOR $REPO_ROOT/flake.nix";
