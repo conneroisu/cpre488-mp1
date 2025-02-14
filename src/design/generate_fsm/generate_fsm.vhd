@@ -31,9 +31,9 @@ architecture rtl of generate_fsm is
 	o_read_enable <= read_en_sig;
 	frame_start <= i_enable and (not frame_running);
 	
-	sync_proc: process(CLK)
+	sync_proc: process(i_clk)
 		begin
-		if(rising_edge(CLK)) then 
+		if(rising_edge(i_clk)) then 
 		    --block should receive reset when channel is idle
             if (gen_resetn_sig = '0') then PS <= idle;
             else PS <= NS;
@@ -92,9 +92,9 @@ architecture rtl of generate_fsm is
 	--clocked process
 	--counting which channel to read cycle counts from
 	--incremented when state chan to state gap
-	addr_proc: process(CLK)
+	addr_proc: process(i_clk)
 		begin
-		if(rising_edge(CLK)) then
+		if(rising_edge(i_clk)) then
 			if(i_reset = '0') then addr_sig <= "001";
 			elsif(frame_done = '1') then  addr_sig <= "001";
 			elsif(channel_count_en = '1') then addr_sig <= std_logic_vector(unsigned(addr_sig) + 1);
@@ -106,9 +106,9 @@ architecture rtl of generate_fsm is
 	--clocked process
 	--counting gaps low for ppm_output to be low
 	--9c40 is 400 us of cycles
-	gap_proc: process(CLK)
+	gap_proc: process(i_clk)
 	begin
-		if(rising_edge(CLK)) then
+		if(rising_edge(i_clk)) then
 			if(i_reset = '0') then
 				gap_done <= '0';
 			else
@@ -124,9 +124,9 @@ architecture rtl of generate_fsm is
 	--clocked process
 	--counting channel high for ppm_output to be high
 	--reading from read_addr/addr_sig to pull initial register value from inc_cycle_count into decrement_val
-	channel_proc: process(CLK)
+	channel_proc: process(i_clk)
 	begin
-		if(rising_edge(CLK)) then
+		if(rising_edge(i_clk)) then
 			if(i_reset = '0') then
 				channel_done <= '0'; read_en_sig <= '0';
 			else
@@ -141,9 +141,9 @@ architecture rtl of generate_fsm is
 	
 	--clocked process
 	--counting 20ms period (will have a buffer of one frame doing nothing at the beginning)
-	period_proc: process(CLK)
+	period_proc: process(i_clk)
 	begin	
-		if(rising_edge(CLK)) then
+		if(rising_edge(i_clk)) then
 			--frame_start is (gen_en AND ~frame_running)
 			if(frame_start = '1') then frame_running <= '1'; frame_val <= x"001E8480"; frame_done <= '0';
 			end if;
