@@ -5,6 +5,8 @@ repos:
     hooks:
     -   id: ghdl-fmt
         name: Format VHDL files with GHDL
-        entry: bash -c 'find . -name "*.vhd" -print0 | xargs -0 -n1 ghdl fmt'
+        entry: ./.venv/bin/python3 ./scripts/format.py 
         language: system
         files: \.vhd$
+        pass_filenames: true
+        verbose: true

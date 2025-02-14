@@ -1,326 +1,126 @@
+-- <header>
+-- Author(s): Conner Ohnesorge
+-- Name: 
+-- Notes:
+--      Conner Ohnesorge 2024-11-21T11:05:34-06:00 added-old-single-cycle-processor-and-added-documentation-for-the
+-- </header>
+
 library IEEE;
 use IEEE.std_logic_1164.all;
-
-
-entity tb_ALU is
-generic (gCLK_HPER : time := 50 ns);
-end tb_ALU;
-
-architecture behavior of tb_ALU is
-
--- Calculate the clock period as twice the half-period
-constant cCLK_PER : time := gCLK_HPER * 2;
-component ALU
-port (
-i_A        : in  std_logic_vector(31 downto 0);
-i_B        : in  std_logic_vector(31 downto 0);
-i_ALUOP    : in  std_logic_vector(3 downto 0);
-i_shamt    : in  std_logic_vector(4 downto 0);
-o_resultF  : out std_logic_vector(31 downto 0);
-o_CarryOut : out std_logic;
-o_Overflow : out std_logic;
-o_zero     : out std_logic);
-end component;
-
--- Temporary signals to connect to the dff component.
-signal s_CLK : std_logic := '0';
-
-signal s_A, s_B : std_logic_vector(31 downto 0) := (others => '0');
-signal s_aluOp  : std_logic_vector(3 downto 0)  := (others => '0');
-signal s_shamt  : std_logic_vector(4 downto 0);
-
-signal s_F                            : std_logic_vector(31 downto 0);
-signal s_overFlow, s_zero, s_CarryOut : std_logic;
+use IEEE.numeric_std.all;
+entity tb_alu is
+end tb_alu;
+architecture test of tb_alu is
+  -- Component declaration of the ALU
+  component alu
+    port
+      (
+      CLK        : in  std_logic;
+      i_Data1    : in  std_logic_vector(31 downto 0);
+      i_Data2    : in  std_logic_vector(31 downto 0);
+      i_shamt    : in  std_logic_vector(4 downto 0);
+      i_aluOp    : in  std_logic_vector(3 downto 0);
+      o_F        : out std_logic_vector(31 downto 0);
+      o_Overflow : out std_logic;
+      o_Zero     : out std_logic
+    );
+  end component;
+  -- Signals to connect to the ALU
+  signal CLK          : std_logic := '0';
+  signal i_Data1      : std_logic_vector(31 downto 0);
+  signal i_Data2      : std_logic_vector(31 downto 0);
+  signal i_shamt      : std_logic_vector(4 downto 0);
+  signal i_aluOp      : std_logic_vector(3 downto 0);
+  signal o_F          : std_logic_vector(31 downto 0);
+  signal o_Overflow   : std_logic;
+  signal o_Zero       : std_logic;
+  -- Clock period constant
+  constant CLK_PERIOD : time      := 50 ns;
 begin
-
-DUT : ALU                           -- cOut left unattached since not used
-port map(
-i_A        => s_A,
-i_B        => s_B,
-i_ALUOP    => s_aluOp,
-i_shamt    => s_shamt,
-o_resultF  => s_F,
-o_CarryOut => s_CarryOut,
-o_Overflow => s_overFlow,
-o_zero     => s_zero);
-
--- This process sets the clock value (low for gCLK_HPER, then high
--- for gCLK_HPER). Absent a "wait" command, processes restart 
--- at the beginning once they have reached the final statement.
-P_CLK : process
-begin
-s_CLK <= '0';
-wait for gCLK_HPER;
-s_CLK <= '1';
-wait for gCLK_HPER;
-end process;
-
--- Testbench process  
-P_TB : process
-begin
------------ test beq ------------
--- expected zero out is 1
-s_aluOp <= "1011";              -- alu op code
-s_A     <= X"FFFFFFFF";
-s_B     <= X"FFFFFFFF";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected zero out is 0
-s_aluOp <= "1011";              -- alu op code
-s_A     <= X"00001000";
-s_B     <= X"00000100";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected zero out is 1
-s_aluOp <= "1011";              -- alu op code
-s_A     <= X"00000000";
-s_B     <= X"00000000";
-s_shamt <= "01010";             -- don't care
-wait for cCLK_PER;
--------- test bne ------------
--- expected zero out is 0
-s_aluOp <= "1100";              -- alu op code
-s_A     <= X"FFFFFFFF";
-s_B     <= X"FFFFFFFF";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected zero out is 1
-s_aluOp <= "1100";              -- alu op code
-s_A     <= X"00001000";
-s_B     <= X"00000100";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected zero out is 1 (Actually 0 because not equal flag)
-s_aluOp <= "1100";              -- alu op code
-s_A     <= X"00000000";
-s_B     <= X"00000000";
-s_shamt <= "01010";             -- don't care
-wait for cCLK_PER;
--------- test addu ------------
--- expected o_F out is 1
-s_aluOp <= "0000";              -- alu op code
-s_A     <= X"00000000";
-s_B     <= X"00000001";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is 0EE51020
-s_aluOp <= "0000";              -- alu op code
-s_A     <= X"0EF10000";
-s_B     <= X"FFF41020";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F is 00000010, overflow = 0, overflow case
-s_aluOp <= "0000";              -- alu op code
-s_A     <= X"80000000";
-s_B     <= X"80000010";
-s_shamt <= "01010";             -- don't care
-wait for cCLK_PER;
--------- test subu ------------
--- expected o_F out is 1
-s_aluOp <= "0001";              -- alu op code
-s_A     <= X"FFFFFFFF";
-s_B     <= X"FFFFFFFE";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is FEFCEFE0
-s_aluOp <= "0001";              -- alu op code
-s_A     <= X"0EF10000";
-s_B     <= X"0FF41020";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F is FDFFFFFF, overflow = 0, overflow case
-s_aluOp <= "0001";              -- alu op code
-s_A     <= X"7FFFFFFF";
-s_B     <= X"82000000";
-s_shamt <= "01010";             -- don't care
-wait for cCLK_PER;
--------- test add ------------
--- expected o_F out is 1
-s_aluOp <= "1110";              -- alu op code
-s_A     <= X"00000000";
-s_B     <= X"00000001";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is 0EE51020
-s_aluOp <= "1110";              -- alu op code
-s_A     <= X"0EF10000";
-s_B     <= X"FFF41020";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F is 00000010, overflow = 1, overflow case
-s_aluOp <= "1110";              -- alu op code
-s_A     <= X"80000000";
-s_B     <= X"80000010";
-s_shamt <= "01010";             -- don't care
-wait for cCLK_PER;
--------- test sub ------------
--- expected o_F out is 1
-s_aluOp <= "1111";              -- alu op code
-s_A     <= X"FFFFFFFF";
-s_B     <= X"FFFFFFFE";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is FEFCEFE0
-s_aluOp <= "1111";              -- alu op code
-s_A     <= X"0EF10000";
-s_B     <= X"0FF41020";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F is FDFFFFFF, overflow = 1, overflow case
-s_aluOp <= "1111";              -- alu op code
-s_A     <= X"7FFFFFFF";
-s_B     <= X"82000000";
-s_shamt <= "01010";             -- don't care
-wait for cCLK_PER;
--------- test and ------------
--- expected o_F out is FFFEFFFF !!!!!
-s_aluOp <= "0010";              -- alu op code
-s_A     <= X"FFFFFFFF";
-s_B     <= X"FFFEFFFF";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is 00001000 !!!!!
-s_aluOp <= "0010";              -- alu op code
-s_A     <= X"00001001";
-s_B     <= X"11111112";
-s_shamt <= "11100";             -- don't care
-wait for cCLK_PER;
--------- test or ------------
--- expected o_F out is FFFFFFFF !!!!!
-s_aluOp <= "0011";              -- alu op code
-s_A     <= X"FFFFFFFF";
-s_B     <= X"FFFEFFFF";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is 11111113 !!!!
-s_aluOp <= "0011";              -- alu op code
-s_A     <= X"00001001";
-s_B     <= X"11111112";
-s_shamt <= "11100";             -- don't care
-wait for cCLK_PER;
--------- test xor ------------
--- expected o_F out is 00010000 !!!!!
-s_aluOp <= "0100";              -- alu op code
-s_A     <= X"FFFFFFFF";
-s_B     <= X"FFFEFFFF";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is 11110113 !!!!!
-s_aluOp <= "0100";              -- alu op code
-s_A     <= X"00001001";
-s_B     <= X"11111112";
-s_shamt <= "11100";             -- don't care
-wait for cCLK_PER;
--------- test nor ------------
--- expected o_F out is 00000000 !!!!!
-s_aluOp <= "0101";              -- alu op code
-s_A     <= X"FFFFFFFF";
-s_B     <= X"FFFEFFFF";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is EEEEEEEC !!!!!!
-s_aluOp <= "0101";              -- alu op code
-s_A     <= X"00001001";
-s_B     <= X"11111112";
-s_shamt <= "11100";             -- don't care
-wait for cCLK_PER;
--------- test lui ------------
--- expected o_F out is FFFF0000 YOU SHIFTED 8 NOT 16
-s_aluOp <= "0110";              -- alu op code
-s_A     <= X"EEEE0000";         -- don't care
-s_B     <= X"0000FFFF";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is 80010000
-s_aluOp <= "0110";              -- alu op code
-s_A     <= X"FFFFFFFF";         -- don't care
-s_B     <= X"00008001";
-s_shamt <= "11100";             -- don't care
-wait for cCLK_PER;
-
--------- test slt ------------
---------  (A < B) ------------
--- expected o_F out is 1
-s_aluOp <= "0111";              -- alu op code
-s_A     <= X"FFFFFFFF";
-s_B     <= X"00000001";
-s_shamt <= "11111";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is 0
-s_aluOp <= "0111";              -- alu op code
-s_A     <= X"00FFFFFF";
-s_B     <= X"00FFFFFF";
-s_shamt <= "11100";             -- don't care
-wait for cCLK_PER;
-
--- expected o_F out is 1(should technically be 0 but overflow), overflow = 0, overflow case
-s_aluOp <= "0111";              -- alu op code
-s_A     <= X"7FFFFFFF";
-s_B     <= X"80000000";
-s_shamt <= "11100";             -- don't care
-wait for cCLK_PER;
--------- test sll ------------
--- expected o_F out is 1FFFF000
-s_aluOp <= "1001";              -- alu op code
-s_A     <= X"EEEE0000";         -- don't care
-s_B     <= X"0021FFFF";
-s_shamt <= "01100";
-wait for cCLK_PER;
-
--- expected o_F out is 80000000
-s_aluOp <= "1001";              -- alu op code
-s_A     <= X"FFFFFFFF";         -- don't care
-s_B     <= X"FFFF0101";
-s_shamt <= "11111";
-wait for cCLK_PER;
--------- test srl ------------
--- expected o_F out is 008021FF
-s_aluOp <= "1000";              -- alu op code
-s_A     <= X"EEEE0000";         -- don't care
-s_B     <= X"8021FFFF";
-s_shamt <= "01000";
-wait for cCLK_PER;
-
--- expected o_F out is 00000001
-s_aluOp <= "1000";              -- alu op code
-s_A     <= X"FFFFFFFF";         -- don't care
-s_B     <= X"FFFF0101";
-s_shamt <= "11111";
-wait for cCLK_PER;
--------- test sra ------------
--- expected o_F out is FF8021FF
-s_aluOp <= "1010";              -- alu op code
-s_A     <= X"EEEE0000";         -- don't care
-s_B     <= X"8021FFFF";
-s_shamt <= "01000";
-wait for cCLK_PER;
-
--- expected o_F out is FFFFFFFF
-s_aluOp <= "1010";              -- alu op code
-s_A     <= X"FFFFFFFF";         -- don't care
-s_B     <= X"80000000";
-s_shamt <= "11111";
-wait for cCLK_PER;
-wait;
-end process;
-
-end behavior;
-
+  -- Instantiate the ALU
+  uut : alu
+    port map (
+      CLK        => CLK,
+      i_Data1    => i_Data1,
+      i_Data2    => i_Data2,
+      i_shamt    => i_shamt,
+      i_aluOp    => i_aluOp,
+      o_F        => o_F,
+      o_Overflow => o_Overflow,
+      o_Zero     => o_Zero
+      );
+    -- Clock process
+  clk_process : process
+  begin
+    CLK <= '0';
+    wait for CLK_PERIOD / 2;
+    CLK <= '1';
+    wait for CLK_PERIOD / 2;
+  end process;
+  -- Stimulus process
+  stim_proc : process
+  begin
+    -- Test case 1: Addition (unsigned)
+    i_Data1 <= x"0000000A";         -- 10
+    i_Data2 <= x"00000005";         -- 5
+    i_aluOp <= "0000";              -- ALU op for unsigned addition
+    wait for CLK_PERIOD;
+    assert o_F = x"0000000F" report "Addition test failed" severity error;
+    -- Test case 2: Subtraction (unsigned)
+    i_Data1 <= x"0000000A";         -- 10
+    i_Data2 <= x"00000003";         -- 3
+    i_aluOp <= "0001";              -- ALU op for unsigned subtraction
+    wait for CLK_PERIOD;
+    assert o_F = x"00000007" report "Subtraction test failed" severity error;
+    -- Test case 3: Logical AND
+    i_Data1 <= x"0000000F";         -- 15 (binary: 0000...1111)
+    i_Data2 <= x"00000003";         -- 3 (binary: 0000...0011)
+    i_aluOp <= "0101";              -- ALU op for AND
+    wait for CLK_PERIOD;
+    assert o_F = x"00000003" report "AND test failed" severity error;
+    -- Test case 4: Logical OR
+    i_Data1 <= x"0000000F";         -- 15 (binary: 0000...1111)
+    i_Data2 <= x"00000003";         -- 3 (binary: 0000...0011)
+    i_aluOp <= "1001";              -- ALU op for OR
+    wait for CLK_PERIOD;
+    assert o_F = x"0000000F" report "OR test failed" severity error;
+    -- Test case 5: Logical Shift Left
+    i_Data2 <= x"00000001";         -- 1 (binary: 0000...0001)
+    i_shamt <= "00010";             -- shift amount = 2
+    i_aluOp <= "0100";              -- ALU op for shift left
+    wait for CLK_PERIOD;
+    assert o_F = x"00000004" report "Shift Left test failed" severity error;
+    -- Test case 6: Logical Shift Right
+    i_Data2 <= x"00000004";         -- 4 (binary: 0000...0100)
+    i_shamt <= "00010";             -- shift amount = 2
+    i_aluOp <= "1100";              -- ALU op for shift right (logical)
+    wait for CLK_PERIOD;
+    assert o_F = x"00000001" report "Shift Right test failed" severity error;
+    -- Test case 7: Arithmetic Shift Right
+    i_Data2 <= x"80000000";  -- Negative number (binary: 1000...0000)
+    i_shamt <= "00001";             -- shift amount = 1
+    i_aluOp <= "1110";              -- ALU op for shift right (arithmetic)
+    wait for CLK_PERIOD;
+    assert o_F = x"C0000000" report "Arithmetic Shift Right test failed" severity error;
+    -- Test case 8: Set on Less Than (SLT)
+    i_Data1 <= x"00000003";         -- 3
+    i_Data2 <= x"00000005";         -- 5
+    i_aluOp <= "0111";              -- ALU op for SLT (signed)
+    wait for CLK_PERIOD;
+    assert o_F = x"00000001" report "SLT test failed" severity error;
+    -- Test case 9: Set on Less Than Unsigned (SLTU)
+    i_Data1 <= x"00000003";         -- 3
+    i_Data2 <= x"00000005";         -- 5
+    i_aluOp <= "1101";              -- ALU op for SLTU (unsigned)
+    wait for CLK_PERIOD;
+    assert o_F = x"00000001" report "SLTU test failed" severity error;
+    -- Test case 10: Overflow Detection (Addition)
+    i_Data1 <= x"7FFFFFFF";         -- Max positive 32-bit integer
+    i_Data2 <= x"00000001";         -- 1
+    i_aluOp <= "0010";              -- ALU op for signed addition
+    wait for CLK_PERIOD;
+    assert o_Overflow = '1' report "Overflow detection test failed" severity error;
+    -- Stop the simulation
+    wait;
+  end process;
+end test;
