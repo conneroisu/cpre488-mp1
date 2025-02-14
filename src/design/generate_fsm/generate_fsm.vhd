@@ -42,7 +42,7 @@ architecture rtl of generate_fsm is
 	sync_proc: process(i_clk)
 		begin
 		if(rising_edge(i_clk)) then 
-		    --block should receive reset when channel is idle
+        -- if reset, set the state machine to idle
 		    if (resetn = '0') then 
 			    PS <= idle;
 		    else 
@@ -61,7 +61,7 @@ architecture rtl of generate_fsm is
 		count_en <= '0';
 		NS <= PS;
 		case PS is
-			--idle (no enable)
+			-- idle (no enable)
 			when idle =>
 				o_ppm <= '1';
 				decrement_en <= '0';
@@ -75,7 +75,7 @@ architecture rtl of generate_fsm is
 					NS <= gap;
 					count_en <= '0'; 
 				end if;
-			--gap state
+			-- gap state
 			when gap =>
 				o_ppm <= '0';
 				decrement_en <= '0';
@@ -94,7 +94,7 @@ architecture rtl of generate_fsm is
 					NS <= gap;
 					count_en <= '0';
 				end if;
-			--channel state
+			-- channel state
 			when chan =>
 				o_ppm <= '1';
 				decrement_en <= '1';
@@ -111,9 +111,9 @@ architecture rtl of generate_fsm is
 		end case;
 	end process comb_proc;
 	
-	--clocked process
-	--counting which channel to read cycle counts from
-	--incremented when state chan to state gap
+	-- clocked process
+	-- counting which channel to read cycle counts from
+	-- incremented when state chan to state gap
 	addr_proc: process(i_clk)
 		begin
 		if(rising_edge(i_clk)) then
@@ -128,9 +128,9 @@ architecture rtl of generate_fsm is
 		end if;
 	end process addr_proc;
 	
-	--clocked process
-	--counting gaps low for ppm_output to be low
-	--9c40 is 400 us of cycles
+	-- clocked process
+	-- counting gaps low for ppm_output to be low
+	-- 9c40 is 400 us of cycles
 	gap_proc: process(i_clk)
 	begin
 		if(rising_edge(i_clk)) then
@@ -152,9 +152,9 @@ architecture rtl of generate_fsm is
 		end if;
 	end process gap_proc;
 	
-	--clocked process
-	--counting channel high for ppm_output to be high
-	--reading from read_addr/addr_sig to pull initial register value from inc_cycle_count into decrement_val
+	-- clocked process
+	-- counting channel high for ppm_output to be high
+	-- reading from read_addr/addr_sig to pull initial register value from inc_cycle_count into decrement_val
 	channel_proc: process(i_clk)
 	begin
 		if(rising_edge(i_clk)) then
@@ -177,19 +177,19 @@ architecture rtl of generate_fsm is
 		end if;
 	end process channel_proc;
 	
-	--clocked process
-	--counting 20ms period (will have a buffer of one frame doing nothing at the beginning)
+	-- clocked process
+	-- counting 20ms period (will have a buffer of one frame doing nothing at the beginning)
 	period_proc: process(i_clk)
 	begin	
 		if(rising_edge(i_clk)) then
-			--frame_start is (gen_en AND ~frame_running)
+			-- frame_start is (gen_en AND ~frame_running)
 			if(frame_start = '1') then
 				frame_running <= '1';
 				frame_val <= x"001E8480";
 				frame_done <= '0';
 			end if;
-			--when done counting, pulse frame_done bit to move out of idle
-			--otherwise, keep counting
+			-- when done counting, pulse frame_done bit to move out of idle
+			-- otherwise, keep counting
 			if(frame_val = x"00000000") then
 				frame_done <= '1';
 				frame_running <= '0';
