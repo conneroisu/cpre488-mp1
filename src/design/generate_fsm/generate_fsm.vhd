@@ -13,7 +13,7 @@ port (CLK, gen_en : in std_logic;
 end generate_fsm;
 
 -- architecture
-architecture ppm_gen_fsm of generate_fsm is
+architecture rtl of generate_fsm is
 	type state_type is (idle, gap, chan);
 	signal PS, NS : state_type;
 	signal gen_resetn_sig, decrement_en, decrement_resetn, gap_en, gap_resetn, channel_count_en, frame_start : std_logic;
@@ -155,4 +155,4 @@ architecture ppm_gen_fsm of generate_fsm is
 		end if;
 	end process period_proc;
 	
-end ppm_gen_fsm;
+end rtl;
