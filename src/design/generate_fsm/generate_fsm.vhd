@@ -3,18 +3,17 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
--- entity
-entity ppm_gen_fsm is
+entity generate_fsm is
 port (CLK, gen_en : in std_logic;
 	ppm_gen_resetn : in std_logic;
 	inc_cycle_count : in std_logic_vector(31 downto 0);
 	read_addr : out std_logic_vector(2 downto 0);
 	read_en    : out std_logic;
 	ppm_output : out std_logic);
-end ppm_gen_fsm;
+end generate_fsm;
 
 -- architecture
-architecture ppm_gen_fsm of ppm_gen_fsm is
+architecture ppm_gen_fsm of generate_fsm is
 	type state_type is (idle, gap, chan);
 	signal PS, NS : state_type;
 	signal gen_resetn_sig, decrement_en, decrement_resetn, gap_en, gap_resetn, channel_count_en, frame_start : std_logic;
