@@ -26,7 +26,7 @@ def run_formatter(input_file: Path) -> str:
         str: The formatted output as a string.
     """
     # Build the command with required options: --std=08 and -frelaxed
-    command: list[str] = ["ghdl", "fmt", "--std=08", "-frelaxed", str(input_file)]
+    command: list[str] = ["ghdl", "fmt", "-frelaxed", "--workdir=src/work", str(input_file)]
     # Run the command capturing stdout, and raise exception if it fails
     result = subprocess.run(command, capture_output=True, text=True, check=True)
     return result.stdout
