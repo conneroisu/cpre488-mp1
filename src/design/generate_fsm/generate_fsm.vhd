@@ -1,260 +1,159 @@
+-- library declaration
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
-use std.textio.all;
+use IEEE.numeric_std.all;
 
-entity tb_ppm_gen_fsm is
-port
-(
-  my_in : in std_logic -- input needed to keep modelsim from complainning???
-);
-end tb_ppm_gen_fsm;
-
-architecture rtl of tb_ppm_gen_fsm is
-
-----------------------------------------------
---       Component declarations             --
-----------------------------------------------
-
--- Device under test
-
-component ppm_gen_fsm is
+-- entity
+entity ppm_gen_fsm is
 port (CLK, gen_en : in std_logic;
 	ppm_gen_resetn : in std_logic;
 	inc_cycle_count : in std_logic_vector(31 downto 0);
 	read_addr : out std_logic_vector(2 downto 0);
 	read_en    : out std_logic;
 	ppm_output : out std_logic);
-end component ppm_gen_fsm;
+end ppm_gen_fsm;
 
+-- architecture
+architecture ppm_gen_fsm of ppm_gen_fsm is
+	type state_type is (idle, gap, chan);
+	signal PS, NS : state_type;
+	signal gen_resetn_sig, decrement_en, decrement_resetn, gap_en, gap_resetn, channel_count_en, frame_start : std_logic;
+	signal gap_done, channel_done, frame_running : std_logic := '0';
+	signal frame_done : std_logic := '1';
+	signal addr_sig :  std_logic_vector(2 downto 0) := "001";
+	signal gap_val : unsigned(15 downto 0) := x"9C40";
+	signal decrement_val : unsigned(31 downto 0) := x"FFFFFFFF";
+	signal frame_val : unsigned(31 downto 0) := x"001E8480";
+	signal read_en_sig : std_logic := '0';
 
-----------------------------------------------
---          Signal declarations             --
-----------------------------------------------
-
-type my_input_states is (START, IDLE, GAP, CHAN1, CHAN2, CHAN3, 
-                        CHAN4, CHAN5, CHAN6, STOP_TEST);
-
-signal input_state    : my_input_states;  -- Direct which input vector to use
-
-signal clk : std_logic;
-signal reset : std_logic;
-signal gen_en : std_logic;
-signal inc_cycle_count : std_logic_vector(31 downto 0);
-
-signal read_en_sig : std_logic;
-signal read_addr_sig : std_logic_vector(2 downto 0);
-signal ppm_output_sig : std_logic;
-
--- support for writing outputs to file
-Declare and Open file in write mode:
-file file_handler     : text open write_mode is tb_ppm_cap_outptu.txt”;
-Variable row          : line;
-
-begin
-
--- Processes
-
--------------------------------------------
--------------------------------------------
--- Process Name: system_clk_gen          --
---                                       --
--- Description: Generat clock to run the --
--- simulation.                           --
---                                       --
---                                       --
--------------------------------------------
--------------------------------------------  
-system_clk_gen : process   -- 100 MHz clock
-begin
-  clk <= '0';
-  wait for 10 ns;
-    loop
-      wait for 5 ns;
-      clk <= '1';
-      wait for 5 ns;
-      clk <= '0';
-    end loop;
-end process system_clk_gen;
-
--------------------------------------------
--------------------------------------------
--- Process Name: toggle_reset            --
---                                       --
--- Description: Toggle system reset.     --
--- used if DUT requires a reset signal   --
---                                       --
---                                       --
--------------------------------------------
--------------------------------------------  
-toggle_reset : process
-begin
-  reset <= '0'; -- place circuit in reset
-  wait for 95 ns;
-  reset <= '1'; 
-  wait;
-end process toggle_reset;
-
-------------------------------------------------------------
-------------------------------------------------------------
---                                                        --
--- Process Name: DUT stimulus                             --
---                                                        --
--- Send inputs to dut. Holds inputs for HOLD_INPUT_reg    --
---  clk cycles                                            --
---                                                        --
-------------------------------------------------------------
-------------------------------------------------------------
-DUT_stimulus : process(clk)
-begin
-  if (clk = '1' and clk'event) then
-
-    -- Initialize the test
-    if(reset = '0') then
-      input_state <= START;
-      reset <= '1';
-    else
-
-      -- Cycle thought DUT input stimulus patteren
-      case input_state is
-
-      when START =>
-        gen_en <= '1';
-        wait for 10 ns;
-        input_state <= CHAN1;
-
-      when CHAN1 =>
-        gen_en <= '1';
-        inc_cycle_count <= x"000249F0"; -- 1.5 ms 
-        wait for 400000 ns; -- rest of gap
-        -- verify outputs
-        write(row, input_state, right, 15);
-        write(row, read_en, right, 15);
-        write(row, conv_integer(read_addr_sig), right, 15);
-        write(row, ppm_output_sig, right, 15);
-        --Write line to the file
-        writeline(file_handler ,row);
-        wait for 10 ns;
-        input_state <= CHAN2;
-
-      when CHAN2 =>
-        gen_en <= '1';
-        inc_cycle_count <= x"00013880"; -- 0.8 ms   
-        wait for 400000 ns; -- rest of gap
-        -- verify outputs
-        write(row, input_state, right, 15);
-        write(row, read_en, right, 15);
-        write(row, conv_integer(read_addr_sig), right, 15);
-        write(row, ppm_output_sig, right, 15);
-        --Write line to the file
-        writeline(file_handler ,row);
-        wait for 10 ns;
-        input_state <= CHAN3;
-
-      when CHAN3 =>
-        gen_en <= '1';
-        inc_cycle_count <= x"000186A0"; -- 1 ms   
-        wait for 400000 ns; -- rest of gap
-        -- verify outputs
-        write(row, input_state, right, 15);
-        write(row, read_en, right, 15);
-        write(row, conv_integer(read_addr_sig), right, 15);
-        write(row, ppm_output_sig, right, 15);
-        --Write line to the file
-        writeline(file_handler ,row);
-        wait for 10 ns;
-        input_state <= CHAN4;
-
-      when CHAN4 =>
-        gen_en <= '1';
-        inc_cycle_count <= x"0001E848"; -- 1.25 ms   
-        wait for 400000 ns; -- rest of gap
-        -- verify outputs
-        write(row, input_state, right, 15);
-        write(row, read_en, right, 15);
-        write(row, conv_integer(read_addr_sig), right, 15);
-        write(row, ppm_output_sig, right, 15);
-        --Write line to the file
-        writeline(file_handler ,row);
-        wait for 10 ns;
-        input_state <= CHAN5;
-
-      when CHAN5 =>
-        gen_en <= '1';
-        if(read_en = '1') then
-            inc_cycle_count <= x"00030D40"; -- 2 ms   
-        end if;
-        wait for 400000 ns; -- rest of gap
-        -- verify outputs
-        write(row, input_state, right, 15);
-        write(row, read_en, right, 15);
-        write(row, conv_integer(read_addr_sig), right, 15);
-        write(row, ppm_output_sig, right, 15);
-        --Write line to the file
-        writeline(file_handler ,row);
-        wait for 10 ns;
-        input_state <= CHAN6;
-
-      when CHAN6 =>
-        gen_en <= '1';
-        inc_cycle_count <= x"0002AB98"; -- 1.75 ms   
-        wait for 400000 ns; -- rest of gap
-        -- verify outputs
-        write(row, input_state, right, 15);
-        write(row, read_en, right, 15);
-        write(row, conv_integer(read_addr_sig), right, 15);
-        write(row, ppm_output_sig, right, 15);
-        --Write line to the file
-        writeline(file_handler ,row);
-        wait for 10 ns;
-        input_state <= CHAN6;
-
-      when IDLE =>
-        gen_en <= '1';  
-        wait for 400000 ns; -- rest of gap
-        -- verify outputs
-        write(row, input_state, right, 15);
-        write(row, read_en, right, 15);
-        write(row, conv_integer(read_addr_sig), right, 15);
-        write(row, ppm_output_sig, right, 15);
-        --Write line to the file
-        writeline(file_handler ,row);
-        wait for 10 ns;
-        input_state <= CHAN6;
-
-      when STOP_TEST =>
-
-        gen_en <= '0';
-        input_state <= STOP_TEST;
-         
-      when OTHERS =>
-
-        input_state <= STOP_TEST;
-        
-      end case;  
-    end if;
-  end if;
-end process DUT_stimulus;
-
-
-
--- Combinational assignments
-
-  -- none
-
--- Connect DUT (PPM Capture circuit) to the testbench
-
-my_dut: ppm_gen_fsm
-port map
-(
-    CLK => clk, 
-    gen_en => gen_en,
-	ppm_gen_resetn => reset,
-	inc_cycle_count => inc_cycle_count,
-	read_addr => read_addr_sig,
-	read_en => read_en_sig,
-	ppm_output => ppm_output_sig
-);
-
-end rtl;
+	begin
+	gen_resetn_sig <= ppm_gen_resetn;
+	read_addr <= addr_sig;
+	read_en <= read_en_sig;
+	frame_start <= gen_en and (not frame_running);
+	
+	sync_proc: process(CLK)
+		begin
+		if(rising_edge(CLK)) then 
+		    --block should receive reset when channel is idle
+            if (gen_resetn_sig = '0') then PS <= idle;
+            else PS <= NS;
+            end if;
+		end if;
+	end process sync_proc;
+	
+	comb_proc: process(PS, gen_en, gap_done, channel_done, frame_done, addr_sig)
+		begin
+		ppm_output <= '0';
+		decrement_en <= '0';
+		decrement_resetn <= '1';
+		gap_en <= '0';
+		gap_resetn <= '1';
+		channel_count_en <= '0';
+		NS <= PS;
+		case PS is
+			--idle (no enable)
+			when idle =>
+				ppm_output <= '1';
+				decrement_en <= '0';
+				gap_en <= '0';
+				gap_resetn <= '0'; 
+				decrement_resetn <= '1';
+				if (gen_en = '0') then NS<=idle; channel_count_en <= '0';
+				elsif (frame_done = '1') then  NS <= gap; channel_count_en <= '0'; 
+				end if;
+			--gap state
+			when gap =>
+				ppm_output <= '0';
+				decrement_en <= '0';
+				gap_en <= '1';
+				gap_resetn <= '1'; 
+				decrement_resetn <= '0';
+				if (gap_done = '1') then 
+					if (addr_sig = "111") then NS<=idle; channel_count_en <= '0';
+					else NS<=chan; channel_count_en <= '0';
+					end if;
+				else NS <= gap; channel_count_en <= '0';
+				end if;
+			--channel state
+			when chan =>
+				ppm_output <= '1';
+				decrement_en <= '1';
+				gap_en <= '0';
+				gap_resetn <= '0';
+				decrement_resetn <= '1';
+				if (channel_done = '1') then NS<=gap; channel_count_en <= '1';
+				else NS <= chan; channel_count_en <= '0';
+				end if;
+			when others =>
+				ppm_output <= '1'; decrement_en <= '0'; gap_en <= '0'; gap_resetn <= '1'; decrement_resetn <= '1'; NS<=idle;
+		end case;
+	end process comb_proc;
+	
+	--clocked process
+	--counting which channel to read cycle counts from
+	--incremented when state chan to state gap
+	addr_proc: process(CLK)
+		begin
+		if(rising_edge(CLK)) then
+			if(ppm_gen_resetn = '0') then addr_sig <= "001";
+			elsif(frame_done = '1') then  addr_sig <= "001";
+			elsif(channel_count_en = '1') then addr_sig <= std_logic_vector(unsigned(addr_sig) + 1);
+			else addr_sig <= addr_sig;
+			end if;
+		end if;
+	end process addr_proc;
+	
+	--clocked process
+	--counting gaps low for ppm_output to be low
+	--9c40 is 400 us of cycles
+	gap_proc: process(CLK)
+	begin
+		if(rising_edge(CLK)) then
+			if(ppm_gen_resetn = '0') then
+				gap_done <= '0';
+			else
+				if(gap_resetn = '0') then gap_val <= x"9C40"; gap_done <= '0';
+				elsif(gap_val = x"0000") then gap_done <= '1';
+				elsif(gap_en = '1') then gap_val <= gap_val - 1;
+				else gap_done <= '0'; gap_val <= x"9C40";
+				end if;
+			end if;
+		end if;
+	end process gap_proc;
+	
+	--clocked process
+	--counting channel high for ppm_output to be high
+	--reading from read_addr/addr_sig to pull initial register value from inc_cycle_count into decrement_val
+	channel_proc: process(CLK)
+	begin
+		if(rising_edge(CLK)) then
+			if(ppm_gen_resetn = '0') then
+				channel_done <= '0'; read_en_sig <= '0';
+			else
+				if(decrement_resetn = '0') then decrement_val <= unsigned(inc_cycle_count); channel_done <= '0'; read_en_sig <= '1';
+				elsif(decrement_val = x"00000000") then channel_done <= '1'; read_en_sig <= '0';
+				elsif(decrement_en = '1') then decrement_val <= decrement_val - 1; read_en_sig <= '0';
+				else channel_done <= '0'; read_en_sig <= '0';
+				end if;
+			end if;
+		end if;
+	end process channel_proc;
+	
+	--clocked process
+	--counting 20ms period (will have a buffer of one frame doing nothing at the beginning)
+	period_proc: process(CLK)
+	begin	
+		if(rising_edge(CLK)) then
+			--frame_start is (gen_en AND ~frame_running)
+			if(frame_start = '1') then frame_running <= '1'; frame_val <= x"001E8480"; frame_done <= '0';
+			end if;
+			--when done counting, pulse frame_done bit to move out of idle
+			--otherwise, keep counting
+			if(frame_val = x"00000000") then frame_done <= '1'; frame_running <= '0';
+			elsif(frame_running = '1') then frame_val <= frame_val - 1;
+			end if;
+		end if;
+	end process period_proc;
+	
+end ppm_gen_fsm;
