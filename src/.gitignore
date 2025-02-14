@@ -1,0 +1,9 @@
+!*
+*.exe
+*.o
+*.cf
+
+# Ignore the "work" folder since it will only contain build files and the work library
+# definition for GHDL.
+*/work/
+*work/**
