@@ -82,7 +82,6 @@
           packages =
             [
               # Terminal Utilities
-              pkgs.vhs
               pkgs.moreutils
 
               # TCL
