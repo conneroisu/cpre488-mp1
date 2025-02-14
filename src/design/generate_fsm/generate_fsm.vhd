@@ -4,14 +4,14 @@ use IEEE.numeric_std.all;
 
 entity generate_fsm is
 	
-port (
-	i_clk, i_enable : in std_logic;
-	i_reset : in std_logic;
-	inc_cycle_count : in std_logic_vector(31 downto 0);
-	o_read_addr : out std_logic_vector(2 downto 0);
-	o_read_enable    : out std_logic;
-	o_ppm : out std_logic
-);
+	port (
+		i_clk, i_enable : in std_logic;
+		i_reset : in std_logic;
+		inc_cycle_count : in std_logic_vector(31 downto 0);
+		o_read_addr : out std_logic_vector(2 downto 0);
+		o_read_enable    : out std_logic;
+		o_ppm : out std_logic
+	);
 
 end generate_fsm;
 
