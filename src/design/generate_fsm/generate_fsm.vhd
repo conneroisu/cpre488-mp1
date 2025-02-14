@@ -4,8 +4,9 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 entity generate_fsm is
-port (CLK, gen_en : in std_logic;
-	ppm_gen_resetn : in std_logic;
+port (
+i_clk, i_enable : in std_logic;
+	i_reset : in std_logic;
 	inc_cycle_count : in std_logic_vector(31 downto 0);
 	read_addr : out std_logic_vector(2 downto 0);
 	read_en    : out std_logic;
@@ -26,10 +27,10 @@ architecture rtl of generate_fsm is
 	signal read_en_sig : std_logic := '0';
 
 	begin
-	gen_resetn_sig <= ppm_gen_resetn;
+	gen_resetn_sig <= i_reset;
 	read_addr <= addr_sig;
 	read_en <= read_en_sig;
-	frame_start <= gen_en and (not frame_running);
+	frame_start <= i_enable and (not frame_running);
 	
 	sync_proc: process(CLK)
 		begin
@@ -41,7 +42,7 @@ architecture rtl of generate_fsm is
 		end if;
 	end process sync_proc;
 	
-	comb_proc: process(PS, gen_en, gap_done, channel_done, frame_done, addr_sig)
+	comb_proc: process(PS, i_enable, gap_done, channel_done, frame_done, addr_sig)
 		begin
 		o_ppm <= '0';
 		decrement_en <= '0';
@@ -58,7 +59,7 @@ architecture rtl of generate_fsm is
 				gap_en <= '0';
 				gap_resetn <= '0'; 
 				decrement_resetn <= '1';
-				if (gen_en = '0') then NS<=idle; channel_count_en <= '0';
+				if (i_enable = '0') then NS<=idle; channel_count_en <= '0';
 				elsif (frame_done = '1') then  NS <= gap; channel_count_en <= '0'; 
 				end if;
 			--gap state
@@ -95,7 +96,7 @@ architecture rtl of generate_fsm is
 	addr_proc: process(CLK)
 		begin
 		if(rising_edge(CLK)) then
-			if(ppm_gen_resetn = '0') then addr_sig <= "001";
+			if(i_reset = '0') then addr_sig <= "001";
 			elsif(frame_done = '1') then  addr_sig <= "001";
 			elsif(channel_count_en = '1') then addr_sig <= std_logic_vector(unsigned(addr_sig) + 1);
 			else addr_sig <= addr_sig;
@@ -109,7 +110,7 @@ architecture rtl of generate_fsm is
 	gap_proc: process(CLK)
 	begin
 		if(rising_edge(CLK)) then
-			if(ppm_gen_resetn = '0') then
+			if(i_reset = '0') then
 				gap_done <= '0';
 			else
 				if(gap_resetn = '0') then gap_val <= x"9C40"; gap_done <= '0';
@@ -127,7 +128,7 @@ architecture rtl of generate_fsm is
 	channel_proc: process(CLK)
 	begin
 		if(rising_edge(CLK)) then
-			if(ppm_gen_resetn = '0') then
+			if(i_reset = '0') then
 				channel_done <= '0'; read_en_sig <= '0';
 			else
 				if(decrement_resetn = '0') then decrement_val <= unsigned(inc_cycle_count); channel_done <= '0'; read_en_sig <= '1';
