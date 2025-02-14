@@ -9,7 +9,7 @@ port (CLK, gen_en : in std_logic;
 	inc_cycle_count : in std_logic_vector(31 downto 0);
 	read_addr : out std_logic_vector(2 downto 0);
 	read_en    : out std_logic;
-	ppm_output : out std_logic);
+	o_ppm : out std_logic);
 end generate_fsm;
 
 -- architecture
@@ -43,7 +43,7 @@ architecture rtl of generate_fsm is
 	
 	comb_proc: process(PS, gen_en, gap_done, channel_done, frame_done, addr_sig)
 		begin
-		ppm_output <= '0';
+		o_ppm <= '0';
 		decrement_en <= '0';
 		decrement_resetn <= '1';
 		gap_en <= '0';
@@ -53,7 +53,7 @@ architecture rtl of generate_fsm is
 		case PS is
 			--idle (no enable)
 			when idle =>
-				ppm_output <= '1';
+				o_ppm <= '1';
 				decrement_en <= '0';
 				gap_en <= '0';
 				gap_resetn <= '0'; 
@@ -63,7 +63,7 @@ architecture rtl of generate_fsm is
 				end if;
 			--gap state
 			when gap =>
-				ppm_output <= '0';
+				o_ppm <= '0';
 				decrement_en <= '0';
 				gap_en <= '1';
 				gap_resetn <= '1'; 
@@ -76,7 +76,7 @@ architecture rtl of generate_fsm is
 				end if;
 			--channel state
 			when chan =>
-				ppm_output <= '1';
+				o_ppm <= '1';
 				decrement_en <= '1';
 				gap_en <= '0';
 				gap_resetn <= '0';
@@ -85,7 +85,7 @@ architecture rtl of generate_fsm is
 				else NS <= chan; channel_count_en <= '0';
 				end if;
 			when others =>
-				ppm_output <= '1'; decrement_en <= '0'; gap_en <= '0'; gap_resetn <= '1'; decrement_resetn <= '1'; NS<=idle;
+				o_ppm <= '1'; decrement_en <= '0'; gap_en <= '0'; gap_resetn <= '1'; decrement_resetn <= '1'; NS<=idle;
 		end case;
 	end process comb_proc;
 	
