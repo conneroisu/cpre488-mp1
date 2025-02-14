@@ -78,6 +78,8 @@ xvlog.*
 ## checkpoint files
 *.dcp
 
-# VENV
+## Python
+__pycache__/
+
 .venv/
 .venv/**
