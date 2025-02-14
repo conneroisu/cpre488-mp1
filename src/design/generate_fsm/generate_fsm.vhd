@@ -18,7 +18,7 @@ end generate_fsm;
 architecture rtl of generate_fsm is
 	type state_type is (idle, gap, chan);
 	signal PS, NS : state_type;
-	signal gen_resetn_sig, decrement_en, decrement_resetn, gap_en, gap_resetn, channel_count_en, frame_start : std_logic;
+	signal resetn, decrement_en, decrement_resetn, gap_en, gap_resetn, count_en, frame_start : std_logic;
 	signal gap_done, channel_done, frame_running : std_logic := '0';
 	signal frame_done : std_logic := '1';
 	signal addr_sig :  std_logic_vector(2 downto 0) := "001";
@@ -28,7 +28,7 @@ architecture rtl of generate_fsm is
 	signal read_en_sig : std_logic := '0';
 
 	begin
-	gen_resetn_sig <= i_reset;
+	resetn <= i_reset;
 	o_read_addr <= addr_sig;
 	o_read_enable <= read_en_sig;
 	frame_start <= i_enable and (not frame_running);
@@ -37,7 +37,7 @@ architecture rtl of generate_fsm is
 		begin
 		if(rising_edge(i_clk)) then 
 		    --block should receive reset when channel is idle
-            if (gen_resetn_sig = '0') then PS <= idle;
+            if (resetn = '0') then PS <= idle;
             else PS <= NS;
             end if;
 		end if;
@@ -50,7 +50,7 @@ architecture rtl of generate_fsm is
 		decrement_resetn <= '1';
 		gap_en <= '0';
 		gap_resetn <= '1';
-		channel_count_en <= '0';
+		count_en <= '0';
 		NS <= PS;
 		case PS is
 			--idle (no enable)
@@ -60,8 +60,8 @@ architecture rtl of generate_fsm is
 				gap_en <= '0';
 				gap_resetn <= '0'; 
 				decrement_resetn <= '1';
-				if (i_enable = '0') then NS<=idle; channel_count_en <= '0';
-				elsif (frame_done = '1') then  NS <= gap; channel_count_en <= '0'; 
+				if (i_enable = '0') then NS<=idle; count_en <= '0';
+				elsif (frame_done = '1') then  NS <= gap; count_en <= '0'; 
 				end if;
 			--gap state
 			when gap =>
@@ -71,10 +71,10 @@ architecture rtl of generate_fsm is
 				gap_resetn <= '1'; 
 				decrement_resetn <= '0';
 				if (gap_done = '1') then 
-					if (addr_sig = "111") then NS<=idle; channel_count_en <= '0';
-					else NS<=chan; channel_count_en <= '0';
+					if (addr_sig = "111") then NS<=idle; count_en <= '0';
+					else NS<=chan; count_en <= '0';
 					end if;
-				else NS <= gap; channel_count_en <= '0';
+				else NS <= gap; count_en <= '0';
 				end if;
 			--channel state
 			when chan =>
@@ -83,8 +83,8 @@ architecture rtl of generate_fsm is
 				gap_en <= '0';
 				gap_resetn <= '0';
 				decrement_resetn <= '1';
-				if (channel_done = '1') then NS<=gap; channel_count_en <= '1';
-				else NS <= chan; channel_count_en <= '0';
+				if (channel_done = '1') then NS<=gap; count_en <= '1';
+				else NS <= chan; count_en <= '0';
 				end if;
 			when others =>
 				o_ppm <= '1'; decrement_en <= '0'; gap_en <= '0'; gap_resetn <= '1'; decrement_resetn <= '1'; NS<=idle;
@@ -99,7 +99,7 @@ architecture rtl of generate_fsm is
 		if(rising_edge(i_clk)) then
 			if(i_reset = '0') then addr_sig <= "001";
 			elsif(frame_done = '1') then  addr_sig <= "001";
-			elsif(channel_count_en = '1') then addr_sig <= std_logic_vector(unsigned(addr_sig) + 1);
+			elsif(count_en = '1') then addr_sig <= std_logic_vector(unsigned(addr_sig) + 1);
 			else addr_sig <= addr_sig;
 			end if;
 		end if;
