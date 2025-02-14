@@ -3,6 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 entity generate_fsm is
+	
 port (
 	i_clk, i_enable : in std_logic;
 	i_reset : in std_logic;
@@ -11,6 +12,7 @@ port (
 	o_read_enable    : out std_logic;
 	o_ppm : out std_logic
 );
+
 end generate_fsm;
 
 architecture rtl of generate_fsm is
