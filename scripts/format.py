@@ -1,4 +1,17 @@
 #!/usr/bin/env python3
+"""
+This script runs the GHDL formatter on a given file and writes the formatted output back to the file.
+
+Usage:
+    format.py <file>
+
+Example:
+    format.py test.vhd
+
+
+"""
+
+
 import sys
 import subprocess
 from pathlib import Path
