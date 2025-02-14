@@ -77,3 +77,7 @@ xvlog.*
 
 ## checkpoint files
 *.dcp
+
+# VENV
+.venv/
+.venv/**
