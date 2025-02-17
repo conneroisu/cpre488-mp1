@@ -78,6 +78,8 @@ begin
 
       -- Loop over a subset of 32-bit values (e.g., 0 to 255)
       for i in 40 to 255 loop
+        
+        report "i = " & integer'image(i);
          i_slv_reg20 <= std_logic_vector(to_unsigned(i, 32));
          i_slv_reg21 <= std_logic_vector(to_unsigned(i, 32));
          i_slv_reg22 <= std_logic_vector(to_unsigned(i, 32));
