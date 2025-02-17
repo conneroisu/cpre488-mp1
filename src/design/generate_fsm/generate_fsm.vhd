@@ -126,8 +126,6 @@ begin
           else
             delay_cntr <= 0;
             case gap_cntr is
-              when 0 =>
-                current_state <= IDLE; --impossible
               when 1 =>
                 current_state <= CHAN1;
               when 2 =>
@@ -140,6 +138,8 @@ begin
                 current_state <= CHAN5;
               when 6 =>
                 current_state <= CHAN6;
+              when others =>
+                current_state <= IDLE;  -- should never happen
             end case;
           end if;
 
