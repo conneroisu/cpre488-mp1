@@ -3,17 +3,22 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 entity generate_fsm is
+  
+  generic (
+    N : natural := 32
+  );
   port (
     i_clk       : in  std_logic;
     i_rst       : in  std_logic;
-    i_slv_reg20 : in  std_logic_vector(32 downto 0);
-    i_slv_reg21 : in  std_logic_vector(32 downto 0);
-    i_slv_reg22 : in  std_logic_vector(32 downto 0);
-    i_slv_reg23 : in  std_logic_vector(32 downto 0);
-    i_slv_reg24 : in  std_logic_vector(32 downto 0);
-    i_slv_reg25 : in  std_logic_vector(32 downto 0);
+    i_slv_reg20 : in  std_logic_vector(N downto 0);
+    i_slv_reg21 : in  std_logic_vector(N downto 0);
+    i_slv_reg22 : in  std_logic_vector(N downto 0);
+    i_slv_reg23 : in  std_logic_vector(N downto 0);
+    i_slv_reg24 : in  std_logic_vector(N downto 0);
+    i_slv_reg25 : in  std_logic_vector(N downto 0);
     o_ppm       : out std_logic
   );
+  
 end generate_fsm;
 
 architecture arc of generate_fsm is
