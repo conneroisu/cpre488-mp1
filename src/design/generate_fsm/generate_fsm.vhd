@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity ppm_generation is
+entity generate_fsm is
   
 	port (
     i_clk       : in std_logic;
@@ -16,9 +16,9 @@ entity ppm_generation is
     o_ppm       : out std_logic
 	);
   
-end ppm_generation;
+end generate_fsm;
 
-architecture arc of ppm_generation is
+architecture arc of generate_fsm is
 
     TYPE state_type IS (
       IDLE,
