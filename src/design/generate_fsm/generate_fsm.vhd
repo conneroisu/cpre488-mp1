@@ -43,7 +43,6 @@ architecture rtl of generate_fsm is
 	sync_proc: process(i_clk)
 		begin
 		if(rising_edge(i_clk)) then 
-        -- if reset, set the state machine to idle
 		    if (resetn = '0') then 
 			    PS <= idle;
 		    else 
