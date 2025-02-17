@@ -28,7 +28,7 @@ architecture rtl of generate_fsm_tb is
     -- Signal declarations
     signal clk             : std_logic := '0';
     signal reset           : std_logic := '0';
-    signal gen_en          : std_logic := '0';
+    signal i_enable          : std_logic := '0';
     signal inc_cycle_count : std_logic_vector(31 downto 0) := (others => '0');
 
     signal read_en_sig     : std_logic;
@@ -74,7 +74,7 @@ begin
 
         -- START: Initialize test and enable the DUT.
         input_state      <= START;
-        gen_en           <= '1';
+        i_enable           <= '1';
         inc_cycle_count  <= (others => '0');
         wait for 10 ns;
 
@@ -121,7 +121,7 @@ begin
 
         -- STOP_TEST: End simulation stimulus.
         input_state      <= STOP_TEST;
-        gen_en           <= '0';
+        i_enable           <= '0';
         wait for 100 ns;
 
         wait;  -- Wait forever; simulation can be stopped manually or via a simulator command.
@@ -133,7 +133,7 @@ begin
     my_dut : ppm_gen_fsm
         port map (
             i_clk             => clk,
-            i_enable          => gen_en,
+            i_enable          => i_enable,
             i_reset  => reset,
             inc_cycle_count => inc_cycle_count,
             o_read_addr       => read_addr_sig,
