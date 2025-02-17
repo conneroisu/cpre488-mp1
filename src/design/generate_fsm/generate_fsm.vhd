@@ -57,7 +57,7 @@ begin
       delay_cntr <= 0;
       o_ppm      <= '0';
 
-    elsif rising_edge(i_clk) then
+    else
       case CS is
 
         when IDLE =>
@@ -67,7 +67,7 @@ begin
 
         when CHAN1 =>
           o_ppm <= '1';
-          if delay_cntr + 1 < to_integer(unsigned(i_slv_reg20)) then
+          if delay_cntr < to_integer(unsigned(i_slv_reg20)) then
             CS         <= CHAN1;
             delay_cntr <= delay_cntr + 1;
           else
@@ -87,7 +87,7 @@ begin
 
         when CHAN2 =>
           o_ppm <= '1';
-          if delay_cntr + 1 < to_integer(unsigned(i_slv_reg21)) then
+          if delay_cntr < to_integer(unsigned(i_slv_reg21)) then
             CS         <= CHAN2;
             delay_cntr <= delay_cntr + 1;
           else
@@ -97,7 +97,7 @@ begin
 
         when GAP2 =>
           o_ppm <= '0';
-          if delay_cntr + 1 < GAP_TIME_CNT then
+          if delay_cntr < GAP_TIME_CNT then
             CS         <= GAP2;
             delay_cntr <= delay_cntr + 1;
           else
@@ -107,7 +107,7 @@ begin
 
         when CHAN3 =>
           o_ppm <= '1';
-          if delay_cntr + 1 < to_integer(unsigned(i_slv_reg22)) then
+          if delay_cntr < to_integer(unsigned(i_slv_reg22)) then
             CS         <= CHAN3;
             delay_cntr <= delay_cntr + 1;
           else
@@ -127,7 +127,7 @@ begin
 
         when CHAN4 =>
           o_ppm <= '1';
-          if delay_cntr + 1 < to_integer(unsigned(i_slv_reg23)) then
+          if delay_cntr < to_integer(unsigned(i_slv_reg23)) then
             CS         <= CHAN4;
             delay_cntr <= delay_cntr + 1;
           else
@@ -137,7 +137,7 @@ begin
 
         when GAP4 =>
           o_ppm <= '0';
-          if delay_cntr + 1 < GAP_TIME_CNT then
+          if delay_cntr < GAP_TIME_CNT then
             CS         <= GAP4;
             delay_cntr <= delay_cntr + 1;
           else
