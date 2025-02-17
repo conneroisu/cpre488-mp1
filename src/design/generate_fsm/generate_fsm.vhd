@@ -190,7 +190,6 @@ architecture rtl of generate_fsm is
 				frame_done <= '0';
 			end if;
 			-- when done counting, pulse frame_done bit to move out of idle
-			-- otherwise, keep counting
 			if(frame_val = x"00000000") then
 				frame_done <= '1';
 				frame_running <= '0';
