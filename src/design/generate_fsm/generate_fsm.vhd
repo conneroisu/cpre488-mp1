@@ -34,7 +34,6 @@ architecture rtl of generate_fsm is
     constant FRAME_INIT : unsigned(31 downto 0) := x"001E8480";    -- 20 ms (for example)
     
 begin
-    -- Output assignments
     o_read_addr   <= std_logic_vector(addr_reg);
     o_read_enable <= read_en_reg;
     
