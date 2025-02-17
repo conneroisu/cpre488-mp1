@@ -133,6 +133,7 @@ begin
             delay_cntr <= delay_cntr + 1;
           else
             delay_cntr <= 0;
+            o_ppm <= '1';
             case gap_cntr is
               when 0 =>
                 current_state <= CHAN1; -- TODO: sync gap?
