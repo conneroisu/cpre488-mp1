@@ -47,52 +47,54 @@ begin
     elsif rising_edge(i_clk) then
       case CS is
         when IDLE =>
+          o_ppm <= '0';
+          CS <= CHAN1;
         when CHAN1 =>
           o_ppm <= '1';
-          wait for to_integer(unsigned(i_slv_reg20)) * 10 ns;
-          o_ppm <= '0';
           CS <= GAP1;
+          wait for to_integer(unsigned(i_slv_reg20)) * 10 ns;
         when GAP1 =>
-          wait for GAP_TIME;
+          o_ppm <= '0';
           CS <= CHAN2;
+          wait for GAP_TIME;
         when CHAN2 =>
           o_ppm <= '1';
-          wait for to_integer(unsigned(i_slv_reg21)) * 10 ns;
-          o_ppm <= '0';
           CS <= GAP2;
+          wait for to_integer(unsigned(i_slv_reg21)) * 10 ns;
         when GAP2 =>
-          wait for GAP_TIME;
+          o_ppm <= '0';
           CS <= CHAN3;
+          wait for GAP_TIME;
         when CHAN3 =>
           o_ppm <= '1';
-          wait for to_integer(unsigned(i_slv_reg22)) * 10 ns;
-          o_ppm <= '0';
           CS <= GAP3;
+          wait for to_integer(unsigned(i_slv_reg22)) * 10 ns;
         when GAP3 =>
-          wait for GAP_TIME;
+          o_ppm <= '0';
           CS <= CHAN4;
+          wait for GAP_TIME;
         when CHAN4 =>
           o_ppm <= '1';
-          wait for to_integer(unsigned(i_slv_reg23)) * 10 ns;
-          o_ppm <= '0';
           CS <= GAP4;
+          wait for to_integer(unsigned(i_slv_reg23)) * 10 ns;
         when GAP4 =>
-          wait for GAP_TIME;
+          o_ppm <= '0';
           CS <= CHAN5;
+          wait for GAP_TIME;
         when CHAN5 =>
           o_ppm <= '1';
-          wait for to_integer(unsigned(i_slv_reg24)) * 10 ns;
-          o_ppm <= '0';
           CS <= GAP5;
+          wait for to_integer(unsigned(i_slv_reg24)) * 10 ns;
         when GAP5 =>
-          wait for GAP_TIME;
+          o_ppm <= '0';
           CS <= CHAN6;
+          wait for GAP_TIME;
         when CHAN6 =>
           o_ppm <= '1';
-          wait for to_integer(unsigned(i_slv_reg25)) * 10 ns;
-          o_ppm <= '0';
           CS <= IDLE;
+          wait for to_integer(unsigned(i_slv_reg25)) * 10 ns;
         when others =>
+          o_ppm <= '0';
           CS <= IDLE;
         end case;
       end if;
