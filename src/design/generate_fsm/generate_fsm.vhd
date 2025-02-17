@@ -126,17 +126,17 @@ begin
           else
             delay_cntr <= 0;
             case gap_cntr is
-              when 1 =>
+              when 0 =>
                 current_state <= CHAN1;
-              when 2 =>
+              when 1 =>
                 current_state <= CHAN2;
-              when 3 =>
+              when 2 =>
                 current_state <= CHAN3;
-              when 4 =>
+              when 3 =>
                 current_state <= CHAN4;
-              when 5 =>
+              when 4 =>
                 current_state <= CHAN5;
-              when 6 =>
+              when 5 =>
                 current_state <= CHAN6;
               when others =>
                 current_state <= IDLE;  -- should never happen
