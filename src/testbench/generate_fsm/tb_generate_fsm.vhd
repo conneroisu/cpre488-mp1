@@ -31,12 +31,12 @@ architecture rtl of generate_fsm_tb is
     -- Signal declarations for the DUT
     signal i_clk       : std_logic;
     signal i_rst       : std_logic;
-    signal i_slv_reg20 : std_logic_vector(32 downto 0);
-    signal i_slv_reg21 : std_logic_vector(32 downto 0);
-    signal i_slv_reg22 : std_logic_vector(32 downto 0);
-    signal i_slv_reg23 : std_logic_vector(32 downto 0);
-    signal i_slv_reg24 : std_logic_vector(32 downto 0);
-    signal i_slv_reg25 : std_logic_vector(32 downto 0);
+    signal i_slv_reg20 : std_logic_vector(31 downto 0);
+    signal i_slv_reg21 : std_logic_vector(31 downto 0);
+    signal i_slv_reg22 : std_logic_vector(31 downto 0);
+    signal i_slv_reg23 : std_logic_vector(31 downto 0);
+    signal i_slv_reg24 : std_logic_vector(31 downto 0);
+    signal i_slv_reg25 : std_logic_vector(31 downto 0);
     signal o_ppm       : std_logic;
 begin
 
