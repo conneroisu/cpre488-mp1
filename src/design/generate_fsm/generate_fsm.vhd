@@ -54,7 +54,7 @@ begin
 
         when CHAN1 =>
           o_ppm <= '1';
-          if delay_cntr < to_integer(unsigned(i_slv_reg20)) then
+          if delay_cntr + 1< to_integer(unsigned(i_slv_reg20)) then
             current_state         <= CHAN1;
             delay_cntr <= delay_cntr + 1;
           else
@@ -65,7 +65,7 @@ begin
 
         when CHAN2 =>
           o_ppm <= '1';
-          if delay_cntr < to_integer(unsigned(i_slv_reg21)) then
+          if delay_cntr +1< to_integer(unsigned(i_slv_reg21)) then
             current_state         <= CHAN2;
             delay_cntr <= delay_cntr + 1;
           else
@@ -76,7 +76,7 @@ begin
 
         when CHAN3 =>
           o_ppm <= '1';
-          if delay_cntr < to_integer(unsigned(i_slv_reg22)) then
+          if delay_cntr + 1< to_integer(unsigned(i_slv_reg22)) then
             current_state         <= CHAN3;
             delay_cntr <= delay_cntr + 1;
           else
@@ -87,7 +87,7 @@ begin
 
         when CHAN4 =>
           o_ppm <= '1';
-          if delay_cntr < to_integer(unsigned(i_slv_reg23)) then
+          if delay_cntr + 1< to_integer(unsigned(i_slv_reg23)) then
             current_state         <= CHAN4;
             delay_cntr <= delay_cntr + 1;
           else
@@ -98,7 +98,7 @@ begin
 
         when CHAN5 =>
           o_ppm <= '1';
-          if delay_cntr < to_integer(unsigned(i_slv_reg24)) then
+          if delay_cntr + 1< to_integer(unsigned(i_slv_reg24)) then
             current_state         <= CHAN5;
             delay_cntr <= delay_cntr + 1;
           else
@@ -109,7 +109,7 @@ begin
 
         when CHAN6 =>
           o_ppm <= '1';
-          if delay_cntr < to_integer(unsigned(i_slv_reg25)) then
+          if delay_cntr + 1< to_integer(unsigned(i_slv_reg25)) then
             current_state         <= CHAN6;
             delay_cntr <= delay_cntr + 1;
           else
@@ -127,7 +127,7 @@ begin
             delay_cntr <= 0;
             case gap_cntr is
               when 0 =>
-                current_state <= CHAN1;
+                current_state <= CHAN1; -- TODO: sync gap?
               when 1 =>
                 current_state <= CHAN2;
               when 2 =>
