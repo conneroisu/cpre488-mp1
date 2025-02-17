@@ -23,25 +23,12 @@ end generate_fsm;
 
 architecture arc of generate_fsm is
 
-  -- Define the FSM states.
-  type state_type is (
-    IDLE,
-    CHAN1,
-    GAP1,
-    CHAN2,
-    GAP2,
-    CHAN3,
-    GAP3,
-    CHAN4,
-    GAP4,
-    CHAN5,
-    GAP5,
-    CHAN6
-  );
-  signal CS : state_type := IDLE;
+  type state_type is (IDLE, GAP, CHAN1, CHAN2, CHAN3, CHAN4, CHAN5, CHAN6);
+  signal current_state : state_type := IDLE;
 
   -- Counter signal used to generate delays.
   signal delay_cntr : natural := 0;
+  signal gap_cntr   : natural := 0;
 
   -- Clock period and gap delay parameters.
   constant CLK_PERIOD   : time   := 10 ns;  -- adjust as needed
@@ -53,130 +40,111 @@ begin
   process(i_clk, i_rst)
   begin
     if i_rst = '1' then
-      CS         <= IDLE;
+      current_state         <= IDLE;
       delay_cntr <= 0;
       o_ppm      <= '0';
 
-    else
-      case CS is
+    elsif rising_edge(i_clk) then
+      case current_state is
 
         when IDLE =>
           o_ppm      <= '0';
-          CS         <= CHAN1;
+          current_state         <= CHAN1;
           delay_cntr <= 0;
 
         when CHAN1 =>
           o_ppm <= '1';
           if delay_cntr < to_integer(unsigned(i_slv_reg20)) then
-            CS         <= CHAN1;
+            current_state         <= CHAN1;
             delay_cntr <= delay_cntr + 1;
           else
-            CS         <= GAP1;
+            current_state         <= GAP;
             delay_cntr <= 0;
-          end if;
-
-        when GAP1 =>
-          o_ppm <= '0';
-          if delay_cntr < GAP_TIME_CNT then
-            CS         <= GAP1;
-            delay_cntr <= delay_cntr + 1;
-          else
-            CS         <= CHAN2;
-            delay_cntr <= 0;
+            gap_cntr              <= 1;
           end if;
 
         when CHAN2 =>
           o_ppm <= '1';
           if delay_cntr < to_integer(unsigned(i_slv_reg21)) then
-            CS         <= CHAN2;
+            current_state         <= CHAN2;
             delay_cntr <= delay_cntr + 1;
           else
-            CS         <= GAP2;
+            current_state         <= GAP;
             delay_cntr <= 0;
-          end if;
-
-        when GAP2 =>
-          o_ppm <= '0';
-          if delay_cntr < GAP_TIME_CNT then
-            CS         <= GAP2;
-            delay_cntr <= delay_cntr + 1;
-          else
-            CS         <= CHAN3;
-            delay_cntr <= 0;
+            gap_cntr              <= 2;
           end if;
 
         when CHAN3 =>
           o_ppm <= '1';
           if delay_cntr < to_integer(unsigned(i_slv_reg22)) then
-            CS         <= CHAN3;
+            current_state         <= CHAN3;
             delay_cntr <= delay_cntr + 1;
           else
-            CS         <= GAP3;
+            current_state         <= GAP;
             delay_cntr <= 0;
-          end if;
-
-        when GAP3 =>
-          o_ppm <= '0';
-          if delay_cntr < GAP_TIME_CNT then
-            CS         <= GAP3;
-            delay_cntr <= delay_cntr + 1;
-          else
-            CS         <= CHAN4;
-            delay_cntr <= 0;
+            gap_cntr              <= 3;
           end if;
 
         when CHAN4 =>
           o_ppm <= '1';
           if delay_cntr < to_integer(unsigned(i_slv_reg23)) then
-            CS         <= CHAN4;
+            current_state         <= CHAN4;
             delay_cntr <= delay_cntr + 1;
           else
-            CS         <= GAP4;
+            current_state         <= GAP;
             delay_cntr <= 0;
-          end if;
-
-        when GAP4 =>
-          o_ppm <= '0';
-          if delay_cntr < GAP_TIME_CNT then
-            CS         <= GAP4;
-            delay_cntr <= delay_cntr + 1;
-          else
-            CS         <= CHAN5;
-            delay_cntr <= 0;
+            gap_cntr              <= 4;
           end if;
 
         when CHAN5 =>
           o_ppm <= '1';
           if delay_cntr < to_integer(unsigned(i_slv_reg24)) then
-            CS         <= CHAN5;
+            current_state         <= CHAN5;
             delay_cntr <= delay_cntr + 1;
           else
-            CS         <= GAP5;
+            current_state         <= GAP;
             delay_cntr <= 0;
-          end if;
-
-        when GAP5 =>
-          o_ppm <= '0';
-          if delay_cntr < GAP_TIME_CNT then
-            CS         <= GAP5;
-            delay_cntr <= delay_cntr + 1;
-          else
-            CS         <= CHAN6;
-            delay_cntr <= 0;
+            gap_cntr              <= 5;
           end if;
 
         when CHAN6 =>
           o_ppm <= '1';
           if delay_cntr < to_integer(unsigned(i_slv_reg25)) then
-            CS         <= CHAN6;
+            current_state         <= CHAN6;
             delay_cntr <= delay_cntr + 1;
           else
-            CS         <= IDLE;
+            current_state         <= IDLE;
             delay_cntr <= 0;
+            gap_cntr              <= 1;
+          end if;
+
+        when GAP =>
+          o_ppm <= '0';
+          if delay_cntr < GAP_TIME_CNT then
+            current_state         <= GAP;
+            delay_cntr <= delay_cntr + 1;
+          else
+            delay_cntr <= 0;
+            case gap_cntr is
+              when 0 =>
+                current_state <= IDLE; --impossible
+              when 1 =>
+                current_state <= CHAN1;
+              when 2 =>
+                current_state <= CHAN2;
+              when 3 =>
+                current_state <= CHAN3;
+              when 4 =>
+                current_state <= CHAN4;
+              when 5 =>
+                current_state <= CHAN5;
+              when 6 =>
+                current_state <= CHAN6;
+            end case;
           end if;
 
         when others =>
-          CS         <= IDLE;
+          current_state         <= IDLE;
           delay_cntr <= 0;
           o_ppm      <= '0';
       end case;
