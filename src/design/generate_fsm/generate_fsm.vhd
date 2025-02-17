@@ -7,7 +7,7 @@ entity generate_fsm is
         i_clk, i_enable, i_reset  : in  std_logic;
         inc_cycle_count           : in  std_logic_vector(31 downto 0);
         o_read_addr               : out std_logic_vector(2 downto 0);
-        o_read_enable, o_ppm      : out std_logic
+        o_read_en, o_ppm      : out std_logic
     );
 end generate_fsm;
 
@@ -35,7 +35,7 @@ architecture rtl of generate_fsm is
     
 begin
     o_read_addr   <= std_logic_vector(addr_reg);
-    o_read_enable <= read_en_reg;
+    o_read_en <= read_en_reg;
     
     -- FSM: State register (synchronous reset) 
     process(i_clk)
