@@ -57,10 +57,12 @@ begin
           if delay_cntr + 1< to_integer(unsigned(i_slv_reg20)) then
             current_state         <= CHAN1;
             delay_cntr <= delay_cntr + 1;
+            o_ppm <= '1';
           else
             current_state         <= GAP;
             delay_cntr <= 0;
             gap_cntr              <= 1;
+            o_ppm <= '0';
           end if;
 
         when CHAN2 =>
@@ -79,43 +81,48 @@ begin
           if delay_cntr + 1< to_integer(unsigned(i_slv_reg22)) then
             current_state         <= CHAN3;
             delay_cntr <= delay_cntr + 1;
+            o_ppm <= '1';
           else
             current_state         <= GAP;
             delay_cntr <= 0;
             gap_cntr              <= 3;
+            o_ppm <= '0';
           end if;
 
         when CHAN4 =>
-          o_ppm <= '1';
           if delay_cntr + 1< to_integer(unsigned(i_slv_reg23)) then
             current_state         <= CHAN4;
             delay_cntr <= delay_cntr + 1;
+          o_ppm <= '1';
           else
             current_state         <= GAP;
             delay_cntr <= 0;
             gap_cntr              <= 4;
+            o_ppm <= '0';
           end if;
 
         when CHAN5 =>
-          o_ppm <= '1';
           if delay_cntr + 1< to_integer(unsigned(i_slv_reg24)) then
             current_state         <= CHAN5;
             delay_cntr <= delay_cntr + 1;
+            o_ppm <= '1';
           else
             current_state         <= GAP;
             delay_cntr <= 0;
             gap_cntr              <= 5;
+            o_ppm <= '0';
           end if;
 
         when CHAN6 =>
-          o_ppm <= '1';
           if delay_cntr + 1< to_integer(unsigned(i_slv_reg25)) then
             current_state         <= CHAN6;
             delay_cntr <= delay_cntr + 1;
+            o_ppm <= '1';
           else
             current_state         <= IDLE;
             delay_cntr <= 0;
             gap_cntr              <= 1;
+            o_ppm <= '0';
           end if;
 
         when GAP =>
