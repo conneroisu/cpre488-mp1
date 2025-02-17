@@ -3,10 +3,10 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 use std.textio.all;
 
-entity generate_fsm_tb is
-end generate_fsm_tb;
+entity tb_generate_fsm is
+end tb_generate_fsm;
 
-architecture rtl of generate_fsm_tb is
+architecture rtl of tb_generate_fsm is
 
     -- Component declaration for the DUT (adjust port names if needed)
     component generate_fsm is
