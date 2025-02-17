@@ -49,7 +49,7 @@ architecture rtl of generate_fsm_tb is
             inc_cycle_count : in  std_logic_vector(31 downto 0);
             o_read_addr       : out std_logic_vector(2 downto 0);
             o_read_en         : out std_logic;
-            o_ppm_output      : out std_logic
+            o_ppm      : out std_logic
         );
     end component;
 
@@ -240,7 +240,7 @@ begin
             inc_cycle_count => inc_cycle_count,
             o_read_addr       => read_addr_sig,
             o_read_en         => read_en_sig,
-            o_ppm_output      => ppm_output_sig
+            o_ppm      => ppm_output_sig
         );
 
 end rtl;
