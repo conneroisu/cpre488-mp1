@@ -3,199 +3,165 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 entity generate_fsm is
-	
-	port (
-		i_clk, i_enable        : in std_logic;
-		i_reset                : in std_logic;
-		inc_cycle_count        : in std_logic_vector(31 downto 0);
-		o_read_addr            : out std_logic_vector(2 downto 0);
-		o_read_enable, o_ppm   : out std_logic
-	);
-
+    port (
+        i_clk, i_enable, i_reset  : in  std_logic;
+        inc_cycle_count           : in  std_logic_vector(31 downto 0);
+        o_read_addr               : out std_logic_vector(2 downto 0);
+        o_read_enable, o_ppm      : out std_logic
+    );
 end generate_fsm;
 
 architecture rtl of generate_fsm is
-	type state_type is (idle, gap, chan);
-  -- PS - previous state
-  -- NS - next state
-	signal PS, NS : state_type;
-	signal resetn, 
-    decrement_en, 
-    decrement_resetn, 
-    gap_en, 
-    gap_resetn, 
-    count_en, 
-    frame_start : std_logic;
-	signal gap_done, channel_done, frame_running : std_logic := '0';
-	signal frame_done : std_logic := '1';
-	signal addr_sig :  std_logic_vector(2 downto 0) := "001";
-	signal gap_val : unsigned(15 downto 0) := x"9C40";
-	signal decrement_val : unsigned(31 downto 0) := x"FFFFFFFF";
-	signal frame_val : unsigned(31 downto 0) := x"001E8480";
-	signal read_en_sig : std_logic := '0';
+    -- FSM state declaration
+    type state_type is (idle, gap, chan);
+    signal state, next_state : state_type;
 
-	begin
-	resetn <= i_reset;
-	o_read_addr <= addr_sig;
-	o_read_enable <= read_en_sig;
-	frame_start <= i_enable and (not frame_running);
-	
-	sync_proc: process(i_clk)
-		begin
-		if(rising_edge(i_clk)) then 
-		    if (resetn = '0') then 
-			    PS <= idle;
-		    else 
-			    PS <= NS;
-		    end if;
-		end if;
-	end process sync_proc;
-	
-	comb_proc: process(PS, i_enable, gap_done, channel_done, frame_done, addr_sig)
-		begin
-		o_ppm <= '0';
-		decrement_en <= '0';
-		decrement_resetn <= '1';
-		gap_en <= '0';
-		gap_resetn <= '1';
-		count_en <= '0';
-		NS <= PS;
-		case PS is
-			-- idle (no enable)
-			when idle =>
-				o_ppm <= '1';
-				decrement_en <= '0';
-				gap_en <= '0';
-				gap_resetn <= '0'; 
-				decrement_resetn <= '1';
-				if (i_enable = '0') then 
-					NS<=idle;
-					count_en <= '0';
-				elsif (frame_done = '1') then  
-					NS <= gap;
-					count_en <= '0'; 
-				end if;
-			-- gap state
-			when gap =>
-				o_ppm <= '0';
-				decrement_en <= '0';
-				gap_en <= '1';
-				gap_resetn <= '1'; 
-				decrement_resetn <= '0';
-				if (gap_done = '1') then 
-					if (addr_sig = "111") then
-						NS<=idle;
-						count_en <= '0';
-					else 
-						NS<=chan;
-						count_en <= '0';
-					end if;
-				else 
-					NS <= gap;
-					count_en <= '0';
-				end if;
-			-- channel state
-			when chan =>
-				o_ppm <= '1';
-				decrement_en <= '1';
-				gap_en <= '0';
-				gap_resetn <= '0';
-				decrement_resetn <= '1';
-				if (channel_done = '1') then
-					NS <= gap;
-					count_en <= '1';
-				else NS <= chan; count_en <= '0';
-				end if;
-			when others =>
-				o_ppm <= '1'; decrement_en <= '0'; gap_en <= '0'; gap_resetn <= '1'; decrement_resetn <= '1'; NS<=idle;
-		end case;
-	end process comb_proc;
-	
-	-- clocked process
-	-- counting which channel to read cycle counts from
-	-- incremented when state chan to state gap
-	addr_proc: process(i_clk)
-		begin
-		if(rising_edge(i_clk)) then
-			if(i_reset = '0') then
-				addr_sig <= "001";
-			elsif(frame_done = '1') then
-				addr_sig <= "001";
-			elsif(count_en = '1') then
-				addr_sig <= std_logic_vector(unsigned(addr_sig) + 1);
-			else addr_sig <= addr_sig;
-			end if;
-		end if;
-	end process addr_proc;
-	
-	-- clocked process
-	-- counting gaps low for ppm_output to be low
-	-- 9c40 is 400 us of cycles
-	gap_proc: process(i_clk)
-	begin
-		if(rising_edge(i_clk)) then
-			if(i_reset = '0') then
-				gap_done <= '0';
-			else
-				if(gap_resetn = '0') then
-					gap_val <= x"9C40";
-					gap_done <= '0';
-				elsif(gap_val = x"0000") then
-					gap_done <= '1';
-				elsif(gap_en = '1') then
-					gap_val <= gap_val - 1;
-				else 
-					gap_done <= '0';
-					gap_val <= x"9C40";
-				end if;
-			end if;
-		end if;
-	end process gap_proc;
-	
-	-- clocked process
-	-- counting channel high for ppm_output to be high
-	-- reading from read_addr/addr_sig to pull initial register value from inc_cycle_count into decrement_val
-	channel_proc: process(i_clk)
-	begin
-		if(rising_edge(i_clk)) then
-			if(i_reset = '0') then
-				channel_done <= '0'; read_en_sig <= '0';
-			else
-				if(decrement_resetn = '0') then
-					decrement_val <= unsigned(inc_cycle_count);
-					channel_done <= '0';
-					read_en_sig <= '1';
-				elsif(decrement_val = x"00000000") then
-					channel_done <= '1';
-					read_en_sig <= '0';
-				elsif(decrement_en = '1') then
-					decrement_val <= decrement_val - 1;
-					read_en_sig <= '0';
-				else channel_done <= '0'; read_en_sig <= '0';
-				end if;
-			end if;
-		end if;
-	end process channel_proc;
-	
-	-- clocked process
-	-- counting 20ms period (will have a buffer of one frame doing nothing at the beginning)
-	period_proc: process(i_clk)
-	begin	
-		if(rising_edge(i_clk)) then
-			-- frame_start is (gen_en AND ~frame_running)
-			if(frame_start = '1') then
-				frame_running <= '1';
-				frame_val <= x"001E8480";
-				frame_done <= '0';
-			end if;
-			-- when done counting, pulse frame_done bit to move out of idle
-			if(frame_val = x"00000000") then
-				frame_done <= '1';
-				frame_running <= '0';
-			elsif(frame_running = '1') then
-				frame_val <= frame_val - 1;
-			end if;
-		end if;
-	end process period_proc;
-	
+    -- Control signals (one–cycle pulse signals)
+    signal gap_en, channel_en, count_en : std_logic;
+
+    -- Counters and registers
+    signal gap_counter     : unsigned(15 downto 0);
+    signal channel_counter : unsigned(31 downto 0);
+    signal frame_counter   : unsigned(31 downto 0);
+    signal addr_reg        : unsigned(2 downto 0);  
+    signal read_en_reg     : std_logic;
+    
+    -- Frame control signals
+    signal frame_running, frame_done : std_logic;
+    
+    -- Constant initialization values
+    constant GAP_INIT   : unsigned(15 downto 0) := x"9C40";      -- 400 us
+    constant FRAME_INIT : unsigned(31 downto 0) := x"001E8480";    -- 20 ms (for example)
+    
+begin
+    -- Output assignments
+    o_read_addr   <= std_logic_vector(addr_reg);
+    o_read_enable <= read_en_reg;
+    
+    -- FSM: State register (synchronous reset) 
+    process(i_clk)
+    begin
+        if rising_edge(i_clk) then
+            if i_reset = '0' then
+                state <= idle;
+            else
+                state <= next_state;
+            end if;
+        end if;
+    end process;
+
+    process(state, i_enable, gap_counter, channel_counter, frame_done)
+    begin
+        -- Default assignments
+        next_state   <= state;
+        gap_en       <= '0';
+        channel_en   <= '0';
+        count_en     <= '0';
+        o_ppm        <= '0';  -- default off; explicitly driven in some states
+        read_en_reg  <= '0';
+        
+        case state is
+            when idle =>
+                o_ppm <= '1';
+                if (i_enable = '1') and (frame_done = '1') then
+                    next_state <= gap;
+                end if;
+                
+            when gap =>
+                gap_en <= '1';
+                if gap_counter = 0 then
+                    -- If all channels have been processed, go back to idle;
+                    -- else, transition to channel state.
+                    if addr_reg = to_unsigned(7, 3) then  -- "111" in binary
+                        next_state <= idle;
+                    else
+                        next_state <= chan;
+                    end if;
+                else
+                    next_state <= chan;
+                    count_en <= '1';
+                end if;
+                
+            when chan =>
+                o_ppm <= '1';
+                channel_en <= '1';
+                if channel_counter = 0 then
+                    next_state <= gap;
+                    count_en <= '1';
+                end if;
+                
+            when others =>
+                next_state <= idle;
+        end case;
+    end process;
+    
+    -- Address Counter Process (tracks which channel count is used)
+    process(i_clk)
+    begin
+        if rising_edge(i_clk) then
+            if i_reset = '0' or frame_done = '1' then
+                addr_reg <= to_unsigned(1, 3);  -- "001"
+            elsif count_en = '1' then
+                addr_reg <= addr_reg + 1;
+            end if;
+        end if;
+    end process;
+    
+    -- Gap Counter Process (counts the gap period)
+    process(i_clk)
+    begin
+        if rising_edge(i_clk) then
+            if i_reset = '0' then
+                gap_counter <= GAP_INIT;
+            elsif state /= gap then
+                gap_counter <= GAP_INIT;
+            elsif gap_en = '1' then
+                gap_counter <= gap_counter - 1;
+            end if;
+        end if;
+    end process;
+    
+    -- Channel Counter Process (counts down the pulse high time)
+    process(i_clk)
+    begin
+        if rising_edge(i_clk) then
+            if i_reset = '0' then
+                channel_counter <= (others => '0');
+            elsif state /= chan then
+                -- Load the new channel duration from the input register when entering chan state.
+                channel_counter <= unsigned(inc_cycle_count);
+                -- Optionally, you could pulse the read enable here.
+                read_en_reg <= '1';
+            elsif channel_en = '1' then
+                channel_counter <= channel_counter - 1;
+            end if;
+        end if;
+    end process;
+    
+    -- Frame Period Process (counts a 20ms period, controlling frame start/end)
+    process(i_clk)
+    begin
+        if rising_edge(i_clk) then
+            if i_reset = '0' then
+                frame_counter <= FRAME_INIT;
+                frame_done    <= '1';
+                frame_running <= '0';
+            else
+                -- Start a new frame when i_enable is asserted and no frame is running.
+                if (i_enable = '1') and (frame_running = '0') then
+                    frame_running <= '1';
+                    frame_counter <= FRAME_INIT;
+                    frame_done    <= '0';
+                elsif frame_running = '1' then
+                    if frame_counter = 0 then
+                        frame_done    <= '1';
+                        frame_running <= '0';
+                    else
+                        frame_counter <= frame_counter - 1;
+                    end if;
+                end if;
+            end if;
+        end if;
+    end process;
+    
 end rtl;
