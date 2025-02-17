@@ -3,10 +3,10 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 use std.textio.all;
 
-entity generate_fsm_tb is
-end generate_fsm_tb;
+entity tb_generate_fsm is
+end tb_generate_fsm;
 
-architecture rtl of generate_fsm_tb is
+architecture rtl of tb_generate_fsm is
 
     type my_input_states is (START, CHAN1, CHAN2, CHAN3, CHAN4, CHAN5, CHAN6, STOP_TEST);
     constant spacer: string := "  ";
