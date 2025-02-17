@@ -90,5 +90,7 @@ begin
     i_slv_reg24 <= x"00000001";
     i_slv_reg25 <= x"00000001";
     wait for 10 ns;
+
+    wait;
   end process;
 end rtl;
