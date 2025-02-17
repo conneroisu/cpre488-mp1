@@ -113,8 +113,10 @@ begin
         -- START: Initialize test and enable the DUT.
         input_state     <= START;
         gen_en          <= '1';
+        read_en_sig     <= '0';
         inc_cycle_count <= (others => '0');
         wait for 10 ns;
+
 
         ----------------------------------------------------------------------------
         -- CHAN1 stimulus
