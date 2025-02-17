@@ -2,7 +2,8 @@ standard = "2008"
 # File names are either absolute or relative to the parent folder of the vhdl_ls.toml file
 [libraries]
 lib2.files = [
-    'pkg2.vhd',
+    './src/design/generate_fsm/generate_fsm.vhd',
+    './src/testbench/generate_fsm/tb_generate_fsm.vhd',
 ]
 lib1.files = [
     'pkg1.vhd',

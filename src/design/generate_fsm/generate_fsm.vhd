@@ -37,7 +37,7 @@ architecture arc of generate_fsm is
 
 begin
 
-  process(i_clk, i_rst)
+  process(i_clk, i_rst, o_ppm, delay_cntr, gap_cntr)
   begin
     if i_rst = '1' then
       current_state         <= IDLE;
@@ -66,14 +66,15 @@ begin
           end if;
 
         when CHAN2 =>
-          o_ppm <= '1';
           if delay_cntr +1< to_integer(unsigned(i_slv_reg21)) then
             current_state         <= CHAN2;
             delay_cntr <= delay_cntr + 1;
+            o_ppm <= '1';
           else
             current_state         <= GAP;
             delay_cntr <= 0;
             gap_cntr              <= 2;
+            o_ppm <= '0';
           end if;
 
         when CHAN3 =>
