@@ -40,7 +40,7 @@ architecture arc of generate_fsm is
 
 begin
 
-  switch: process(i_clk, i_rst, o_ppm)
+  switch: process(i_clk, i_rst, o_ppm, CS)
   begin
     if i_rst = '1' then
       CS <= IDLE;
