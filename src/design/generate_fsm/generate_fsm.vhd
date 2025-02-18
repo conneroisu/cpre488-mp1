@@ -32,7 +32,7 @@ architecture arc of generate_fsm is
 
     -- Clock period and gap delay parameters.
     constant CLK_PERIOD   : time    := 10 ns;  -- adjust as needed
-    constant GAP_TIME_CNT : natural := integer(40 ms / CLK_PERIOD);  -- 0.40 ms / 10 ns = 40,000 cycles
+    constant GAP_TIME_CNT : natural := integer(0.40 ms / CLK_PERIOD);  -- 0.40 ms / 10 ns = 40,000 cycles
 
 begin
 
