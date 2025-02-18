@@ -38,6 +38,8 @@ architecture rtl of tb_generate_fsm is
     signal i_slv_reg24  : std_logic_vector(31 downto 0);
     signal i_slv_reg25  : std_logic_vector(31 downto 0);
     signal o_ppm        : std_logic;
+
+    signal CYCLES : natural := 0;
 begin
 
     inst_generate_fsm : generate_fsm
@@ -61,6 +63,7 @@ begin
             wait for clk_period / 2;
             i_clk <= '1';
             wait for clk_period / 2;
+            CYCLES <= CYCLES + 1;
         end loop;
         wait;                           -- Should never be reached
     end process clk_process;
