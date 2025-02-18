@@ -37,20 +37,21 @@ def main() -> None:
         print(f"Usage: {sys.argv[0]} <file>")
         sys.exit(1)
 
-    input_path: Path = Path(sys.argv[1])
-    if not input_path.is_file():
-        print(f"Error: {input_path} is not a valid file.")
-        sys.exit(1)
+    for i in range(1, len(sys.argv) - 1):
+        input_path: Path = Path(sys.argv[i])
+        if not input_path.is_file():
+            print(f"Error: {input_path} is not a valid file.")
+            sys.exit(1)
 
-    try:
-        formatted_output: str = run_formatter(input_path)
-    except subprocess.CalledProcessError as e:
-        print(f"Error running formatter: {e.stderr}")
-        sys.exit(1)
+        try:
+            formatted_output: str = run_formatter(input_path)
+        except subprocess.CalledProcessError as e:
+            print(f"Error running formatter: {e.stderr}")
+            sys.exit(1)
 
-    # Write the formatted output back to the file
-    _ = input_path.write_text(formatted_output)
-    print(f"File '{input_path}' has been formatted and updated.")
+        # Write the formatted output back to the file
+        _ = input_path.write_text(formatted_output)
+        print(f"File '{input_path}' has been formatted and updated.")
 
 
 if __name__ == "__main__":
