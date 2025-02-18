@@ -77,14 +77,13 @@ begin
         i_rst       <= '0';
         wait for 10 ns;
         i_slv_reg20 <= std_logic_vector(to_unsigned(150000, 32));
-
         i_slv_reg21 <= std_logic_vector(to_unsigned(80000, 32));
         i_slv_reg22 <= std_logic_vector(to_unsigned(100000, 32));
         i_slv_reg23 <= std_logic_vector(to_unsigned(125000, 32));
         i_slv_reg24 <= std_logic_vector(to_unsigned(200000, 32));
         i_slv_reg25 <= std_logic_vector(to_unsigned(175000, 32));
 
-        wait for 1 sec;
+        wait for 0.5 sec;
 
         wait;
     end process;
