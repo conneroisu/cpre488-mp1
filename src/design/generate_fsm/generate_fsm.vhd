@@ -147,7 +147,7 @@ begin
                             when 5 =>
                                 current_state <= CHAN6;
                             when others =>
-                                current_state <= IDLE;   -- should never happen
+                                current_state <= IDLE;
                         end case;
                     end if;
 

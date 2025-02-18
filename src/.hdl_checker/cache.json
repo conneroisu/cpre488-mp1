@@ -4,14 +4,14 @@
   "_builtin_libraries": [],
   "_added_libraries": [
    {
-    "name": "not_in_project",
-    "case_sensitive": true,
-    "__class__": "Identifier"
-   },
-   {
     "name": "IEEE",
     "case_sensitive": false,
     "__class__": "VhdlIdentifier"
+   },
+   {
+    "name": "not_in_project",
+    "case_sensitive": true,
+    "__class__": "Identifier"
    }
   ],
   "_version": "<undefined>",
@@ -23,25 +23,6 @@
   "sources": [],
   "inferred_libraries": [],
   "design_units": [
-   {
-    "owner": {
-     "name": "/nix/store/vx2nf13dbks80h0l68igy095lzkr69r6-vhdl-ls-0.83.1/lib/rust_hdl/vhdl_libraries/ieee2008/std_logic_1164.vhdl",
-     "__class__": "Path"
-    },
-    "type_": "package",
-    "name": {
-     "name": "std_logic_1164",
-     "case_sensitive": false,
-     "__class__": "VhdlIdentifier"
-    },
-    "locations": [
-     [
-      55,
-      8
-     ]
-    ],
-    "__class__": "VhdlDesignUnit"
-   },
    {
     "owner": {
      "name": "/home/connerohnesorge/Documents/001Repos/cpre488-mp1/src/testbench/detect_fsm/detect_fsm_tb.vhd",
@@ -95,6 +76,25 @@
      [
       4,
       7
+     ]
+    ],
+    "__class__": "VhdlDesignUnit"
+   },
+   {
+    "owner": {
+     "name": "/nix/store/vx2nf13dbks80h0l68igy095lzkr69r6-vhdl-ls-0.83.1/lib/rust_hdl/vhdl_libraries/ieee2008/std_logic_1164.vhdl",
+     "__class__": "Path"
+    },
+    "type_": "package",
+    "name": {
+     "name": "std_logic_1164",
+     "case_sensitive": false,
+     "__class__": "VhdlIdentifier"
+    },
+    "locations": [
+     [
+      55,
+      8
      ]
     ],
     "__class__": "VhdlDesignUnit"
