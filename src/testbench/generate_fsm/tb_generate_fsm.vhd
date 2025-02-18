@@ -81,7 +81,7 @@ begin
         i_slv_reg24 <= std_logic_vector(to_unsigned(200000, 32));
         i_slv_reg25 <= std_logic_vector(to_unsigned(175000, 32));
 
-        wait for 500000000 ns;
+        wait for 5000000000 ns;
 
         wait;
     end process;
