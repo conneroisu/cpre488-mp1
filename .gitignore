@@ -80,3 +80,4 @@ xvlog.*
 
 ## Python
 __pycache__/
+.venv/
