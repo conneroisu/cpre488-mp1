@@ -17,6 +17,7 @@ end package user_defines;
 package body user_defines is
   function map_detect_state(fsm_state : in t_DETECT_FSM_STATE) return STD_LOGIC_VECTOR is
   begin
+
     case fsm_state is
       when NOT_STARTED => return B"00";
       when WAITING => return B"01";

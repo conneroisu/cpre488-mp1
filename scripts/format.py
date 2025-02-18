@@ -37,7 +37,7 @@ def main() -> None:
         print(f"Usage: {sys.argv[0]} <file>")
         sys.exit(1)
 
-    for i in range(1, len(sys.argv) - 1):
+    for i in range(1, len(sys.argv)):
         input_path: Path = Path(sys.argv[i])
         if not input_path.is_file():
             print(f"Error: {input_path} is not a valid file.")
