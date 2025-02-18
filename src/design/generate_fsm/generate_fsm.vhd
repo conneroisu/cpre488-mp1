@@ -126,10 +126,10 @@ begin
                     end if;
 
                 when GAP =>
-                    o_ppm <= '0';
                     if delay_cntr < GAP_TIME_CNT then
                         current_state <= GAP;
                         delay_cntr    <= delay_cntr + 1;
+                        o_ppm         <= '0';
                     else
                         delay_cntr <= 0;
                         o_ppm      <= '1';
