@@ -52,7 +52,6 @@ begin
                     delay_cntr    <= 0;
 
                 when CHAN1 =>
-                    o_ppm <= '1';
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg20)) then
                         current_state <= CHAN1;
                         delay_cntr    <= delay_cntr + 1;
@@ -77,7 +76,6 @@ begin
                     end if;
 
                 when CHAN3 =>
-                    o_ppm <= '1';
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg22)) then
                         current_state <= CHAN3;
                         delay_cntr    <= delay_cntr + 1;
