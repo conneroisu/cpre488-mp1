@@ -33,7 +33,7 @@ def run_formatter(input_file: Path) -> str:
 
 
 def main() -> None:
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         print(f"Usage: {sys.argv[0]} <file>")
         sys.exit(1)
 
