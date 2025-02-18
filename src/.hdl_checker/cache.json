@@ -4,14 +4,14 @@
   "_builtin_libraries": [],
   "_added_libraries": [
    {
-    "name": "IEEE",
-    "case_sensitive": false,
-    "__class__": "VhdlIdentifier"
-   },
-   {
     "name": "not_in_project",
     "case_sensitive": true,
     "__class__": "Identifier"
+   },
+   {
+    "name": "IEEE",
+    "case_sensitive": false,
+    "__class__": "VhdlIdentifier"
    }
   ],
   "_version": "<undefined>",
@@ -23,44 +23,6 @@
   "sources": [],
   "inferred_libraries": [],
   "design_units": [
-   {
-    "owner": {
-     "name": "/home/connerohnesorge/Documents/001Repos/cpre488-mp1/src/design/generate_fsm/generate_fsm.vhd",
-     "__class__": "Path"
-    },
-    "type_": "entity",
-    "name": {
-     "name": "generate_fsm",
-     "case_sensitive": false,
-     "__class__": "VhdlIdentifier"
-    },
-    "locations": [
-     [
-      4,
-      7
-     ]
-    ],
-    "__class__": "VhdlDesignUnit"
-   },
-   {
-    "owner": {
-     "name": "/home/connerohnesorge/Documents/001Repos/cpre488-mp1/src/testbench/generate_fsm/tb_generate_fsm.vhd",
-     "__class__": "Path"
-    },
-    "type_": "entity",
-    "name": {
-     "name": "tb_generate_fsm",
-     "case_sensitive": false,
-     "__class__": "VhdlIdentifier"
-    },
-    "locations": [
-     [
-      5,
-      7
-     ]
-    ],
-    "__class__": "VhdlDesignUnit"
-   },
    {
     "owner": {
      "name": "/nix/store/vx2nf13dbks80h0l68igy095lzkr69r6-vhdl-ls-0.83.1/lib/rust_hdl/vhdl_libraries/ieee2008/std_logic_1164.vhdl",
@@ -94,6 +56,44 @@
     "locations": [
      [
       7,
+      7
+     ]
+    ],
+    "__class__": "VhdlDesignUnit"
+   },
+   {
+    "owner": {
+     "name": "/home/connerohnesorge/Documents/001Repos/cpre488-mp1/src/testbench/generate_fsm/tb_generate_fsm.vhd",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "tb_generate_fsm",
+     "case_sensitive": false,
+     "__class__": "VhdlIdentifier"
+    },
+    "locations": [
+     [
+      5,
+      7
+     ]
+    ],
+    "__class__": "VhdlDesignUnit"
+   },
+   {
+    "owner": {
+     "name": "/home/connerohnesorge/Documents/001Repos/cpre488-mp1/src/design/generate_fsm/generate_fsm.vhd",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "generate_fsm",
+     "case_sensitive": false,
+     "__class__": "VhdlIdentifier"
+    },
+    "locations": [
+     [
+      4,
       7
      ]
     ],
