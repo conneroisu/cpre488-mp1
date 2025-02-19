@@ -10,6 +10,7 @@ entity generate_fsm is
     port (
         i_clk       : in  std_logic;
         i_rst       : in  std_logic;
+        i_slv_reg0  : in  std_logic_vector(N-1 downto 0);
         i_slv_reg20 : in  std_logic_vector(N-1 downto 0);
         i_slv_reg21 : in  std_logic_vector(N-1 downto 0);
         i_slv_reg22 : in  std_logic_vector(N-1 downto 0);
@@ -44,7 +45,7 @@ begin
             delay_cntr    <= 0;
             o_ppm         <= '0';
 
-        elsif rising_edge(i_clk) then
+        elsif (rising_edge(i_clk) and i_slv_reg0(0) = '1') then
             case current_state is
 
                 when IDLE =>

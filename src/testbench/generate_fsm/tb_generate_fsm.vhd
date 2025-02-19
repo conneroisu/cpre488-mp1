@@ -17,6 +17,7 @@ architecture rtl of tb_generate_fsm is
         port (
             i_clk       : in  std_logic;
             i_rst       : in  std_logic;
+            i_slv_reg0  : in  std_logic_vector(N-1 downto 0);
             i_slv_reg20 : in  std_logic_vector(N-1 downto 0);
             i_slv_reg21 : in  std_logic_vector(N-1 downto 0);
             i_slv_reg22 : in  std_logic_vector(N-1 downto 0);
@@ -31,12 +32,13 @@ architecture rtl of tb_generate_fsm is
     -- Signal declarations for the DUT
     signal i_clk        : std_logic := '0';
     signal i_rst        : std_logic;
-    signal i_slv_reg20  : std_logic_vector(31 downto 0);
-    signal i_slv_reg21  : std_logic_vector(31 downto 0);
-    signal i_slv_reg22  : std_logic_vector(31 downto 0);
-    signal i_slv_reg23  : std_logic_vector(31 downto 0);
-    signal i_slv_reg24  : std_logic_vector(31 downto 0);
-    signal i_slv_reg25  : std_logic_vector(31 downto 0);
+    signal s_slv_reg0   : std_logic_vector(31 downto 0);
+    signal s_slv_reg20  : std_logic_vector(31 downto 0);
+    signal s_slv_reg21  : std_logic_vector(31 downto 0);
+    signal s_slv_reg22  : std_logic_vector(31 downto 0);
+    signal s_slv_reg23  : std_logic_vector(31 downto 0);
+    signal s_slv_reg24  : std_logic_vector(31 downto 0);
+    signal s_slv_reg25  : std_logic_vector(31 downto 0);
     signal o_ppm        : std_logic;
 
     signal CYCLES : natural := 0;
@@ -47,12 +49,13 @@ begin
         port map (
             i_clk       => i_clk,
             i_rst       => i_rst,
-            i_slv_reg20 => i_slv_reg20,
-            i_slv_reg21 => i_slv_reg21,
-            i_slv_reg22 => i_slv_reg22,
-            i_slv_reg23 => i_slv_reg23,
-            i_slv_reg24 => i_slv_reg24,
-            i_slv_reg25 => i_slv_reg25,
+            i_slv_reg0  => s_slv_reg0,
+            i_slv_reg20 => s_slv_reg20,
+            i_slv_reg21 => s_slv_reg21,
+            i_slv_reg22 => s_slv_reg22,
+            i_slv_reg23 => s_slv_reg23,
+            i_slv_reg24 => s_slv_reg24,
+            i_slv_reg25 => s_slv_reg25,
             o_ppm       => o_ppm
             );
 
@@ -68,6 +71,8 @@ begin
         wait;                           -- Should never be reached
     end process clk_process;
 
+    s_slv_reg0   <= (others => '1');
+    
     -- Stimulus process for a subset of values (0 to 255)
     p_stim : process
     begin
@@ -76,12 +81,12 @@ begin
         wait for 10 ns;
         i_rst       <= '0';
         wait for 10 ns;
-        i_slv_reg20 <= std_logic_vector(to_unsigned(150000, 32));
-        i_slv_reg21 <= std_logic_vector(to_unsigned(80000, 32));
-        i_slv_reg22 <= std_logic_vector(to_unsigned(100000, 32));
-        i_slv_reg23 <= std_logic_vector(to_unsigned(125000, 32));
-        i_slv_reg24 <= std_logic_vector(to_unsigned(200000, 32));
-        i_slv_reg25 <= std_logic_vector(to_unsigned(175000, 32));
+        s_slv_reg20 <= std_logic_vector(to_unsigned(150000, 32));
+        s_slv_reg21 <= std_logic_vector(to_unsigned(80000, 32));
+        s_slv_reg22 <= std_logic_vector(to_unsigned(100000, 32));
+        s_slv_reg23 <= std_logic_vector(to_unsigned(125000, 32));
+        s_slv_reg24 <= std_logic_vector(to_unsigned(200000, 32));
+        s_slv_reg25 <= std_logic_vector(to_unsigned(175000, 32));
 
         wait for 0.5 sec;
 
