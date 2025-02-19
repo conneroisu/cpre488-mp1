@@ -16,6 +16,9 @@ package user_defines is
   -- Testbench Constants
   constant TB_CLK_WIDTH : time := 10 ns;
   constant TB_CLK_PERIOD : time := 2 * TB_CLK_WIDTH;
+
+  -- Testbench types
+  type t_CHANNEL_PULSE_WIDTHS is array (0 to 5) of STD_LOGIC_VECTOR(REG_SIZE - 1 downto 0);
 end package user_defines;
 
 package body user_defines is

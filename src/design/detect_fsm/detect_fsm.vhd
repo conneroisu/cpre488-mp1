@@ -20,7 +20,7 @@ architecture rtl of detect_fsm is
   signal s_c_state, s_n_state : t_DETECT_FSM_STATE;
 
   -- Pulse Counter Control Signals
-  signal s_pulse_counter_en, s_pulse_counter_rst_n, s_all_chan : STD_LOGIC;
+  signal s_pulse_counter_en, s_pulse_counter_rst_n : STD_LOGIC;
 
   -- Pulse Counter Value
   signal s_count : STD_LOGIC_VECTOR(REG_SIZE - 1 downto 0);
@@ -70,28 +70,28 @@ begin
 
       when COUNT =>
         s_pulse_counter_rst_n <= '1';
+        o_channel_read <= '0';
         if(i_ppm = '1') then
           s_pulse_counter_en <= '1';
-          o_channel_read <= '0';
           s_n_state <= COUNT;
         else
           s_pulse_counter_en <= '0';
-          o_channel_read <= '1';
           s_n_state <= DONE;
         end if;
 
       when DONE =>
+
+        o_channel_read <= '1';
+
         -- Reset when all channels are counted.
         if(s_chan = LAST_CHANNEL_CONDITION) then
           s_pulse_counter_en <= '0';
           s_pulse_counter_rst_n <= '0';
-          o_channel_read <= '0';
           s_n_state <= NOT_STARTED;
           -- If we have not counted all the channels, go to WAITING.
         else
           s_pulse_counter_en <= '0';
           s_pulse_counter_rst_n <= '1';
-          o_channel_read <= '1';
           s_n_state <= WAITING;
         end if;
     end case;
@@ -113,6 +113,9 @@ begin
   end process PULSE_WIDTH_COUNTER;
 
   -- Channel counter
+  -- Counts on falling edge.
+  -- This makes sure that the counter enable signal is not going low when the counter
+  -- is about to count on the rising edge. Splitting between rising and falling here is the best.
   CHANNEL_COUNTER : process(i_rst_n, i_clk) is
   begin
 
@@ -120,7 +123,7 @@ begin
     if(i_rst_n = '0') then
       s_chan <= (others => '0');
 
-    elsif(rising_edge(i_clk)) then
+    elsif(falling_edge(i_clk)) then
 
       -- If last channel has been counted, reset
       if(s_chan = LAST_CHANNEL_CONDITION) then
