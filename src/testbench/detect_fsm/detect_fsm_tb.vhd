@@ -162,7 +162,7 @@ begin
       end loop;
 
       -- Make sure last channel has not been saved.
-      assert s_channel_pulse_widths(5) = X"00000000" report "Test Failed; s_channel_pulse_widths has saved a non-zero value for the last channel, which has not been read yet!" severity failure;
+      assert s_channel_pulse_widths(5) = X"00000000" report "Test Failed: s_channel_pulse_widths has saved a non-zero value for the last channel, which has not been read yet!" severity failure;
 
       -- Read from the last channel.
 
@@ -202,6 +202,11 @@ begin
 
       assert s_count = TB_PULSE_WIDTHS(5) report "Test Failed: s_count was not correct!" severity failure;
       assert s_reg_sel = B"110" report "Test Failed: s_reg_sel was not 110!" severity failure;
+
+      -- Verify that all of the stored pulse widths are correct.
+      for i in 0 to 5 loop
+        assert s_channel_pulse_widths(i) = TB_PULSE_WIDTHS(i) report "Test Failed: s_channel_pulse_widths was not correct after all channels have been read!" severity failure;
+      end loop;
 
       -- s_reg_sel should be zero on the next falling edge.
       wait until falling_edge(s_clk);
