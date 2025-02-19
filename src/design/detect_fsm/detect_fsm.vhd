@@ -81,6 +81,7 @@ begin
 
       when DONE =>
 
+
         -- Reset when all channels are counted.
         if(s_chan = LAST_CHANNEL_CONDITION) then
           s_pulse_counter_en <= '0';
@@ -101,8 +102,8 @@ begin
   PULSE_WIDTH_COUNTER : process(s_pulse_counter_rst_n, i_clk) is
   begin
     -- Async reset
-    if(i_rst_n = '0') then
-      o_count <= (others => '0');
+    if(s_pulse_counter_rst_n = '0') then
+      s_count <= (others => '0');
     elsif(rising_edge(i_clk)) then
 
       -- Only count when enabled.
