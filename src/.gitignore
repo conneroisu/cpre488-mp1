@@ -1,4 +1,11 @@
 !*
+
+# Ignore files without an extension, besides Makefile
+*
+!*/
+!*.*
+!*Makefile*
+
 *.exe
 *.o
 *.cf

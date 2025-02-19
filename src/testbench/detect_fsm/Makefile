@@ -10,7 +10,7 @@ OBJ_FILES := $(foreach file,$(SOURCE_FILE_NAMES),${WORK_DIR}/$(file).o) $(foreac
 GHDL_ARGS := --workdir=${WORK_DIR}
 
 ${TESTBENCH_NAME}: ${OBJ_FILES} ${WORK_DIR}/${TESTBENCH_NAME}.o
-	ghdl -e ${GHDL_ARGS} ${TESTBENCH_NAME}
+	ghdl -e -o $@ ${GHDL_ARGS} ${TESTBENCH_NAME}
 
 ${WORK_DIR}/user_defines.o: ${DEFINES_DIR}/user_defines.vhd
 	ghdl -a ${GHDL_ARGS} $<
