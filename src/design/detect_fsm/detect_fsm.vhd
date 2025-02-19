@@ -86,14 +86,13 @@ begin
 
         s_channel_read <= '1';
         s_pulse_counter_en <= '0';
+        s_pulse_counter_rst_n <= '1';
 
         -- Reset when all channels are counted.
         if(s_chan = LAST_CHANNEL_CONDITION) then
-          s_pulse_counter_rst_n <= '0';
           s_n_state <= NOT_STARTED;
           -- If we have not counted all the channels, go to WAITING.
         else
-          s_pulse_counter_rst_n <= '1';
           s_n_state <= WAITING;
         end if;
     end case;

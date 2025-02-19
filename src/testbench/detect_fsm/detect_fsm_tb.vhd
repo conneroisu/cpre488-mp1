@@ -76,38 +76,97 @@ begin
     assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
     assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
-    -- Start
-    s_start <= '1';
+    -- Run through all 6 channels twice.
+    for k in 1 to 2 loop
 
-    wait until rising_edge(s_clk);
+      -- Start
+      s_start <= '1';
 
-    -- Align to falling edge for verifications.
-    wait until falling_edge(s_clk);
+      wait until rising_edge(s_clk);
 
-    -- We should be in the waiting state now.
-    assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
-    assert s_state = B"01" report "Test Failed: s_state was not 01!" severity failure;
-    assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
-    assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
-
-    -- Wait a few clock cycles
-    for i in 0 to 4 loop
+      -- Align to falling edge for verifications.
       wait until falling_edge(s_clk);
-      wait until falling_edge(s_clk);
-      wait until falling_edge(s_clk);
-      wait until falling_edge(s_clk);
-    end loop;
 
-    -- Make sure we are still waiting.
-    assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
-    assert s_state = B"01" report "Test Failed: s_state was not 01!" severity failure;
-    assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
-    assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
+      -- We should be in the waiting state now.
+      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+      assert s_state = B"01" report "Test Failed: s_state was not 01!" severity failure;
+      assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
+      assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
-    -- Read 5 pulses
-    for i in 0 to 4 loop
+      -- Wait a few clock cycles
+      for i in 0 to 4 loop
+        wait until falling_edge(s_clk);
+      end loop;
 
-      -- Start the pulse.
+      -- Make sure we are still waiting.
+      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+      assert s_state = B"01" report "Test Failed: s_state was not 01!" severity failure;
+      assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
+      assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
+
+      -- Read 5 pulses
+      for i in 0 to 4 loop
+
+        -- Start the pulse.
+        s_ppm <= '1';
+
+        wait until falling_edge(s_clk);
+
+        -- Verify that we are counting and have counted once.
+        assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+        assert s_state = B"10" report "Test Failed: s_state was not 10!" severity failure;
+        assert s_count = X"00000001" report "Test Failed: s_count was not 1!" severity failure;
+        assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
+
+        for j in 1 to TO_INTEGER(UNSIGNED(TB_PULSE_WIDTHS(i))) - 1 loop
+          wait until falling_edge(s_clk);
+        end loop;
+
+        -- Verify that the count.
+        assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+        assert s_state = B"10" report "Test Failed: s_state was not 10!" severity failure;
+        assert s_count = TB_PULSE_WIDTHS(i) report "Test Failed: s_count was not correct!" severity failure;
+        assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
+
+        -- End the pulse
+        s_ppm <= '0';
+
+        wait until falling_edge(s_clk);
+
+        -- Channel should be done now.
+        assert s_channel_read = '1' report "Test Failed: s_channel_read should be 1!" severity failure;
+        assert s_state = B"11" report "Test Failed: s_state was not 11!" severity failure;
+        assert s_count = TB_PULSE_WIDTHS(i) report "Test Failed: s_count was not correct!" severity failure;
+        assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
+
+        -- Verify that reg_sel updates on the falling edge (1 ps after the event).
+        -- Verify that the channel pulse widths reg updates on the falling edge (1 ps after the event).
+        wait for 1 ps;
+
+        assert s_count = TB_PULSE_WIDTHS(i) report "Test Failed: s_count was not correct!" severity failure;
+        assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i + 1, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
+
+        wait until falling_edge(s_clk);
+
+        -- next channel should start now.
+        assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+        assert s_state = B"01" report "Test Failed: s_state was not 11!" severity failure;
+        assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
+        assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i + 1, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
+
+      end loop;
+
+      -- Make sure none of th registers got overwritten.
+      for i in 0 to 4 loop
+        assert s_channel_pulse_widths(i) = TB_PULSE_WIDTHS(i) report "Test Failed: s_channel_pulse_widths did not maintain its values after 5 channels have been read!" severity failure;
+      end loop;
+
+      -- Make sure last channel has not been saved.
+      assert s_channel_pulse_widths(5) = X"00000000" report "Test Failed; s_channel_pulse_widths has saved a non-zero value for the last channel, which has not been read yet!" severity failure;
+
+      -- Read from the last channel.
+
+      -- Start the pulse
       s_ppm <= '1';
 
       wait until falling_edge(s_clk);
@@ -116,45 +175,55 @@ begin
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
       assert s_state = B"10" report "Test Failed: s_state was not 10!" severity failure;
       assert s_count = X"00000001" report "Test Failed: s_count was not 1!" severity failure;
-      assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
+      assert s_reg_sel = B"101" report "Test Failed: s_reg_sel was not correct!" severity failure;
 
-      for j in 1 to TO_INTEGER(UNSIGNED(TB_PULSE_WIDTHS(i))) - 1 loop
+      -- Count the pulse width.
+      for i in 1 to TO_INTEGER(UNSIGNED(TB_PULSE_WIDTHS(5))) - 1 loop
         wait until falling_edge(s_clk);
       end loop;
-
-      -- Verify that the count.
-      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
-      assert s_state = B"10" report "Test Failed: s_state was not 10!" severity failure;
-      assert s_count = TB_PULSE_WIDTHS(i) report "Test Failed: s_count was not correct!" severity failure;
-      assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
 
       -- End the pulse
       s_ppm <= '0';
 
+      -- Set s_start to 0 so we don't start again.
+      s_start <= '0';
+
       wait until falling_edge(s_clk);
 
-      -- Channel 1 should be done now.
+      -- Channel should be done now.
       assert s_channel_read = '1' report "Test Failed: s_channel_read should be 1!" severity failure;
       assert s_state = B"11" report "Test Failed: s_state was not 11!" severity failure;
-      assert s_count = TB_PULSE_WIDTHS(i) report "Test Failed: s_count was not correct!" severity failure;
-      assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
+      assert s_count = TB_PULSE_WIDTHS(5) report "Test Failed: s_count was not correct!" severity failure;
+      assert s_reg_sel = B"101" report "Test Failed: s_reg_sel was not correct!" severity failure;
 
       -- Verify that reg_sel updates on the falling edge (1 ps after the event).
       -- Verify that the channel pulse widths reg updates on the falling edge (1 ps after the event).
       wait for 1 ps;
 
-      assert s_count = TB_PULSE_WIDTHS(i) report "Test Failed: s_count was not correct!" severity failure;
-      assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i + 1, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
+      assert s_count = TB_PULSE_WIDTHS(5) report "Test Failed: s_count was not correct!" severity failure;
+      assert s_reg_sel = B"110" report "Test Failed: s_reg_sel was not 110!" severity failure;
 
+      -- s_reg_sel should be zero on the next falling edge.
       wait until falling_edge(s_clk);
 
-      -- next channel should start now.
-      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
-      assert s_state = B"01" report "Test Failed: s_state was not 11!" severity failure;
-      assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
-      assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i + 1, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
+      wait for 1 ps;
+      assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
+      -- We should be in NOT_STARTED now.
+      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+      assert s_state = B"00" report "Test Failed: s_state was not 00!" severity failure;
+      assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
+      assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
+
+      -- Reset s_channel_pulse_widths
+      -- We have already verified that the FSM self reset, this is just to clear out the
+      -- channel pulse width regs.
+      s_rst_n <= '0';
+      wait for 1 ps;
+      s_rst_n <= '1';
+      wait for 1 ps;
     end loop;
+
     report "Test Passed!";
 
     wait;
