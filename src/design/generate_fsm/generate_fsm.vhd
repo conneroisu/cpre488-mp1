@@ -5,7 +5,7 @@ use IEEE.numeric_std.all;
 entity generate_fsm is
     generic (
         N               : natural := 32;
-        IDLE_FRAME_TIME : time    := 2 ms
+        IDLE_FRAME_TIME : time    := 9 ms
     );
     port (
         i_clk       : in  std_logic;
