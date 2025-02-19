@@ -43,7 +43,7 @@ begin
   end process FSM_SEQ;
 
   -- Combinational FSM logic
-  FSM_COMB : process(i_ppm) is
+  FSM_COMB : process(i_ppm, i_start, s_chan) is
   begin
     case(s_c_state) is
       when NOT_STARTED =>

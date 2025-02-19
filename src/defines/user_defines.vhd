@@ -12,6 +12,10 @@ package user_defines is
   -- There are 6 channels, so the last channel is 101.
   -- When the channel is 110, we know we have covered all channels.
   constant LAST_CHANNEL_CONDITION : STD_LOGIC_VECTOR(2 downto 0) := B"110";
+
+  -- Testbench Constants
+  constant TB_CLK_WIDTH : time := 10 ns;
+  constant TB_CLK_PERIOD : time := 2 * TB_CLK_WIDTH;
 end package user_defines;
 
 package body user_defines is
