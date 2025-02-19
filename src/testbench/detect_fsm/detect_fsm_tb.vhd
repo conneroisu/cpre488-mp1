@@ -73,16 +73,59 @@ begin
     assert s_reg_sel = B"000" report "Test Failed; s_reg_sel was not 0!" severity failure;
 
     -- Wait a few clock cycles
-    wait until falling_edge(s_clk);
-    wait until falling_edge(s_clk);
-    wait until falling_edge(s_clk);
-    wait until falling_edge(s_clk);
+    for i in 0 to 4 loop
+      wait until falling_edge(s_clk);
+      wait until falling_edge(s_clk);
+      wait until falling_edge(s_clk);
+      wait until falling_edge(s_clk);
+    end loop;
 
     -- Make sure we are still waiting.
     assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
     assert s_state = B"01" report "Test Failed: s_state was not 01!" severity failure;
     assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
     assert s_reg_sel = B"000" report "Test Failed; s_reg_sel was not 0!" severity failure;
+
+    -- Start the pulse.
+    s_ppm <= '1';
+
+    wait until falling_edge(s_clk);
+
+    -- Verify that we are counting and have counted once.
+    assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+    assert s_state = B"10" report "Test Failed: s_state was not 01!" severity failure;
+    assert s_count = X"00000001" report "Test Failed: s_count was not 1!" severity failure;
+    assert s_reg_sel = B"000" report "Test Failed; s_reg_sel was not 0!" severity failure;
+
+    -- Count 22 more times
+    for i in 1 to 22 loop
+      wait until falling_edge(s_clk);
+    end loop;
+
+    -- Verify that the count is now 23.
+    assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+    assert s_state = B"10" report "Test Failed: s_state was not 01!" severity failure;
+    assert s_count = X"00000017" report "Test Failed: s_count was not 0x17!" severity failure;
+    assert s_reg_sel = B"000" report "Test Failed; s_reg_sel was not 0!" severity failure;
+
+    -- End the pulse
+    s_ppm <= '0';
+
+    wait until falling_edge(s_clk);
+
+    -- Channel 1 should be done now.
+    assert s_channel_read = '1' report "Test Failed: s_channel_read should be 1!" severity failure;
+    assert s_state = B"11" report "Test Failed: s_state was not 11!" severity failure;
+    assert s_count = X"00000017" report "Test Failed: s_count was not 0x17!" severity failure;
+    assert s_reg_sel = B"000" report "Test Failed; s_reg_sel was not 0!" severity failure;
+
+    wait until falling_edge(s_clk);
+
+    -- Channel 2 should start now.
+    assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+    assert s_state = B"01" report "Test Failed: s_state was not 11!" severity failure;
+    assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
+    assert s_reg_sel = B"001" report "Test Failed; s_reg_sel was not 1!" severity failure;
 
     report "Test Passed!";
 

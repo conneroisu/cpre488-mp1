@@ -43,7 +43,7 @@ begin
   end process FSM_SEQ;
 
   -- Combinational FSM logic
-  FSM_COMB : process(i_ppm, i_start, s_chan) is
+  FSM_COMB : process(i_ppm, i_start, s_chan, s_c_state) is
   begin
     case(s_c_state) is
       when NOT_STARTED =>
@@ -57,13 +57,14 @@ begin
           s_n_state <= WAITING;
         end if;
       when WAITING =>
-        s_pulse_counter_en <= '0';
         o_channel_read <= '0';
         if(i_ppm = '0') then
           s_pulse_counter_rst_n <= '0';
+          s_pulse_counter_en <= '0';
           s_n_state <= WAITING;
         else
-          s_pulse_counter_rst_n <= '0';
+          s_pulse_counter_rst_n <= '1';
+          s_pulse_counter_en <= '1';
           s_n_state <= COUNT;
         end if;
 
@@ -80,8 +81,6 @@ begin
         end if;
 
       when DONE =>
-
-
         -- Reset when all channels are counted.
         if(s_chan = LAST_CHANNEL_CONDITION) then
           s_pulse_counter_en <= '0';
