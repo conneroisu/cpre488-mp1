@@ -27,6 +27,9 @@ architecture rtl of detect_fsm is
 
   -- Channel Counter Value
   signal s_chan : STD_LOGIC_VECTOR(2 downto 0);
+
+  -- Channel Counter Control Signals
+  signal s_channel_read : STD_LOGIC;
 begin
 
   -- Sequential FSM logic
@@ -48,7 +51,7 @@ begin
     case(s_c_state) is
       when NOT_STARTED =>
         s_pulse_counter_en <= '0';
-        o_channel_read <= '0';
+        s_channel_read <= '0';
         s_pulse_counter_rst_n <= '0';
 
         if(i_start = '0') then
@@ -57,7 +60,7 @@ begin
           s_n_state <= WAITING;
         end if;
       when WAITING =>
-        o_channel_read <= '0';
+        s_channel_read <= '0';
         if(i_ppm = '0') then
           s_pulse_counter_rst_n <= '0';
           s_pulse_counter_en <= '0';
@@ -70,7 +73,7 @@ begin
 
       when COUNT =>
         s_pulse_counter_rst_n <= '1';
-        o_channel_read <= '0';
+        s_channel_read <= '0';
         if(i_ppm = '1') then
           s_pulse_counter_en <= '1';
           s_n_state <= COUNT;
@@ -81,16 +84,15 @@ begin
 
       when DONE =>
 
-        o_channel_read <= '1';
+        s_channel_read <= '1';
+        s_pulse_counter_en <= '0';
 
         -- Reset when all channels are counted.
         if(s_chan = LAST_CHANNEL_CONDITION) then
-          s_pulse_counter_en <= '0';
           s_pulse_counter_rst_n <= '0';
           s_n_state <= NOT_STARTED;
           -- If we have not counted all the channels, go to WAITING.
         else
-          s_pulse_counter_en <= '0';
           s_pulse_counter_rst_n <= '1';
           s_n_state <= WAITING;
         end if;
@@ -128,8 +130,7 @@ begin
       -- If last channel has been counted, reset
       if(s_chan = LAST_CHANNEL_CONDITION) then
         s_chan <= (others => '0');
-        -- Only count when FSM in DONE state.
-      elsif(s_c_state = DONE) then
+      elsif(s_channel_read = '1') then
         s_chan <= STD_LOGIC_VECTOR(UNSIGNED(s_chan) + 1);
       end if;
     end if;
@@ -138,5 +139,6 @@ begin
   o_state <= map_detect_state(s_c_state);
   o_count <= s_count;
   o_reg_sel <= s_chan;
+  o_channel_read <= s_channel_read;
 
 end architecture;

@@ -13,12 +13,15 @@ package user_defines is
   -- When the channel is 110, we know we have covered all channels.
   constant LAST_CHANNEL_CONDITION : STD_LOGIC_VECTOR(2 downto 0) := B"110";
 
+  -- Testbench types
+  type t_CHANNEL_PULSE_WIDTHS is array (0 to 5) of STD_LOGIC_VECTOR(REG_SIZE - 1 downto 0);
+
   -- Testbench Constants
   constant TB_CLK_WIDTH : time := 10 ns;
   constant TB_CLK_PERIOD : time := 2 * TB_CLK_WIDTH;
 
-  -- Testbench types
-  type t_CHANNEL_PULSE_WIDTHS is array (0 to 5) of STD_LOGIC_VECTOR(REG_SIZE - 1 downto 0);
+  constant TB_PULSE_WIDTHS : t_CHANNEL_PULSE_WIDTHS := (0 => X"00000017", 1 => X"0000002A", 2 => X"000000B3", 3 => X"0000007D", 4 => X"00000055", 5 => X"00000034");
+
 end package user_defines;
 
 package body user_defines is
