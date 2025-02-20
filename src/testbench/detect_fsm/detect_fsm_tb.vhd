@@ -10,7 +10,7 @@ architecture sim of detect_fsm_tb is
   signal s_clk, s_start, s_rst_n, s_ppm, s_channel_read : STD_LOGIC;
   signal s_reg_sel : STD_LOGIC_VECTOR(2 downto 0);
   signal s_count : STD_LOGIC_VECTOR(REG_SIZE - 1 downto 0);
-  signal s_state : STD_LOGIC_VECTOR(1 downto 0);
+  signal s_state : STD_LOGIC_VECTOR(2 downto 0);
 
   signal s_channel_pulse_widths : t_CHANNEL_PULSE_WIDTHS;
 begin

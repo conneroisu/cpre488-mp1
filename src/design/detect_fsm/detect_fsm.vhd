@@ -8,7 +8,7 @@ entity detect_fsm is
     (
     i_clk, i_rst_n, i_ppm, i_start : in STD_LOGIC;
     o_channel_read : out STD_LOGIC;
-    o_state : out STD_LOGIC_VECTOR(1 downto 0);
+    o_state : out STD_LOGIC_VECTOR(2 downto 0);
     o_count : out STD_LOGIC_VECTOR(REG_SIZE - 1 downto 0);
     o_reg_sel : out STD_LOGIC_VECTOR(2 downto 0)
   );
@@ -16,17 +16,20 @@ end entity;
 
 architecture rtl of detect_fsm is
 
-  -- FSM state signals
+  -- FSM State Signals
   signal s_c_state, s_n_state : t_DETECT_FSM_STATE;
+
+  -- FSM Signal Inputs
+  signal s_found_idle : STD_LOGIC;
+
+  -- Channel Counter Value
+  signal s_chan : STD_LOGIC_VECTOR(2 downto 0);
 
   -- Pulse Counter Control Signals
   signal s_pulse_counter_en, s_pulse_counter_rst_n : STD_LOGIC;
 
   -- Pulse Counter Value
   signal s_count : STD_LOGIC_VECTOR(REG_SIZE - 1 downto 0);
-
-  -- Channel Counter Value
-  signal s_chan : STD_LOGIC_VECTOR(2 downto 0);
 
   -- Channel Counter Control Signals
   signal s_channel_read : STD_LOGIC;
@@ -57,8 +60,45 @@ begin
         if(i_start = '0') then
           s_n_state <= NOT_STARTED;
         else
-          s_n_state <= WAITING;
+          s_n_state <= WAITING_IDLE;
         end if;
+
+      when WAITING_IDLE =>
+        s_channel_read <= '0';
+        if(i_ppm = '0') then
+          s_pulse_counter_en <= '0';
+          s_pulse_counter_rst_n <= '0';
+          s_n_state <= WAITING_IDLE;
+        else
+          s_pulse_counter_en <= '1';
+          s_pulse_counter_rst_n <= '1';
+          s_n_state <= COUNT_IDLE;
+        end if;
+
+      when COUNT_IDLE =>
+        s_channel_read <= '0';
+        s_pulse_counter_rst_n <= '1';
+        if(i_ppm = '1') then
+          s_pulse_counter_en <= '1';
+          s_n_state <= COUNT_IDLE;
+        else
+          s_pulse_counter_en <= '0';
+          s_n_state <= DONE_IDLE;
+        end if;
+
+      when DONE_IDLE =>
+        s_channel_read <= '0';
+        s_pulse_counter_en <= '0';
+        s_pulse_counter_rst_n <= '1';
+
+        if(s_found_idle = '1') then
+          -- Found idle pulse, start counting channel widths.
+          s_n_state <= WAITING;
+        else
+          -- Didn't find idle pulse, look again.
+          s_n_state <= WAITING_IDLE;
+        end if;
+
       when WAITING =>
         s_channel_read <= '0';
         if(i_ppm = '0') then
@@ -83,7 +123,6 @@ begin
         end if;
 
       when DONE =>
-
         s_channel_read <= '1';
         s_pulse_counter_en <= '0';
         s_pulse_counter_rst_n <= '1';
@@ -134,6 +173,8 @@ begin
       end if;
     end if;
   end process CHANNEL_COUNTER;
+
+  s_found_idle <= '1' when UNSIGNED(s_count) >= IDLE_PULSE_WIDTH else '0';
 
   o_state <= map_detect_state(s_c_state);
   o_count <= s_count;
