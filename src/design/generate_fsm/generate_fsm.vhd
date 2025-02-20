@@ -128,6 +128,7 @@ begin
                     end if;
 
                 when CHAN6 =>
+                    idle_cntr     <= 0;  
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg25)) then
                         current_state <= CHAN6;
                         delay_cntr    <= delay_cntr + 1;
@@ -135,7 +136,6 @@ begin
                     else
                         current_state <= IDLE;  -- Transition directly to IDLE after last channel
                         delay_cntr    <= 0;
-                        idle_cntr     <= 0;  -- Reset idle counter to start counting the idle period
                         o_ppm         <= '0';
                     end if;
 
