@@ -223,6 +223,8 @@ begin
       assert s_count = X"0007A120" report "Test Failed: s_count was not 0x7A120!" severity failure;
       assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
+      wait until falling_edge(s_clk);
+
       -- Idle pulse has been found, starting channel 1 reading.
 
       -- We should be in the waiting state now.
@@ -311,7 +313,7 @@ begin
 
       -- Verify that we are counting and have counted once.
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
-      assert s_state = B"10" report "Test Failed: s_state was not 10!" severity failure;
+      assert s_state = B"101" report "Test Failed: s_state was not 101!" severity failure;
       assert s_count = X"00000001" report "Test Failed: s_count was not 1!" severity failure;
       assert s_reg_sel = B"101" report "Test Failed: s_reg_sel was not correct!" severity failure;
 
@@ -330,7 +332,7 @@ begin
 
       -- Channel should be done now.
       assert s_channel_read = '1' report "Test Failed: s_channel_read should be 1!" severity failure;
-      assert s_state = B"11" report "Test Failed: s_state was not 11!" severity failure;
+      assert s_state = B"110" report "Test Failed: s_state was not 110!" severity failure;
       assert s_count = TB_PULSE_WIDTHS(5) report "Test Failed: s_count was not correct!" severity failure;
       assert s_reg_sel = B"101" report "Test Failed: s_reg_sel was not correct!" severity failure;
 
@@ -354,7 +356,7 @@ begin
 
       -- We should be in NOT_STARTED now.
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
-      assert s_state = B"00" report "Test Failed: s_state was not 00!" severity failure;
+      assert s_state = B"000" report "Test Failed: s_state was not 000!" severity failure;
       assert s_count = X"00000000" report "Test Failed: s_count was not 0!" severity failure;
       assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
