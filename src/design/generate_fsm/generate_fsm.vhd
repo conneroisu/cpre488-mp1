@@ -63,6 +63,7 @@ begin
                     end if;
 
                 when CHAN1 =>
+                    idle_cntr     <= 0;
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg20)) then
                         current_state <= CHAN1;
                         delay_cntr    <= delay_cntr + 1;
@@ -75,6 +76,7 @@ begin
                     end if;
 
                 when CHAN2 =>
+                    idle_cntr     <= 0;
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg21)) then
                         current_state <= CHAN2;
                         delay_cntr    <= delay_cntr + 1;
@@ -87,6 +89,7 @@ begin
                     end if;
 
                 when CHAN3 =>
+                    idle_cntr     <= 0;
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg22)) then
                         current_state <= CHAN3;
                         delay_cntr    <= delay_cntr + 1;
@@ -99,6 +102,7 @@ begin
                     end if;
 
                 when CHAN4 =>
+                    idle_cntr     <= 0;
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg23)) then
                         current_state <= CHAN4;
                         delay_cntr    <= delay_cntr + 1;
@@ -111,6 +115,7 @@ begin
                     end if;
 
                 when CHAN5 =>
+                    idle_cntr     <= 0;
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg24)) then
                         current_state <= CHAN5;
                         delay_cntr    <= delay_cntr + 1;
