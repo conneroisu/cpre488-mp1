@@ -64,6 +64,7 @@ begin
 
                 when CHAN1 =>
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg20)) then
+                        current_state <= CHAN1;
                         delay_cntr    <= delay_cntr + 1;
                         o_ppm         <= '1';
                     else
@@ -75,6 +76,7 @@ begin
 
                 when CHAN2 =>
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg21)) then
+                        current_state <= CHAN2;
                         delay_cntr    <= delay_cntr + 1;
                         o_ppm         <= '1';
                     else
@@ -86,6 +88,7 @@ begin
 
                 when CHAN3 =>
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg22)) then
+                        current_state <= CHAN3;
                         delay_cntr    <= delay_cntr + 1;
                         o_ppm         <= '1';
                     else
@@ -97,6 +100,7 @@ begin
 
                 when CHAN4 =>
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg23)) then
+                        current_state <= CHAN4;
                         delay_cntr    <= delay_cntr + 1;
                         o_ppm         <= '1';
                     else
@@ -108,6 +112,7 @@ begin
 
                 when CHAN5 =>
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg24)) then
+                        current_state <= CHAN5;
                         delay_cntr    <= delay_cntr + 1;
                         o_ppm         <= '1';
                     else
@@ -119,6 +124,7 @@ begin
 
                 when CHAN6 =>
                     if delay_cntr + 1 < to_integer(unsigned(i_slv_reg25)) then
+                        current_state <= CHAN6;
                         delay_cntr    <= delay_cntr + 1;
                         o_ppm         <= '1';
                     else
@@ -130,6 +136,7 @@ begin
 
                 when GAP =>
                     if delay_cntr < GAP_TIME_CNT then
+                        current_state <= GAP;
                         delay_cntr    <= delay_cntr + 1;
                         o_ppm         <= '0';
                     else
