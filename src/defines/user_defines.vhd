@@ -4,6 +4,7 @@ use IEEE.std_logic_1164.all;
 
 package user_defines is
     type t_DETECT_FSM_STATE is (WAITING, COUNT, DONE);
+
     function map_detect_state(fsm_state : in t_DETECT_FSM_STATE) return STD_LOGIC_VECTOR;
 end package user_defines;
 
