@@ -54,11 +54,11 @@ begin
                     
                     -- Wait for idle frame period before allowing a new frame
                     if idle_cntr < IDLE_FRAME_CNT then
-                        idle_cntr <= idle_cntr + 1;
                         current_state <= IDLE;
+                        idle_cntr <= idle_cntr + 1;
                     elsif i_slv_reg0(0) = '1' then
-                        idle_cntr <= 0;
                         current_state <= CHAN1;
+                        idle_cntr <= 0;
                         delay_cntr <= 0;
                     end if;
 
