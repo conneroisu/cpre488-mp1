@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="C:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.xpr">
+<Project Version="7" Minor="49" Path="C:/Users/connero/Downloads/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="ba95438cfde84d0693d673a36f2bbce1"/>
@@ -29,8 +29,7 @@
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/../ppm_detect_gen_axi/ppm_detect_gen_1.0"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/ppm_detect_gen_1.0"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../ppm_detect_gen_axi"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPDefaultOutputPath" Val="$PSRCDIR/sources_1"/>
     <Option Name="IPCachePermission" Val="read"/>
@@ -76,14 +75,14 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="quad_interface.bd" FileRelPathName="ip/quad_interface_proc_sys_reset_0_0/quad_interface_proc_sys_reset_0_0.xci">
-          <Proxy FileSetName="quad_interface_proc_sys_reset_0_0"/>
+        <CompFileExtendedInfo CompFileName="quad_interface.bd" FileRelPathName="ip/quad_interface_ppm_detect_gen_v3_0_0_0/quad_interface_ppm_detect_gen_v3_0_0_0.xci">
+          <Proxy FileSetName="quad_interface_ppm_detect_gen_v3_0_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="quad_interface.bd" FileRelPathName="ip/quad_interface_processing_system7_0_0/quad_interface_processing_system7_0_0.xci">
           <Proxy FileSetName="quad_interface_processing_system7_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="quad_interface.bd" FileRelPathName="ip/quad_interface_ppm_detect_gen_v2_0_1/quad_interface_ppm_detect_gen_v2_0_1.xci">
-          <Proxy FileSetName="quad_interface_ppm_detect_gen_v2_0_1"/>
+        <CompFileExtendedInfo CompFileName="quad_interface.bd" FileRelPathName="ip/quad_interface_proc_sys_reset_0_0/quad_interface_proc_sys_reset_0_0.xci">
+          <Proxy FileSetName="quad_interface_proc_sys_reset_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/quad_interface/hdl/quad_interface_wrapper.vhd">
@@ -146,9 +145,9 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="quad_interface_ppm_detect_gen_v2_0_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/quad_interface_ppm_detect_gen_v2_0_1">
+    <FileSet Name="quad_interface_ppm_detect_gen_v3_0_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/quad_interface_ppm_detect_gen_v3_0_0_0">
       <Config>
-        <Option Name="TopModule" Val="quad_interface_ppm_detect_gen_v2_0_1"/>
+        <Option Name="TopModule" Val="quad_interface_ppm_detect_gen_v3_0_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -174,7 +173,9 @@
   <Runs Version="1" Minor="11">
     <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z020clg484-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -202,7 +203,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="quad_interface_ppm_detect_gen_v2_0_1_synth_1" Type="Ft3:Synth" SrcSet="quad_interface_ppm_detect_gen_v2_0_1" Part="xc7z020clg484-1" ConstrsSet="quad_interface_ppm_detect_gen_v2_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/quad_interface_ppm_detect_gen_v2_0_1_synth_1" IncludeInArchive="true">
+    <Run Id="quad_interface_ppm_detect_gen_v3_0_0_0_synth_1" Type="Ft3:Synth" SrcSet="quad_interface_ppm_detect_gen_v3_0_0_0" Part="xc7z020clg484-1" ConstrsSet="quad_interface_ppm_detect_gen_v3_0_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/quad_interface_ppm_detect_gen_v3_0_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -216,7 +217,9 @@
     </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -266,7 +269,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="quad_interface_ppm_detect_gen_v2_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="quad_interface_ppm_detect_gen_v2_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="quad_interface_ppm_detect_gen_v2_0_1_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="quad_interface_ppm_detect_gen_v3_0_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="quad_interface_ppm_detect_gen_v3_0_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="quad_interface_ppm_detect_gen_v3_0_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
           <Desc>Default settings for Implementation.</Desc>

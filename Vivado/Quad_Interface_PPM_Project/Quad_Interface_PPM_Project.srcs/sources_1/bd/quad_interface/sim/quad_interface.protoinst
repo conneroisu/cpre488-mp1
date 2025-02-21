@@ -216,7 +216,7 @@
 						"WVALID": { "actual": "s_axi_wvalid"}
 					}
 				},
-				"/ppm_detect_gen_v2_0/s00_axi": {
+				"/ppm_detect_gen_v3_0_0/s00_axi": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
 						"ACLK": { "actual": "s00_axi_aclk"},
