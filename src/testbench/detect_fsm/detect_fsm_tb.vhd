@@ -137,7 +137,6 @@ begin
       -- Idle pulse reading should be done
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
       assert s_state = B"011" report "Test Failed: s_state was not 011!" severity failure;
-      assert s_count = X"00000023" report "Test Failed: s_count was not 0x23!" severity failure;
       assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
       -- Since the pulse width was too short, we should go back to the idle waiting state.
@@ -178,7 +177,6 @@ begin
       -- Idle pulse reading should be done
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
       assert s_state = B"011" report "Test Failed: s_state was not 011!" severity failure;
-      assert s_count = X"0007A11F" report "Test Failed: s_count was not 0x7A11F!" severity failure;
       assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
       -- Since we did not read 500,000 clock cycles, we should go back to idle waiting state.
@@ -220,7 +218,6 @@ begin
       -- Idle pulse reading should be done
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
       assert s_state = B"011" report "Test Failed: s_state was not 011!" severity failure;
-      assert s_count = X"0007A120" report "Test Failed: s_count was not 0x7A120!" severity failure;
       assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
       wait until falling_edge(s_clk);
@@ -280,6 +277,7 @@ begin
         -- Channel should be done now.
         assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
         assert s_state = B"110" report "Test Failed: s_state was not 110!" severity failure;
+        assert s_channel_pulse_widths(i) = TB_PULSE_WIDTHS(i) report "Test Failed: s_cahnnel_pulse_widths was not correct!" severity failure;
         assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i + 1, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
 
         wait until falling_edge(s_clk);
@@ -332,7 +330,7 @@ begin
       -- Channel should be done now.
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
       assert s_state = B"110" report "Test Failed: s_state was not 110!" severity failure;
-      assert s_count = TB_PULSE_WIDTHS(5) report "Test Failed: s_count was not correct!" severity failure;
+      assert s_channel_pulse_widths(5) = TB_PULSE_WIDTHS(5) report "Test Failed: s_cahnnel_pulse_widths(5) was not correct!" severity failure;
       assert s_reg_sel = B"110" report "Test Failed: s_reg_sel was not 110!" severity failure;
 
       -- Verify that all of the stored pulse widths are correct.

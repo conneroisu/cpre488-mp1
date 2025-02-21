@@ -33,6 +33,12 @@ architecture rtl of detect_fsm is
 
   -- Channel Counter Control Signals
   signal s_channel_read : STD_LOGIC;
+
+  -- Idle Pulse Width Register
+  signal s_idle_pulse_width : STD_LOGIC_VECTOR(REG_SIZE - 1 downto 0);
+
+  -- Idle Pulse Detection Control Signals
+  signal s_idle_read : STD_LOGIC;
 begin
 
   -- Sequential FSM logic
@@ -49,13 +55,14 @@ begin
   end process FSM_SEQ;
 
   -- Combinational FSM logic
-  FSM_COMB : process(i_ppm, i_start, s_chan, s_c_state) is
+  FSM_COMB : process(i_ppm, i_start, s_chan, s_c_state, s_found_idle) is
   begin
     case(s_c_state) is
       when NOT_STARTED =>
         s_pulse_counter_en <= '0';
         s_channel_read <= '0';
         s_pulse_counter_rst_n <= '0';
+        s_idle_read <= '0';
 
         if(i_start = '0') then
           s_n_state <= NOT_STARTED;
@@ -80,16 +87,19 @@ begin
         s_pulse_counter_rst_n <= '1';
         if(i_ppm = '1') then
           s_pulse_counter_en <= '1';
+          s_idle_read <= '0';
           s_n_state <= COUNT_IDLE;
         else
           s_pulse_counter_en <= '0';
+          s_idle_read <= '1';
           s_n_state <= DONE_IDLE;
         end if;
 
       when DONE_IDLE =>
         s_channel_read <= '0';
         s_pulse_counter_en <= '0';
-        s_pulse_counter_rst_n <= '1';
+        s_pulse_counter_rst_n <= '0';
+        s_idle_read <= '0';
 
         if(s_found_idle = '1') then
           -- Found idle pulse, start counting channel widths.
@@ -101,6 +111,7 @@ begin
 
       when WAITING =>
         s_channel_read <= '0';
+        s_idle_read <= '0';
         if(i_ppm = '0') then
           s_pulse_counter_rst_n <= '0';
           s_pulse_counter_en <= '0';
@@ -111,7 +122,7 @@ begin
           s_n_state <= COUNT;
         end if;
 
-        
+
       when COUNT =>
 
         -- Note: s_channel_read is strictly a Mealy output in this state.
@@ -122,6 +133,7 @@ begin
         --       makes it so we only count ONCE.
 
         s_pulse_counter_rst_n <= '1';
+        s_idle_read <= '0';
         if(i_ppm = '1') then
           s_pulse_counter_en <= '1';
           s_channel_read <= '0';
@@ -135,7 +147,8 @@ begin
       when DONE =>
         s_channel_read <= '0';
         s_pulse_counter_en <= '0';
-        s_pulse_counter_rst_n <= '1';
+        s_pulse_counter_rst_n <= '0';
+        s_idle_read <= '0';
 
         -- Reset when all channels are counted.
         if(s_chan = LAST_CHANNEL_CONDITION) then
@@ -146,6 +159,19 @@ begin
         end if;
     end case;
   end process FSM_COMB;
+
+  -- Idle pulse with register update.
+  IDLE_PULSE_WIDTH_REG : process(i_rst_n, i_clk) is
+  begin
+    -- Async reset.
+    if(i_rst_n = '0') then
+      s_idle_pulse_width <= (others => '0');
+    elsif(rising_edge(i_clk)) then
+      if(s_idle_read = '1') then
+        s_idle_pulse_width <= s_count;
+      end if;
+    end if;
+  end process IDLE_PULSE_WIDTH_REG;
 
   -- Pulse Width Counter
   PULSE_WIDTH_COUNTER : process(s_pulse_counter_rst_n, i_clk) is
@@ -181,7 +207,7 @@ begin
     end if;
   end process CHANNEL_COUNTER;
 
-  s_found_idle <= '1' when UNSIGNED(s_count) >= IDLE_PULSE_WIDTH else '0';
+  s_found_idle <= '1' when UNSIGNED(s_idle_pulse_width) >= IDLE_PULSE_WIDTH else '0';
 
   o_state <= map_detect_state(s_c_state);
   o_count <= s_count;
