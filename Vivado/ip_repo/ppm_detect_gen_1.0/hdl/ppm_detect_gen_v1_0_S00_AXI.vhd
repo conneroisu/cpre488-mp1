@@ -1,6 +1,8 @@
 library ieee;
+library ppm;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use ppm.user_defines.all;
 
 entity ppm_detect_gen_v1_0_S00_AXI is
 	generic (
@@ -18,6 +20,8 @@ entity ppm_detect_gen_v1_0_S00_AXI is
 		-- Users to add ports here
 
 		-- User ports ends
+        i_ppm : in std_logic;
+        o_ppm : out std_logic;
 		-- Do not modify the ports beyond this line
 
 		-- Global Clock Signal
@@ -129,6 +133,12 @@ architecture arch_imp of ppm_detect_gen_v1_0_S00_AXI is
 	signal reg_data_out	:std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
 	signal byte_index	: integer;
 	signal aw_en	: std_logic;
+	
+	-- Usr signals
+	signal s_channel_read : std_logic;
+	signal s_ppm_count : std_logic_vector(REG_SIZE - 1 downto 0);
+	signal s_detect_reg_sel : std_logic_vector(2 downto 0);
+	signal s_detect_state : std_logic_vector(2 downto 0);
 
 begin
 	-- I/O Connections assignments
@@ -227,13 +237,6 @@ begin
 	  if rising_edge(S_AXI_ACLK) then 
 	    if S_AXI_ARESETN = '0' then
 	      slv_reg0 <= (others => '0');
-	      slv_reg1 <= (others => '0');
-	      slv_reg2 <= (others => '0');
-	      slv_reg3 <= (others => '0');
-	      slv_reg4 <= (others => '0');
-	      slv_reg5 <= (others => '0');
-	      slv_reg6 <= (others => '0');
-	      slv_reg7 <= (others => '0');
 	      slv_reg8 <= (others => '0');
 	      slv_reg9 <= (others => '0');
 	      slv_reg10 <= (others => '0');
@@ -252,62 +255,6 @@ begin
 	                -- Respective byte enables are asserted as per write strobes                   
 	                -- slave registor 0
 	                slv_reg0(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
-	              end if;
-	            end loop;
-	          when b"0001" =>
-	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
-	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
-	                -- Respective byte enables are asserted as per write strobes                   
-	                -- slave registor 1
-	                slv_reg1(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
-	              end if;
-	            end loop;
-	          when b"0010" =>
-	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
-	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
-	                -- Respective byte enables are asserted as per write strobes                   
-	                -- slave registor 2
-	                slv_reg2(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
-	              end if;
-	            end loop;
-	          when b"0011" =>
-	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
-	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
-	                -- Respective byte enables are asserted as per write strobes                   
-	                -- slave registor 3
-	                slv_reg3(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
-	              end if;
-	            end loop;
-	          when b"0100" =>
-	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
-	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
-	                -- Respective byte enables are asserted as per write strobes                   
-	                -- slave registor 4
-	                slv_reg4(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
-	              end if;
-	            end loop;
-	          when b"0101" =>
-	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
-	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
-	                -- Respective byte enables are asserted as per write strobes                   
-	                -- slave registor 5
-	                slv_reg5(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
-	              end if;
-	            end loop;
-	          when b"0110" =>
-	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
-	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
-	                -- Respective byte enables are asserted as per write strobes                   
-	                -- slave registor 6
-	                slv_reg6(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
-	              end if;
-	            end loop;
-	          when b"0111" =>
-	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
-	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
-	                -- Respective byte enables are asserted as per write strobes                   
-	                -- slave registor 7
-	                slv_reg7(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
 	              end if;
 	            end loop;
 	          when b"1000" =>
@@ -376,13 +323,6 @@ begin
 	            end loop;
 	          when others =>
 	            slv_reg0 <= slv_reg0;
-	            slv_reg1 <= slv_reg1;
-	            slv_reg2 <= slv_reg2;
-	            slv_reg3 <= slv_reg3;
-	            slv_reg4 <= slv_reg4;
-	            slv_reg5 <= slv_reg5;
-	            slv_reg6 <= slv_reg6;
-	            slv_reg7 <= slv_reg7;
 	            slv_reg8 <= slv_reg8;
 	            slv_reg9 <= slv_reg9;
 	            slv_reg10 <= slv_reg10;
@@ -541,6 +481,70 @@ begin
 
 
 	-- Add user logic here
+	-- Instantiate the Detector FSM
+	detect_fsm : entity ppm.detect_fsm port map
+	(
+	   i_clk => S_AXI_ACLK,
+	   i_rst_n => S_AXI_ARESETN,
+	   i_ppm => i_ppm,
+	   i_start => slv_reg0(0),
+	   o_channel_read => s_channel_read,
+	   o_state => s_detect_state,
+	   o_count => s_ppm_count,
+	   o_reg_sel => s_detect_reg_sel
+	);
+	
+	-- slv_reg2 through slv_reg7 will store the detected PPM widths.
+	DETECT_PPM_UPDATE : process(S_AXI_ACLK) is
+	begin
+	   if(rising_edge(S_AXI_ACLK)) then
+	       if(S_AXI_ARESETN = '0') then
+	           slv_reg2 <= (others => '0');
+	           slv_reg3 <= (others => '0');
+	           slv_reg4 <= (others => '0');
+	           slv_reg5 <= (others => '0');
+	           slv_reg6 <= (others => '0');
+	           slv_reg7 <= (others => '0');
+	       else
+	           if(s_channel_read = '1') then
+	               case(s_detect_reg_sel) is
+	               when B"000" =>
+	                   slv_reg2 <= s_ppm_count;
+	               when B"001" =>
+	                   slv_reg3 <= s_ppm_count;
+	               when B"010" =>
+	                   slv_reg4 <= s_ppm_count;
+	               when B"011" =>
+	                   slv_reg5 <= s_ppm_count;
+	               when B"100" =>
+	                   slv_reg6 <= s_ppm_count;
+	               when B"101" =>
+	                   slv_reg7 <= s_ppm_count;
+	               when others =>
+	                   -- Should never get here, reset all registers since something is wrong.
+                       slv_reg2 <= (others => '0');
+                       slv_reg3 <= (others => '0');
+                       slv_reg4 <= (others => '0');
+                       slv_reg5 <= (others => '0');
+                       slv_reg6 <= (others => '0');
+                       slv_reg7 <= (others => '0');
+	               end case;
+	           end if;
+	       end if;
+	   end if;
+	end process DETECT_PPM_UPDATE;
+	
+	-- slv1 will act as a status register.
+	STATUS_UPDATE : process(S_AXI_ACLK) is
+	begin
+	   if(rising_edge(S_AXI_ACLK)) then
+	       if(S_AXI_ARESETN = '0') then
+	           slv_reg1 <= (others => '0');
+	       else
+	           slv_reg1(2 downto 0) <= s_detect_state;
+	       end if;
+	   end if;
+	end process STATUS_UPDATE;
 
 	-- User logic ends
 
