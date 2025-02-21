@@ -72,6 +72,7 @@ begin
 
       when WAITING_IDLE =>
         s_channel_read <= '0';
+        s_idle_read <= '0';
         if(i_ppm = '0') then
           s_pulse_counter_en <= '0';
           s_pulse_counter_rst_n <= '0';
