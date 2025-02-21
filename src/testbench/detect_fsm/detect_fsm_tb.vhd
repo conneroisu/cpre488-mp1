@@ -110,6 +110,32 @@ begin
       -- Start the pulse
       s_ppm <= '1';
 
+      -- Wait 9 clock cycles
+      for i in 1 to 9 loop
+        wait until falling_edge(s_clk);
+      end loop;
+
+      -- Set ppm low, which should make it so the start of the pulse is not detected.
+      s_ppm <= '0';
+
+      wait until falling_edge(s_clk);
+
+      -- Verify that we have not started counting the idle pulse yet.
+      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+      assert s_state = B"001" report "Test Failed: s_state was not 001!" severity failure;
+      assert s_count = X"00000000" report "Test Failed: s_count was not 0x0!" severity failure;
+      assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
+
+      -- Now start the pulse
+      s_ppm <= '1';
+
+      -- Wait 10 clock cycles
+      for i in 1 to 10 loop
+        wait until falling_edge(s_clk);
+      end loop;
+
+      -- Wait two more clock cycle for idle pulse width counting to start.
+      wait until falling_edge(s_clk);
       wait until falling_edge(s_clk);
 
       -- Verify that we are counting the idle pulse width.
@@ -150,7 +176,34 @@ begin
       -- Start the pulse
       s_ppm <= '1';
 
+      -- Wait 9 clock cycles
+      for i in 1 to 9 loop
+        wait until falling_edge(s_clk);
+      end loop;
+
+      -- Set ppm low, which should make it so the start of the pulse is not detected.
+      s_ppm <= '0';
+
       wait until falling_edge(s_clk);
+
+      -- Verify that we have not started counting the idle pulse yet.
+      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+      assert s_state = B"001" report "Test Failed: s_state was not 001!" severity failure;
+      assert s_count = X"00000000" report "Test Failed: s_count was not 0x0!" severity failure;
+      assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
+
+      -- Now start the pulse
+      s_ppm <= '1';
+
+      -- Wait 10 clock cycles
+      for i in 1 to 10 loop
+        wait until falling_edge(s_clk);
+      end loop;
+
+      -- Wait two more clock cycle for idle pulse width counting to start.
+      wait until falling_edge(s_clk);
+      wait until falling_edge(s_clk);
+
 
       -- Verify that we are counting the idle pulse width.
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
@@ -191,6 +244,32 @@ begin
       -- Start the pulse
       s_ppm <= '1';
 
+      -- Wait 9 clock cycles
+      for i in 1 to 9 loop
+        wait until falling_edge(s_clk);
+      end loop;
+
+      -- Set ppm low, which should make it so the start of the pulse is not detected.
+      s_ppm <= '0';
+
+      wait until falling_edge(s_clk);
+
+      -- Verify that we have not started counting the idle pulse yet.
+      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+      assert s_state = B"001" report "Test Failed: s_state was not 001!" severity failure;
+      assert s_count = X"00000000" report "Test Failed: s_count was not 0x0!" severity failure;
+      assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
+
+      -- Now start the pulse
+      s_ppm <= '1';
+
+      -- Wait 10 clock cycles
+      for i in 1 to 10 loop
+        wait until falling_edge(s_clk);
+      end loop;
+
+      -- Wait two more clock cycle for idle pulse width counting to start.
+      wait until falling_edge(s_clk);
       wait until falling_edge(s_clk);
 
       -- Verify that we are counting the idle pulse width.
@@ -244,9 +323,35 @@ begin
       -- Read 5 pulses
       for i in 0 to 4 loop
 
-        -- Start the pulse.
+        -- Start the pulse
         s_ppm <= '1';
 
+        -- Wait 9 clock cycles
+        for t in 1 to 9 loop
+          wait until falling_edge(s_clk);
+        end loop;
+
+        -- Set ppm low, which should make it so the start of the pulse is not detected.
+        s_ppm <= '0';
+
+        wait until falling_edge(s_clk);
+
+        -- Verify that we have not started counting the idle pulse yet.
+        assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+        assert s_state = B"100" report "Test Failed: s_state was not 100!" severity failure;
+        assert s_count = X"00000000" report "Test Failed: s_count was not 0x0!" severity failure;
+        assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
+
+        -- Now start the pulse
+        s_ppm <= '1';
+
+        -- Wait 10 clock cycles
+        for t in 1 to 10 loop
+          wait until falling_edge(s_clk);
+        end loop;
+
+        -- Wait two more clock cycle for idle pulse width counting to start.
+        wait until falling_edge(s_clk);
         wait until falling_edge(s_clk);
 
         -- Verify that we are counting and have counted once.
@@ -303,6 +408,32 @@ begin
       -- Start the pulse
       s_ppm <= '1';
 
+      -- Wait 9 clock cycles
+      for t in 1 to 9 loop
+        wait until falling_edge(s_clk);
+      end loop;
+
+      -- Set ppm low, which should make it so the start of the pulse is not detected.
+      s_ppm <= '0';
+
+      wait until falling_edge(s_clk);
+
+      -- Verify that we have not started counting the idle pulse yet.
+      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+      assert s_state = B"100" report "Test Failed: s_state was not 100!" severity failure;
+      assert s_count = X"00000000" report "Test Failed: s_count was not 0x0!" severity failure;
+      assert s_reg_sel = B"101" report "Test Failed: s_reg_sel was not correct!" severity failure;
+
+      -- Now start the pulse
+      s_ppm <= '1';
+
+      -- Wait 10 clock cycles
+      for t in 1 to 10 loop
+        wait until falling_edge(s_clk);
+      end loop;
+
+      -- Wait two more clock cycle for idle pulse width counting to start.
+      wait until falling_edge(s_clk);
       wait until falling_edge(s_clk);
 
       -- Verify that we are counting and have counted once.
