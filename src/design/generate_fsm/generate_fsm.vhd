@@ -10,13 +10,13 @@ entity generate_fsm is
     port (
         i_clk       : in  std_logic;
         i_rst       : in  std_logic;
-        i_slv_reg0  : in  std_logic_vector(N-1 downto 0);
-        i_slv_reg20 : in  std_logic_vector(N-1 downto 0);
+        i_slv_reg0_1  : in  std_logic;
+        i_slv_reg20 : in  std_logic_vector(N-1 downto 0); -- 2
         i_slv_reg21 : in  std_logic_vector(N-1 downto 0);
         i_slv_reg22 : in  std_logic_vector(N-1 downto 0);
         i_slv_reg23 : in  std_logic_vector(N-1 downto 0);
         i_slv_reg24 : in  std_logic_vector(N-1 downto 0);
-        i_slv_reg25 : in  std_logic_vector(N-1 downto 0);
+        i_slv_reg25 : in  std_logic_vector(N-1 downto 0); -- 7
         o_ppm       : out std_logic
     );
 end generate_fsm;
@@ -56,7 +56,9 @@ begin
                     if idle_cntr < IDLE_FRAME_CNT then
                         current_state <= IDLE;
                         idle_cntr <= idle_cntr + 1;
-                    elsif i_slv_reg0(0) = '1' then
+                        -- in hw set 6 
+                        -- in sw set 7
+                    elsif i_slv_reg0_1 = '1' then
                         current_state <= CHAN1;
                         idle_cntr <= 0;
                         delay_cntr <= 0;
