@@ -144,6 +144,7 @@ BEGIN
                     END IF;
 
                 WHEN GAP =>
+                    idle_cntr <= 0;
                     IF delay_cntr < GAP_TIME_CNT THEN
                         current_state <= GAP;
                         delay_cntr <= delay_cntr + 1;
