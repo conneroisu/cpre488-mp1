@@ -564,7 +564,7 @@ begin
     port map (
         i_clk        => S_AXI_ACLK,
         i_rst        => S_AXI_ARESETN,
-        i_slv_reg0_1 => slv_reg0(1),
+        i_slv_reg0_1 => slv_reg0(2),
         i_slv_reg20  => s_gen_20,
         i_slv_reg21  => s_gen_21,
         i_slv_reg22  => s_gen_22,
@@ -577,8 +577,8 @@ begin
 	GENERATE_REG_UPDATE : process(S_AXI_ACLK) is
 	begin
 	   if(rising_edge(S_AXI_ACLK)) then
-		if (slv_reg0(0) = '1') then
-			-- in software relay mode
+		if (slv_reg0(0) = '0') then
+			-- hardware relay mode
 			s_gen_20 <= slv_reg2;
 			s_gen_21 <= slv_reg3;
 			s_gen_22 <= slv_reg4;
@@ -586,7 +586,7 @@ begin
 			s_gen_24 <= slv_reg6;
 			s_gen_25 <= slv_reg7;
 		else 
-			-- not in relay mode
+			-- in software relay mode
 			s_gen_20 <= slv_reg8;
 			s_gen_21 <= slv_reg9;
 			s_gen_22 <= slv_reg10;
