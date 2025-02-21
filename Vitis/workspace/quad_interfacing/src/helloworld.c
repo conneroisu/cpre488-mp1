@@ -5,14 +5,14 @@
 #include <xil_types.h>
 #include "sleep.h"
 
-#define CONTROL_REG *((volatile u32*) (XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR + 0x0))
-#define STATUS_REG *((volatile u32*) (XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR + 0x4))
-#define CHANNEL_1 *((volatile u32*) (XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR + 0x8))
-#define CHANNEL_2 *((volatile u32*) (XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR + 0xC))
-#define CHANNEL_3 *((volatile u32*) (XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR + 0x10))
-#define CHANNEL_4 *((volatile u32*) (XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR + 0x14))
-#define CHANNEL_5 *((volatile u32*) (XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR + 0x18))
-#define CHANNEL_6 *((volatile u32*) (XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR + 0x1C))
+#define CONTROL_REG *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x0))
+#define STATUS_REG *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x4))
+#define CHANNEL_1 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x8))
+#define CHANNEL_2 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0xC))
+#define CHANNEL_3 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x10))
+#define CHANNEL_4 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x14))
+#define CHANNEL_5 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x18))
+#define CHANNEL_6 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x1C))
 
 int main()
 {

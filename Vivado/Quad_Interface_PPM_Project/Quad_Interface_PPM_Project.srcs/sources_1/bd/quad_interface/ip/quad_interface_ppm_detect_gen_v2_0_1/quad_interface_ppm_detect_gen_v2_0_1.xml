@@ -2,15 +2,15 @@
 <spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <spirit:vendor>EastburnOhnesorge</spirit:vendor>
   <spirit:library>customized_ip</spirit:library>
-  <spirit:name>quad_interface_ppm_detect_gen_0_0</spirit:name>
+  <spirit:name>quad_interface_ppm_detect_gen_v2_0_1</spirit:name>
   <spirit:version>1.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
-      <spirit:name>S00_AXI</spirit:name>
+      <spirit:name>s00_axi</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm_rtl" spirit:version="1.0"/>
       <spirit:slave>
-        <spirit:memoryMapRef spirit:memoryMapRef="S00_AXI"/>
+        <spirit:memoryMapRef spirit:memoryMapRef="s00_axi"/>
       </spirit:slave>
       <spirit:portMaps>
         <spirit:portMap>
@@ -167,18 +167,6 @@
         </spirit:portMap>
       </spirit:portMaps>
       <spirit:parameters>
-        <spirit:parameter>
-          <spirit:name>WIZ_DATA_WIDTH</spirit:name>
-          <spirit:value spirit:format="long" spirit:id="BUSIFPARAM_VALUE.S00_AXI.WIZ_DATA_WIDTH" spirit:choiceRef="choice_list_6fc15197">32</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>WIZ_NUM_REG</spirit:name>
-          <spirit:value spirit:format="long" spirit:id="BUSIFPARAM_VALUE.S00_AXI.WIZ_NUM_REG" spirit:minimum="4" spirit:maximum="512" spirit:rangeType="long">16</spirit:value>
-        </spirit:parameter>
-        <spirit:parameter>
-          <spirit:name>SUPPORTS_NARROW_BURST</spirit:name>
-          <spirit:value spirit:format="long" spirit:id="BUSIFPARAM_VALUE.S00_AXI.SUPPORTS_NARROW_BURST" spirit:choiceRef="choice_pairs_ce1226b1">0</spirit:value>
-        </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DATA_WIDTH</spirit:name>
           <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI.DATA_WIDTH">32</spirit:value>
@@ -360,6 +348,15 @@
           </spirit:vendorExtensions>
         </spirit:parameter>
         <spirit:parameter>
+          <spirit:name>SUPPORTS_NARROW_BURST</spirit:name>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI.SUPPORTS_NARROW_BURST">0</spirit:value>
+          <spirit:vendorExtensions>
+            <xilinx:parameterInfo>
+              <xilinx:parameterUsage>none</xilinx:parameterUsage>
+            </xilinx:parameterInfo>
+          </spirit:vendorExtensions>
+        </spirit:parameter>
+        <spirit:parameter>
           <spirit:name>NUM_READ_OUTSTANDING</spirit:name>
           <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI.NUM_READ_OUTSTANDING">8</spirit:value>
           <spirit:vendorExtensions>
@@ -452,7 +449,7 @@
       </spirit:parameters>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>S00_AXI_RST</spirit:name>
+      <spirit:name>s00_axi_aresetn</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
       <spirit:slave/>
@@ -469,11 +466,11 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>POLARITY</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXI_RST.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXI_ARESETN.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>INSERT_VIP</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.S00_AXI_RST.INSERT_VIP">0</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.S00_AXI_ARESETN.INSERT_VIP">0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>simulation.rtl</xilinx:parameterUsage>
@@ -483,7 +480,7 @@
       </spirit:parameters>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>S00_AXI_CLK</spirit:name>
+      <spirit:name>s00_axi_aclk</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
       <spirit:slave/>
@@ -500,15 +497,15 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>ASSOCIATED_BUSIF</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXI_CLK.ASSOCIATED_BUSIF">S00_AXI</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXI_ACLK.ASSOCIATED_BUSIF">s00_axi</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>ASSOCIATED_RESET</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXI_CLK.ASSOCIATED_RESET">s00_axi_aresetn</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXI_ACLK.ASSOCIATED_RESET">s00_axi_aresetn</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI_CLK.FREQ_HZ">100000000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI_ACLK.FREQ_HZ">100000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -517,7 +514,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_TOLERANCE_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI_CLK.FREQ_TOLERANCE_HZ">0</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI_ACLK.FREQ_TOLERANCE_HZ">0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -526,7 +523,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PHASE</spirit:name>
-          <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI_CLK.PHASE">0.000</spirit:value>
+          <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI_ACLK.PHASE">0.000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -535,7 +532,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI_CLK.CLK_DOMAIN">quad_interface_processing_system7_0_0_FCLK_CLK0</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S00_AXI_ACLK.CLK_DOMAIN">quad_interface_processing_system7_0_0_FCLK_CLK0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -544,7 +541,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>INSERT_VIP</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.S00_AXI_CLK.INSERT_VIP">0</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.S00_AXI_ACLK.INSERT_VIP">0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>simulation.rtl</xilinx:parameterUsage>
@@ -556,45 +553,34 @@
   </spirit:busInterfaces>
   <spirit:memoryMaps>
     <spirit:memoryMap>
-      <spirit:name>S00_AXI</spirit:name>
+      <spirit:name>s00_axi</spirit:name>
       <spirit:addressBlock>
-        <spirit:name>S00_AXI_reg</spirit:name>
-        <spirit:baseAddress spirit:format="long" spirit:resolve="user">0</spirit:baseAddress>
-        <spirit:range spirit:format="long">4096</spirit:range>
-        <spirit:width spirit:format="long">32</spirit:width>
+        <spirit:name>reg0</spirit:name>
+        <spirit:baseAddress spirit:format="bitString" spirit:resolve="user" spirit:bitStringLength="32">0</spirit:baseAddress>
+        <spirit:range spirit:format="long" spirit:resolve="dependent" spirit:dependency="pow(2,(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH&apos;)) - 1) + 1)" spirit:minimum="4096" spirit:rangeType="long">4096</spirit:range>
+        <spirit:width spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXI_DATA_WIDTH&apos;)) - 1) + 1">32</spirit:width>
         <spirit:usage>register</spirit:usage>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>OFFSET_BASE_PARAM</spirit:name>
-            <spirit:value spirit:id="ADDRBLOCKPARAM_VALUE.S00_AXI.S00_AXI_REG.OFFSET_BASE_PARAM">C_S00_AXI_BASEADDR</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>OFFSET_HIGH_PARAM</spirit:name>
-            <spirit:value spirit:id="ADDRBLOCKPARAM_VALUE.S00_AXI.S00_AXI_REG.OFFSET_HIGH_PARAM">C_S00_AXI_HIGHADDR</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
       </spirit:addressBlock>
     </spirit:memoryMap>
   </spirit:memoryMaps>
   <spirit:model>
     <spirit:views>
       <spirit:view>
-        <spirit:name>xilinx_vhdlsynthesis</spirit:name>
-        <spirit:displayName>VHDL Synthesis</spirit:displayName>
-        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
-        <spirit:language>vhdl</spirit:language>
+        <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
+        <spirit:displayName>Synthesis</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
         <spirit:modelName>ppm_detect_gen_v1_0</spirit:modelName>
         <spirit:fileSetRef>
-          <spirit:localName>xilinx_vhdlsynthesis_view_fileset</spirit:localName>
+          <spirit:localName>xilinx_anylanguagesynthesis_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Feb 21 03:28:33 UTC 2025</spirit:value>
+            <spirit:value>Fri Feb 21 17:32:12 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:141b9cbd</spirit:value>
+            <spirit:value>9:c12051b7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -605,7 +591,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:141b9cbd</spirit:value>
+            <spirit:value>9:c12051b7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -614,38 +600,37 @@
         <spirit:displayName>VHDL Synthesis Wrapper</spirit:displayName>
         <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
         <spirit:language>vhdl</spirit:language>
-        <spirit:modelName>quad_interface_ppm_detect_gen_0_0</spirit:modelName>
+        <spirit:modelName>quad_interface_ppm_detect_gen_v2_0_1</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Feb 21 03:28:33 UTC 2025</spirit:value>
+            <spirit:value>Fri Feb 21 17:32:12 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:141b9cbd</spirit:value>
+            <spirit:value>9:c12051b7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
       <spirit:view>
-        <spirit:name>xilinx_vhdlbehavioralsimulation</spirit:name>
-        <spirit:displayName>VHDL Simulation</spirit:displayName>
-        <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation</spirit:envIdentifier>
-        <spirit:language>vhdl</spirit:language>
+        <spirit:name>xilinx_anylanguagebehavioralsimulation</spirit:name>
+        <spirit:displayName>Simulation</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation</spirit:envIdentifier>
         <spirit:modelName>ppm_detect_gen_v1_0</spirit:modelName>
         <spirit:fileSetRef>
-          <spirit:localName>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:localName>
+          <spirit:localName>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Feb 21 03:28:33 UTC 2025</spirit:value>
+            <spirit:value>Fri Feb 21 17:32:12 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:549b39ce</spirit:value>
+            <spirit:value>9:ef95335b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -654,18 +639,18 @@
         <spirit:displayName>VHDL Simulation Wrapper</spirit:displayName>
         <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
         <spirit:language>vhdl</spirit:language>
-        <spirit:modelName>quad_interface_ppm_detect_gen_0_0</spirit:modelName>
+        <spirit:modelName>quad_interface_ppm_detect_gen_v2_0_1</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_vhdlsimulationwrapper_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Feb 21 03:28:33 UTC 2025</spirit:value>
+            <spirit:value>Fri Feb 21 17:32:12 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:549b39ce</spirit:value>
+            <spirit:value>9:ef95335b</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -679,11 +664,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Feb 21 04:11:20 UTC 2025</spirit:value>
+            <spirit:value>Fri Feb 21 17:32:40 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:141b9cbd</spirit:value>
+            <spirit:value>9:c12051b7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -696,8 +681,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -709,8 +694,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -722,8 +707,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -735,8 +720,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -752,10 +737,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
       <spirit:port>
@@ -769,10 +757,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
       <spirit:port>
@@ -782,10 +773,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
       <spirit:port>
@@ -795,8 +789,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -812,10 +806,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
       <spirit:port>
@@ -829,10 +826,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">1</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
       <spirit:port>
@@ -842,10 +842,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
       <spirit:port>
@@ -855,8 +858,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -872,8 +875,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -885,8 +888,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -898,10 +901,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
       <spirit:port>
@@ -915,10 +921,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
       <spirit:port>
@@ -932,10 +941,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
       <spirit:port>
@@ -945,10 +957,13 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
       <spirit:port>
@@ -958,8 +973,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -975,8 +990,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -992,8 +1007,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic_vector</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -1005,8 +1020,8 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
         </spirit:wire>
@@ -1018,64 +1033,56 @@
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
           </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
         </spirit:wire>
       </spirit:port>
     </spirit:ports>
     <spirit:modelParameters>
       <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
         <spirit:name>C_S00_AXI_DATA_WIDTH</spirit:name>
-        <spirit:displayName>C S00 AXI DATA WIDTH</spirit:displayName>
-        <spirit:description>Width of S_AXI data bus</spirit:description>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXI_DATA_WIDTH" spirit:order="3" spirit:rangeType="long">32</spirit:value>
+        <spirit:displayName>C S00 Axi Data Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXI_DATA_WIDTH">32</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_S00_AXI_ADDR_WIDTH</spirit:name>
-        <spirit:displayName>C S00 AXI ADDR WIDTH</spirit:displayName>
-        <spirit:description>Width of S_AXI address bus</spirit:description>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH" spirit:order="4" spirit:rangeType="long">6</spirit:value>
+        <spirit:displayName>C S00 Axi Addr Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH">6</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
   <spirit:choices>
     <spirit:choice>
-      <spirit:name>choice_list_6fc15197</spirit:name>
-      <spirit:enumeration>32</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
       <spirit:name>choice_list_9d8b0d81</spirit:name>
       <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
       <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
     </spirit:choice>
-    <spirit:choice>
-      <spirit:name>choice_pairs_ce1226b1</spirit:name>
-      <spirit:enumeration spirit:text="true">1</spirit:enumeration>
-      <spirit:enumeration spirit:text="false">0</spirit:enumeration>
-    </spirit:choice>
   </spirit:choices>
   <spirit:fileSets>
     <spirit:fileSet>
-      <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
+      <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/89ae/src/user_defines.vhd</spirit:name>
+        <spirit:name>../../ipshared/dbb2/src/user_defines.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>ppm</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/89ae/src/detect_fsm.vhd</spirit:name>
+        <spirit:name>../../ipshared/dbb2/src/detect_fsm.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>ppm</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/89ae/hdl/ppm_detect_gen_v1_0_S00_AXI.vhd</spirit:name>
+        <spirit:name>../../ipshared/dbb2/hdl/ppm_detect_gen_v1_0_S00_AXI.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>axi</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/89ae/hdl/ppm_detect_gen_v1_0.vhd</spirit:name>
+        <spirit:name>../../ipshared/dbb2/hdl/ppm_detect_gen_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>axi</spirit:logicalName>
       </spirit:file>
@@ -1083,30 +1090,30 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>synth/quad_interface_ppm_detect_gen_0_0.vhd</spirit:name>
+        <spirit:name>synth/quad_interface_ppm_detect_gen_v2_0_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
-      <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
+      <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/89ae/src/user_defines.vhd</spirit:name>
+        <spirit:name>../../ipshared/dbb2/src/user_defines.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>ppm</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/89ae/src/detect_fsm.vhd</spirit:name>
+        <spirit:name>../../ipshared/dbb2/src/detect_fsm.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>ppm</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/89ae/hdl/ppm_detect_gen_v1_0_S00_AXI.vhd</spirit:name>
+        <spirit:name>../../ipshared/dbb2/hdl/ppm_detect_gen_v1_0_S00_AXI.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>axi</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/89ae/hdl/ppm_detect_gen_v1_0.vhd</spirit:name>
+        <spirit:name>../../ipshared/dbb2/hdl/ppm_detect_gen_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>axi</spirit:logicalName>
       </spirit:file>
@@ -1114,7 +1121,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsimulationwrapper_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>sim/quad_interface_ppm_detect_gen_0_0.vhd</spirit:name>
+        <spirit:name>sim/quad_interface_ppm_detect_gen_v2_0_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
@@ -1122,33 +1129,33 @@
     <spirit:fileSet>
       <spirit:name>xilinx_externalfiles_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>quad_interface_ppm_detect_gen_0_0.dcp</spirit:name>
+        <spirit:name>quad_interface_ppm_detect_gen_v2_0_1.dcp</spirit:name>
         <spirit:userFileType>dcp</spirit:userFileType>
         <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
         <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>quad_interface_ppm_detect_gen_0_0_stub.v</spirit:name>
+        <spirit:name>quad_interface_ppm_detect_gen_v2_0_1_stub.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>quad_interface_ppm_detect_gen_0_0_stub.vhdl</spirit:name>
+        <spirit:name>quad_interface_ppm_detect_gen_v2_0_1_stub.vhdl</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>quad_interface_ppm_detect_gen_0_0_sim_netlist.v</spirit:name>
+        <spirit:name>quad_interface_ppm_detect_gen_v2_0_1_sim_netlist.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
         <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>quad_interface_ppm_detect_gen_0_0_sim_netlist.vhdl</spirit:name>
+        <spirit:name>quad_interface_ppm_detect_gen_v2_0_1_sim_netlist.vhdl</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
         <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
@@ -1156,164 +1163,74 @@
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
-  <spirit:description>Detects and generates PPM signals.</spirit:description>
+  <spirit:description>ppm_detect_gen_v2</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
       <spirit:name>C_S00_AXI_DATA_WIDTH</spirit:name>
-      <spirit:displayName>C S00 AXI DATA WIDTH</spirit:displayName>
-      <spirit:description>Width of S_AXI data bus</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXI_DATA_WIDTH" spirit:choiceRef="choice_list_6fc15197" spirit:order="3">32</spirit:value>
-      <spirit:vendorExtensions>
-        <xilinx:parameterInfo>
-          <xilinx:enablement>
-            <xilinx:isEnabled xilinx:id="PARAM_ENABLEMENT.C_S00_AXI_DATA_WIDTH">false</xilinx:isEnabled>
-          </xilinx:enablement>
-        </xilinx:parameterInfo>
-      </spirit:vendorExtensions>
+      <spirit:displayName>C S00 Axi Data Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXI_DATA_WIDTH">32</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_S00_AXI_ADDR_WIDTH</spirit:name>
-      <spirit:displayName>C S00 AXI ADDR WIDTH</spirit:displayName>
-      <spirit:description>Width of S_AXI address bus</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXI_ADDR_WIDTH" spirit:order="4" spirit:rangeType="long">6</spirit:value>
-      <spirit:vendorExtensions>
-        <xilinx:parameterInfo>
-          <xilinx:enablement>
-            <xilinx:isEnabled xilinx:id="PARAM_ENABLEMENT.C_S00_AXI_ADDR_WIDTH">false</xilinx:isEnabled>
-          </xilinx:enablement>
-        </xilinx:parameterInfo>
-      </spirit:vendorExtensions>
-    </spirit:parameter>
-    <spirit:parameter>
-      <spirit:name>C_S00_AXI_BASEADDR</spirit:name>
-      <spirit:displayName>C S00 AXI BASEADDR</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXI_BASEADDR" spirit:order="5" spirit:bitStringLength="32">0xFFFFFFFF</spirit:value>
-      <spirit:vendorExtensions>
-        <xilinx:parameterInfo>
-          <xilinx:enablement>
-            <xilinx:isEnabled xilinx:id="PARAM_ENABLEMENT.C_S00_AXI_BASEADDR">false</xilinx:isEnabled>
-          </xilinx:enablement>
-        </xilinx:parameterInfo>
-      </spirit:vendorExtensions>
-    </spirit:parameter>
-    <spirit:parameter>
-      <spirit:name>C_S00_AXI_HIGHADDR</spirit:name>
-      <spirit:displayName>C S00 AXI HIGHADDR</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXI_HIGHADDR" spirit:order="6" spirit:bitStringLength="32">0x00000000</spirit:value>
-      <spirit:vendorExtensions>
-        <xilinx:parameterInfo>
-          <xilinx:enablement>
-            <xilinx:isEnabled xilinx:id="PARAM_ENABLEMENT.C_S00_AXI_HIGHADDR">false</xilinx:isEnabled>
-          </xilinx:enablement>
-        </xilinx:parameterInfo>
-      </spirit:vendorExtensions>
+      <spirit:displayName>C S00 Axi Addr Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXI_ADDR_WIDTH">6</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">quad_interface_ppm_detect_gen_0_0</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">quad_interface_ppm_detect_gen_v2_0_1</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
-      <xilinx:displayName>ppm_detect_gen_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>1</xilinx:coreRevision>
+      <xilinx:displayName>ppm_detect_gen_v2</xilinx:displayName>
+      <xilinx:definitionSource>package_project</xilinx:definitionSource>
+      <xilinx:coreRevision>2</xilinx:coreRevision>
       <xilinx:tags>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@36791e64_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@708cad9a_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b685af8_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e86e37e_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@36190b94_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@41a1185c_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@33d69b0f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4dec5a8e_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@61abc3bc_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e258db3_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5453c56f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@10ee3a5a_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d52a255_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@56f9cd6d_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@f8a439e_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d38a652_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@9075ada_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4eddd18_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@32c3668e_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@48834e64_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@401290e0_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d2d6c2b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@727e18c5_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4232aac5_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@b7a4c65_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@32e84574_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6992944_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5257976a_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@377c70e6_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@42b9593f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@45895d44_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1331c183_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fa27641_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ed778b0_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6facc26f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d76cce2_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@53fde6cb_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2bc28553_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@55846bb3_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2937f69_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a2d9bd8_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@23ffc53f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@69510379_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e2e691d_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bfb527_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@34fd5827_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@53bbf245_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@45bb1b5a_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@474da69b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1178664c_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@9c4a139_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@65be6f2a_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@23b35667_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3adeae8d_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d338a7b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@52c3c9c9_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@600bd616_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2053d25a_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a2938a5_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ad8172f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@718b676a_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f473eb0_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f2d82c_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@724c7379_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3dfc46d1_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1fa21b84_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@576c1d9_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@28ea2f53_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@33692eac_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e17461b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@144147f6_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@33cdb369_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6387ab64_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@ac18ac4_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@44064f58_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@23479762_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3fbd8b97_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@65975c61_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2970c4ba_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@e0b880f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f220f50_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6414bbda_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@c6e1bf8_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2232b417_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@38fad422_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4331868b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2441fb0b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@40011a7f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@16c7d0b8_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7431ad36_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@eb13bcf_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1027356f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6839a88b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2822c06b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@175c9ebb_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4cf24893_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ip_repo/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="nopcore"/>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38a74f7b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d292703_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73d67a80_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@570363d2_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3620aba6_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d0dc00e_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e9c803e_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5cef8d39_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e786a99_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35c7813c_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52e0db7c_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47d96b50_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c44e7bc_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@482b568_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16ef6c02_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47d0a51d_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6574c00c_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3069ce8d_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41332694_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10245758_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64da4dee_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@184e07f_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7dae42b0_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59a64f2c_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33796a85_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ef728e4_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72c69f3_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23e965a4_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42eb8ee7_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@43f2112b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ce9b474_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e235e76_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a5f3656_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f4711ab_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46dd9697_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e1c3d14_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41df49dc_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@139b2cae_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@531e554_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3eb5e4ea_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79efba77_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@456ce9ed_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78b612b2_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@609e8af6_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.ADDR_WIDTH" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
@@ -1343,28 +1260,26 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.READ_WRITE_MODE" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.RUSER_BITS_PER_BYTE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.RUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.SUPPORTS_NARROW_BURST" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.WIZ_DATA_WIDTH" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.WIZ_NUM_REG" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.SUPPORTS_NARROW_BURST" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.WUSER_BITS_PER_BYTE" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.WUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_CLK.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_CLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_CLK.PHASE" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_RST.POLARITY" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_ACLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_ACLK.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_ACLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_ACLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_ACLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_ACLK.PHASE" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI_ARESETN.POLARITY" xilinx:valuePermission="bd"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="add540ec"/>
-      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="b03830d8"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="832acd20"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="e7b50784"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="842f310b"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="9add38af"/>
+      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="871c369d"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="d335d733"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="3bc1caf7"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="e9c11669"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="0cb5d112"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>
