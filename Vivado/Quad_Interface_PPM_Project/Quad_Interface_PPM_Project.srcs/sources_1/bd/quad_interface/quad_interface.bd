@@ -1044,16 +1044,16 @@
               }
             },
             "interface_nets": {
-              "auto_pc_to_s00_couplers": {
-                "interface_ports": [
-                  "M_AXI",
-                  "auto_pc/M_AXI"
-                ]
-              },
               "s00_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
                   "auto_pc/S_AXI"
+                ]
+              },
+              "auto_pc_to_s00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
                 ]
               }
             },
@@ -1116,16 +1116,10 @@
       },
       "ppm_detect_gen_v2_0": {
         "vlnv": "EastburnOhnesorge:user:ppm_detect_gen_v2:2.0",
-        "xci_name": "quad_interface_ppm_detect_gen_v2_0_0"
+        "xci_name": "quad_interface_ppm_detect_gen_v2_0_1"
       }
     },
     "interface_nets": {
-      "processing_system7_0_DDR": {
-        "interface_ports": [
-          "DDR",
-          "processing_system7_0/DDR"
-        ]
-      },
       "S00_AXI_1": {
         "interface_ports": [
           "axi_interconnect_0/S00_AXI",
@@ -1136,6 +1130,12 @@
         "interface_ports": [
           "FIXED_IO",
           "processing_system7_0/FIXED_IO"
+        ]
+      },
+      "processing_system7_0_DDR": {
+        "interface_ports": [
+          "DDR",
+          "processing_system7_0/DDR"
         ]
       },
       "axi_interconnect_0_M00_AXI": {

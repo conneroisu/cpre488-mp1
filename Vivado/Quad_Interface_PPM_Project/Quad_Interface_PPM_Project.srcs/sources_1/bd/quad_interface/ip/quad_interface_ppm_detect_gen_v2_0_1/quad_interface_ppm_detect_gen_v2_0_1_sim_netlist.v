@@ -1,21 +1,21 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Fri Feb 21 10:46:25 2025
+// Date        : Fri Feb 21 11:32:40 2025
 // Host        : CO2041-06 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_v2_0_0/quad_interface_ppm_detect_gen_v2_0_0_sim_netlist.v
-// Design      : quad_interface_ppm_detect_gen_v2_0_0
+//               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_v2_0_1/quad_interface_ppm_detect_gen_v2_0_1_sim_netlist.v
+// Design      : quad_interface_ppm_detect_gen_v2_0_1
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7z020clg484-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "quad_interface_ppm_detect_gen_v2_0_0,ppm_detect_gen_v1_0,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "package_project" *) 
+(* CHECK_LICENSE_TYPE = "quad_interface_ppm_detect_gen_v2_0_1,ppm_detect_gen_v1_0,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "package_project" *) 
 (* x_core_info = "ppm_detect_gen_v1_0,Vivado 2020.1" *) 
 (* NotValidForBitStream *)
-module quad_interface_ppm_detect_gen_v2_0_0
+module quad_interface_ppm_detect_gen_v2_0_1
    (i_ppm,
     o_ppm,
     s00_axi_aclk,
@@ -90,7 +90,7 @@ module quad_interface_ppm_detect_gen_v2_0_0
   assign s00_axi_rresp[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
-  quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0 U0
+  quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0 U0
        (.S_AXI_ARREADY(s00_axi_arready),
         .S_AXI_AWREADY(s00_axi_awready),
         .S_AXI_WREADY(s00_axi_wready),
@@ -112,7 +112,7 @@ module quad_interface_ppm_detect_gen_v2_0_0
 endmodule
 
 (* ORIG_REF_NAME = "detect_fsm" *) 
-module quad_interface_ppm_detect_gen_v2_0_0_detect_fsm
+module quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
    (D,
     E,
     \s_chan_reg[0]_0 ,
@@ -1415,7 +1415,7 @@ module quad_interface_ppm_detect_gen_v2_0_0_detect_fsm
 endmodule
 
 (* ORIG_REF_NAME = "ppm_detect_gen_v1_0" *) 
-module quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0
+module quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0
    (S_AXI_WREADY,
     S_AXI_AWREADY,
     S_AXI_ARREADY,
@@ -1510,7 +1510,7 @@ module quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0
         .I2(s00_axi_rvalid),
         .I3(s00_axi_rready),
         .O(axi_rvalid_i_1_n_0));
-  quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0_S00_AXI ppm_detect_gen_v1_0_S00_AXI_inst
+  quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI ppm_detect_gen_v1_0_S00_AXI_inst
        (.SR(axi_awready_i_1_n_0),
         .aw_en_reg_0(ppm_detect_gen_v1_0_S00_AXI_inst_n_4),
         .aw_en_reg_1(aw_en_i_1_n_0),
@@ -1534,7 +1534,7 @@ module quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0
 endmodule
 
 (* ORIG_REF_NAME = "ppm_detect_gen_v1_0_S00_AXI" *) 
-module quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0_S00_AXI
+module quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI
    (axi_wready_reg_0,
     axi_awready_reg_0,
     axi_arready_reg_0,
@@ -4140,7 +4140,7 @@ module quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0_S00_AXI
         .D(axi_wready0),
         .Q(axi_wready_reg_0),
         .R(SR));
-  quad_interface_ppm_detect_gen_v2_0_0_detect_fsm detect_fsm
+  quad_interface_ppm_detect_gen_v2_0_1_detect_fsm detect_fsm
        (.D(s_detect_state),
         .E(slv_reg7),
         .Q(slv_reg0__0),

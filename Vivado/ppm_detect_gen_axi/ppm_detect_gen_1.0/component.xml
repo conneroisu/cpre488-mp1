@@ -754,11 +754,11 @@
       </xilinx:taxonomies>
       <xilinx:displayName>ppm_detect_gen_v2</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
-      <xilinx:coreRevision>1</xilinx:coreRevision>
+      <xilinx:coreRevision>2</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>iastate.edu:user:ppm_detect_gen_v1_0:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2025-02-21T16:43:47Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2025-02-21T17:30:22Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="nopcore"/>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@38a74f7b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
@@ -794,6 +794,17 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@3ce9b474_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7e235e76_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@3a5f3656_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f4711ab_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46dd9697_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e1c3d14_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41df49dc_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@139b2cae_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@531e554_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3eb5e4ea_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79efba77_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@456ce9ed_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78b612b2_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@609e8af6_ARCHIVE_LOCATION">c:/users/neastbur/cpre488-mp1/vivado/ppm_detect_gen_axi/ppm_detect_gen_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

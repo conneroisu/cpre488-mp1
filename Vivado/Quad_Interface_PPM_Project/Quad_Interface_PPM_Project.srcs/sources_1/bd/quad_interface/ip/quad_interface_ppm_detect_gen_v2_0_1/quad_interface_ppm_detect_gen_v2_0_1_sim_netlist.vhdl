@@ -1,11 +1,11 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Feb 21 10:46:25 2025
+-- Date        : Fri Feb 21 11:32:40 2025
 -- Host        : CO2041-06 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_v2_0_0/quad_interface_ppm_detect_gen_v2_0_0_sim_netlist.vhdl
--- Design      : quad_interface_ppm_detect_gen_v2_0_0
+--               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_v2_0_1/quad_interface_ppm_detect_gen_v2_0_1_sim_netlist.vhdl
+-- Design      : quad_interface_ppm_detect_gen_v2_0_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7z020clg484-1
@@ -14,7 +14,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity quad_interface_ppm_detect_gen_v2_0_0_detect_fsm is
+entity quad_interface_ppm_detect_gen_v2_0_1_detect_fsm is
   port (
     D : out STD_LOGIC_VECTOR ( 2 downto 0 );
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -31,10 +31,10 @@ entity quad_interface_ppm_detect_gen_v2_0_0_detect_fsm is
     SR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v2_0_0_detect_fsm : entity is "detect_fsm";
-end quad_interface_ppm_detect_gen_v2_0_0_detect_fsm;
+  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v2_0_1_detect_fsm : entity is "detect_fsm";
+end quad_interface_ppm_detect_gen_v2_0_1_detect_fsm;
 
-architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_0_detect_fsm is
+architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1_detect_fsm is
   signal \FSM_sequential_s_c_state[0]_i_2_n_0\ : STD_LOGIC;
   signal \FSM_sequential_s_c_state[0]_i_3_n_0\ : STD_LOGIC;
   signal \FSM_sequential_s_c_state[0]_i_4_n_0\ : STD_LOGIC;
@@ -1783,7 +1783,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0_S00_AXI is
+entity quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI is
   port (
     axi_wready_reg_0 : out STD_LOGIC;
     axi_awready_reg_0 : out STD_LOGIC;
@@ -1807,10 +1807,10 @@ entity quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0_S00_AXI is
     s00_axi_arvalid : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0_S00_AXI : entity is "ppm_detect_gen_v1_0_S00_AXI";
-end quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0_S00_AXI;
+  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI : entity is "ppm_detect_gen_v1_0_S00_AXI";
+end quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI;
 
-architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0_S00_AXI is
+architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI is
   signal \^aw_en_reg_0\ : STD_LOGIC;
   signal axi_arready0 : STD_LOGIC;
   signal \^axi_arready_reg_0\ : STD_LOGIC;
@@ -5045,7 +5045,7 @@ axi_wready_reg: unisim.vcomponents.FDRE
       Q => \^axi_wready_reg_0\,
       R => SR(0)
     );
-detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_0_detect_fsm
+detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       D(2 downto 0) => s_detect_state(2 downto 0),
       E(0) => slv_reg7,
@@ -9471,7 +9471,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0 is
+entity quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0 is
   port (
     S_AXI_WREADY : out STD_LOGIC;
     S_AXI_AWREADY : out STD_LOGIC;
@@ -9493,10 +9493,10 @@ entity quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0 is
     s00_axi_rready : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0 : entity is "ppm_detect_gen_v1_0";
-end quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0;
+  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0 : entity is "ppm_detect_gen_v1_0";
+end quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0;
 
-architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0 is
+architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0 is
   signal \^s_axi_arready\ : STD_LOGIC;
   signal \^s_axi_awready\ : STD_LOGIC;
   signal \^s_axi_wready\ : STD_LOGIC;
@@ -9558,7 +9558,7 @@ axi_rvalid_i_1: unisim.vcomponents.LUT4
       I3 => s00_axi_rready,
       O => axi_rvalid_i_1_n_0
     );
-ppm_detect_gen_v1_0_S00_AXI_inst: entity work.quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0_S00_AXI
+ppm_detect_gen_v1_0_S00_AXI_inst: entity work.quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI
      port map (
       SR(0) => axi_awready_i_1_n_0,
       aw_en_reg_0 => ppm_detect_gen_v1_0_S00_AXI_inst_n_4,
@@ -9586,7 +9586,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity quad_interface_ppm_detect_gen_v2_0_0 is
+entity quad_interface_ppm_detect_gen_v2_0_1 is
   port (
     i_ppm : in STD_LOGIC;
     o_ppm : out STD_LOGIC;
@@ -9613,18 +9613,18 @@ entity quad_interface_ppm_detect_gen_v2_0_0 is
     s00_axi_rready : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
-  attribute NotValidForBitStream of quad_interface_ppm_detect_gen_v2_0_0 : entity is true;
+  attribute NotValidForBitStream of quad_interface_ppm_detect_gen_v2_0_1 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of quad_interface_ppm_detect_gen_v2_0_0 : entity is "quad_interface_ppm_detect_gen_v2_0_0,ppm_detect_gen_v1_0,{}";
+  attribute CHECK_LICENSE_TYPE of quad_interface_ppm_detect_gen_v2_0_1 : entity is "quad_interface_ppm_detect_gen_v2_0_1,ppm_detect_gen_v1_0,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of quad_interface_ppm_detect_gen_v2_0_0 : entity is "yes";
+  attribute downgradeipidentifiedwarnings of quad_interface_ppm_detect_gen_v2_0_1 : entity is "yes";
   attribute ip_definition_source : string;
-  attribute ip_definition_source of quad_interface_ppm_detect_gen_v2_0_0 : entity is "package_project";
+  attribute ip_definition_source of quad_interface_ppm_detect_gen_v2_0_1 : entity is "package_project";
   attribute x_core_info : string;
-  attribute x_core_info of quad_interface_ppm_detect_gen_v2_0_0 : entity is "ppm_detect_gen_v1_0,Vivado 2020.1";
-end quad_interface_ppm_detect_gen_v2_0_0;
+  attribute x_core_info of quad_interface_ppm_detect_gen_v2_0_1 : entity is "ppm_detect_gen_v1_0,Vivado 2020.1";
+end quad_interface_ppm_detect_gen_v2_0_1;
 
-architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_0 is
+architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1 is
   signal \<const0>\ : STD_LOGIC;
   attribute x_interface_info : string;
   attribute x_interface_info of s00_axi_aclk : signal is "xilinx.com:signal:clock:1.0 s00_axi_aclk CLK";
@@ -9662,7 +9662,7 @@ GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
     );
-U0: entity work.quad_interface_ppm_detect_gen_v2_0_0_ppm_detect_gen_v1_0
+U0: entity work.quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0
      port map (
       S_AXI_ARREADY => s00_axi_arready,
       S_AXI_AWREADY => s00_axi_awready,
