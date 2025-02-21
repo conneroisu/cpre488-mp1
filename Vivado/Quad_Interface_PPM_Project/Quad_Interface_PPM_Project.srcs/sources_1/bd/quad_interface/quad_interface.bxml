@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="quad_interface" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1740155488"/>
-    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1740155488"/>
-    <Generation Name="SIMULATION" State="STALE" Timestamp="1740155488"/>
-    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1740155488"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1740156355"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1740156355"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1740156355"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1740156355"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\quad_interface_processing_system7_0_0\quad_interface_processing_system7_0_0.xci" Type="IP">
         <Instance HierarchyPath="processing_system7_0"/>
@@ -31,14 +31,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\quad_interface_auto_pc_0\quad_interface_auto_pc_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_interconnect_0/s00_couplers/auto_pc"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="synth\quad_interface.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
@@ -47,6 +39,22 @@
       <File Name="sim\quad_interface.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\quad_interface_ppm_detect_gen_v2_0_0\quad_interface_ppm_detect_gen_v2_0_0.xci" Type="IP">
+        <Instance HierarchyPath="ppm_detect_gen_v2_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\quad_interface_auto_pc_0\quad_interface_auto_pc_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_interconnect_0/s00_couplers/auto_pc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="quad_interface_ooc.xdc" Type="XDC">
