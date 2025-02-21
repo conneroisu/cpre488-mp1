@@ -111,6 +111,7 @@ begin
           s_n_state <= COUNT;
         end if;
 
+        
       when COUNT =>
 
         -- Note: s_channel_read is strictly a Mealy output in this state.
