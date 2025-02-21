@@ -139,6 +139,13 @@ architecture arch_imp of ppm_detect_gen_v1_0_S00_AXI is
 	signal s_ppm_count : std_logic_vector(REG_SIZE - 1 downto 0);
 	signal s_detect_reg_sel : std_logic_vector(2 downto 0);
 	signal s_detect_state : std_logic_vector(2 downto 0);
+	
+	SIGNAL s_gen_20 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
+	SIGNAL s_gen_21 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
+	SIGNAL s_gen_22 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
+	SIGNAL s_gen_23 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
+	SIGNAL s_gen_24 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
+	SIGNAL s_gen_25 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
 
 begin
 	-- I/O Connections assignments
@@ -546,6 +553,47 @@ begin
 	   end if;
 	end process STATUS_UPDATE;
 
+	-- Generator FSM 
+	generate_fsm : ENTITY ppm.generate_fsm
+		GENERIC MAP(
+			N => 32,
+			IDLE_FRAME_TIME => 9 ms
+		)
+		PORT MAP(
+			i_clk => S_AXI_ACLK,
+			i_rst => S_AXI_ARESETN,
+			i_slv_reg0_1 => slv_reg0(2),
+			i_slv_reg20 => s_gen_20,
+			i_slv_reg21 => s_gen_21,
+			i_slv_reg22 => s_gen_22,
+			i_slv_reg23 => s_gen_23,
+			i_slv_reg24 => s_gen_24,
+			i_slv_reg25 => s_gen_25,
+			o_ppm => o_ppm
+		);
+
+	GENERATE_REG_UPDATE : PROCESS (S_AXI_ACLK) IS
+	BEGIN
+		IF (rising_edge(S_AXI_ACLK)) THEN
+			IF (slv_reg0(0) = '0') THEN
+				-- hardware relay mode
+				s_gen_20 <= slv_reg2;
+				s_gen_21 <= slv_reg3;
+				s_gen_22 <= slv_reg4;
+				s_gen_23 <= slv_reg5;
+				s_gen_24 <= slv_reg6;
+				s_gen_25 <= slv_reg7;
+			ELSE
+				-- in software relay mode
+				s_gen_20 <= slv_reg8;
+				s_gen_21 <= slv_reg9;
+				s_gen_22 <= slv_reg10;
+				s_gen_23 <= slv_reg11;
+				s_gen_24 <= slv_reg12;
+				s_gen_25 <= slv_reg13;
+			END IF;
+		END IF;
+	END PROCESS GENERATE_REG_UPDATE;
 	-- User logic ends
 
 end arch_imp;
