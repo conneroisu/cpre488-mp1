@@ -43,7 +43,7 @@ begin
     -- Async reset.
     if(s_rst_n = '0') then
       s_channel_pulse_widths <= (others => (others => '0'));
-    elsif(falling_edge(s_clk)) then
+    elsif(rising_edge(s_clk)) then
       if(s_channel_read = '1') then
         s_channel_pulse_widths(TO_INTEGER(UNSIGNED(s_reg_sel))) <= s_count;
       end if;
@@ -262,6 +262,7 @@ begin
           wait until falling_edge(s_clk);
         end loop;
 
+
         -- Verify the count.
         assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
         assert s_state = B"101" report "Test Failed: s_state was not 101!" severity failure;
@@ -269,21 +270,16 @@ begin
         assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
 
         -- End the pulse
+        -- s_channel_read is a Mealy output, advance 1 ps to let s_ppm settle.
         s_ppm <= '0';
+        wait for 1 ps;
+        assert s_channel_read = '1' report "Test Failed: s_channel_read should be 1!" severity failure;
 
         wait until falling_edge(s_clk);
 
         -- Channel should be done now.
-        assert s_channel_read = '1' report "Test Failed: s_channel_read should be 1!" severity failure;
+        assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
         assert s_state = B"110" report "Test Failed: s_state was not 110!" severity failure;
-        assert s_count = TB_PULSE_WIDTHS(i) report "Test Failed: s_count was not correct!" severity failure;
-        assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
-
-        -- Verify that reg_sel updates on the falling edge (1 ps after the event).
-        -- Verify that the channel pulse widths reg updates on the falling edge (1 ps after the event).
-        wait for 1 ps;
-
-        assert s_count = TB_PULSE_WIDTHS(i) report "Test Failed: s_count was not correct!" severity failure;
         assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i + 1, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
 
         wait until falling_edge(s_clk);
@@ -323,7 +319,10 @@ begin
       end loop;
 
       -- End the pulse
+      -- s_channel_read is a Mealy output, advance 1 ps to let s_ppm settle.
       s_ppm <= '0';
+      wait for 1 ps;
+      assert s_channel_read = '1' report "Test Failed: s_channel_read should be 1!" severity failure;
 
       -- Set s_start to 0 so we don't start again.
       s_start <= '0';
@@ -331,15 +330,8 @@ begin
       wait until falling_edge(s_clk);
 
       -- Channel should be done now.
-      assert s_channel_read = '1' report "Test Failed: s_channel_read should be 1!" severity failure;
+      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
       assert s_state = B"110" report "Test Failed: s_state was not 110!" severity failure;
-      assert s_count = TB_PULSE_WIDTHS(5) report "Test Failed: s_count was not correct!" severity failure;
-      assert s_reg_sel = B"101" report "Test Failed: s_reg_sel was not correct!" severity failure;
-
-      -- Verify that reg_sel updates on the falling edge (1 ps after the event).
-      -- Verify that the channel pulse widths reg updates on the falling edge (1 ps after the event).
-      wait for 1 ps;
-
       assert s_count = TB_PULSE_WIDTHS(5) report "Test Failed: s_count was not correct!" severity failure;
       assert s_reg_sel = B"110" report "Test Failed: s_reg_sel was not 110!" severity failure;
 

@@ -112,18 +112,26 @@ begin
         end if;
 
       when COUNT =>
+
+        -- Note: s_channel_read is strictly a Mealy output.
+        --       it is high the moment that i_ppm goes to zero.
+        --       this the moment that the state transitions to DONE, it
+        --       is set to zero, but on the rising edge, the channel counter will
+        --       be enabled, thus increasing the channel count by 1.
+
         s_pulse_counter_rst_n <= '1';
-        s_channel_read <= '0';
         if(i_ppm = '1') then
           s_pulse_counter_en <= '1';
+          s_channel_read <= '0';
           s_n_state <= COUNT;
         else
           s_pulse_counter_en <= '0';
+          s_channel_read <= '1';
           s_n_state <= DONE;
         end if;
 
       when DONE =>
-        s_channel_read <= '1';
+        s_channel_read <= '0';
         s_pulse_counter_en <= '0';
         s_pulse_counter_rst_n <= '1';
 
@@ -153,9 +161,6 @@ begin
   end process PULSE_WIDTH_COUNTER;
 
   -- Channel counter
-  -- Counts on falling edge.
-  -- This makes sure that the counter enable signal is not going low when the counter
-  -- is about to count on the rising edge. Splitting between rising and falling here is the best.
   CHANNEL_COUNTER : process(i_rst_n, i_clk) is
   begin
 
@@ -163,7 +168,7 @@ begin
     if(i_rst_n = '0') then
       s_chan <= (others => '0');
 
-    elsif(falling_edge(i_clk)) then
+    elsif(rising_edge(i_clk)) then
 
       -- If last channel has been counted, reset
       if(s_chan = LAST_CHANNEL_CONDITION) then
