@@ -113,11 +113,12 @@ begin
 
       when COUNT =>
 
-        -- Note: s_channel_read is strictly a Mealy output.
-        --       it is high the moment that i_ppm goes to zero.
-        --       this the moment that the state transitions to DONE, it
-        --       is set to zero, but on the rising edge, the channel counter will
-        --       be enabled, thus increasing the channel count by 1.
+        -- Note: s_channel_read is strictly a Mealy output in this state.
+        --       The moment that i_ppm goes low, s_channel_read is set to a 1.
+        --       Then, when the state transitions to DONE, the channel counter will
+        --       be enabled and count a single time. Immediatley after, s_channel_read
+        --       is set to 0 since it is a Moore output of the DONE state. This
+        --       makes it so we only count ONCE.
 
         s_pulse_counter_rst_n <= '1';
         if(i_ppm = '1') then
