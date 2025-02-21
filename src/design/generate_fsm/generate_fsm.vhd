@@ -52,19 +52,18 @@ BEGIN
             CASE current_state IS
 
                 WHEN IDLE =>
+                    delay_cntr <= 0;
                     o_ppm <= '0';
 
                     -- Wait for idle frame period before allowing a new frame
                     IF idle_cntr < IDLE_FRAME_CNT THEN
                         current_state <= IDLE;
                         idle_cntr <= idle_cntr + 1;
-                        delay_cntr <= 0;
                         -- in hw set 6 
                         -- in sw set 7
                     ELSIF i_slv_reg0_1 = '1' THEN
                         current_state <= CHAN1;
                         idle_cntr <= 0;
-                        delay_cntr <= 0;
                     END IF;
 
                 WHEN CHAN1 =>
