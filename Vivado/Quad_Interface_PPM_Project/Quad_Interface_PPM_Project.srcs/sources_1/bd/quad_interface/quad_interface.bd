@@ -17,7 +17,7 @@
           "auto_pc": ""
         }
       },
-      "ppm_detect_gen_v2_0": ""
+      "ppm_detect_gen_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1114,22 +1114,16 @@
           }
         }
       },
-      "ppm_detect_gen_v2_0": {
-        "vlnv": "EastburnOhnesorge:user:ppm_detect_gen_v2:2.0",
-        "xci_name": "quad_interface_ppm_detect_gen_v2_0_1"
+      "ppm_detect_gen_0": {
+        "vlnv": "EastburnOhnesorge:user:ppm_detect_gen:3.0",
+        "xci_name": "quad_interface_ppm_detect_gen_0_2"
       }
     },
     "interface_nets": {
-      "S00_AXI_1": {
+      "axi_interconnect_0_M00_AXI": {
         "interface_ports": [
-          "axi_interconnect_0/S00_AXI",
-          "processing_system7_0/M_AXI_GP0"
-        ]
-      },
-      "processing_system7_0_FIXED_IO": {
-        "interface_ports": [
-          "FIXED_IO",
-          "processing_system7_0/FIXED_IO"
+          "ppm_detect_gen_0/S00_AXI",
+          "axi_interconnect_0/M00_AXI"
         ]
       },
       "processing_system7_0_DDR": {
@@ -1138,10 +1132,16 @@
           "processing_system7_0/DDR"
         ]
       },
-      "axi_interconnect_0_M00_AXI": {
+      "processing_system7_0_FIXED_IO": {
         "interface_ports": [
-          "ppm_detect_gen_v2_0/s00_axi",
-          "axi_interconnect_0/M00_AXI"
+          "FIXED_IO",
+          "processing_system7_0/FIXED_IO"
+        ]
+      },
+      "S00_AXI_1": {
+        "interface_ports": [
+          "axi_interconnect_0/S00_AXI",
+          "processing_system7_0/M_AXI_GP0"
         ]
       }
     },
@@ -1160,7 +1160,7 @@
           "axi_interconnect_0/M00_ACLK",
           "axi_interconnect_0/S00_ACLK",
           "processing_system7_0/M_AXI_GP0_ACLK",
-          "ppm_detect_gen_v2_0/s00_axi_aclk"
+          "ppm_detect_gen_0/s00_axi_aclk"
         ]
       },
       "proc_sys_reset_0_interconnect_aresetn": {
@@ -1171,22 +1171,22 @@
           "axi_interconnect_0/M00_ARESETN"
         ]
       },
-      "ppm_detect_gen_v2_0_o_ppm": {
+      "ppm_detect_gen_0_o_ppm": {
         "ports": [
-          "ppm_detect_gen_v2_0/o_ppm",
+          "ppm_detect_gen_0/o_ppm",
           "PPM_OUT"
-        ]
-      },
-      "PPM_IN_1": {
-        "ports": [
-          "PPM_IN",
-          "ppm_detect_gen_v2_0/i_ppm"
         ]
       },
       "proc_sys_reset_0_peripheral_aresetn": {
         "ports": [
           "proc_sys_reset_0/peripheral_aresetn",
-          "ppm_detect_gen_v2_0/s00_axi_aresetn"
+          "ppm_detect_gen_0/s00_axi_aresetn"
+        ]
+      },
+      "PPM_IN_1": {
+        "ports": [
+          "PPM_IN",
+          "ppm_detect_gen_0/i_ppm"
         ]
       }
     },
@@ -1197,8 +1197,8 @@
             "range": "4G",
             "width": "32",
             "segments": {
-              "SEG_ppm_detect_gen_v2_0_reg0": {
-                "address_block": "/ppm_detect_gen_v2_0/s00_axi/reg0",
+              "SEG_ppm_detect_gen_0_S00_AXI_reg": {
+                "address_block": "/ppm_detect_gen_0/S00_AXI/S00_AXI_reg",
                 "offset": "0x43C00000",
                 "range": "64K"
               }

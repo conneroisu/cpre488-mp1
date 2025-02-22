@@ -5,7 +5,7 @@
 #include <xil_types.h>
 #include "sleep.h"
 
-#define PPM_MODULE_BASEADDR XPAR_PPM_DETECT_GEN_V2_0_BASEADDR
+#define PPM_MODULE_BASEADDR XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR
 
 #define CONTROL_REG *((volatile u32*) (PPM_MODULE_BASEADDR + 0x0))
 #define STATUS_REG *((volatile u32*) (PPM_MODULE_BASEADDR + 0x4))
