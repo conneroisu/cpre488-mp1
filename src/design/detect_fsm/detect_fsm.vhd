@@ -62,7 +62,7 @@ begin
   end process FSM_SEQ;
 
   -- Combinational FSM logic
-  FSM_COMB : process(i_ppm, i_start, s_chan, s_c_state, s_found_idle, s_pulse_start) is
+  FSM_COMB : process(i_start, s_chan, s_c_state, s_found_idle, s_pulse_start, s_pulse_end) is
   begin
     case(s_c_state) is
       when NOT_STARTED =>
@@ -93,7 +93,7 @@ begin
       when COUNT_IDLE =>
         s_channel_read <= '0';
         s_pulse_counter_rst_n <= '1';
-        if(i_ppm = '1') then
+        if(s_pulse_end = '0') then
           s_pulse_counter_en <= '1';
           s_idle_read <= '0';
           s_n_state <= COUNT_IDLE;
@@ -142,7 +142,7 @@ begin
 
         s_pulse_counter_rst_n <= '1';
         s_idle_read <= '0';
-        if(i_ppm = '1') then
+        if(s_pulse_end = '0') then
           s_pulse_counter_en <= '1';
           s_channel_read <= '0';
           s_n_state <= COUNT;
@@ -245,6 +245,37 @@ begin
       end if;
     end if;
   end process DETERMINE_PULSE_START;
+
+  DETERMINE_PULSE_END : process(i_rst_n, i_clk) is
+  begin
+    -- Async reset.
+    if(i_rst_n = '0') then
+      s_ppm_end_count <= (others => '0');
+      s_pulse_end <= '0';
+      -- To not introduce more signals, use the current
+      -- state as the counter enable.
+    elsif(rising_edge(i_clk)) then
+      if(s_c_state = COUNT_IDLE or s_c_state = COUNT) then
+
+        -- See if the count is high enough to determine the PPM pulse start.
+        -- If the start has already been deteceted, keep it high until the state changes.
+        if(TO_INTEGER(UNSIGNED(s_ppm_start_count)) >= PULSE_DETECTION_WIDTH or s_pulse_end = '1') then
+          s_pulse_end <= '1';
+        else
+          s_pulse_end <= '0';
+          -- If pulse has gone high, discard the current count.
+          if(i_ppm = '1') then
+            s_ppm_end_count <= (others => '0');
+          else
+            s_ppm_end_count <= STD_LOGIC_VECTOR(UNSIGNED(s_ppm_start_count) + 1);
+          end if;
+        end if;
+      else
+        s_pulse_end <= '0';
+        s_ppm_end_count <= (others => '0');
+      end if;
+    end if;
+  end process DETERMINE_PULSE_END;
 
   s_found_idle <= '1' when UNSIGNED(s_idle_pulse_width) >= IDLE_PULSE_WIDTH else '0';
 

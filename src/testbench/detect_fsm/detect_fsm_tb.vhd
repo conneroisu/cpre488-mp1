@@ -225,7 +225,24 @@ begin
       -- Stop the pulse
       s_ppm <= '0';
 
+      -- Wait 9 clock cycles
+      for i in 1 to 9 loop
+        wait until falling_edge(s_clk);
+      end loop;
+
+      -- Set ppm high, which should make it so the end of the pulse is not detected.
+      s_ppm <= '1';
+
       wait until falling_edge(s_clk);
+
+      -- Verify that we have not stopped counting the idle pulse yet.
+      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+      assert s_state = B"001" report "Test Failed: s_state was not 001!" severity failure;
+      assert s_count = X"00000000" report "Test Failed: s_count was not 0x0!" severity failure;
+      assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
+
+      -- Now start the pulse
+      s_ppm <= '1';
 
       -- Idle pulse reading should be done
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
