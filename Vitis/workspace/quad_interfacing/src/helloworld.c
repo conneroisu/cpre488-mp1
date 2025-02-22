@@ -25,12 +25,12 @@ int main()
 	{
 		print("Hello World\n\r");
 		// Read from channel 5.
-		CHANNEL_1 = 5;
-		CHANNEL_2 = 5;
-		CHANNEL_3 = 5;
-		CHANNEL_4 = 5;
-		CHANNEL_5 = 5;
-		CHANNEL_6 = 5;
+		CHANNEL_1 = 0xFFF;
+		CHANNEL_2 = 0xFFF;
+		CHANNEL_3 = 0xFFF;
+		CHANNEL_4 = 0xFFF;
+		CHANNEL_5 = 0xFFF;
+		CHANNEL_6 = 0xFFF;
 
 		CONTROL_REG = 0xFFFF;
 		while (!STATUS_REG)
