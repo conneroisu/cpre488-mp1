@@ -110,8 +110,8 @@ begin
       -- Start the pulse
       s_ppm <= '1';
 
-      -- Wait 9 clock cycles
-      for i in 1 to 9 loop
+      -- wait PULSE_DETECTION_WIDTH clock cycles
+      for i in 1 to PULSE_DETECTION_WIDTH - 1 loop
         wait until falling_edge(s_clk);
       end loop;
 
@@ -129,8 +129,8 @@ begin
       -- Now start the pulse
       s_ppm <= '1';
 
-      -- Wait 10 clock cycles
-      for i in 1 to 10 loop
+      -- wait PULSE_DETECTION_WIDTH clock cycles
+      for i in 1 to PULSE_DETECTION_WIDTH loop
         wait until falling_edge(s_clk);
       end loop;
 
@@ -158,12 +158,21 @@ begin
       -- End the pulse
       s_ppm <= '0';
 
+      -- Wait for PULSE_DETECTION_WIDTH clock cycles and verify that we are still in the IDLE_COUNT state.
+      for i in 1 to PULSE_DETECTION_WIDTH loop
+        wait until falling_edge(s_clk);
+        assert s_state = B"010" report "Test Failed: s_state was not 010!" severity failure;
+      end loop;
+
+      -- Two clock cycles are waited for so the s_ppm_end signal is seen by the state machine.
+      wait until falling_edge(s_clk);
       wait until falling_edge(s_clk);
 
       -- Idle pulse reading should be done
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
       assert s_state = B"011" report "Test Failed: s_state was not 011!" severity failure;
       assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
+
 
       -- Since the pulse width was too short, we should go back to the idle waiting state.
       wait until falling_edge(s_clk);
@@ -176,8 +185,8 @@ begin
       -- Start the pulse
       s_ppm <= '1';
 
-      -- Wait 9 clock cycles
-      for i in 1 to 9 loop
+      -- wait PULSE_DETECTION_WIDTH clock cycles
+      for i in 1 to PULSE_DETECTION_WIDTH - 1 loop
         wait until falling_edge(s_clk);
       end loop;
 
@@ -195,8 +204,8 @@ begin
       -- Now start the pulse
       s_ppm <= '1';
 
-      -- Wait 10 clock cycles
-      for i in 1 to 10 loop
+      -- wait PULSE_DETECTION_WIDTH clock cycles
+      for i in 1 to PULSE_DETECTION_WIDTH loop
         wait until falling_edge(s_clk);
       end loop;
 
@@ -211,38 +220,37 @@ begin
       assert s_count = X"00000001" report "Test Failed: s_count was not 0x1!" severity failure;
       assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
-      -- Wait for 499,998 clock cycles
-      for i in 1 to 499998 loop
+      -- Note: 499,997 is used since we have already counted once and an extra count is present due to the pulse end detection logic.
+      --       This is due to conditions for rising edge triggers changing on the rising edge, so the counter counts 1 more time.
+      -- Wait for 499,997 - PULSE_DETECTION_WIDTH clock cycles
+      for i in 1 to 499997 - PULSE_DETECTION_WIDTH loop
         wait until falling_edge(s_clk);
       end loop;
 
-      -- Verify that the count is 0x7A11F
+      -- Verify that the count is 499998 - PULSE_DETECTION_WIDTH
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
       assert s_state = B"010" report "Test Failed: s_state was not 010!" severity failure;
-      assert s_count = X"0007A11F" report "Test Failed: s_count was not 0x7A11F!" severity failure;
+      assert s_count = STD_LOGIC_VECTOR(TO_UNSIGNED(499998 - PULSE_DETECTION_WIDTH, s_count'length)) report "Test Failed: s_count was not 499998 - PULSE_DETECTION_WIDTH!" severity failure;
       assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
       -- Stop the pulse
       s_ppm <= '0';
 
-      -- Wait 9 clock cycles
-      for i in 1 to 9 loop
+      -- Wait for PULSE_DETECTION_WIDTH clock cycles and verify that we are still in the IDLE_COUNT state.
+      for i in 1 to PULSE_DETECTION_WIDTH loop
         wait until falling_edge(s_clk);
+        assert s_state = B"010" report "Test Failed: s_state was not 010!" severity failure;
       end loop;
-
-      -- Set ppm high, which should make it so the end of the pulse is not detected.
-      s_ppm <= '1';
 
       wait until falling_edge(s_clk);
 
-      -- Verify that we have not stopped counting the idle pulse yet.
+      -- Verify that the count is 0x7A11F
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
-      assert s_state = B"001" report "Test Failed: s_state was not 001!" severity failure;
-      assert s_count = X"00000000" report "Test Failed: s_count was not 0x0!" severity failure;
+      assert s_state = B"010" report "Test Failed: s_state was not 010!" severity failure;
+      assert s_count = X"0007A11F" report "Test Failed: s_count was not 0x7A11F" severity failure;
       assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
-      -- Now start the pulse
-      s_ppm <= '1';
+      wait until falling_edge(s_clk);
 
       -- Idle pulse reading should be done
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
@@ -261,8 +269,8 @@ begin
       -- Start the pulse
       s_ppm <= '1';
 
-      -- Wait 9 clock cycles
-      for i in 1 to 9 loop
+      -- wait PULSE_DETECTION_WIDTH clock cycles
+      for i in 1 to PULSE_DETECTION_WIDTH - 1 loop
         wait until falling_edge(s_clk);
       end loop;
 
@@ -280,8 +288,8 @@ begin
       -- Now start the pulse
       s_ppm <= '1';
 
-      -- Wait 10 clock cycles
-      for i in 1 to 10 loop
+      -- wait PULSE_DETECTION_WIDTH clock cycles
+      for i in 1 to PULSE_DETECTION_WIDTH loop
         wait until falling_edge(s_clk);
       end loop;
 
@@ -295,10 +303,29 @@ begin
       assert s_count = X"00000001" report "Test Failed: s_count was not 0x1!" severity failure;
       assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
 
-      -- Wait for 499,999 clock cycles
-      for i in 1 to 499999 loop
+      -- Note: 499,998 is used since we have already counted once and an extra count is present due to the pulse end detection logic.
+      --       This is due to conditions for rising edge triggers changing on the rising edge, so the counter counts 1 more time.
+      -- Wait for 499,998 - PULSE_DETECTION_WIDTH clock cycles
+      for i in 1 to 499998 - PULSE_DETECTION_WIDTH loop
         wait until falling_edge(s_clk);
       end loop;
+
+      -- Verify that the count is 499999 - PULSE_DETECTION_WIDTH
+      assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
+      assert s_state = B"010" report "Test Failed: s_state was not 010!" severity failure;
+      assert s_count = STD_LOGIC_VECTOR(TO_UNSIGNED(499999 - PULSE_DETECTION_WIDTH, s_count'length)) report "Test Failed: s_count was not 499999 - PULSE_DETECTION_WIDTH!" severity failure;
+      assert s_reg_sel = B"000" report "Test Failed: s_reg_sel was not 0!" severity failure;
+
+      -- Stop the pulse
+      s_ppm <= '0';
+
+      -- Wait for PULSE_DETECTION_WIDTH clock cycles and verify that we are still in the IDLE_COUNT state.
+      for i in 1 to PULSE_DETECTION_WIDTH loop
+        wait until falling_edge(s_clk);
+        assert s_state = B"010" report "Test Failed: s_state was not 010!" severity failure;
+      end loop;
+
+      wait until falling_edge(s_clk);
 
       -- Verify that the count is 0x7A120
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
@@ -343,8 +370,8 @@ begin
         -- Start the pulse
         s_ppm <= '1';
 
-        -- Wait 9 clock cycles
-        for t in 1 to 9 loop
+        -- wait PULSE_DETECTION_WIDTH clock cycles
+        for t in 1 to PULSE_DETECTION_WIDTH - 1 loop
           wait until falling_edge(s_clk);
         end loop;
 
@@ -362,8 +389,8 @@ begin
         -- Now start the pulse
         s_ppm <= '1';
 
-        -- Wait 10 clock cycles
-        for t in 1 to 10 loop
+        -- wait PULSE_DETECTION_WIDTH clock cycles
+        for t in 1 to PULSE_DETECTION_WIDTH loop
           wait until falling_edge(s_clk);
         end loop;
 
@@ -425,8 +452,8 @@ begin
       -- Start the pulse
       s_ppm <= '1';
 
-      -- Wait 9 clock cycles
-      for t in 1 to 9 loop
+      -- wait PULSE_DETECTION_WIDTH clock cycles
+      for t in 1 to PULSE_DETECTION_WIDTH - 1 loop
         wait until falling_edge(s_clk);
       end loop;
 
@@ -444,8 +471,8 @@ begin
       -- Now start the pulse
       s_ppm <= '1';
 
-      -- Wait 10 clock cycles
-      for t in 1 to 10 loop
+      -- wait PULSE_DETECTION_WIDTH clock cycles
+      for t in 1 to PULSE_DETECTION_WIDTH loop
         wait until falling_edge(s_clk);
       end loop;
 

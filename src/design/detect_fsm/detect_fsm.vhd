@@ -257,9 +257,9 @@ begin
     elsif(rising_edge(i_clk)) then
       if(s_c_state = COUNT_IDLE or s_c_state = COUNT) then
 
-        -- See if the count is high enough to determine the PPM pulse start.
+        -- See if the count is high enough to determine the PPM pulse end.
         -- If the start has already been deteceted, keep it high until the state changes.
-        if(TO_INTEGER(UNSIGNED(s_ppm_start_count)) >= PULSE_DETECTION_WIDTH or s_pulse_end = '1') then
+        if(TO_INTEGER(UNSIGNED(s_ppm_end_count)) >= PULSE_DETECTION_WIDTH or s_pulse_end = '1') then
           s_pulse_end <= '1';
         else
           s_pulse_end <= '0';
@@ -267,7 +267,7 @@ begin
           if(i_ppm = '1') then
             s_ppm_end_count <= (others => '0');
           else
-            s_ppm_end_count <= STD_LOGIC_VECTOR(UNSIGNED(s_ppm_start_count) + 1);
+            s_ppm_end_count <= STD_LOGIC_VECTOR(UNSIGNED(s_ppm_end_count) + 1);
           end if;
         end if;
       else
