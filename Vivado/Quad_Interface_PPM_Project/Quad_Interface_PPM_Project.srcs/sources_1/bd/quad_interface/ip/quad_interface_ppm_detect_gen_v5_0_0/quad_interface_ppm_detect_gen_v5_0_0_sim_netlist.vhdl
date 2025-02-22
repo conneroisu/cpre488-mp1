@@ -1,11 +1,11 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Feb 21 11:32:40 2025
--- Host        : CO2041-06 running 64-bit major release  (build 9200)
+-- Date        : Sat Feb 22 14:31:35 2025
+-- Host        : CO2041-08 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_v2_0_1/quad_interface_ppm_detect_gen_v2_0_1_sim_netlist.vhdl
--- Design      : quad_interface_ppm_detect_gen_v2_0_1
+--               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_v5_0_0/quad_interface_ppm_detect_gen_v5_0_0_sim_netlist.vhdl
+-- Design      : quad_interface_ppm_detect_gen_v5_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7z020clg484-1
@@ -14,43 +14,53 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity quad_interface_ppm_detect_gen_v2_0_1_detect_fsm is
+entity quad_interface_ppm_detect_gen_v5_0_0_detect_fsm is
   port (
-    D : out STD_LOGIC_VECTOR ( 2 downto 0 );
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
     \s_chan_reg[0]_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
     \s_chan_reg[2]_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
-    \s_chan_reg[1]_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
     \s_chan_reg[2]_1\ : out STD_LOGIC_VECTOR ( 0 to 0 );
-    \s_chan_reg[1]_1\ : out STD_LOGIC_VECTOR ( 0 to 0 );
+    s_pulse_end_reg_0 : out STD_LOGIC_VECTOR ( 0 to 0 );
+    s_pulse_end_reg_1 : out STD_LOGIC_VECTOR ( 0 to 0 );
+    D : out STD_LOGIC_VECTOR ( 31 downto 0 );
     \s_count_reg[31]_0\ : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    \s_count_reg[31]_1\ : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    \FSM_onehot_s_c_state_reg[0]_0\ : out STD_LOGIC_VECTOR ( 2 downto 0 );
     s00_axi_aclk : in STD_LOGIC;
+    SR : in STD_LOGIC_VECTOR ( 0 to 0 );
     i_ppm : in STD_LOGIC;
-    Q : in STD_LOGIC_VECTOR ( 0 to 0 );
-    SR : in STD_LOGIC_VECTOR ( 0 to 0 )
+    Q : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v2_0_1_detect_fsm : entity is "detect_fsm";
-end quad_interface_ppm_detect_gen_v2_0_1_detect_fsm;
+  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v5_0_0_detect_fsm : entity is "detect_fsm";
+end quad_interface_ppm_detect_gen_v5_0_0_detect_fsm;
 
-architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1_detect_fsm is
-  signal \FSM_sequential_s_c_state[0]_i_2_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_s_c_state[0]_i_3_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_s_c_state[0]_i_4_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_s_c_state[2]_i_2_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_s_c_state[2]_i_3_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_s_c_state[2]_i_4_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_s_c_state[2]_i_5_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_s_c_state[2]_i_6_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_s_c_state[2]_i_7_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_s_c_state[2]_i_8_n_0\ : STD_LOGIC;
-  signal \FSM_sequential_s_c_state[2]_i_9_n_0\ : STD_LOGIC;
-  signal s_c_state : STD_LOGIC_VECTOR ( 2 downto 0 );
+architecture STRUCTURE of quad_interface_ppm_detect_gen_v5_0_0_detect_fsm is
+  signal \FSM_onehot_s_c_state[0]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[1]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[2]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[2]_i_2_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[3]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[4]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[5]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[5]_i_2_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[5]_i_3_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[5]_i_4_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[5]_i_5_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[5]_i_6_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[5]_i_7_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[5]_i_8_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state[6]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state_reg_n_0_[0]\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state_reg_n_0_[1]\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state_reg_n_0_[2]\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state_reg_n_0_[4]\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state_reg_n_0_[5]\ : STD_LOGIC;
+  signal \FSM_onehot_s_c_state_reg_n_0_[6]\ : STD_LOGIC;
+  signal p_1_in : STD_LOGIC;
+  signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal \s_chan[0]_i_1_n_0\ : STD_LOGIC;
   signal \s_chan[1]_i_1_n_0\ : STD_LOGIC;
   signal \s_chan[2]_i_1_n_0\ : STD_LOGIC;
-  signal \s_chan[2]_i_2_n_0\ : STD_LOGIC;
   signal \s_count[0]_i_3_n_0\ : STD_LOGIC;
   signal \s_count[0]_i_4_n_0\ : STD_LOGIC;
   signal \s_count_reg[0]_i_2_n_0\ : STD_LOGIC;
@@ -118,26 +128,53 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1_detect_fsm is
   signal \s_count_reg[8]_i_1_n_7\ : STD_LOGIC;
   signal s_detect_reg_sel : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal s_idle_pulse_width : STD_LOGIC_VECTOR ( 31 downto 5 );
-  signal s_idle_read : STD_LOGIC;
-  signal s_n_state : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal s_ppm_count : STD_LOGIC_VECTOR ( 31 downto 5 );
   signal \s_ppm_count__0\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal s_ppm_end_count : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \s_ppm_end_count[0]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[1]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[2]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[3]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[4]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[4]_i_2_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[5]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[6]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[7]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[7]_i_2_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[7]_i_3_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[7]_i_4_n_0\ : STD_LOGIC;
+  signal \s_ppm_end_count[7]_i_5_n_0\ : STD_LOGIC;
+  signal s_ppm_start_count : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \s_ppm_start_count[2]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_start_count[3]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_start_count[4]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_start_count[4]_i_2_n_0\ : STD_LOGIC;
+  signal \s_ppm_start_count[5]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_start_count[7]_i_1_n_0\ : STD_LOGIC;
+  signal \s_ppm_start_count[7]_i_2_n_0\ : STD_LOGIC;
+  signal \s_ppm_start_count[7]_i_3_n_0\ : STD_LOGIC;
+  signal \s_ppm_start_count[7]_i_4_n_0\ : STD_LOGIC;
+  signal \s_ppm_start_count[7]_i_5_n_0\ : STD_LOGIC;
   signal s_pulse_counter_en : STD_LOGIC;
+  signal s_pulse_end_i_1_n_0 : STD_LOGIC;
+  signal s_pulse_end_reg_n_0 : STD_LOGIC;
+  signal s_pulse_start_i_1_n_0 : STD_LOGIC;
+  signal s_pulse_start_reg_n_0 : STD_LOGIC;
   signal \NLW_s_count_reg[28]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \FSM_sequential_s_c_state[0]_i_2\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \FSM_sequential_s_c_state[0]_i_3\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \FSM_sequential_s_c_state[0]_i_4\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \FSM_sequential_s_c_state[1]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \FSM_sequential_s_c_state[2]_i_4\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \FSM_onehot_s_c_state[0]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \FSM_onehot_s_c_state[3]_i_1\ : label is "soft_lutpair11";
   attribute FSM_ENCODED_STATES : string;
-  attribute FSM_ENCODED_STATES of \FSM_sequential_s_c_state_reg[0]\ : label is "done_idle:011,count_idle:010,waiting_idle:001,done:110,count:101,waiting:100,not_started:000";
-  attribute FSM_ENCODED_STATES of \FSM_sequential_s_c_state_reg[1]\ : label is "done_idle:011,count_idle:010,waiting_idle:001,done:110,count:101,waiting:100,not_started:000";
-  attribute FSM_ENCODED_STATES of \FSM_sequential_s_c_state_reg[2]\ : label is "done_idle:011,count_idle:010,waiting_idle:001,done:110,count:101,waiting:100,not_started:000";
-  attribute SOFT_HLUTNM of \s_chan[0]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \s_chan[1]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \s_chan[2]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \s_chan[2]_i_2\ : label is "soft_lutpair0";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_s_c_state_reg[0]\ : label is "done_idle:0010000,count_idle:1000000,waiting_idle:0100000,done:0000001,count:0001000,waiting:0000100,not_started:0000010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_s_c_state_reg[1]\ : label is "done_idle:0010000,count_idle:1000000,waiting_idle:0100000,done:0000001,count:0001000,waiting:0000100,not_started:0000010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_s_c_state_reg[2]\ : label is "done_idle:0010000,count_idle:1000000,waiting_idle:0100000,done:0000001,count:0001000,waiting:0000100,not_started:0000010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_s_c_state_reg[3]\ : label is "done_idle:0010000,count_idle:1000000,waiting_idle:0100000,done:0000001,count:0001000,waiting:0000100,not_started:0000010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_s_c_state_reg[4]\ : label is "done_idle:0010000,count_idle:1000000,waiting_idle:0100000,done:0000001,count:0001000,waiting:0000100,not_started:0000010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_s_c_state_reg[5]\ : label is "done_idle:0010000,count_idle:1000000,waiting_idle:0100000,done:0000001,count:0001000,waiting:0000100,not_started:0000010";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_s_c_state_reg[6]\ : label is "done_idle:0010000,count_idle:1000000,waiting_idle:0100000,done:0000001,count:0001000,waiting:0000100,not_started:0000010";
+  attribute SOFT_HLUTNM of \s_chan[0]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \s_chan[1]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \s_chan[2]_i_1\ : label is "soft_lutpair9";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \s_count_reg[0]_i_2\ : label is 11;
   attribute ADDER_THRESHOLD of \s_count_reg[12]_i_1\ : label is 11;
@@ -147,204 +184,187 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1_detect_fsm is
   attribute ADDER_THRESHOLD of \s_count_reg[28]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \s_count_reg[4]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \s_count_reg[8]_i_1\ : label is 11;
-  attribute SOFT_HLUTNM of \slv_reg1[0]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \slv_reg1[1]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \slv_reg1[2]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \slv_reg2[0]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \slv_reg2[10]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \slv_reg2[11]_i_1\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \slv_reg2[12]_i_1\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \slv_reg2[13]_i_1\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \slv_reg2[14]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \slv_reg2[15]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \slv_reg2[16]_i_1\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \slv_reg2[17]_i_1\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \slv_reg2[18]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \slv_reg2[19]_i_1\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \slv_reg2[1]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \slv_reg2[20]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \slv_reg2[21]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \slv_reg2[22]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \slv_reg2[23]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \slv_reg2[24]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \slv_reg2[25]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \slv_reg2[26]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \slv_reg2[27]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \slv_reg2[28]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \slv_reg2[29]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \slv_reg2[2]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \slv_reg2[30]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \slv_reg2[31]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \slv_reg2[31]_i_2\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \slv_reg2[3]_i_1\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \slv_reg2[4]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \slv_reg2[5]_i_1\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \slv_reg2[6]_i_1\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \slv_reg2[7]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \slv_reg2[8]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \slv_reg2[9]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \slv_reg3[31]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \slv_reg4[31]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \slv_reg5[31]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \slv_reg6[0]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \slv_reg6[10]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \slv_reg6[11]_i_1\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \slv_reg6[12]_i_1\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \slv_reg6[13]_i_1\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \slv_reg6[14]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \slv_reg6[15]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \slv_reg6[16]_i_1\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \slv_reg6[17]_i_1\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \slv_reg6[18]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \slv_reg6[19]_i_1\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \slv_reg6[1]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \slv_reg6[20]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \slv_reg6[21]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \slv_reg6[22]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \slv_reg6[23]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \slv_reg6[24]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \slv_reg6[25]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \slv_reg6[26]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \slv_reg6[27]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \slv_reg6[28]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \slv_reg6[29]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \slv_reg6[2]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \slv_reg6[30]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \slv_reg6[31]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \slv_reg6[31]_i_2\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \slv_reg6[3]_i_1\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \slv_reg6[4]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \slv_reg6[5]_i_1\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \slv_reg6[6]_i_1\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \slv_reg6[7]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \slv_reg6[8]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \slv_reg6[9]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \slv_reg7[31]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \s_ppm_end_count[0]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \s_ppm_end_count[1]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \s_ppm_end_count[4]_i_2\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \s_ppm_end_count[7]_i_4\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \s_ppm_end_count[7]_i_5\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \s_ppm_start_count[0]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \s_ppm_start_count[1]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \s_ppm_start_count[4]_i_2\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \s_ppm_start_count[7]_i_4\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \s_ppm_start_count[7]_i_5\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of s_pulse_end_i_1 : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of s_pulse_start_i_1 : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \slv_reg1[0]_i_1\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \slv_reg1[1]_i_1\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \slv_reg1[2]_i_1\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \slv_reg2[0]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \slv_reg2[10]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \slv_reg2[11]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \slv_reg2[12]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \slv_reg2[13]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \slv_reg2[14]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \slv_reg2[15]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \slv_reg2[16]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \slv_reg2[17]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \slv_reg2[18]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \slv_reg2[19]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \slv_reg2[1]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \slv_reg2[20]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \slv_reg2[21]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \slv_reg2[22]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \slv_reg2[23]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \slv_reg2[24]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \slv_reg2[25]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \slv_reg2[26]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \slv_reg2[27]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \slv_reg2[28]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \slv_reg2[29]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \slv_reg2[2]_i_1\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \slv_reg2[30]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \slv_reg2[31]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \slv_reg2[31]_i_2\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \slv_reg2[3]_i_1\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \slv_reg2[4]_i_1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \slv_reg2[5]_i_1\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \slv_reg2[6]_i_1\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \slv_reg2[7]_i_1\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \slv_reg2[8]_i_1\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \slv_reg2[9]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \slv_reg3[31]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \slv_reg4[31]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \slv_reg5[31]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \slv_reg6[0]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \slv_reg6[10]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \slv_reg6[11]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \slv_reg6[12]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \slv_reg6[13]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \slv_reg6[14]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \slv_reg6[15]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \slv_reg6[16]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \slv_reg6[17]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \slv_reg6[18]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \slv_reg6[19]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \slv_reg6[1]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \slv_reg6[20]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \slv_reg6[21]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \slv_reg6[22]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \slv_reg6[23]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \slv_reg6[24]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \slv_reg6[25]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \slv_reg6[26]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \slv_reg6[27]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \slv_reg6[28]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \slv_reg6[29]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \slv_reg6[2]_i_1\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \slv_reg6[30]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \slv_reg6[31]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \slv_reg6[31]_i_2\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \slv_reg6[3]_i_1\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \slv_reg6[4]_i_1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \slv_reg6[5]_i_1\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \slv_reg6[6]_i_1\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \slv_reg6[7]_i_1\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \slv_reg6[8]_i_1\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \slv_reg6[9]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \slv_reg7[31]_i_1\ : label is "soft_lutpair5";
 begin
-\FSM_sequential_s_c_state[0]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"BABABABABABABBBA"
-    )
-        port map (
-      I0 => \FSM_sequential_s_c_state[0]_i_2_n_0\,
-      I1 => s_c_state(2),
-      I2 => \FSM_sequential_s_c_state[0]_i_3_n_0\,
-      I3 => \FSM_sequential_s_c_state[0]_i_4_n_0\,
-      I4 => \FSM_sequential_s_c_state[2]_i_2_n_0\,
-      I5 => \FSM_sequential_s_c_state[2]_i_3_n_0\,
-      O => s_n_state(0)
-    );
-\FSM_sequential_s_c_state[0]_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"40"
-    )
-        port map (
-      I0 => s_c_state(1),
-      I1 => s_c_state(2),
-      I2 => i_ppm,
-      O => \FSM_sequential_s_c_state[0]_i_2_n_0\
-    );
-\FSM_sequential_s_c_state[0]_i_3\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"033A"
-    )
-        port map (
-      I0 => Q(0),
-      I1 => i_ppm,
-      I2 => s_c_state(0),
-      I3 => s_c_state(1),
-      O => \FSM_sequential_s_c_state[0]_i_3_n_0\
-    );
-\FSM_sequential_s_c_state[0]_i_4\: unisim.vcomponents.LUT2
+\FSM_onehot_s_c_state[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
-      I0 => s_c_state(1),
-      I1 => s_c_state(0),
-      O => \FSM_sequential_s_c_state[0]_i_4_n_0\
+      I0 => p_1_in,
+      I1 => s_pulse_end_reg_n_0,
+      O => \FSM_onehot_s_c_state[0]_i_1_n_0\
     );
-\FSM_sequential_s_c_state[1]_i_1\: unisim.vcomponents.LUT4
+\FSM_onehot_s_c_state[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"1242"
+      INIT => X"4444F44444444444"
     )
         port map (
-      I0 => s_c_state(1),
-      I1 => s_c_state(2),
-      I2 => s_c_state(0),
-      I3 => i_ppm,
-      O => s_n_state(1)
+      I0 => Q(0),
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[1]\,
+      I2 => s_detect_reg_sel(1),
+      I3 => s_detect_reg_sel(2),
+      I4 => s_detect_reg_sel(0),
+      I5 => \FSM_onehot_s_c_state_reg_n_0_[0]\,
+      O => \FSM_onehot_s_c_state[1]_i_1_n_0\
     );
-\FSM_sequential_s_c_state[2]_i_1\: unisim.vcomponents.LUT6
+\FSM_onehot_s_c_state[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00FFFFFFA800A800"
+      INIT => X"FFFFFFFFFF0E0000"
     )
         port map (
-      I0 => s_c_state(0),
-      I1 => \FSM_sequential_s_c_state[2]_i_2_n_0\,
-      I2 => \FSM_sequential_s_c_state[2]_i_3_n_0\,
-      I3 => s_c_state(1),
-      I4 => \FSM_sequential_s_c_state[2]_i_4_n_0\,
-      I5 => s_c_state(2),
-      O => s_n_state(2)
+      I0 => s_idle_pulse_width(14),
+      I1 => \FSM_onehot_s_c_state[5]_i_2_n_0\,
+      I2 => \FSM_onehot_s_c_state[5]_i_3_n_0\,
+      I3 => \FSM_onehot_s_c_state[5]_i_4_n_0\,
+      I4 => \FSM_onehot_s_c_state_reg_n_0_[4]\,
+      I5 => \FSM_onehot_s_c_state[2]_i_2_n_0\,
+      O => \FSM_onehot_s_c_state[2]_i_1_n_0\
     );
-\FSM_sequential_s_c_state[2]_i_2\: unisim.vcomponents.LUT5
+\FSM_onehot_s_c_state[2]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000FF8A"
+      INIT => X"FFFF4FFF44444444"
+    )
+        port map (
+      I0 => s_pulse_start_reg_n_0,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I2 => s_detect_reg_sel(1),
+      I3 => s_detect_reg_sel(2),
+      I4 => s_detect_reg_sel(0),
+      I5 => \FSM_onehot_s_c_state_reg_n_0_[0]\,
+      O => \FSM_onehot_s_c_state[2]_i_2_n_0\
+    );
+\FSM_onehot_s_c_state[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8F88"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I1 => s_pulse_start_reg_n_0,
+      I2 => s_pulse_end_reg_n_0,
+      I3 => p_1_in,
+      O => \FSM_onehot_s_c_state[3]_i_1_n_0\
+    );
+\FSM_onehot_s_c_state[4]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      I1 => s_pulse_end_reg_n_0,
+      O => \FSM_onehot_s_c_state[4]_i_1_n_0\
+    );
+\FSM_onehot_s_c_state[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFF00F10000"
+    )
+        port map (
+      I0 => s_idle_pulse_width(14),
+      I1 => \FSM_onehot_s_c_state[5]_i_2_n_0\,
+      I2 => \FSM_onehot_s_c_state[5]_i_3_n_0\,
+      I3 => \FSM_onehot_s_c_state[5]_i_4_n_0\,
+      I4 => \FSM_onehot_s_c_state_reg_n_0_[4]\,
+      I5 => \FSM_onehot_s_c_state[5]_i_5_n_0\,
+      O => \FSM_onehot_s_c_state[5]_i_1_n_0\
+    );
+\FSM_onehot_s_c_state[5]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"A8A8A8A8A8A8A888"
     )
         port map (
       I0 => s_idle_pulse_width(13),
-      I1 => \FSM_sequential_s_c_state[2]_i_5_n_0\,
-      I2 => \FSM_sequential_s_c_state[2]_i_6_n_0\,
-      I3 => s_idle_pulse_width(14),
-      I4 => \FSM_sequential_s_c_state[2]_i_7_n_0\,
-      O => \FSM_sequential_s_c_state[2]_i_2_n_0\
+      I1 => \FSM_onehot_s_c_state[5]_i_6_n_0\,
+      I2 => s_idle_pulse_width(8),
+      I3 => s_idle_pulse_width(7),
+      I4 => s_idle_pulse_width(6),
+      I5 => s_idle_pulse_width(5),
+      O => \FSM_onehot_s_c_state[5]_i_2_n_0\
     );
-\FSM_sequential_s_c_state[2]_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFFFFFE"
-    )
-        port map (
-      I0 => \FSM_sequential_s_c_state[2]_i_8_n_0\,
-      I1 => \FSM_sequential_s_c_state[2]_i_9_n_0\,
-      I2 => s_idle_pulse_width(31),
-      I3 => s_idle_pulse_width(21),
-      I4 => s_idle_pulse_width(22),
-      O => \FSM_sequential_s_c_state[2]_i_3_n_0\
-    );
-\FSM_sequential_s_c_state[2]_i_4\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"08"
-    )
-        port map (
-      I0 => s_detect_reg_sel(1),
-      I1 => s_detect_reg_sel(2),
-      I2 => s_detect_reg_sel(0),
-      O => \FSM_sequential_s_c_state[2]_i_4_n_0\
-    );
-\FSM_sequential_s_c_state[2]_i_5\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FFFE"
-    )
-        port map (
-      I0 => s_idle_pulse_width(11),
-      I1 => s_idle_pulse_width(12),
-      I2 => s_idle_pulse_width(9),
-      I3 => s_idle_pulse_width(10),
-      O => \FSM_sequential_s_c_state[2]_i_5_n_0\
-    );
-\FSM_sequential_s_c_state[2]_i_6\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"5557"
-    )
-        port map (
-      I0 => s_idle_pulse_width(8),
-      I1 => s_idle_pulse_width(7),
-      I2 => s_idle_pulse_width(6),
-      I3 => s_idle_pulse_width(5),
-      O => \FSM_sequential_s_c_state[2]_i_6_n_0\
-    );
-\FSM_sequential_s_c_state[2]_i_7\: unisim.vcomponents.LUT4
+\FSM_onehot_s_c_state[5]_i_3\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"7FFF"
     )
@@ -353,9 +373,43 @@ begin
       I1 => s_idle_pulse_width(18),
       I2 => s_idle_pulse_width(15),
       I3 => s_idle_pulse_width(16),
-      O => \FSM_sequential_s_c_state[2]_i_7_n_0\
+      O => \FSM_onehot_s_c_state[5]_i_3_n_0\
     );
-\FSM_sequential_s_c_state[2]_i_8\: unisim.vcomponents.LUT6
+\FSM_onehot_s_c_state[5]_i_4\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFFE"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state[5]_i_7_n_0\,
+      I1 => \FSM_onehot_s_c_state[5]_i_8_n_0\,
+      I2 => s_idle_pulse_width(31),
+      I3 => s_idle_pulse_width(21),
+      I4 => s_idle_pulse_width(22),
+      O => \FSM_onehot_s_c_state[5]_i_4_n_0\
+    );
+\FSM_onehot_s_c_state[5]_i_5\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8F88"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[1]\,
+      I1 => Q(0),
+      I2 => s_pulse_start_reg_n_0,
+      I3 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      O => \FSM_onehot_s_c_state[5]_i_5_n_0\
+    );
+\FSM_onehot_s_c_state[5]_i_6\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => s_idle_pulse_width(11),
+      I1 => s_idle_pulse_width(12),
+      I2 => s_idle_pulse_width(9),
+      I3 => s_idle_pulse_width(10),
+      O => \FSM_onehot_s_c_state[5]_i_6_n_0\
+    );
+\FSM_onehot_s_c_state[5]_i_7\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFFFFFFFE"
     )
@@ -366,9 +420,9 @@ begin
       I3 => s_idle_pulse_width(28),
       I4 => s_idle_pulse_width(25),
       I5 => s_idle_pulse_width(23),
-      O => \FSM_sequential_s_c_state[2]_i_8_n_0\
+      O => \FSM_onehot_s_c_state[5]_i_7_n_0\
     );
-\FSM_sequential_s_c_state[2]_i_9\: unisim.vcomponents.LUT4
+\FSM_onehot_s_c_state[5]_i_8\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFFE"
     )
@@ -377,75 +431,131 @@ begin
       I1 => s_idle_pulse_width(30),
       I2 => s_idle_pulse_width(24),
       I3 => s_idle_pulse_width(26),
-      O => \FSM_sequential_s_c_state[2]_i_9_n_0\
+      O => \FSM_onehot_s_c_state[5]_i_8_n_0\
     );
-\FSM_sequential_s_c_state_reg[0]\: unisim.vcomponents.FDCE
-     port map (
-      C => s00_axi_aclk,
-      CE => '1',
-      CLR => SR(0),
-      D => s_n_state(0),
-      Q => s_c_state(0)
-    );
-\FSM_sequential_s_c_state_reg[1]\: unisim.vcomponents.FDCE
-     port map (
-      C => s00_axi_aclk,
-      CE => '1',
-      CLR => SR(0),
-      D => s_n_state(1),
-      Q => s_c_state(1)
-    );
-\FSM_sequential_s_c_state_reg[2]\: unisim.vcomponents.FDCE
-     port map (
-      C => s00_axi_aclk,
-      CE => '1',
-      CLR => SR(0),
-      D => s_n_state(2),
-      Q => s_c_state(2)
-    );
-\s_chan[0]_i_1\: unisim.vcomponents.LUT4
+\FSM_onehot_s_c_state[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"4666"
+      INIT => X"8F88"
     )
         port map (
-      I0 => \s_chan[2]_i_2_n_0\,
-      I1 => s_detect_reg_sel(0),
-      I2 => s_detect_reg_sel(2),
-      I3 => s_detect_reg_sel(1),
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      I1 => s_pulse_start_reg_n_0,
+      I2 => s_pulse_end_reg_n_0,
+      I3 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      O => \FSM_onehot_s_c_state[6]_i_1_n_0\
+    );
+\FSM_onehot_s_c_state_reg[0]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      CLR => SR(0),
+      D => \FSM_onehot_s_c_state[0]_i_1_n_0\,
+      Q => \FSM_onehot_s_c_state_reg_n_0_[0]\
+    );
+\FSM_onehot_s_c_state_reg[1]\: unisim.vcomponents.FDPE
+    generic map(
+      INIT => '1'
+    )
+        port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      D => \FSM_onehot_s_c_state[1]_i_1_n_0\,
+      PRE => SR(0),
+      Q => \FSM_onehot_s_c_state_reg_n_0_[1]\
+    );
+\FSM_onehot_s_c_state_reg[2]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      CLR => SR(0),
+      D => \FSM_onehot_s_c_state[2]_i_1_n_0\,
+      Q => \FSM_onehot_s_c_state_reg_n_0_[2]\
+    );
+\FSM_onehot_s_c_state_reg[3]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      CLR => SR(0),
+      D => \FSM_onehot_s_c_state[3]_i_1_n_0\,
+      Q => p_1_in
+    );
+\FSM_onehot_s_c_state_reg[4]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      CLR => SR(0),
+      D => \FSM_onehot_s_c_state[4]_i_1_n_0\,
+      Q => \FSM_onehot_s_c_state_reg_n_0_[4]\
+    );
+\FSM_onehot_s_c_state_reg[5]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      CLR => SR(0),
+      D => \FSM_onehot_s_c_state[5]_i_1_n_0\,
+      Q => \FSM_onehot_s_c_state_reg_n_0_[5]\
+    );
+\FSM_onehot_s_c_state_reg[6]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      CLR => SR(0),
+      D => \FSM_onehot_s_c_state[6]_i_1_n_0\,
+      Q => \FSM_onehot_s_c_state_reg_n_0_[6]\
+    );
+\s_chan[0]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"70787878"
+    )
+        port map (
+      I0 => s_pulse_end_reg_n_0,
+      I1 => p_1_in,
+      I2 => s_detect_reg_sel(0),
+      I3 => s_detect_reg_sel(2),
+      I4 => s_detect_reg_sel(1),
       O => \s_chan[0]_i_1_n_0\
     );
-\s_chan[1]_i_1\: unisim.vcomponents.LUT4
+\s_chan[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"4788"
+      INIT => X"707F8080"
     )
         port map (
-      I0 => \s_chan[2]_i_2_n_0\,
-      I1 => s_detect_reg_sel(0),
-      I2 => s_detect_reg_sel(2),
-      I3 => s_detect_reg_sel(1),
+      I0 => s_pulse_end_reg_n_0,
+      I1 => p_1_in,
+      I2 => s_detect_reg_sel(0),
+      I3 => s_detect_reg_sel(2),
+      I4 => s_detect_reg_sel(1),
       O => \s_chan[1]_i_1_n_0\
     );
-\s_chan[2]_i_1\: unisim.vcomponents.LUT4
+\s_chan[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"48F0"
+      INIT => X"7080FF00"
     )
         port map (
-      I0 => \s_chan[2]_i_2_n_0\,
-      I1 => s_detect_reg_sel(0),
-      I2 => s_detect_reg_sel(2),
-      I3 => s_detect_reg_sel(1),
+      I0 => s_pulse_end_reg_n_0,
+      I1 => p_1_in,
+      I2 => s_detect_reg_sel(0),
+      I3 => s_detect_reg_sel(2),
+      I4 => s_detect_reg_sel(1),
       O => \s_chan[2]_i_1_n_0\
-    );
-\s_chan[2]_i_2\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0040"
-    )
-        port map (
-      I0 => s_c_state(1),
-      I1 => s_c_state(2),
-      I2 => s_c_state(0),
-      I3 => i_ppm,
-      O => \s_chan[2]_i_2_n_0\
     );
 \s_chan_reg[0]\: unisim.vcomponents.FDCE
      port map (
@@ -471,26 +581,29 @@ begin
       D => \s_chan[2]_i_1_n_0\,
       Q => s_detect_reg_sel(2)
     );
-\s_count[0]_i_1\: unisim.vcomponents.LUT4
+\s_count[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0A28"
+      INIT => X"A8A8A8A8FFFFFFA8"
     )
         port map (
-      I0 => i_ppm,
-      I1 => s_c_state(0),
-      I2 => s_c_state(1),
-      I3 => s_c_state(2),
+      I0 => s_pulse_start_reg_n_0,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I2 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      I3 => p_1_in,
+      I4 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      I5 => s_pulse_end_reg_n_0,
       O => s_pulse_counter_en
     );
-\s_count[0]_i_3\: unisim.vcomponents.LUT4
+\s_count[0]_i_3\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"C9DB"
+      INIT => X"01010111"
     )
         port map (
-      I0 => s_c_state(0),
-      I1 => s_c_state(1),
-      I2 => s_c_state(2),
-      I3 => i_ppm,
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      I1 => p_1_in,
+      I2 => s_pulse_start_reg_n_0,
+      I3 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I4 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
       O => \s_count[0]_i_3_n_0\
     );
 \s_count[0]_i_4\: unisim.vcomponents.LUT1
@@ -879,21 +992,10 @@ begin
       D => \s_count_reg[8]_i_1_n_6\,
       Q => s_ppm_count(9)
     );
-\s_idle_pulse_width[31]_i_1\: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0004"
-    )
-        port map (
-      I0 => s_c_state(2),
-      I1 => s_c_state(1),
-      I2 => s_c_state(0),
-      I3 => i_ppm,
-      O => s_idle_read
-    );
 \s_idle_pulse_width_reg[10]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(10),
       Q => s_idle_pulse_width(10)
@@ -901,7 +1003,7 @@ begin
 \s_idle_pulse_width_reg[11]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(11),
       Q => s_idle_pulse_width(11)
@@ -909,7 +1011,7 @@ begin
 \s_idle_pulse_width_reg[12]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(12),
       Q => s_idle_pulse_width(12)
@@ -917,7 +1019,7 @@ begin
 \s_idle_pulse_width_reg[13]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(13),
       Q => s_idle_pulse_width(13)
@@ -925,7 +1027,7 @@ begin
 \s_idle_pulse_width_reg[14]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(14),
       Q => s_idle_pulse_width(14)
@@ -933,7 +1035,7 @@ begin
 \s_idle_pulse_width_reg[15]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(15),
       Q => s_idle_pulse_width(15)
@@ -941,7 +1043,7 @@ begin
 \s_idle_pulse_width_reg[16]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(16),
       Q => s_idle_pulse_width(16)
@@ -949,7 +1051,7 @@ begin
 \s_idle_pulse_width_reg[17]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(17),
       Q => s_idle_pulse_width(17)
@@ -957,7 +1059,7 @@ begin
 \s_idle_pulse_width_reg[18]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(18),
       Q => s_idle_pulse_width(18)
@@ -965,7 +1067,7 @@ begin
 \s_idle_pulse_width_reg[19]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(19),
       Q => s_idle_pulse_width(19)
@@ -973,7 +1075,7 @@ begin
 \s_idle_pulse_width_reg[20]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(20),
       Q => s_idle_pulse_width(20)
@@ -981,7 +1083,7 @@ begin
 \s_idle_pulse_width_reg[21]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(21),
       Q => s_idle_pulse_width(21)
@@ -989,7 +1091,7 @@ begin
 \s_idle_pulse_width_reg[22]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(22),
       Q => s_idle_pulse_width(22)
@@ -997,7 +1099,7 @@ begin
 \s_idle_pulse_width_reg[23]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(23),
       Q => s_idle_pulse_width(23)
@@ -1005,7 +1107,7 @@ begin
 \s_idle_pulse_width_reg[24]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(24),
       Q => s_idle_pulse_width(24)
@@ -1013,7 +1115,7 @@ begin
 \s_idle_pulse_width_reg[25]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(25),
       Q => s_idle_pulse_width(25)
@@ -1021,7 +1123,7 @@ begin
 \s_idle_pulse_width_reg[26]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(26),
       Q => s_idle_pulse_width(26)
@@ -1029,7 +1131,7 @@ begin
 \s_idle_pulse_width_reg[27]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(27),
       Q => s_idle_pulse_width(27)
@@ -1037,7 +1139,7 @@ begin
 \s_idle_pulse_width_reg[28]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(28),
       Q => s_idle_pulse_width(28)
@@ -1045,7 +1147,7 @@ begin
 \s_idle_pulse_width_reg[29]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(29),
       Q => s_idle_pulse_width(29)
@@ -1053,7 +1155,7 @@ begin
 \s_idle_pulse_width_reg[30]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(30),
       Q => s_idle_pulse_width(30)
@@ -1061,7 +1163,7 @@ begin
 \s_idle_pulse_width_reg[31]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(31),
       Q => s_idle_pulse_width(31)
@@ -1069,7 +1171,7 @@ begin
 \s_idle_pulse_width_reg[5]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(5),
       Q => s_idle_pulse_width(5)
@@ -1077,7 +1179,7 @@ begin
 \s_idle_pulse_width_reg[6]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(6),
       Q => s_idle_pulse_width(6)
@@ -1085,7 +1187,7 @@ begin
 \s_idle_pulse_width_reg[7]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(7),
       Q => s_idle_pulse_width(7)
@@ -1093,7 +1195,7 @@ begin
 \s_idle_pulse_width_reg[8]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(8),
       Q => s_idle_pulse_width(8)
@@ -1101,40 +1203,518 @@ begin
 \s_idle_pulse_width_reg[9]\: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
-      CE => s_idle_read,
+      CE => \FSM_onehot_s_c_state[4]_i_1_n_0\,
       CLR => SR(0),
       D => s_ppm_count(9),
       Q => s_idle_pulse_width(9)
     );
-\slv_reg1[0]_i_1\: unisim.vcomponents.LUT3
+\s_ppm_end_count[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"70"
+      INIT => X"000E"
     )
         port map (
-      I0 => s_c_state(1),
-      I1 => s_c_state(2),
-      I2 => s_c_state(0),
-      O => D(0)
+      I0 => p_1_in,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      I2 => i_ppm,
+      I3 => s_ppm_end_count(0),
+      O => \s_ppm_end_count[0]_i_1_n_0\
+    );
+\s_ppm_end_count[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"000E0E00"
+    )
+        port map (
+      I0 => p_1_in,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      I2 => i_ppm,
+      I3 => s_ppm_end_count(1),
+      I4 => s_ppm_end_count(0),
+      O => \s_ppm_end_count[1]_i_1_n_0\
+    );
+\s_ppm_end_count[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"000000000EE0E0E0"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      I1 => p_1_in,
+      I2 => s_ppm_end_count(2),
+      I3 => s_ppm_end_count(1),
+      I4 => s_ppm_end_count(0),
+      I5 => i_ppm,
+      O => \s_ppm_end_count[2]_i_1_n_0\
+    );
+\s_ppm_end_count[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000014444444"
+    )
+        port map (
+      I0 => \s_ppm_end_count[7]_i_4_n_0\,
+      I1 => s_ppm_end_count(3),
+      I2 => s_ppm_end_count(2),
+      I3 => s_ppm_end_count(0),
+      I4 => s_ppm_end_count(1),
+      I5 => i_ppm,
+      O => \s_ppm_end_count[3]_i_1_n_0\
+    );
+\s_ppm_end_count[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"0000E00E"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      I1 => p_1_in,
+      I2 => s_ppm_end_count(4),
+      I3 => \s_ppm_end_count[4]_i_2_n_0\,
+      I4 => i_ppm,
+      O => \s_ppm_end_count[4]_i_1_n_0\
+    );
+\s_ppm_end_count[4]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7FFF"
+    )
+        port map (
+      I0 => s_ppm_end_count(2),
+      I1 => s_ppm_end_count(0),
+      I2 => s_ppm_end_count(1),
+      I3 => s_ppm_end_count(3),
+      O => \s_ppm_end_count[4]_i_2_n_0\
+    );
+\s_ppm_end_count[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00000EE0"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      I1 => p_1_in,
+      I2 => s_ppm_end_count(5),
+      I3 => \s_ppm_end_count[7]_i_5_n_0\,
+      I4 => i_ppm,
+      O => \s_ppm_end_count[5]_i_1_n_0\
+    );
+\s_ppm_end_count[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0054540054540000"
+    )
+        port map (
+      I0 => i_ppm,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      I2 => p_1_in,
+      I3 => \s_ppm_end_count[7]_i_5_n_0\,
+      I4 => s_ppm_end_count(6),
+      I5 => s_ppm_end_count(5),
+      O => \s_ppm_end_count[6]_i_1_n_0\
+    );
+\s_ppm_end_count[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"020202FF"
+    )
+        port map (
+      I0 => \s_ppm_end_count[7]_i_3_n_0\,
+      I1 => s_ppm_end_count(7),
+      I2 => s_pulse_end_reg_n_0,
+      I3 => p_1_in,
+      I4 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      O => \s_ppm_end_count[7]_i_1_n_0\
+    );
+\s_ppm_end_count[7]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000014444444"
+    )
+        port map (
+      I0 => \s_ppm_end_count[7]_i_4_n_0\,
+      I1 => s_ppm_end_count(7),
+      I2 => s_ppm_end_count(5),
+      I3 => s_ppm_end_count(6),
+      I4 => \s_ppm_end_count[7]_i_5_n_0\,
+      I5 => i_ppm,
+      O => \s_ppm_end_count[7]_i_2_n_0\
+    );
+\s_ppm_end_count[7]_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"01FFFFFF"
+    )
+        port map (
+      I0 => s_ppm_end_count(3),
+      I1 => s_ppm_end_count(4),
+      I2 => s_ppm_end_count(2),
+      I3 => s_ppm_end_count(6),
+      I4 => s_ppm_end_count(5),
+      O => \s_ppm_end_count[7]_i_3_n_0\
+    );
+\s_ppm_end_count[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => p_1_in,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      O => \s_ppm_end_count[7]_i_4_n_0\
+    );
+\s_ppm_end_count[7]_i_5\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => s_ppm_end_count(4),
+      I1 => s_ppm_end_count(3),
+      I2 => s_ppm_end_count(1),
+      I3 => s_ppm_end_count(0),
+      I4 => s_ppm_end_count(2),
+      O => \s_ppm_end_count[7]_i_5_n_0\
+    );
+\s_ppm_end_count_reg[0]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_end_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_end_count[0]_i_1_n_0\,
+      Q => s_ppm_end_count(0)
+    );
+\s_ppm_end_count_reg[1]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_end_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_end_count[1]_i_1_n_0\,
+      Q => s_ppm_end_count(1)
+    );
+\s_ppm_end_count_reg[2]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_end_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_end_count[2]_i_1_n_0\,
+      Q => s_ppm_end_count(2)
+    );
+\s_ppm_end_count_reg[3]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_end_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_end_count[3]_i_1_n_0\,
+      Q => s_ppm_end_count(3)
+    );
+\s_ppm_end_count_reg[4]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_end_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_end_count[4]_i_1_n_0\,
+      Q => s_ppm_end_count(4)
+    );
+\s_ppm_end_count_reg[5]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_end_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_end_count[5]_i_1_n_0\,
+      Q => s_ppm_end_count(5)
+    );
+\s_ppm_end_count_reg[6]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_end_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_end_count[6]_i_1_n_0\,
+      Q => s_ppm_end_count(6)
+    );
+\s_ppm_end_count_reg[7]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_end_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_end_count[7]_i_2_n_0\,
+      Q => s_ppm_end_count(7)
+    );
+\s_ppm_start_count[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"00E0"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      I2 => i_ppm,
+      I3 => s_ppm_start_count(0),
+      O => \p_1_in__0\(0)
+    );
+\s_ppm_start_count[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00E0E000"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      I2 => i_ppm,
+      I3 => s_ppm_start_count(1),
+      I4 => s_ppm_start_count(0),
+      O => \p_1_in__0\(1)
+    );
+\s_ppm_start_count[2]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00E0E000E000E000"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I2 => i_ppm,
+      I3 => s_ppm_start_count(2),
+      I4 => s_ppm_start_count(1),
+      I5 => s_ppm_start_count(0),
+      O => \s_ppm_start_count[2]_i_1_n_0\
+    );
+\s_ppm_start_count[3]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0440404040404040"
+    )
+        port map (
+      I0 => \s_ppm_start_count[7]_i_4_n_0\,
+      I1 => i_ppm,
+      I2 => s_ppm_start_count(3),
+      I3 => s_ppm_start_count(2),
+      I4 => s_ppm_start_count(0),
+      I5 => s_ppm_start_count(1),
+      O => \s_ppm_start_count[3]_i_1_n_0\
+    );
+\s_ppm_start_count[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"E00000E0"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I2 => i_ppm,
+      I3 => s_ppm_start_count(4),
+      I4 => \s_ppm_start_count[4]_i_2_n_0\,
+      O => \s_ppm_start_count[4]_i_1_n_0\
+    );
+\s_ppm_start_count[4]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7FFF"
+    )
+        port map (
+      I0 => s_ppm_start_count(2),
+      I1 => s_ppm_start_count(0),
+      I2 => s_ppm_start_count(1),
+      I3 => s_ppm_start_count(3),
+      O => \s_ppm_start_count[4]_i_2_n_0\
+    );
+\s_ppm_start_count[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00E0E000"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I2 => i_ppm,
+      I3 => s_ppm_start_count(5),
+      I4 => \s_ppm_start_count[7]_i_5_n_0\,
+      O => \s_ppm_start_count[5]_i_1_n_0\
+    );
+\s_ppm_start_count[6]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"00A8A800A8A80000"
+    )
+        port map (
+      I0 => i_ppm,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      I2 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I3 => \s_ppm_start_count[7]_i_5_n_0\,
+      I4 => s_ppm_start_count(6),
+      I5 => s_ppm_start_count(5),
+      O => \p_1_in__0\(6)
+    );
+\s_ppm_start_count[7]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"020202FF"
+    )
+        port map (
+      I0 => \s_ppm_start_count[7]_i_3_n_0\,
+      I1 => s_ppm_start_count(7),
+      I2 => s_pulse_start_reg_n_0,
+      I3 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I4 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      O => \s_ppm_start_count[7]_i_1_n_0\
+    );
+\s_ppm_start_count[7]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"1444444400000000"
+    )
+        port map (
+      I0 => \s_ppm_start_count[7]_i_4_n_0\,
+      I1 => s_ppm_start_count(7),
+      I2 => s_ppm_start_count(5),
+      I3 => s_ppm_start_count(6),
+      I4 => \s_ppm_start_count[7]_i_5_n_0\,
+      I5 => i_ppm,
+      O => \s_ppm_start_count[7]_i_2_n_0\
+    );
+\s_ppm_start_count[7]_i_3\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"01FFFFFF"
+    )
+        port map (
+      I0 => s_ppm_start_count(3),
+      I1 => s_ppm_start_count(4),
+      I2 => s_ppm_start_count(2),
+      I3 => s_ppm_start_count(6),
+      I4 => s_ppm_start_count(5),
+      O => \s_ppm_start_count[7]_i_3_n_0\
+    );
+\s_ppm_start_count[7]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      O => \s_ppm_start_count[7]_i_4_n_0\
+    );
+\s_ppm_start_count[7]_i_5\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => s_ppm_start_count(4),
+      I1 => s_ppm_start_count(3),
+      I2 => s_ppm_start_count(1),
+      I3 => s_ppm_start_count(0),
+      I4 => s_ppm_start_count(2),
+      O => \s_ppm_start_count[7]_i_5_n_0\
+    );
+\s_ppm_start_count_reg[0]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_start_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \p_1_in__0\(0),
+      Q => s_ppm_start_count(0)
+    );
+\s_ppm_start_count_reg[1]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_start_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \p_1_in__0\(1),
+      Q => s_ppm_start_count(1)
+    );
+\s_ppm_start_count_reg[2]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_start_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_start_count[2]_i_1_n_0\,
+      Q => s_ppm_start_count(2)
+    );
+\s_ppm_start_count_reg[3]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_start_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_start_count[3]_i_1_n_0\,
+      Q => s_ppm_start_count(3)
+    );
+\s_ppm_start_count_reg[4]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_start_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_start_count[4]_i_1_n_0\,
+      Q => s_ppm_start_count(4)
+    );
+\s_ppm_start_count_reg[5]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_start_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_start_count[5]_i_1_n_0\,
+      Q => s_ppm_start_count(5)
+    );
+\s_ppm_start_count_reg[6]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_start_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \p_1_in__0\(6),
+      Q => s_ppm_start_count(6)
+    );
+\s_ppm_start_count_reg[7]\: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => \s_ppm_start_count[7]_i_1_n_0\,
+      CLR => SR(0),
+      D => \s_ppm_start_count[7]_i_2_n_0\,
+      Q => s_ppm_start_count(7)
+    );
+s_pulse_end_i_1: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EEE0EEEE"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      I1 => p_1_in,
+      I2 => s_pulse_end_reg_n_0,
+      I3 => s_ppm_end_count(7),
+      I4 => \s_ppm_end_count[7]_i_3_n_0\,
+      O => s_pulse_end_i_1_n_0
+    );
+s_pulse_end_reg: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      CLR => SR(0),
+      D => s_pulse_end_i_1_n_0,
+      Q => s_pulse_end_reg_n_0
+    );
+s_pulse_start_i_1: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"EEE0EEEE"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I2 => s_pulse_start_reg_n_0,
+      I3 => s_ppm_start_count(7),
+      I4 => \s_ppm_start_count[7]_i_3_n_0\,
+      O => s_pulse_start_i_1_n_0
+    );
+s_pulse_start_reg: unisim.vcomponents.FDCE
+     port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      CLR => SR(0),
+      D => s_pulse_start_i_1_n_0,
+      Q => s_pulse_start_reg_n_0
+    );
+\slv_reg1[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
+    )
+        port map (
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[4]\,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
+      I2 => p_1_in,
+      O => \FSM_onehot_s_c_state_reg[0]_0\(0)
     );
 \slv_reg1[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"2A"
+      INIT => X"FE"
     )
         port map (
-      I0 => s_c_state(1),
-      I1 => s_c_state(2),
-      I2 => s_c_state(0),
-      O => D(1)
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[4]\,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[0]\,
+      I2 => \FSM_onehot_s_c_state_reg_n_0_[6]\,
+      O => \FSM_onehot_s_c_state_reg[0]_0\(1)
     );
 \slv_reg1[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"2A"
+      INIT => X"FE"
     )
         port map (
-      I0 => s_c_state(2),
-      I1 => s_c_state(0),
-      I2 => s_c_state(1),
-      O => D(2)
+      I0 => \FSM_onehot_s_c_state_reg_n_0_[0]\,
+      I1 => \FSM_onehot_s_c_state_reg_n_0_[2]\,
+      I2 => p_1_in,
+      O => \FSM_onehot_s_c_state_reg[0]_0\(2)
     );
 \slv_reg2[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1143,7 +1723,7 @@ begin
         port map (
       I0 => \s_ppm_count__0\(0),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(0)
+      O => D(0)
     );
 \slv_reg2[10]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1152,7 +1732,7 @@ begin
         port map (
       I0 => s_ppm_count(10),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(10)
+      O => D(10)
     );
 \slv_reg2[11]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1161,7 +1741,7 @@ begin
         port map (
       I0 => s_ppm_count(11),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(11)
+      O => D(11)
     );
 \slv_reg2[12]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1170,7 +1750,7 @@ begin
         port map (
       I0 => s_ppm_count(12),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(12)
+      O => D(12)
     );
 \slv_reg2[13]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1179,7 +1759,7 @@ begin
         port map (
       I0 => s_ppm_count(13),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(13)
+      O => D(13)
     );
 \slv_reg2[14]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1188,7 +1768,7 @@ begin
         port map (
       I0 => s_ppm_count(14),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(14)
+      O => D(14)
     );
 \slv_reg2[15]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1197,7 +1777,7 @@ begin
         port map (
       I0 => s_ppm_count(15),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(15)
+      O => D(15)
     );
 \slv_reg2[16]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1206,7 +1786,7 @@ begin
         port map (
       I0 => s_ppm_count(16),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(16)
+      O => D(16)
     );
 \slv_reg2[17]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1215,7 +1795,7 @@ begin
         port map (
       I0 => s_ppm_count(17),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(17)
+      O => D(17)
     );
 \slv_reg2[18]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1224,7 +1804,7 @@ begin
         port map (
       I0 => s_ppm_count(18),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(18)
+      O => D(18)
     );
 \slv_reg2[19]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1233,7 +1813,7 @@ begin
         port map (
       I0 => s_ppm_count(19),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(19)
+      O => D(19)
     );
 \slv_reg2[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1242,7 +1822,7 @@ begin
         port map (
       I0 => \s_ppm_count__0\(1),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(1)
+      O => D(1)
     );
 \slv_reg2[20]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1251,7 +1831,7 @@ begin
         port map (
       I0 => s_ppm_count(20),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(20)
+      O => D(20)
     );
 \slv_reg2[21]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1260,7 +1840,7 @@ begin
         port map (
       I0 => s_ppm_count(21),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(21)
+      O => D(21)
     );
 \slv_reg2[22]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1269,7 +1849,7 @@ begin
         port map (
       I0 => s_ppm_count(22),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(22)
+      O => D(22)
     );
 \slv_reg2[23]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1278,7 +1858,7 @@ begin
         port map (
       I0 => s_ppm_count(23),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(23)
+      O => D(23)
     );
 \slv_reg2[24]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1287,7 +1867,7 @@ begin
         port map (
       I0 => s_ppm_count(24),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(24)
+      O => D(24)
     );
 \slv_reg2[25]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1296,7 +1876,7 @@ begin
         port map (
       I0 => s_ppm_count(25),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(25)
+      O => D(25)
     );
 \slv_reg2[26]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1305,7 +1885,7 @@ begin
         port map (
       I0 => s_ppm_count(26),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(26)
+      O => D(26)
     );
 \slv_reg2[27]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1314,7 +1894,7 @@ begin
         port map (
       I0 => s_ppm_count(27),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(27)
+      O => D(27)
     );
 \slv_reg2[28]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1323,7 +1903,7 @@ begin
         port map (
       I0 => s_ppm_count(28),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(28)
+      O => D(28)
     );
 \slv_reg2[29]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1332,7 +1912,7 @@ begin
         port map (
       I0 => s_ppm_count(29),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(29)
+      O => D(29)
     );
 \slv_reg2[2]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1341,7 +1921,7 @@ begin
         port map (
       I0 => \s_ppm_count__0\(2),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(2)
+      O => D(2)
     );
 \slv_reg2[30]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1350,18 +1930,19 @@ begin
         port map (
       I0 => s_ppm_count(30),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(30)
+      O => D(30)
     );
-\slv_reg2[31]_i_1\: unisim.vcomponents.LUT4
+\slv_reg2[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"8802"
+      INIT => X"C0000040"
     )
         port map (
-      I0 => \s_chan[2]_i_2_n_0\,
-      I1 => s_detect_reg_sel(1),
-      I2 => s_detect_reg_sel(0),
-      I3 => s_detect_reg_sel(2),
-      O => \s_chan_reg[1]_1\(0)
+      I0 => s_detect_reg_sel(0),
+      I1 => p_1_in,
+      I2 => s_pulse_end_reg_n_0,
+      I3 => s_detect_reg_sel(1),
+      I4 => s_detect_reg_sel(2),
+      O => \s_chan_reg[0]_0\(0)
     );
 \slv_reg2[31]_i_2\: unisim.vcomponents.LUT2
     generic map(
@@ -1370,7 +1951,7 @@ begin
         port map (
       I0 => s_ppm_count(31),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(31)
+      O => D(31)
     );
 \slv_reg2[3]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1379,7 +1960,7 @@ begin
         port map (
       I0 => \s_ppm_count__0\(3),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(3)
+      O => D(3)
     );
 \slv_reg2[4]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1388,7 +1969,7 @@ begin
         port map (
       I0 => \s_ppm_count__0\(4),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(4)
+      O => D(4)
     );
 \slv_reg2[5]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1397,7 +1978,7 @@ begin
         port map (
       I0 => s_ppm_count(5),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(5)
+      O => D(5)
     );
 \slv_reg2[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1406,7 +1987,7 @@ begin
         port map (
       I0 => s_ppm_count(6),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(6)
+      O => D(6)
     );
 \slv_reg2[7]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1415,7 +1996,7 @@ begin
         port map (
       I0 => s_ppm_count(7),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(7)
+      O => D(7)
     );
 \slv_reg2[8]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1424,7 +2005,7 @@ begin
         port map (
       I0 => s_ppm_count(8),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(8)
+      O => D(8)
     );
 \slv_reg2[9]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1433,40 +2014,43 @@ begin
         port map (
       I0 => s_ppm_count(9),
       I1 => s_detect_reg_sel(2),
-      O => \s_count_reg[31]_0\(9)
+      O => D(9)
     );
-\slv_reg3[31]_i_1\: unisim.vcomponents.LUT4
+\slv_reg3[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"8820"
+      INIT => X"A4000000"
     )
         port map (
-      I0 => \s_chan[2]_i_2_n_0\,
-      I1 => s_detect_reg_sel(2),
-      I2 => s_detect_reg_sel(0),
-      I3 => s_detect_reg_sel(1),
+      I0 => s_detect_reg_sel(2),
+      I1 => s_detect_reg_sel(0),
+      I2 => s_detect_reg_sel(1),
+      I3 => p_1_in,
+      I4 => s_pulse_end_reg_n_0,
       O => \s_chan_reg[2]_1\(0)
     );
-\slv_reg4[31]_i_1\: unisim.vcomponents.LUT4
+\slv_reg4[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"8808"
+      INIT => X"80800080"
     )
         port map (
-      I0 => \s_chan[2]_i_2_n_0\,
-      I1 => s_detect_reg_sel(1),
-      I2 => s_detect_reg_sel(0),
-      I3 => s_detect_reg_sel(2),
-      O => \s_chan_reg[1]_0\(0)
+      I0 => s_pulse_end_reg_n_0,
+      I1 => p_1_in,
+      I2 => s_detect_reg_sel(1),
+      I3 => s_detect_reg_sel(0),
+      I4 => s_detect_reg_sel(2),
+      O => s_pulse_end_reg_0(0)
     );
-\slv_reg5[31]_i_1\: unisim.vcomponents.LUT4
+\slv_reg5[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"A800"
+      INIT => X"80808000"
     )
         port map (
-      I0 => \s_chan[2]_i_2_n_0\,
-      I1 => s_detect_reg_sel(2),
-      I2 => s_detect_reg_sel(0),
-      I3 => s_detect_reg_sel(1),
-      O => \s_chan_reg[2]_0\(0)
+      I0 => s_pulse_end_reg_n_0,
+      I1 => p_1_in,
+      I2 => s_detect_reg_sel(1),
+      I3 => s_detect_reg_sel(2),
+      I4 => s_detect_reg_sel(0),
+      O => s_pulse_end_reg_1(0)
     );
 \slv_reg6[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1475,7 +2059,7 @@ begin
         port map (
       I0 => \s_ppm_count__0\(0),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(0)
+      O => \s_count_reg[31]_0\(0)
     );
 \slv_reg6[10]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1484,7 +2068,7 @@ begin
         port map (
       I0 => s_ppm_count(10),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(10)
+      O => \s_count_reg[31]_0\(10)
     );
 \slv_reg6[11]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1493,7 +2077,7 @@ begin
         port map (
       I0 => s_ppm_count(11),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(11)
+      O => \s_count_reg[31]_0\(11)
     );
 \slv_reg6[12]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1502,7 +2086,7 @@ begin
         port map (
       I0 => s_ppm_count(12),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(12)
+      O => \s_count_reg[31]_0\(12)
     );
 \slv_reg6[13]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1511,7 +2095,7 @@ begin
         port map (
       I0 => s_ppm_count(13),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(13)
+      O => \s_count_reg[31]_0\(13)
     );
 \slv_reg6[14]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1520,7 +2104,7 @@ begin
         port map (
       I0 => s_ppm_count(14),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(14)
+      O => \s_count_reg[31]_0\(14)
     );
 \slv_reg6[15]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1529,7 +2113,7 @@ begin
         port map (
       I0 => s_ppm_count(15),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(15)
+      O => \s_count_reg[31]_0\(15)
     );
 \slv_reg6[16]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1538,7 +2122,7 @@ begin
         port map (
       I0 => s_ppm_count(16),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(16)
+      O => \s_count_reg[31]_0\(16)
     );
 \slv_reg6[17]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1547,7 +2131,7 @@ begin
         port map (
       I0 => s_ppm_count(17),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(17)
+      O => \s_count_reg[31]_0\(17)
     );
 \slv_reg6[18]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1556,7 +2140,7 @@ begin
         port map (
       I0 => s_ppm_count(18),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(18)
+      O => \s_count_reg[31]_0\(18)
     );
 \slv_reg6[19]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1565,7 +2149,7 @@ begin
         port map (
       I0 => s_ppm_count(19),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(19)
+      O => \s_count_reg[31]_0\(19)
     );
 \slv_reg6[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1574,7 +2158,7 @@ begin
         port map (
       I0 => \s_ppm_count__0\(1),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(1)
+      O => \s_count_reg[31]_0\(1)
     );
 \slv_reg6[20]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1583,7 +2167,7 @@ begin
         port map (
       I0 => s_ppm_count(20),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(20)
+      O => \s_count_reg[31]_0\(20)
     );
 \slv_reg6[21]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1592,7 +2176,7 @@ begin
         port map (
       I0 => s_ppm_count(21),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(21)
+      O => \s_count_reg[31]_0\(21)
     );
 \slv_reg6[22]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1601,7 +2185,7 @@ begin
         port map (
       I0 => s_ppm_count(22),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(22)
+      O => \s_count_reg[31]_0\(22)
     );
 \slv_reg6[23]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1610,7 +2194,7 @@ begin
         port map (
       I0 => s_ppm_count(23),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(23)
+      O => \s_count_reg[31]_0\(23)
     );
 \slv_reg6[24]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1619,7 +2203,7 @@ begin
         port map (
       I0 => s_ppm_count(24),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(24)
+      O => \s_count_reg[31]_0\(24)
     );
 \slv_reg6[25]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1628,7 +2212,7 @@ begin
         port map (
       I0 => s_ppm_count(25),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(25)
+      O => \s_count_reg[31]_0\(25)
     );
 \slv_reg6[26]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1637,7 +2221,7 @@ begin
         port map (
       I0 => s_ppm_count(26),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(26)
+      O => \s_count_reg[31]_0\(26)
     );
 \slv_reg6[27]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1646,7 +2230,7 @@ begin
         port map (
       I0 => s_ppm_count(27),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(27)
+      O => \s_count_reg[31]_0\(27)
     );
 \slv_reg6[28]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1655,7 +2239,7 @@ begin
         port map (
       I0 => s_ppm_count(28),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(28)
+      O => \s_count_reg[31]_0\(28)
     );
 \slv_reg6[29]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1664,7 +2248,7 @@ begin
         port map (
       I0 => s_ppm_count(29),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(29)
+      O => \s_count_reg[31]_0\(29)
     );
 \slv_reg6[2]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1673,7 +2257,7 @@ begin
         port map (
       I0 => \s_ppm_count__0\(2),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(2)
+      O => \s_count_reg[31]_0\(2)
     );
 \slv_reg6[30]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1682,18 +2266,19 @@ begin
         port map (
       I0 => s_ppm_count(30),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(30)
+      O => \s_count_reg[31]_0\(30)
     );
-\slv_reg6[31]_i_1\: unisim.vcomponents.LUT4
+\slv_reg6[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"D000"
+      INIT => X"A2000000"
     )
         port map (
-      I0 => s_detect_reg_sel(0),
-      I1 => s_detect_reg_sel(1),
-      I2 => \s_chan[2]_i_2_n_0\,
-      I3 => s_detect_reg_sel(2),
-      O => \s_chan_reg[0]_0\(0)
+      I0 => s_detect_reg_sel(2),
+      I1 => s_detect_reg_sel(0),
+      I2 => s_detect_reg_sel(1),
+      I3 => p_1_in,
+      I4 => s_pulse_end_reg_n_0,
+      O => E(0)
     );
 \slv_reg6[31]_i_2\: unisim.vcomponents.LUT2
     generic map(
@@ -1702,7 +2287,7 @@ begin
         port map (
       I0 => s_ppm_count(31),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(31)
+      O => \s_count_reg[31]_0\(31)
     );
 \slv_reg6[3]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1711,7 +2296,7 @@ begin
         port map (
       I0 => \s_ppm_count__0\(3),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(3)
+      O => \s_count_reg[31]_0\(3)
     );
 \slv_reg6[4]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1720,7 +2305,7 @@ begin
         port map (
       I0 => \s_ppm_count__0\(4),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(4)
+      O => \s_count_reg[31]_0\(4)
     );
 \slv_reg6[5]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1729,7 +2314,7 @@ begin
         port map (
       I0 => s_ppm_count(5),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(5)
+      O => \s_count_reg[31]_0\(5)
     );
 \slv_reg6[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1738,7 +2323,7 @@ begin
         port map (
       I0 => s_ppm_count(6),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(6)
+      O => \s_count_reg[31]_0\(6)
     );
 \slv_reg6[7]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1747,7 +2332,7 @@ begin
         port map (
       I0 => s_ppm_count(7),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(7)
+      O => \s_count_reg[31]_0\(7)
     );
 \slv_reg6[8]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1756,7 +2341,7 @@ begin
         port map (
       I0 => s_ppm_count(8),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(8)
+      O => \s_count_reg[31]_0\(8)
     );
 \slv_reg6[9]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -1765,25 +2350,26 @@ begin
         port map (
       I0 => s_ppm_count(9),
       I1 => s_detect_reg_sel(1),
-      O => \s_count_reg[31]_1\(9)
+      O => \s_count_reg[31]_0\(9)
     );
-\slv_reg7[31]_i_1\: unisim.vcomponents.LUT4
+\slv_reg7[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"E000"
+      INIT => X"A8000000"
     )
         port map (
-      I0 => s_detect_reg_sel(1),
+      I0 => s_detect_reg_sel(2),
       I1 => s_detect_reg_sel(0),
-      I2 => \s_chan[2]_i_2_n_0\,
-      I3 => s_detect_reg_sel(2),
-      O => E(0)
+      I2 => s_detect_reg_sel(1),
+      I3 => p_1_in,
+      I4 => s_pulse_end_reg_n_0,
+      O => \s_chan_reg[2]_0\(0)
     );
 end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI is
+entity quad_interface_ppm_detect_gen_v5_0_0_ppm_detect_gen_v1_0_S00_AXI is
   port (
     axi_wready_reg_0 : out STD_LOGIC;
     axi_awready_reg_0 : out STD_LOGIC;
@@ -1792,8 +2378,8 @@ entity quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI is
     aw_en_reg_0 : out STD_LOGIC;
     s00_axi_rvalid : out STD_LOGIC;
     s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    SR : in STD_LOGIC_VECTOR ( 0 to 0 );
     s00_axi_aclk : in STD_LOGIC;
+    SR : in STD_LOGIC_VECTOR ( 0 to 0 );
     axi_bvalid_reg_0 : in STD_LOGIC;
     aw_en_reg_1 : in STD_LOGIC;
     axi_rvalid_reg_0 : in STD_LOGIC;
@@ -1807,10 +2393,10 @@ entity quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI is
     s00_axi_arvalid : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI : entity is "ppm_detect_gen_v1_0_S00_AXI";
-end quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI;
+  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v5_0_0_ppm_detect_gen_v1_0_S00_AXI : entity is "ppm_detect_gen_v1_0_S00_AXI";
+end quad_interface_ppm_detect_gen_v5_0_0_ppm_detect_gen_v1_0_S00_AXI;
 
-architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI is
+architecture STRUCTURE of quad_interface_ppm_detect_gen_v5_0_0_ppm_detect_gen_v1_0_S00_AXI is
   signal \^aw_en_reg_0\ : STD_LOGIC;
   signal axi_arready0 : STD_LOGIC;
   signal \^axi_arready_reg_0\ : STD_LOGIC;
@@ -2060,6 +2646,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1
   signal detect_fsm_n_57 : STD_LOGIC;
   signal detect_fsm_n_58 : STD_LOGIC;
   signal detect_fsm_n_59 : STD_LOGIC;
+  signal detect_fsm_n_6 : STD_LOGIC;
   signal detect_fsm_n_60 : STD_LOGIC;
   signal detect_fsm_n_61 : STD_LOGIC;
   signal detect_fsm_n_62 : STD_LOGIC;
@@ -2070,9 +2657,8 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1
   signal detect_fsm_n_67 : STD_LOGIC;
   signal detect_fsm_n_68 : STD_LOGIC;
   signal detect_fsm_n_69 : STD_LOGIC;
-  signal detect_fsm_n_70 : STD_LOGIC;
-  signal detect_fsm_n_71 : STD_LOGIC;
-  signal detect_fsm_n_72 : STD_LOGIC;
+  signal detect_fsm_n_7 : STD_LOGIC;
+  signal detect_fsm_n_8 : STD_LOGIC;
   signal detect_fsm_n_9 : STD_LOGIC;
   signal p_0_in : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal p_1_in : STD_LOGIC_VECTOR ( 31 downto 7 );
@@ -5045,83 +5631,83 @@ axi_wready_reg: unisim.vcomponents.FDRE
       Q => \^axi_wready_reg_0\,
       R => SR(0)
     );
-detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
+detect_fsm: entity work.quad_interface_ppm_detect_gen_v5_0_0_detect_fsm
      port map (
-      D(2 downto 0) => s_detect_state(2 downto 0),
-      E(0) => slv_reg7,
+      D(31) => detect_fsm_n_6,
+      D(30) => detect_fsm_n_7,
+      D(29) => detect_fsm_n_8,
+      D(28) => detect_fsm_n_9,
+      D(27) => detect_fsm_n_10,
+      D(26) => detect_fsm_n_11,
+      D(25) => detect_fsm_n_12,
+      D(24) => detect_fsm_n_13,
+      D(23) => detect_fsm_n_14,
+      D(22) => detect_fsm_n_15,
+      D(21) => detect_fsm_n_16,
+      D(20) => detect_fsm_n_17,
+      D(19) => detect_fsm_n_18,
+      D(18) => detect_fsm_n_19,
+      D(17) => detect_fsm_n_20,
+      D(16) => detect_fsm_n_21,
+      D(15) => detect_fsm_n_22,
+      D(14) => detect_fsm_n_23,
+      D(13) => detect_fsm_n_24,
+      D(12) => detect_fsm_n_25,
+      D(11) => detect_fsm_n_26,
+      D(10) => detect_fsm_n_27,
+      D(9) => detect_fsm_n_28,
+      D(8) => detect_fsm_n_29,
+      D(7) => detect_fsm_n_30,
+      D(6) => detect_fsm_n_31,
+      D(5) => detect_fsm_n_32,
+      D(4) => detect_fsm_n_33,
+      D(3) => detect_fsm_n_34,
+      D(2) => detect_fsm_n_35,
+      D(1) => detect_fsm_n_36,
+      D(0) => detect_fsm_n_37,
+      E(0) => slv_reg6,
+      \FSM_onehot_s_c_state_reg[0]_0\(2 downto 0) => s_detect_state(2 downto 0),
       Q(0) => \slv_reg0__0\(0),
       SR(0) => SR(0),
       i_ppm => i_ppm,
       s00_axi_aclk => s00_axi_aclk,
-      \s_chan_reg[0]_0\(0) => slv_reg6,
-      \s_chan_reg[1]_0\(0) => slv_reg4,
-      \s_chan_reg[1]_1\(0) => slv_reg2,
-      \s_chan_reg[2]_0\(0) => slv_reg5,
+      \s_chan_reg[0]_0\(0) => slv_reg2,
+      \s_chan_reg[2]_0\(0) => slv_reg7,
       \s_chan_reg[2]_1\(0) => slv_reg3,
-      \s_count_reg[31]_0\(31) => detect_fsm_n_9,
-      \s_count_reg[31]_0\(30) => detect_fsm_n_10,
-      \s_count_reg[31]_0\(29) => detect_fsm_n_11,
-      \s_count_reg[31]_0\(28) => detect_fsm_n_12,
-      \s_count_reg[31]_0\(27) => detect_fsm_n_13,
-      \s_count_reg[31]_0\(26) => detect_fsm_n_14,
-      \s_count_reg[31]_0\(25) => detect_fsm_n_15,
-      \s_count_reg[31]_0\(24) => detect_fsm_n_16,
-      \s_count_reg[31]_0\(23) => detect_fsm_n_17,
-      \s_count_reg[31]_0\(22) => detect_fsm_n_18,
-      \s_count_reg[31]_0\(21) => detect_fsm_n_19,
-      \s_count_reg[31]_0\(20) => detect_fsm_n_20,
-      \s_count_reg[31]_0\(19) => detect_fsm_n_21,
-      \s_count_reg[31]_0\(18) => detect_fsm_n_22,
-      \s_count_reg[31]_0\(17) => detect_fsm_n_23,
-      \s_count_reg[31]_0\(16) => detect_fsm_n_24,
-      \s_count_reg[31]_0\(15) => detect_fsm_n_25,
-      \s_count_reg[31]_0\(14) => detect_fsm_n_26,
-      \s_count_reg[31]_0\(13) => detect_fsm_n_27,
-      \s_count_reg[31]_0\(12) => detect_fsm_n_28,
-      \s_count_reg[31]_0\(11) => detect_fsm_n_29,
-      \s_count_reg[31]_0\(10) => detect_fsm_n_30,
-      \s_count_reg[31]_0\(9) => detect_fsm_n_31,
-      \s_count_reg[31]_0\(8) => detect_fsm_n_32,
-      \s_count_reg[31]_0\(7) => detect_fsm_n_33,
-      \s_count_reg[31]_0\(6) => detect_fsm_n_34,
-      \s_count_reg[31]_0\(5) => detect_fsm_n_35,
-      \s_count_reg[31]_0\(4) => detect_fsm_n_36,
-      \s_count_reg[31]_0\(3) => detect_fsm_n_37,
-      \s_count_reg[31]_0\(2) => detect_fsm_n_38,
-      \s_count_reg[31]_0\(1) => detect_fsm_n_39,
-      \s_count_reg[31]_0\(0) => detect_fsm_n_40,
-      \s_count_reg[31]_1\(31) => detect_fsm_n_41,
-      \s_count_reg[31]_1\(30) => detect_fsm_n_42,
-      \s_count_reg[31]_1\(29) => detect_fsm_n_43,
-      \s_count_reg[31]_1\(28) => detect_fsm_n_44,
-      \s_count_reg[31]_1\(27) => detect_fsm_n_45,
-      \s_count_reg[31]_1\(26) => detect_fsm_n_46,
-      \s_count_reg[31]_1\(25) => detect_fsm_n_47,
-      \s_count_reg[31]_1\(24) => detect_fsm_n_48,
-      \s_count_reg[31]_1\(23) => detect_fsm_n_49,
-      \s_count_reg[31]_1\(22) => detect_fsm_n_50,
-      \s_count_reg[31]_1\(21) => detect_fsm_n_51,
-      \s_count_reg[31]_1\(20) => detect_fsm_n_52,
-      \s_count_reg[31]_1\(19) => detect_fsm_n_53,
-      \s_count_reg[31]_1\(18) => detect_fsm_n_54,
-      \s_count_reg[31]_1\(17) => detect_fsm_n_55,
-      \s_count_reg[31]_1\(16) => detect_fsm_n_56,
-      \s_count_reg[31]_1\(15) => detect_fsm_n_57,
-      \s_count_reg[31]_1\(14) => detect_fsm_n_58,
-      \s_count_reg[31]_1\(13) => detect_fsm_n_59,
-      \s_count_reg[31]_1\(12) => detect_fsm_n_60,
-      \s_count_reg[31]_1\(11) => detect_fsm_n_61,
-      \s_count_reg[31]_1\(10) => detect_fsm_n_62,
-      \s_count_reg[31]_1\(9) => detect_fsm_n_63,
-      \s_count_reg[31]_1\(8) => detect_fsm_n_64,
-      \s_count_reg[31]_1\(7) => detect_fsm_n_65,
-      \s_count_reg[31]_1\(6) => detect_fsm_n_66,
-      \s_count_reg[31]_1\(5) => detect_fsm_n_67,
-      \s_count_reg[31]_1\(4) => detect_fsm_n_68,
-      \s_count_reg[31]_1\(3) => detect_fsm_n_69,
-      \s_count_reg[31]_1\(2) => detect_fsm_n_70,
-      \s_count_reg[31]_1\(1) => detect_fsm_n_71,
-      \s_count_reg[31]_1\(0) => detect_fsm_n_72
+      \s_count_reg[31]_0\(31) => detect_fsm_n_38,
+      \s_count_reg[31]_0\(30) => detect_fsm_n_39,
+      \s_count_reg[31]_0\(29) => detect_fsm_n_40,
+      \s_count_reg[31]_0\(28) => detect_fsm_n_41,
+      \s_count_reg[31]_0\(27) => detect_fsm_n_42,
+      \s_count_reg[31]_0\(26) => detect_fsm_n_43,
+      \s_count_reg[31]_0\(25) => detect_fsm_n_44,
+      \s_count_reg[31]_0\(24) => detect_fsm_n_45,
+      \s_count_reg[31]_0\(23) => detect_fsm_n_46,
+      \s_count_reg[31]_0\(22) => detect_fsm_n_47,
+      \s_count_reg[31]_0\(21) => detect_fsm_n_48,
+      \s_count_reg[31]_0\(20) => detect_fsm_n_49,
+      \s_count_reg[31]_0\(19) => detect_fsm_n_50,
+      \s_count_reg[31]_0\(18) => detect_fsm_n_51,
+      \s_count_reg[31]_0\(17) => detect_fsm_n_52,
+      \s_count_reg[31]_0\(16) => detect_fsm_n_53,
+      \s_count_reg[31]_0\(15) => detect_fsm_n_54,
+      \s_count_reg[31]_0\(14) => detect_fsm_n_55,
+      \s_count_reg[31]_0\(13) => detect_fsm_n_56,
+      \s_count_reg[31]_0\(12) => detect_fsm_n_57,
+      \s_count_reg[31]_0\(11) => detect_fsm_n_58,
+      \s_count_reg[31]_0\(10) => detect_fsm_n_59,
+      \s_count_reg[31]_0\(9) => detect_fsm_n_60,
+      \s_count_reg[31]_0\(8) => detect_fsm_n_61,
+      \s_count_reg[31]_0\(7) => detect_fsm_n_62,
+      \s_count_reg[31]_0\(6) => detect_fsm_n_63,
+      \s_count_reg[31]_0\(5) => detect_fsm_n_64,
+      \s_count_reg[31]_0\(4) => detect_fsm_n_65,
+      \s_count_reg[31]_0\(3) => detect_fsm_n_66,
+      \s_count_reg[31]_0\(2) => detect_fsm_n_67,
+      \s_count_reg[31]_0\(1) => detect_fsm_n_68,
+      \s_count_reg[31]_0\(0) => detect_fsm_n_69,
+      s_pulse_end_reg_0(0) => slv_reg4,
+      s_pulse_end_reg_1(0) => slv_reg5
     );
 \slv_reg0[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -7318,7 +7904,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_40,
+      D => detect_fsm_n_37,
       Q => \slv_reg2_reg_n_0_[0]\,
       R => SR(0)
     );
@@ -7326,7 +7912,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_30,
+      D => detect_fsm_n_27,
       Q => \slv_reg2_reg_n_0_[10]\,
       R => SR(0)
     );
@@ -7334,7 +7920,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_29,
+      D => detect_fsm_n_26,
       Q => \slv_reg2_reg_n_0_[11]\,
       R => SR(0)
     );
@@ -7342,7 +7928,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_28,
+      D => detect_fsm_n_25,
       Q => \slv_reg2_reg_n_0_[12]\,
       R => SR(0)
     );
@@ -7350,7 +7936,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_27,
+      D => detect_fsm_n_24,
       Q => \slv_reg2_reg_n_0_[13]\,
       R => SR(0)
     );
@@ -7358,7 +7944,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_26,
+      D => detect_fsm_n_23,
       Q => \slv_reg2_reg_n_0_[14]\,
       R => SR(0)
     );
@@ -7366,7 +7952,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_25,
+      D => detect_fsm_n_22,
       Q => \slv_reg2_reg_n_0_[15]\,
       R => SR(0)
     );
@@ -7374,7 +7960,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_24,
+      D => detect_fsm_n_21,
       Q => \slv_reg2_reg_n_0_[16]\,
       R => SR(0)
     );
@@ -7382,7 +7968,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_23,
+      D => detect_fsm_n_20,
       Q => \slv_reg2_reg_n_0_[17]\,
       R => SR(0)
     );
@@ -7390,7 +7976,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_22,
+      D => detect_fsm_n_19,
       Q => \slv_reg2_reg_n_0_[18]\,
       R => SR(0)
     );
@@ -7398,7 +7984,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_21,
+      D => detect_fsm_n_18,
       Q => \slv_reg2_reg_n_0_[19]\,
       R => SR(0)
     );
@@ -7406,7 +7992,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_39,
+      D => detect_fsm_n_36,
       Q => \slv_reg2_reg_n_0_[1]\,
       R => SR(0)
     );
@@ -7414,7 +8000,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_20,
+      D => detect_fsm_n_17,
       Q => \slv_reg2_reg_n_0_[20]\,
       R => SR(0)
     );
@@ -7422,7 +8008,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_19,
+      D => detect_fsm_n_16,
       Q => \slv_reg2_reg_n_0_[21]\,
       R => SR(0)
     );
@@ -7430,7 +8016,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_18,
+      D => detect_fsm_n_15,
       Q => \slv_reg2_reg_n_0_[22]\,
       R => SR(0)
     );
@@ -7438,7 +8024,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_17,
+      D => detect_fsm_n_14,
       Q => \slv_reg2_reg_n_0_[23]\,
       R => SR(0)
     );
@@ -7446,7 +8032,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_16,
+      D => detect_fsm_n_13,
       Q => \slv_reg2_reg_n_0_[24]\,
       R => SR(0)
     );
@@ -7454,7 +8040,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_15,
+      D => detect_fsm_n_12,
       Q => \slv_reg2_reg_n_0_[25]\,
       R => SR(0)
     );
@@ -7462,7 +8048,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_14,
+      D => detect_fsm_n_11,
       Q => \slv_reg2_reg_n_0_[26]\,
       R => SR(0)
     );
@@ -7470,7 +8056,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_13,
+      D => detect_fsm_n_10,
       Q => \slv_reg2_reg_n_0_[27]\,
       R => SR(0)
     );
@@ -7478,7 +8064,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_12,
+      D => detect_fsm_n_9,
       Q => \slv_reg2_reg_n_0_[28]\,
       R => SR(0)
     );
@@ -7486,7 +8072,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_11,
+      D => detect_fsm_n_8,
       Q => \slv_reg2_reg_n_0_[29]\,
       R => SR(0)
     );
@@ -7494,7 +8080,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_38,
+      D => detect_fsm_n_35,
       Q => \slv_reg2_reg_n_0_[2]\,
       R => SR(0)
     );
@@ -7502,7 +8088,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_10,
+      D => detect_fsm_n_7,
       Q => \slv_reg2_reg_n_0_[30]\,
       R => SR(0)
     );
@@ -7510,7 +8096,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_9,
+      D => detect_fsm_n_6,
       Q => \slv_reg2_reg_n_0_[31]\,
       R => SR(0)
     );
@@ -7518,7 +8104,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_37,
+      D => detect_fsm_n_34,
       Q => \slv_reg2_reg_n_0_[3]\,
       R => SR(0)
     );
@@ -7526,7 +8112,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_36,
+      D => detect_fsm_n_33,
       Q => \slv_reg2_reg_n_0_[4]\,
       R => SR(0)
     );
@@ -7534,7 +8120,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_35,
+      D => detect_fsm_n_32,
       Q => \slv_reg2_reg_n_0_[5]\,
       R => SR(0)
     );
@@ -7542,7 +8128,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_34,
+      D => detect_fsm_n_31,
       Q => \slv_reg2_reg_n_0_[6]\,
       R => SR(0)
     );
@@ -7550,7 +8136,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_33,
+      D => detect_fsm_n_30,
       Q => \slv_reg2_reg_n_0_[7]\,
       R => SR(0)
     );
@@ -7558,7 +8144,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_32,
+      D => detect_fsm_n_29,
       Q => \slv_reg2_reg_n_0_[8]\,
       R => SR(0)
     );
@@ -7566,7 +8152,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_31,
+      D => detect_fsm_n_28,
       Q => \slv_reg2_reg_n_0_[9]\,
       R => SR(0)
     );
@@ -7574,7 +8160,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_40,
+      D => detect_fsm_n_37,
       Q => \slv_reg3_reg_n_0_[0]\,
       R => SR(0)
     );
@@ -7582,7 +8168,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_30,
+      D => detect_fsm_n_27,
       Q => \slv_reg3_reg_n_0_[10]\,
       R => SR(0)
     );
@@ -7590,7 +8176,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_29,
+      D => detect_fsm_n_26,
       Q => \slv_reg3_reg_n_0_[11]\,
       R => SR(0)
     );
@@ -7598,7 +8184,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_28,
+      D => detect_fsm_n_25,
       Q => \slv_reg3_reg_n_0_[12]\,
       R => SR(0)
     );
@@ -7606,7 +8192,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_27,
+      D => detect_fsm_n_24,
       Q => \slv_reg3_reg_n_0_[13]\,
       R => SR(0)
     );
@@ -7614,7 +8200,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_26,
+      D => detect_fsm_n_23,
       Q => \slv_reg3_reg_n_0_[14]\,
       R => SR(0)
     );
@@ -7622,7 +8208,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_25,
+      D => detect_fsm_n_22,
       Q => \slv_reg3_reg_n_0_[15]\,
       R => SR(0)
     );
@@ -7630,7 +8216,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_24,
+      D => detect_fsm_n_21,
       Q => \slv_reg3_reg_n_0_[16]\,
       R => SR(0)
     );
@@ -7638,7 +8224,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_23,
+      D => detect_fsm_n_20,
       Q => \slv_reg3_reg_n_0_[17]\,
       R => SR(0)
     );
@@ -7646,7 +8232,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_22,
+      D => detect_fsm_n_19,
       Q => \slv_reg3_reg_n_0_[18]\,
       R => SR(0)
     );
@@ -7654,7 +8240,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_21,
+      D => detect_fsm_n_18,
       Q => \slv_reg3_reg_n_0_[19]\,
       R => SR(0)
     );
@@ -7662,7 +8248,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_39,
+      D => detect_fsm_n_36,
       Q => \slv_reg3_reg_n_0_[1]\,
       R => SR(0)
     );
@@ -7670,7 +8256,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_20,
+      D => detect_fsm_n_17,
       Q => \slv_reg3_reg_n_0_[20]\,
       R => SR(0)
     );
@@ -7678,7 +8264,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_19,
+      D => detect_fsm_n_16,
       Q => \slv_reg3_reg_n_0_[21]\,
       R => SR(0)
     );
@@ -7686,7 +8272,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_18,
+      D => detect_fsm_n_15,
       Q => \slv_reg3_reg_n_0_[22]\,
       R => SR(0)
     );
@@ -7694,7 +8280,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_17,
+      D => detect_fsm_n_14,
       Q => \slv_reg3_reg_n_0_[23]\,
       R => SR(0)
     );
@@ -7702,7 +8288,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_16,
+      D => detect_fsm_n_13,
       Q => \slv_reg3_reg_n_0_[24]\,
       R => SR(0)
     );
@@ -7710,7 +8296,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_15,
+      D => detect_fsm_n_12,
       Q => \slv_reg3_reg_n_0_[25]\,
       R => SR(0)
     );
@@ -7718,7 +8304,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_14,
+      D => detect_fsm_n_11,
       Q => \slv_reg3_reg_n_0_[26]\,
       R => SR(0)
     );
@@ -7726,7 +8312,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_13,
+      D => detect_fsm_n_10,
       Q => \slv_reg3_reg_n_0_[27]\,
       R => SR(0)
     );
@@ -7734,7 +8320,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_12,
+      D => detect_fsm_n_9,
       Q => \slv_reg3_reg_n_0_[28]\,
       R => SR(0)
     );
@@ -7742,7 +8328,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_11,
+      D => detect_fsm_n_8,
       Q => \slv_reg3_reg_n_0_[29]\,
       R => SR(0)
     );
@@ -7750,7 +8336,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_38,
+      D => detect_fsm_n_35,
       Q => \slv_reg3_reg_n_0_[2]\,
       R => SR(0)
     );
@@ -7758,7 +8344,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_10,
+      D => detect_fsm_n_7,
       Q => \slv_reg3_reg_n_0_[30]\,
       R => SR(0)
     );
@@ -7766,7 +8352,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_9,
+      D => detect_fsm_n_6,
       Q => \slv_reg3_reg_n_0_[31]\,
       R => SR(0)
     );
@@ -7774,7 +8360,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_37,
+      D => detect_fsm_n_34,
       Q => \slv_reg3_reg_n_0_[3]\,
       R => SR(0)
     );
@@ -7782,7 +8368,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_36,
+      D => detect_fsm_n_33,
       Q => \slv_reg3_reg_n_0_[4]\,
       R => SR(0)
     );
@@ -7790,7 +8376,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_35,
+      D => detect_fsm_n_32,
       Q => \slv_reg3_reg_n_0_[5]\,
       R => SR(0)
     );
@@ -7798,7 +8384,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_34,
+      D => detect_fsm_n_31,
       Q => \slv_reg3_reg_n_0_[6]\,
       R => SR(0)
     );
@@ -7806,7 +8392,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_33,
+      D => detect_fsm_n_30,
       Q => \slv_reg3_reg_n_0_[7]\,
       R => SR(0)
     );
@@ -7814,7 +8400,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_32,
+      D => detect_fsm_n_29,
       Q => \slv_reg3_reg_n_0_[8]\,
       R => SR(0)
     );
@@ -7822,7 +8408,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_31,
+      D => detect_fsm_n_28,
       Q => \slv_reg3_reg_n_0_[9]\,
       R => SR(0)
     );
@@ -7830,7 +8416,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_40,
+      D => detect_fsm_n_37,
       Q => \slv_reg4_reg_n_0_[0]\,
       R => SR(0)
     );
@@ -7838,7 +8424,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_30,
+      D => detect_fsm_n_27,
       Q => \slv_reg4_reg_n_0_[10]\,
       R => SR(0)
     );
@@ -7846,7 +8432,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_29,
+      D => detect_fsm_n_26,
       Q => \slv_reg4_reg_n_0_[11]\,
       R => SR(0)
     );
@@ -7854,7 +8440,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_28,
+      D => detect_fsm_n_25,
       Q => \slv_reg4_reg_n_0_[12]\,
       R => SR(0)
     );
@@ -7862,7 +8448,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_27,
+      D => detect_fsm_n_24,
       Q => \slv_reg4_reg_n_0_[13]\,
       R => SR(0)
     );
@@ -7870,7 +8456,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_26,
+      D => detect_fsm_n_23,
       Q => \slv_reg4_reg_n_0_[14]\,
       R => SR(0)
     );
@@ -7878,7 +8464,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_25,
+      D => detect_fsm_n_22,
       Q => \slv_reg4_reg_n_0_[15]\,
       R => SR(0)
     );
@@ -7886,7 +8472,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_24,
+      D => detect_fsm_n_21,
       Q => \slv_reg4_reg_n_0_[16]\,
       R => SR(0)
     );
@@ -7894,7 +8480,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_23,
+      D => detect_fsm_n_20,
       Q => \slv_reg4_reg_n_0_[17]\,
       R => SR(0)
     );
@@ -7902,7 +8488,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_22,
+      D => detect_fsm_n_19,
       Q => \slv_reg4_reg_n_0_[18]\,
       R => SR(0)
     );
@@ -7910,7 +8496,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_21,
+      D => detect_fsm_n_18,
       Q => \slv_reg4_reg_n_0_[19]\,
       R => SR(0)
     );
@@ -7918,7 +8504,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_39,
+      D => detect_fsm_n_36,
       Q => \slv_reg4_reg_n_0_[1]\,
       R => SR(0)
     );
@@ -7926,7 +8512,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_20,
+      D => detect_fsm_n_17,
       Q => \slv_reg4_reg_n_0_[20]\,
       R => SR(0)
     );
@@ -7934,7 +8520,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_19,
+      D => detect_fsm_n_16,
       Q => \slv_reg4_reg_n_0_[21]\,
       R => SR(0)
     );
@@ -7942,7 +8528,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_18,
+      D => detect_fsm_n_15,
       Q => \slv_reg4_reg_n_0_[22]\,
       R => SR(0)
     );
@@ -7950,7 +8536,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_17,
+      D => detect_fsm_n_14,
       Q => \slv_reg4_reg_n_0_[23]\,
       R => SR(0)
     );
@@ -7958,7 +8544,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_16,
+      D => detect_fsm_n_13,
       Q => \slv_reg4_reg_n_0_[24]\,
       R => SR(0)
     );
@@ -7966,7 +8552,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_15,
+      D => detect_fsm_n_12,
       Q => \slv_reg4_reg_n_0_[25]\,
       R => SR(0)
     );
@@ -7974,7 +8560,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_14,
+      D => detect_fsm_n_11,
       Q => \slv_reg4_reg_n_0_[26]\,
       R => SR(0)
     );
@@ -7982,7 +8568,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_13,
+      D => detect_fsm_n_10,
       Q => \slv_reg4_reg_n_0_[27]\,
       R => SR(0)
     );
@@ -7990,7 +8576,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_12,
+      D => detect_fsm_n_9,
       Q => \slv_reg4_reg_n_0_[28]\,
       R => SR(0)
     );
@@ -7998,7 +8584,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_11,
+      D => detect_fsm_n_8,
       Q => \slv_reg4_reg_n_0_[29]\,
       R => SR(0)
     );
@@ -8006,7 +8592,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_38,
+      D => detect_fsm_n_35,
       Q => \slv_reg4_reg_n_0_[2]\,
       R => SR(0)
     );
@@ -8014,7 +8600,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_10,
+      D => detect_fsm_n_7,
       Q => \slv_reg4_reg_n_0_[30]\,
       R => SR(0)
     );
@@ -8022,7 +8608,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_9,
+      D => detect_fsm_n_6,
       Q => \slv_reg4_reg_n_0_[31]\,
       R => SR(0)
     );
@@ -8030,7 +8616,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_37,
+      D => detect_fsm_n_34,
       Q => \slv_reg4_reg_n_0_[3]\,
       R => SR(0)
     );
@@ -8038,7 +8624,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_36,
+      D => detect_fsm_n_33,
       Q => \slv_reg4_reg_n_0_[4]\,
       R => SR(0)
     );
@@ -8046,7 +8632,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_35,
+      D => detect_fsm_n_32,
       Q => \slv_reg4_reg_n_0_[5]\,
       R => SR(0)
     );
@@ -8054,7 +8640,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_34,
+      D => detect_fsm_n_31,
       Q => \slv_reg4_reg_n_0_[6]\,
       R => SR(0)
     );
@@ -8062,7 +8648,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_33,
+      D => detect_fsm_n_30,
       Q => \slv_reg4_reg_n_0_[7]\,
       R => SR(0)
     );
@@ -8070,7 +8656,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_32,
+      D => detect_fsm_n_29,
       Q => \slv_reg4_reg_n_0_[8]\,
       R => SR(0)
     );
@@ -8078,7 +8664,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_31,
+      D => detect_fsm_n_28,
       Q => \slv_reg4_reg_n_0_[9]\,
       R => SR(0)
     );
@@ -8086,7 +8672,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_40,
+      D => detect_fsm_n_37,
       Q => \slv_reg5_reg_n_0_[0]\,
       R => SR(0)
     );
@@ -8094,7 +8680,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_30,
+      D => detect_fsm_n_27,
       Q => \slv_reg5_reg_n_0_[10]\,
       R => SR(0)
     );
@@ -8102,7 +8688,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_29,
+      D => detect_fsm_n_26,
       Q => \slv_reg5_reg_n_0_[11]\,
       R => SR(0)
     );
@@ -8110,7 +8696,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_28,
+      D => detect_fsm_n_25,
       Q => \slv_reg5_reg_n_0_[12]\,
       R => SR(0)
     );
@@ -8118,7 +8704,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_27,
+      D => detect_fsm_n_24,
       Q => \slv_reg5_reg_n_0_[13]\,
       R => SR(0)
     );
@@ -8126,7 +8712,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_26,
+      D => detect_fsm_n_23,
       Q => \slv_reg5_reg_n_0_[14]\,
       R => SR(0)
     );
@@ -8134,7 +8720,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_25,
+      D => detect_fsm_n_22,
       Q => \slv_reg5_reg_n_0_[15]\,
       R => SR(0)
     );
@@ -8142,7 +8728,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_24,
+      D => detect_fsm_n_21,
       Q => \slv_reg5_reg_n_0_[16]\,
       R => SR(0)
     );
@@ -8150,7 +8736,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_23,
+      D => detect_fsm_n_20,
       Q => \slv_reg5_reg_n_0_[17]\,
       R => SR(0)
     );
@@ -8158,7 +8744,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_22,
+      D => detect_fsm_n_19,
       Q => \slv_reg5_reg_n_0_[18]\,
       R => SR(0)
     );
@@ -8166,7 +8752,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_21,
+      D => detect_fsm_n_18,
       Q => \slv_reg5_reg_n_0_[19]\,
       R => SR(0)
     );
@@ -8174,7 +8760,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_39,
+      D => detect_fsm_n_36,
       Q => \slv_reg5_reg_n_0_[1]\,
       R => SR(0)
     );
@@ -8182,7 +8768,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_20,
+      D => detect_fsm_n_17,
       Q => \slv_reg5_reg_n_0_[20]\,
       R => SR(0)
     );
@@ -8190,7 +8776,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_19,
+      D => detect_fsm_n_16,
       Q => \slv_reg5_reg_n_0_[21]\,
       R => SR(0)
     );
@@ -8198,7 +8784,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_18,
+      D => detect_fsm_n_15,
       Q => \slv_reg5_reg_n_0_[22]\,
       R => SR(0)
     );
@@ -8206,7 +8792,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_17,
+      D => detect_fsm_n_14,
       Q => \slv_reg5_reg_n_0_[23]\,
       R => SR(0)
     );
@@ -8214,7 +8800,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_16,
+      D => detect_fsm_n_13,
       Q => \slv_reg5_reg_n_0_[24]\,
       R => SR(0)
     );
@@ -8222,7 +8808,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_15,
+      D => detect_fsm_n_12,
       Q => \slv_reg5_reg_n_0_[25]\,
       R => SR(0)
     );
@@ -8230,7 +8816,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_14,
+      D => detect_fsm_n_11,
       Q => \slv_reg5_reg_n_0_[26]\,
       R => SR(0)
     );
@@ -8238,7 +8824,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_13,
+      D => detect_fsm_n_10,
       Q => \slv_reg5_reg_n_0_[27]\,
       R => SR(0)
     );
@@ -8246,7 +8832,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_12,
+      D => detect_fsm_n_9,
       Q => \slv_reg5_reg_n_0_[28]\,
       R => SR(0)
     );
@@ -8254,7 +8840,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_11,
+      D => detect_fsm_n_8,
       Q => \slv_reg5_reg_n_0_[29]\,
       R => SR(0)
     );
@@ -8262,7 +8848,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_38,
+      D => detect_fsm_n_35,
       Q => \slv_reg5_reg_n_0_[2]\,
       R => SR(0)
     );
@@ -8270,7 +8856,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_10,
+      D => detect_fsm_n_7,
       Q => \slv_reg5_reg_n_0_[30]\,
       R => SR(0)
     );
@@ -8278,7 +8864,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_9,
+      D => detect_fsm_n_6,
       Q => \slv_reg5_reg_n_0_[31]\,
       R => SR(0)
     );
@@ -8286,7 +8872,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_37,
+      D => detect_fsm_n_34,
       Q => \slv_reg5_reg_n_0_[3]\,
       R => SR(0)
     );
@@ -8294,7 +8880,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_36,
+      D => detect_fsm_n_33,
       Q => \slv_reg5_reg_n_0_[4]\,
       R => SR(0)
     );
@@ -8302,7 +8888,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_35,
+      D => detect_fsm_n_32,
       Q => \slv_reg5_reg_n_0_[5]\,
       R => SR(0)
     );
@@ -8310,7 +8896,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_34,
+      D => detect_fsm_n_31,
       Q => \slv_reg5_reg_n_0_[6]\,
       R => SR(0)
     );
@@ -8318,7 +8904,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_33,
+      D => detect_fsm_n_30,
       Q => \slv_reg5_reg_n_0_[7]\,
       R => SR(0)
     );
@@ -8326,7 +8912,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_32,
+      D => detect_fsm_n_29,
       Q => \slv_reg5_reg_n_0_[8]\,
       R => SR(0)
     );
@@ -8334,7 +8920,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_31,
+      D => detect_fsm_n_28,
       Q => \slv_reg5_reg_n_0_[9]\,
       R => SR(0)
     );
@@ -8342,7 +8928,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_72,
+      D => detect_fsm_n_69,
       Q => \slv_reg6_reg_n_0_[0]\,
       R => SR(0)
     );
@@ -8350,7 +8936,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_62,
+      D => detect_fsm_n_59,
       Q => \slv_reg6_reg_n_0_[10]\,
       R => SR(0)
     );
@@ -8358,7 +8944,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_61,
+      D => detect_fsm_n_58,
       Q => \slv_reg6_reg_n_0_[11]\,
       R => SR(0)
     );
@@ -8366,7 +8952,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_60,
+      D => detect_fsm_n_57,
       Q => \slv_reg6_reg_n_0_[12]\,
       R => SR(0)
     );
@@ -8374,7 +8960,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_59,
+      D => detect_fsm_n_56,
       Q => \slv_reg6_reg_n_0_[13]\,
       R => SR(0)
     );
@@ -8382,7 +8968,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_58,
+      D => detect_fsm_n_55,
       Q => \slv_reg6_reg_n_0_[14]\,
       R => SR(0)
     );
@@ -8390,7 +8976,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_57,
+      D => detect_fsm_n_54,
       Q => \slv_reg6_reg_n_0_[15]\,
       R => SR(0)
     );
@@ -8398,7 +8984,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_56,
+      D => detect_fsm_n_53,
       Q => \slv_reg6_reg_n_0_[16]\,
       R => SR(0)
     );
@@ -8406,7 +8992,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_55,
+      D => detect_fsm_n_52,
       Q => \slv_reg6_reg_n_0_[17]\,
       R => SR(0)
     );
@@ -8414,7 +9000,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_54,
+      D => detect_fsm_n_51,
       Q => \slv_reg6_reg_n_0_[18]\,
       R => SR(0)
     );
@@ -8422,7 +9008,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_53,
+      D => detect_fsm_n_50,
       Q => \slv_reg6_reg_n_0_[19]\,
       R => SR(0)
     );
@@ -8430,7 +9016,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_71,
+      D => detect_fsm_n_68,
       Q => \slv_reg6_reg_n_0_[1]\,
       R => SR(0)
     );
@@ -8438,7 +9024,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_52,
+      D => detect_fsm_n_49,
       Q => \slv_reg6_reg_n_0_[20]\,
       R => SR(0)
     );
@@ -8446,7 +9032,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_51,
+      D => detect_fsm_n_48,
       Q => \slv_reg6_reg_n_0_[21]\,
       R => SR(0)
     );
@@ -8454,7 +9040,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_50,
+      D => detect_fsm_n_47,
       Q => \slv_reg6_reg_n_0_[22]\,
       R => SR(0)
     );
@@ -8462,7 +9048,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_49,
+      D => detect_fsm_n_46,
       Q => \slv_reg6_reg_n_0_[23]\,
       R => SR(0)
     );
@@ -8470,7 +9056,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_48,
+      D => detect_fsm_n_45,
       Q => \slv_reg6_reg_n_0_[24]\,
       R => SR(0)
     );
@@ -8478,7 +9064,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_47,
+      D => detect_fsm_n_44,
       Q => \slv_reg6_reg_n_0_[25]\,
       R => SR(0)
     );
@@ -8486,7 +9072,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_46,
+      D => detect_fsm_n_43,
       Q => \slv_reg6_reg_n_0_[26]\,
       R => SR(0)
     );
@@ -8494,7 +9080,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_45,
+      D => detect_fsm_n_42,
       Q => \slv_reg6_reg_n_0_[27]\,
       R => SR(0)
     );
@@ -8502,7 +9088,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_44,
+      D => detect_fsm_n_41,
       Q => \slv_reg6_reg_n_0_[28]\,
       R => SR(0)
     );
@@ -8510,7 +9096,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_43,
+      D => detect_fsm_n_40,
       Q => \slv_reg6_reg_n_0_[29]\,
       R => SR(0)
     );
@@ -8518,7 +9104,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_70,
+      D => detect_fsm_n_67,
       Q => \slv_reg6_reg_n_0_[2]\,
       R => SR(0)
     );
@@ -8526,7 +9112,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_42,
+      D => detect_fsm_n_39,
       Q => \slv_reg6_reg_n_0_[30]\,
       R => SR(0)
     );
@@ -8534,7 +9120,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_41,
+      D => detect_fsm_n_38,
       Q => \slv_reg6_reg_n_0_[31]\,
       R => SR(0)
     );
@@ -8542,7 +9128,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_69,
+      D => detect_fsm_n_66,
       Q => \slv_reg6_reg_n_0_[3]\,
       R => SR(0)
     );
@@ -8550,7 +9136,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_68,
+      D => detect_fsm_n_65,
       Q => \slv_reg6_reg_n_0_[4]\,
       R => SR(0)
     );
@@ -8558,7 +9144,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_67,
+      D => detect_fsm_n_64,
       Q => \slv_reg6_reg_n_0_[5]\,
       R => SR(0)
     );
@@ -8566,7 +9152,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_66,
+      D => detect_fsm_n_63,
       Q => \slv_reg6_reg_n_0_[6]\,
       R => SR(0)
     );
@@ -8574,7 +9160,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_65,
+      D => detect_fsm_n_62,
       Q => \slv_reg6_reg_n_0_[7]\,
       R => SR(0)
     );
@@ -8582,7 +9168,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_64,
+      D => detect_fsm_n_61,
       Q => \slv_reg6_reg_n_0_[8]\,
       R => SR(0)
     );
@@ -8590,7 +9176,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_63,
+      D => detect_fsm_n_60,
       Q => \slv_reg6_reg_n_0_[9]\,
       R => SR(0)
     );
@@ -8598,7 +9184,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_72,
+      D => detect_fsm_n_69,
       Q => \slv_reg7_reg_n_0_[0]\,
       R => SR(0)
     );
@@ -8606,7 +9192,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_62,
+      D => detect_fsm_n_59,
       Q => \slv_reg7_reg_n_0_[10]\,
       R => SR(0)
     );
@@ -8614,7 +9200,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_61,
+      D => detect_fsm_n_58,
       Q => \slv_reg7_reg_n_0_[11]\,
       R => SR(0)
     );
@@ -8622,7 +9208,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_60,
+      D => detect_fsm_n_57,
       Q => \slv_reg7_reg_n_0_[12]\,
       R => SR(0)
     );
@@ -8630,7 +9216,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_59,
+      D => detect_fsm_n_56,
       Q => \slv_reg7_reg_n_0_[13]\,
       R => SR(0)
     );
@@ -8638,7 +9224,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_58,
+      D => detect_fsm_n_55,
       Q => \slv_reg7_reg_n_0_[14]\,
       R => SR(0)
     );
@@ -8646,7 +9232,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_57,
+      D => detect_fsm_n_54,
       Q => \slv_reg7_reg_n_0_[15]\,
       R => SR(0)
     );
@@ -8654,7 +9240,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_56,
+      D => detect_fsm_n_53,
       Q => \slv_reg7_reg_n_0_[16]\,
       R => SR(0)
     );
@@ -8662,7 +9248,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_55,
+      D => detect_fsm_n_52,
       Q => \slv_reg7_reg_n_0_[17]\,
       R => SR(0)
     );
@@ -8670,7 +9256,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_54,
+      D => detect_fsm_n_51,
       Q => \slv_reg7_reg_n_0_[18]\,
       R => SR(0)
     );
@@ -8678,7 +9264,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_53,
+      D => detect_fsm_n_50,
       Q => \slv_reg7_reg_n_0_[19]\,
       R => SR(0)
     );
@@ -8686,7 +9272,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_71,
+      D => detect_fsm_n_68,
       Q => \slv_reg7_reg_n_0_[1]\,
       R => SR(0)
     );
@@ -8694,7 +9280,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_52,
+      D => detect_fsm_n_49,
       Q => \slv_reg7_reg_n_0_[20]\,
       R => SR(0)
     );
@@ -8702,7 +9288,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_51,
+      D => detect_fsm_n_48,
       Q => \slv_reg7_reg_n_0_[21]\,
       R => SR(0)
     );
@@ -8710,7 +9296,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_50,
+      D => detect_fsm_n_47,
       Q => \slv_reg7_reg_n_0_[22]\,
       R => SR(0)
     );
@@ -8718,7 +9304,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_49,
+      D => detect_fsm_n_46,
       Q => \slv_reg7_reg_n_0_[23]\,
       R => SR(0)
     );
@@ -8726,7 +9312,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_48,
+      D => detect_fsm_n_45,
       Q => \slv_reg7_reg_n_0_[24]\,
       R => SR(0)
     );
@@ -8734,7 +9320,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_47,
+      D => detect_fsm_n_44,
       Q => \slv_reg7_reg_n_0_[25]\,
       R => SR(0)
     );
@@ -8742,7 +9328,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_46,
+      D => detect_fsm_n_43,
       Q => \slv_reg7_reg_n_0_[26]\,
       R => SR(0)
     );
@@ -8750,7 +9336,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_45,
+      D => detect_fsm_n_42,
       Q => \slv_reg7_reg_n_0_[27]\,
       R => SR(0)
     );
@@ -8758,7 +9344,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_44,
+      D => detect_fsm_n_41,
       Q => \slv_reg7_reg_n_0_[28]\,
       R => SR(0)
     );
@@ -8766,7 +9352,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_43,
+      D => detect_fsm_n_40,
       Q => \slv_reg7_reg_n_0_[29]\,
       R => SR(0)
     );
@@ -8774,7 +9360,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_70,
+      D => detect_fsm_n_67,
       Q => \slv_reg7_reg_n_0_[2]\,
       R => SR(0)
     );
@@ -8782,7 +9368,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_42,
+      D => detect_fsm_n_39,
       Q => \slv_reg7_reg_n_0_[30]\,
       R => SR(0)
     );
@@ -8790,7 +9376,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_41,
+      D => detect_fsm_n_38,
       Q => \slv_reg7_reg_n_0_[31]\,
       R => SR(0)
     );
@@ -8798,7 +9384,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_69,
+      D => detect_fsm_n_66,
       Q => \slv_reg7_reg_n_0_[3]\,
       R => SR(0)
     );
@@ -8806,7 +9392,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_68,
+      D => detect_fsm_n_65,
       Q => \slv_reg7_reg_n_0_[4]\,
       R => SR(0)
     );
@@ -8814,7 +9400,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_67,
+      D => detect_fsm_n_64,
       Q => \slv_reg7_reg_n_0_[5]\,
       R => SR(0)
     );
@@ -8822,7 +9408,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_66,
+      D => detect_fsm_n_63,
       Q => \slv_reg7_reg_n_0_[6]\,
       R => SR(0)
     );
@@ -8830,7 +9416,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_65,
+      D => detect_fsm_n_62,
       Q => \slv_reg7_reg_n_0_[7]\,
       R => SR(0)
     );
@@ -8838,7 +9424,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_64,
+      D => detect_fsm_n_61,
       Q => \slv_reg7_reg_n_0_[8]\,
       R => SR(0)
     );
@@ -8846,7 +9432,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_v2_0_1_detect_fsm
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_63,
+      D => detect_fsm_n_60,
       Q => \slv_reg7_reg_n_0_[9]\,
       R => SR(0)
     );
@@ -9471,7 +10057,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0 is
+entity quad_interface_ppm_detect_gen_v5_0_0_ppm_detect_gen_v1_0 is
   port (
     S_AXI_WREADY : out STD_LOGIC;
     S_AXI_AWREADY : out STD_LOGIC;
@@ -9493,10 +10079,10 @@ entity quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0 is
     s00_axi_rready : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0 : entity is "ppm_detect_gen_v1_0";
-end quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0;
+  attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_v5_0_0_ppm_detect_gen_v1_0 : entity is "ppm_detect_gen_v1_0";
+end quad_interface_ppm_detect_gen_v5_0_0_ppm_detect_gen_v1_0;
 
-architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0 is
+architecture STRUCTURE of quad_interface_ppm_detect_gen_v5_0_0_ppm_detect_gen_v1_0 is
   signal \^s_axi_arready\ : STD_LOGIC;
   signal \^s_axi_awready\ : STD_LOGIC;
   signal \^s_axi_wready\ : STD_LOGIC;
@@ -9558,7 +10144,7 @@ axi_rvalid_i_1: unisim.vcomponents.LUT4
       I3 => s00_axi_rready,
       O => axi_rvalid_i_1_n_0
     );
-ppm_detect_gen_v1_0_S00_AXI_inst: entity work.quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0_S00_AXI
+ppm_detect_gen_v1_0_S00_AXI_inst: entity work.quad_interface_ppm_detect_gen_v5_0_0_ppm_detect_gen_v1_0_S00_AXI
      port map (
       SR(0) => axi_awready_i_1_n_0,
       aw_en_reg_0 => ppm_detect_gen_v1_0_S00_AXI_inst_n_4,
@@ -9586,7 +10172,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity quad_interface_ppm_detect_gen_v2_0_1 is
+entity quad_interface_ppm_detect_gen_v5_0_0 is
   port (
     i_ppm : in STD_LOGIC;
     o_ppm : out STD_LOGIC;
@@ -9613,18 +10199,18 @@ entity quad_interface_ppm_detect_gen_v2_0_1 is
     s00_axi_rready : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
-  attribute NotValidForBitStream of quad_interface_ppm_detect_gen_v2_0_1 : entity is true;
+  attribute NotValidForBitStream of quad_interface_ppm_detect_gen_v5_0_0 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of quad_interface_ppm_detect_gen_v2_0_1 : entity is "quad_interface_ppm_detect_gen_v2_0_1,ppm_detect_gen_v1_0,{}";
+  attribute CHECK_LICENSE_TYPE of quad_interface_ppm_detect_gen_v5_0_0 : entity is "quad_interface_ppm_detect_gen_v5_0_0,ppm_detect_gen_v1_0,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of quad_interface_ppm_detect_gen_v2_0_1 : entity is "yes";
+  attribute downgradeipidentifiedwarnings of quad_interface_ppm_detect_gen_v5_0_0 : entity is "yes";
   attribute ip_definition_source : string;
-  attribute ip_definition_source of quad_interface_ppm_detect_gen_v2_0_1 : entity is "package_project";
+  attribute ip_definition_source of quad_interface_ppm_detect_gen_v5_0_0 : entity is "package_project";
   attribute x_core_info : string;
-  attribute x_core_info of quad_interface_ppm_detect_gen_v2_0_1 : entity is "ppm_detect_gen_v1_0,Vivado 2020.1";
-end quad_interface_ppm_detect_gen_v2_0_1;
+  attribute x_core_info of quad_interface_ppm_detect_gen_v5_0_0 : entity is "ppm_detect_gen_v1_0,Vivado 2020.1";
+end quad_interface_ppm_detect_gen_v5_0_0;
 
-architecture STRUCTURE of quad_interface_ppm_detect_gen_v2_0_1 is
+architecture STRUCTURE of quad_interface_ppm_detect_gen_v5_0_0 is
   signal \<const0>\ : STD_LOGIC;
   attribute x_interface_info : string;
   attribute x_interface_info of s00_axi_aclk : signal is "xilinx.com:signal:clock:1.0 s00_axi_aclk CLK";
@@ -9662,7 +10248,7 @@ GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
     );
-U0: entity work.quad_interface_ppm_detect_gen_v2_0_1_ppm_detect_gen_v1_0
+U0: entity work.quad_interface_ppm_detect_gen_v5_0_0_ppm_detect_gen_v1_0
      port map (
       S_AXI_ARREADY => s00_axi_arready,
       S_AXI_AWREADY => s00_axi_awready,

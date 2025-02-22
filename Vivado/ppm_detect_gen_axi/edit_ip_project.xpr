@@ -70,16 +70,20 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PPRDIR/ppm_detect_gen_1.0/src/user_defines.vhd">
+      <File Path="$PSRCDIR/sources_1/imports/src/defines/user_defines.vhd">
         <FileInfo>
           <Attr Name="Library" Val="ppm"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../src/defines/user_defines.vhd"/>
+          <Attr Name="ImportTime" Val="1740255642"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/ppm_detect_gen_1.0/src/detect_fsm.vhd">
+      <File Path="$PSRCDIR/sources_1/imports/src/design/detect_fsm/detect_fsm.vhd">
         <FileInfo>
           <Attr Name="Library" Val="ppm"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../src/design/detect_fsm/detect_fsm.vhd"/>
+          <Attr Name="ImportTime" Val="1740255642"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>

@@ -1,18 +1,18 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Feb 21 11:32:40 2025
--- Host        : CO2041-06 running 64-bit major release  (build 9200)
+-- Date        : Sat Feb 22 14:31:35 2025
+-- Host        : CO2041-08 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_v2_0_1/quad_interface_ppm_detect_gen_v2_0_1_stub.vhdl
--- Design      : quad_interface_ppm_detect_gen_v2_0_1
+--               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_v5_0_0/quad_interface_ppm_detect_gen_v5_0_0_stub.vhdl
+-- Design      : quad_interface_ppm_detect_gen_v5_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity quad_interface_ppm_detect_gen_v2_0_1 is
+entity quad_interface_ppm_detect_gen_v5_0_0 is
   Port ( 
     i_ppm : in STD_LOGIC;
     o_ppm : out STD_LOGIC;
@@ -39,9 +39,9 @@ entity quad_interface_ppm_detect_gen_v2_0_1 is
     s00_axi_rready : in STD_LOGIC
   );
 
-end quad_interface_ppm_detect_gen_v2_0_1;
+end quad_interface_ppm_detect_gen_v5_0_0;
 
-architecture stub of quad_interface_ppm_detect_gen_v2_0_1 is
+architecture stub of quad_interface_ppm_detect_gen_v5_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;

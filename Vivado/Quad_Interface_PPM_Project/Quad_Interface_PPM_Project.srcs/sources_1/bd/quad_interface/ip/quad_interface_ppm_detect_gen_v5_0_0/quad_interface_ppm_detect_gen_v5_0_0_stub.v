@@ -1,11 +1,11 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Fri Feb 21 11:32:40 2025
-// Host        : CO2041-06 running 64-bit major release  (build 9200)
+// Date        : Sat Feb 22 14:31:35 2025
+// Host        : CO2041-08 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
-//               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_v2_0_1/quad_interface_ppm_detect_gen_v2_0_1_stub.v
-// Design      : quad_interface_ppm_detect_gen_v2_0_1
+//               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_v5_0_0/quad_interface_ppm_detect_gen_v5_0_0_stub.v
+// Design      : quad_interface_ppm_detect_gen_v5_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1
 // --------------------------------------------------------------------------------
@@ -14,7 +14,7 @@
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "ppm_detect_gen_v1_0,Vivado 2020.1" *)
-module quad_interface_ppm_detect_gen_v2_0_1(i_ppm, o_ppm, s00_axi_aclk, s00_axi_aresetn, 
+module quad_interface_ppm_detect_gen_v5_0_0(i_ppm, o_ppm, s00_axi_aclk, s00_axi_aresetn, 
   s00_axi_awaddr, s00_axi_awprot, s00_axi_awvalid, s00_axi_awready, s00_axi_wdata, 
   s00_axi_wstrb, s00_axi_wvalid, s00_axi_wready, s00_axi_bresp, s00_axi_bvalid, 
   s00_axi_bready, s00_axi_araddr, s00_axi_arprot, s00_axi_arvalid, s00_axi_arready, 

@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Fri Feb 21 11:33:32 2025
---Host        : CO2041-06 running 64-bit major release  (build 9200)
+--Date        : Sat Feb 22 14:31:01 2025
+--Host        : CO2041-08 running 64-bit major release  (build 9200)
 --Command     : generate_target quad_interface.bd
 --Design      : quad_interface
 --Purpose     : IP block netlist
@@ -707,7 +707,7 @@ architecture STRUCTURE of quad_interface is
     peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component quad_interface_proc_sys_reset_0_0;
-  component quad_interface_ppm_detect_gen_v2_0_1 is
+  component quad_interface_ppm_detect_gen_v5_0_0 is
   port (
     i_ppm : in STD_LOGIC;
     o_ppm : out STD_LOGIC;
@@ -733,7 +733,7 @@ architecture STRUCTURE of quad_interface is
     s00_axi_rvalid : out STD_LOGIC;
     s00_axi_rready : in STD_LOGIC
   );
-  end component quad_interface_ppm_detect_gen_v2_0_1;
+  end component quad_interface_ppm_detect_gen_v5_0_0;
   signal PPM_IN_1 : STD_LOGIC;
   signal S00_AXI_1_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal S00_AXI_1_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -792,7 +792,7 @@ architecture STRUCTURE of quad_interface is
   signal axi_interconnect_0_M00_AXI_WREADY : STD_LOGIC;
   signal axi_interconnect_0_M00_AXI_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_interconnect_0_M00_AXI_WVALID : STD_LOGIC;
-  signal ppm_detect_gen_v2_0_o_ppm : STD_LOGIC;
+  signal ppm_detect_gen_v5_0_o_ppm : STD_LOGIC;
   signal proc_sys_reset_0_interconnect_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal proc_sys_reset_0_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal processing_system7_0_DDR_ADDR : STD_LOGIC_VECTOR ( 14 downto 0 );
@@ -853,7 +853,7 @@ architecture STRUCTURE of quad_interface is
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
   PPM_IN_1 <= PPM_IN;
-  PPM_OUT <= ppm_detect_gen_v2_0_o_ppm;
+  PPM_OUT <= ppm_detect_gen_v5_0_o_ppm;
 axi_interconnect_0: entity work.quad_interface_axi_interconnect_0_0
      port map (
       ACLK => processing_system7_0_FCLK_CLK0,
@@ -920,10 +920,10 @@ axi_interconnect_0: entity work.quad_interface_axi_interconnect_0_0
       S00_AXI_wstrb(3 downto 0) => S00_AXI_1_WSTRB(3 downto 0),
       S00_AXI_wvalid => S00_AXI_1_WVALID
     );
-ppm_detect_gen_v2_0: component quad_interface_ppm_detect_gen_v2_0_1
+ppm_detect_gen_v5_0: component quad_interface_ppm_detect_gen_v5_0_0
      port map (
       i_ppm => PPM_IN_1,
-      o_ppm => ppm_detect_gen_v2_0_o_ppm,
+      o_ppm => ppm_detect_gen_v5_0_o_ppm,
       s00_axi_aclk => processing_system7_0_FCLK_CLK0,
       s00_axi_araddr(5 downto 0) => axi_interconnect_0_M00_AXI_ARADDR(5 downto 0),
       s00_axi_aresetn => proc_sys_reset_0_peripheral_aresetn(0),

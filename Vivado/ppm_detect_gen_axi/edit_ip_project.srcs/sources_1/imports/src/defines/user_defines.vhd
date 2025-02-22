@@ -8,6 +8,8 @@ package user_defines is
 
   -- Constants
   constant REG_SIZE : integer := 32;
+  constant PULSE_DETECTION_COUNTER_SIZE : integer := 8;
+  constant PULSE_DETECTION_WIDTH : integer := 100;
 
   -- There are 6 channels, so the last channel is 101.
   -- When the channel is 110, we know we have covered all channels.

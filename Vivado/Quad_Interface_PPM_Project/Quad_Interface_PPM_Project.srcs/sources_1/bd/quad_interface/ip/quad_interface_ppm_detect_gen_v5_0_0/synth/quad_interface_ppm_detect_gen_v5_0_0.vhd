@@ -46,8 +46,8 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: EastburnOhnesorge:user:ppm_detect_gen_v2:2.0
--- IP Revision: 2
+-- IP VLNV: EastburnOhnesorge:user:ppm_detect_gen_v5:5.0
+-- IP Revision: 3
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -56,7 +56,7 @@ USE ieee.numeric_std.ALL;
 LIBRARY axi;
 USE axi.ppm_detect_gen_v1_0;
 
-ENTITY quad_interface_ppm_detect_gen_v2_0_1 IS
+ENTITY quad_interface_ppm_detect_gen_v5_0_0 IS
   PORT (
     i_ppm : IN STD_LOGIC;
     o_ppm : OUT STD_LOGIC;
@@ -82,11 +82,11 @@ ENTITY quad_interface_ppm_detect_gen_v2_0_1 IS
     s00_axi_rvalid : OUT STD_LOGIC;
     s00_axi_rready : IN STD_LOGIC
   );
-END quad_interface_ppm_detect_gen_v2_0_1;
+END quad_interface_ppm_detect_gen_v5_0_0;
 
-ARCHITECTURE quad_interface_ppm_detect_gen_v2_0_1_arch OF quad_interface_ppm_detect_gen_v2_0_1 IS
+ARCHITECTURE quad_interface_ppm_detect_gen_v5_0_0_arch OF quad_interface_ppm_detect_gen_v5_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF quad_interface_ppm_detect_gen_v2_0_1_arch: ARCHITECTURE IS "yes";
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF quad_interface_ppm_detect_gen_v5_0_0_arch: ARCHITECTURE IS "yes";
   COMPONENT ppm_detect_gen_v1_0 IS
     GENERIC (
       C_S00_AXI_DATA_WIDTH : INTEGER;
@@ -118,8 +118,12 @@ ARCHITECTURE quad_interface_ppm_detect_gen_v2_0_1_arch OF quad_interface_ppm_det
       s00_axi_rready : IN STD_LOGIC
     );
   END COMPONENT ppm_detect_gen_v1_0;
+  ATTRIBUTE X_CORE_INFO : STRING;
+  ATTRIBUTE X_CORE_INFO OF quad_interface_ppm_detect_gen_v5_0_0_arch: ARCHITECTURE IS "ppm_detect_gen_v1_0,Vivado 2020.1";
+  ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
+  ATTRIBUTE CHECK_LICENSE_TYPE OF quad_interface_ppm_detect_gen_v5_0_0_arch : ARCHITECTURE IS "quad_interface_ppm_detect_gen_v5_0_0,ppm_detect_gen_v1_0,{}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
-  ATTRIBUTE IP_DEFINITION_SOURCE OF quad_interface_ppm_detect_gen_v2_0_1_arch: ARCHITECTURE IS "package_project";
+  ATTRIBUTE IP_DEFINITION_SOURCE OF quad_interface_ppm_detect_gen_v5_0_0_arch: ARCHITECTURE IS "package_project";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF s00_axi_rready: SIGNAL IS "xilinx.com:interface:aximm:1.0 s00_axi RREADY";
@@ -178,4 +182,4 @@ BEGIN
       s00_axi_rvalid => s00_axi_rvalid,
       s00_axi_rready => s00_axi_rready
     );
-END quad_interface_ppm_detect_gen_v2_0_1_arch;
+END quad_interface_ppm_detect_gen_v5_0_0_arch;
