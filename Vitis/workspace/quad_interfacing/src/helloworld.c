@@ -5,14 +5,38 @@
 #include <xil_types.h>
 #include "sleep.h"
 
-#define CONTROL_REG *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x0))
-#define STATUS_REG *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x4))
-#define CHANNEL_1 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x8))
-#define CHANNEL_2 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0xC))
-#define CHANNEL_3 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x10))
-#define CHANNEL_4 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x14))
-#define CHANNEL_5 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x18))
-#define CHANNEL_6 *((volatile u32*) (XPAR_PPM_DETECT_GEN_V2_0_BASEADDR + 0x1C))
+#define PPM_MODULE_BASEADDR XPAR_PPM_DETECT_GEN_V2_0_BASEADDR
+
+#define CONTROL_REG *((volatile u32*) (PPM_MODULE_BASEADDR + 0x0))
+#define STATUS_REG *((volatile u32*) (PPM_MODULE_BASEADDR + 0x4))
+#define CHANNEL_1 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x8))
+#define CHANNEL_2 *((volatile u32*) (PPM_MODULE_BASEADDR + 0xC))
+#define CHANNEL_3 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x10))
+#define CHANNEL_4 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x14))
+#define CHANNEL_5 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x18))
+#define CHANNEL_6 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x1C))
+
+#define SLV_REG0 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x0))
+#define SLV_REG1 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x4))
+#define SLV_REG2 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x8))
+#define SLV_REG3 *((volatile u32*) (PPM_MODULE_BASEADDR + 0xC))
+#define SLV_REG4 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x10))
+#define SLV_REG5 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x14))
+#define SLV_REG6 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x18))
+#define SLV_REG7 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x1C))
+#define SLV_REG8 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x20))
+#define SLV_REG9 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x24))
+#define SLV_REG10 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x28))
+#define SLV_REG11 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x2C))
+#define SLV_REG12 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x30))
+#define SLV_REG13 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x34))
+#define SLV_REG14 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x38))
+
+// Software relay mode is enabled when the least significant bit of SLV_REG0 is set.
+int is_software_relay_mode 
+{
+	return SLV_REG0 & 0x1;
+}
 
 int main()
 {
