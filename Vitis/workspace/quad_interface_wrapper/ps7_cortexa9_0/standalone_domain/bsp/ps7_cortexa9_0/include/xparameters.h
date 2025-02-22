@@ -126,11 +126,6 @@
 /******************************************************************/
 
 
-/* Definitions for peripheral PPM_DETECT_GEN_V2_0 */
-#define XPAR_PPM_DETECT_GEN_V2_0_BASEADDR 0x43C00000
-#define XPAR_PPM_DETECT_GEN_V2_0_HIGHADDR 0x43C0FFFF
-
-
 /* Definitions for peripheral PS7_AFI_0 */
 #define XPAR_PS7_AFI_0_S_AXI_BASEADDR 0xF8008000
 #define XPAR_PS7_AFI_0_S_AXI_HIGHADDR 0xF8008FFF
@@ -221,6 +216,11 @@
 /* Definitions for peripheral PS7_SLCR_0 */
 #define XPAR_PS7_SLCR_0_S_AXI_BASEADDR 0xF8000000
 #define XPAR_PS7_SLCR_0_S_AXI_HIGHADDR 0xF8000FFF
+
+
+/* Definitions for peripheral PPM_DETECT_GEN_V3_0_0 */
+#define XPAR_PPM_DETECT_GEN_V3_0_0_BASEADDR 0x43C00000
+#define XPAR_PPM_DETECT_GEN_V3_0_0_HIGHADDR 0x43C0FFFF
 
 
 /******************************************************************/
