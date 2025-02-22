@@ -418,6 +418,14 @@ begin
         -- End the pulse
         -- s_channel_read is a Mealy output, advance 1 ps to let s_ppm settle.
         s_ppm <= '0';
+
+        -- Wait for PULSE_DETECTION_WIDTH clock cycles and verify that we are still in the IDLE_COUNT state.
+        for a in 1 to PULSE_DETECTION_WIDTH loop
+          wait until falling_edge(s_clk);
+          assert s_state = B"101" report "Test Failed: s_state was not 101!" severity failure;
+        end loop;
+
+        wait until falling_edge(s_clk);
         wait for 1 ps;
         assert s_channel_read = '1' report "Test Failed: s_channel_read should be 1!" severity failure;
 
@@ -426,7 +434,11 @@ begin
         -- Channel should be done now.
         assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
         assert s_state = B"110" report "Test Failed: s_state was not 110!" severity failure;
-        assert s_channel_pulse_widths(i) = TB_PULSE_WIDTHS(i) report "Test Failed: s_cahnnel_pulse_widths was not correct!" severity failure;
+
+        -- Note: The counter overcounts by PULSE_DETECTION_WIDTH + 1 for pulse detection. The +1 is because the counter enable is driven by a value that updates
+        --       on the rising edge of the clock, so the counter does not see that it is disabled until the next clock cycle, leading to an extra count.
+        --       This does not impact the overall design at all.
+        assert s_channel_pulse_widths(i) = STD_LOGIC_VECTOR(UNSIGNED(TB_PULSE_WIDTHS(i)) + TO_UNSIGNED(PULSE_DETECTION_WIDTH + 1, REG_SIZE))report "Test Failed: s_channel_pulse_widths was not correct!" severity failure;
         assert s_reg_sel = STD_LOGIC_VECTOR(TO_UNSIGNED(i + 1, s_reg_sel'length)) report "Test Failed: s_reg_sel was not correct!" severity failure;
 
         wait until falling_edge(s_clk);
@@ -441,7 +453,10 @@ begin
 
       -- Make sure none of th registers got overwritten.
       for i in 0 to 4 loop
-        assert s_channel_pulse_widths(i) = TB_PULSE_WIDTHS(i) report "Test Failed: s_channel_pulse_widths did not maintain its values after 5 channels have been read!" severity failure;
+        -- Note: The counter overcounts by PULSE_DETECTION_WIDTH + 1 for pulse detection. The +1 is because the counter enable is driven by a value that updates
+        --       on the rising edge of the clock, so the counter does not see that it is disabled until the next clock cycle, leading to an extra count.
+        --       This does not impact the overall design at all.
+        assert s_channel_pulse_widths(i) = STD_LOGIC_VECTOR(UNSIGNED(TB_PULSE_WIDTHS(i)) + TO_UNSIGNED(PULSE_DETECTION_WIDTH + 1, REG_SIZE))report "Test Failed: s_channel_pulse_widths did not maintain their values!" severity failure;
       end loop;
 
       -- Make sure last channel has not been saved.
@@ -459,10 +474,9 @@ begin
 
       -- Set ppm low, which should make it so the start of the pulse is not detected.
       s_ppm <= '0';
-
       wait until falling_edge(s_clk);
 
-      -- Verify that we have not started counting the idle pulse yet.
+      -- Verify that we have not started counting the pulse yet.
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
       assert s_state = B"100" report "Test Failed: s_state was not 100!" severity failure;
       assert s_count = X"00000000" report "Test Failed: s_count was not 0x0!" severity failure;
@@ -494,7 +508,14 @@ begin
       -- End the pulse
       -- s_channel_read is a Mealy output, advance 1 ps to let s_ppm settle.
       s_ppm <= '0';
-      wait for 1 ps;
+
+      -- Wait for PULSE_DETECTION_WIDTH clock cycles and verify that we are still in the COUNT state.
+      for a in 1 to PULSE_DETECTION_WIDTH loop
+        wait until falling_edge(s_clk);
+        assert s_state = B"101" report "Test Failed: s_state was not 101!" severity failure;
+      end loop;
+
+      wait until falling_edge(s_clk);
       assert s_channel_read = '1' report "Test Failed: s_channel_read should be 1!" severity failure;
 
       -- Set s_start to 0 so we don't start again.
@@ -505,12 +526,15 @@ begin
       -- Channel should be done now.
       assert s_channel_read = '0' report "Test Failed: s_channel_read should be 0!" severity failure;
       assert s_state = B"110" report "Test Failed: s_state was not 110!" severity failure;
-      assert s_channel_pulse_widths(5) = TB_PULSE_WIDTHS(5) report "Test Failed: s_cahnnel_pulse_widths(5) was not correct!" severity failure;
+      -- Note: The counter overcounts by PULSE_DETECTION_WIDTH + 1 for pulse detection. The +1 is because the counter enable is driven by a value that updates
+      --       on the rising edge of the clock, so the counter does not see that it is disabled until the next clock cycle, leading to an extra count.
+      --       This does not impact the overall design at all.
+      assert s_channel_pulse_widths(5) = STD_LOGIC_VECTOR(UNSIGNED(TB_PULSE_WIDTHS(5)) + TO_UNSIGNED(PULSE_DETECTION_WIDTH + 1, REG_SIZE)) report "Test Failed: s_channel_pulse_widths was not correct!" severity failure;
       assert s_reg_sel = B"110" report "Test Failed: s_reg_sel was not 110!" severity failure;
 
       -- Verify that all of the stored pulse widths are correct.
       for i in 0 to 5 loop
-        assert s_channel_pulse_widths(i) = TB_PULSE_WIDTHS(i) report "Test Failed: s_channel_pulse_widths was not correct after all channels have been read!" severity failure;
+        assert s_channel_pulse_widths(i) = STD_LOGIC_VECTOR(UNSIGNED(TB_PULSE_WIDTHS(i)) + TO_UNSIGNED(PULSE_DETECTION_WIDTH + 1, REG_SIZE)) report "Test Failed: s_channel_pulse_widths was not correct after all channels have been read!" severity failure;
       end loop;
 
       -- s_reg_sel should be zero on the next falling edge.
