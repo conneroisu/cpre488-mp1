@@ -171,8 +171,8 @@ proc create_root_design { parentCell } {
    CONFIG.NUM_MI {1} \
  ] $axi_interconnect_0
 
-  # Create instance: ppm_detect_gen_v5_0, and set properties
-  set ppm_detect_gen_v5_0 [ create_bd_cell -type ip -vlnv EastburnOhnesorge:user:ppm_detect_gen_v5:5.0 ppm_detect_gen_v5_0 ]
+  # Create instance: ppm_detect_gen_0, and set properties
+  set ppm_detect_gen_0 [ create_bd_cell -type ip -vlnv EastburnOhnesorge:user:ppm_detect_gen:3.0 ppm_detect_gen_0 ]
 
   # Create instance: proc_sys_reset_0, and set properties
   set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]
@@ -574,20 +574,20 @@ proc create_root_design { parentCell } {
 
   # Create interface connections
   connect_bd_intf_net -intf_net S00_AXI_1 [get_bd_intf_pins axi_interconnect_0/S00_AXI] [get_bd_intf_pins processing_system7_0/M_AXI_GP0]
-  connect_bd_intf_net -intf_net axi_interconnect_0_M00_AXI [get_bd_intf_pins axi_interconnect_0/M00_AXI] [get_bd_intf_pins ppm_detect_gen_v5_0/s00_axi]
+  connect_bd_intf_net -intf_net axi_interconnect_0_M00_AXI [get_bd_intf_pins axi_interconnect_0/M00_AXI] [get_bd_intf_pins ppm_detect_gen_0/S00_AXI]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
 
   # Create port connections
-  connect_bd_net -net PPM_IN_1 [get_bd_ports PPM_IN] [get_bd_pins ppm_detect_gen_v5_0/i_ppm]
-  connect_bd_net -net ppm_detect_gen_v5_0_o_ppm [get_bd_ports PPM_OUT] [get_bd_pins ppm_detect_gen_v5_0/o_ppm]
+  connect_bd_net -net PPM_IN_1 [get_bd_ports PPM_IN] [get_bd_pins ppm_detect_gen_0/i_ppm]
+  connect_bd_net -net ppm_detect_gen_0_o_ppm [get_bd_ports PPM_OUT] [get_bd_pins ppm_detect_gen_0/o_ppm]
   connect_bd_net -net proc_sys_reset_0_interconnect_aresetn [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins proc_sys_reset_0/interconnect_aresetn]
-  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins ppm_detect_gen_v5_0/s00_axi_aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins ppm_detect_gen_v5_0/s00_axi_aclk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK]
+  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins ppm_detect_gen_0/s00_axi_aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins ppm_detect_gen_0/s00_axi_aclk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
 
   # Create address segments
-  assign_bd_address -offset 0x43C00000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs ppm_detect_gen_v5_0/s00_axi/reg0] -force
+  assign_bd_address -offset 0x43C00000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs ppm_detect_gen_0/S00_AXI/S00_AXI_reg] -force
 
 
   # Restore current instance
