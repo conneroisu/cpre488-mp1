@@ -33,7 +33,7 @@
 #define SLV_REG14 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x38))
 
 // Software relay mode is enabled when the least significant bit of SLV_REG0 is set.
-int is_software_relay_mode 
+int is_software_relay_mode ()
 {
 	return SLV_REG0 & 0x1;
 }
