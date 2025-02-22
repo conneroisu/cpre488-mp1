@@ -39,11 +39,11 @@ int main()
 
 		CONTROL_REG = 0xFFFF;
 
-		while (STATUS_REG)
-		{
+		// while (STATUS_REG)
+		// {
 
-			print("Hello World\n\r");
-		}
+		// 	print("Hello World\n\r");
+		// }
 
 		xil_printf("\n\n\n\n\rChannel 1: %x\n\r", CHANNEL_1);
 		xil_printf("Channel 2: %x\n\r", CHANNEL_2);
