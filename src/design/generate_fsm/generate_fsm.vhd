@@ -5,7 +5,7 @@ use IEEE.numeric_std.all;
 entity generate_fsm is
     generic (
         N               : natural := 32;
-        IDLE_FRAME_TIME : time    := 1 ms
+        IDLE_FRAME_TIME : time    := 9 ms
     );
     port (
         i_clk        : in  std_logic;
@@ -17,7 +17,7 @@ entity generate_fsm is
         i_slv_reg23  : in  std_logic_vector(N - 1 downto 0);
         i_slv_reg24  : in  std_logic_vector(N - 1 downto 0);
         i_slv_reg25  : in  std_logic_vector(N - 1 downto 0);
-        o_ppm        : inout std_logic;
+        o_ppm        : out std_logic;
         o_state      : out std_logic_vector(N-1 downto 0)  -- Debug output
     );
 end generate_fsm;
@@ -33,7 +33,7 @@ architecture arc of generate_fsm is
     signal idle_cntr  : natural;
     
     -- Constants
-    constant CLK_PERIOD     : time    := 1 ns; -- 1000 MHz
+    constant CLK_PERIOD     : time    := 10 ns;
     constant GAP_TIME_CNT   : natural := integer(0.40 ms / CLK_PERIOD);
     constant IDLE_FRAME_CNT : natural := integer(IDLE_FRAME_TIME / CLK_PERIOD);
 
@@ -50,6 +50,7 @@ begin
         if rising_edge(i_clk) then
             if i_rst = '1' then
                 current_state <= IDLE;
+                next_state <= IDLE;  -- Initialize next_state on reset
             else
                 current_state <= next_state;
             end if;
@@ -57,7 +58,7 @@ begin
     end process;
 
     -- Process 2: Combinational logic for next state and outputs
-    NEXT_STATE_LOGIC : process(current_state, i_slv_reg0_1, delay_cntr, gap_cntr, idle_cntr)
+    NEXT_STATE_LOGIC : process(all)  -- Using 'all' ensures no missing sensitivity list signals
     begin
         -- Default assignments (prevent latches)
         next_state <= current_state;
