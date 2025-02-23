@@ -106,6 +106,8 @@ begin
         s_slv_reg25 <= std_logic_vector(to_unsigned(175000, 32));
         wait for IDLE_FRAME_TIME;
         wait for to_integer(unsigned(s_slv_reg20)) * 10 ns;
+        -- assert o_ppm = '1' report "TEST FAILED" severity failure;
+        assert o_ppm = '1' report "TEST FAILED" severity failure;
         wait for GAP_TIME;
         wait for to_integer(unsigned(s_slv_reg21)) * 10 ns;
         wait for GAP_TIME;
