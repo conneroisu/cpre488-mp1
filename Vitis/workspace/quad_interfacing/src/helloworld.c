@@ -48,16 +48,6 @@
 #define HARDWARE_CH6 SLV_REG14
 
 
-int is_software_relay_mode ()
-{
-	return SLV_REG0 & SOFTWARE_RELAY_MODE ? 1 : 0;
-}
-
-char* sw_r()
-{
-	return is_software_relay_mode() ? "Enabled" : "Disabled";
-}
-
 int main()
 {
     init_platform();
