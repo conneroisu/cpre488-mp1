@@ -1,7 +1,7 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Sun Feb 23 14:48:14 2025
+-- Date        : Sun Feb 23 16:08:03 2025
 -- Host        : CO2041-08 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/Users/connero/Downloads/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_0_2/quad_interface_ppm_detect_gen_0_2_sim_netlist.vhdl
@@ -27,7 +27,7 @@ entity quad_interface_ppm_detect_gen_0_2_detect_fsm is
     s00_axi_aclk : in STD_LOGIC;
     SR : in STD_LOGIC_VECTOR ( 0 to 0 );
     i_ppm : in STD_LOGIC;
-    Q : in STD_LOGIC_VECTOR ( 0 to 0 )
+    \FSM_onehot_s_c_state_reg[1]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_0_2_detect_fsm : entity is "detect_fsm";
@@ -279,7 +279,7 @@ begin
       INIT => X"4444F44444444444"
     )
         port map (
-      I0 => Q(0),
+      I0 => \FSM_onehot_s_c_state_reg[1]_0\(0),
       I1 => \FSM_onehot_s_c_state_reg_n_0_[1]\,
       I2 => s_detect_reg_sel(1),
       I3 => s_detect_reg_sel(2),
@@ -377,9 +377,9 @@ begin
         port map (
       I0 => \FSM_onehot_s_c_state[5]_i_7_n_0\,
       I1 => \FSM_onehot_s_c_state[5]_i_8_n_0\,
-      I2 => s_idle_pulse_width(31),
-      I3 => s_idle_pulse_width(21),
-      I4 => s_idle_pulse_width(22),
+      I2 => s_idle_pulse_width(28),
+      I3 => s_idle_pulse_width(23),
+      I4 => s_idle_pulse_width(29),
       O => \FSM_onehot_s_c_state[5]_i_4_n_0\
     );
 \FSM_onehot_s_c_state[5]_i_5\: unisim.vcomponents.LUT4
@@ -390,7 +390,7 @@ begin
       I0 => s_pulse_start_reg_n_0,
       I1 => \FSM_onehot_s_c_state_reg_n_0_[5]\,
       I2 => \FSM_onehot_s_c_state_reg_n_0_[1]\,
-      I3 => Q(0),
+      I3 => \FSM_onehot_s_c_state_reg[1]_0\(0),
       O => \FSM_onehot_s_c_state[5]_i_5_n_0\
     );
 \FSM_onehot_s_c_state[5]_i_6\: unisim.vcomponents.LUT4
@@ -409,12 +409,12 @@ begin
       INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => s_idle_pulse_width(19),
-      I1 => s_idle_pulse_width(20),
-      I2 => s_idle_pulse_width(29),
-      I3 => s_idle_pulse_width(28),
-      I4 => s_idle_pulse_width(25),
-      I5 => s_idle_pulse_width(23),
+      I0 => s_idle_pulse_width(21),
+      I1 => s_idle_pulse_width(22),
+      I2 => s_idle_pulse_width(30),
+      I3 => s_idle_pulse_width(24),
+      I4 => s_idle_pulse_width(31),
+      I5 => s_idle_pulse_width(27),
       O => \FSM_onehot_s_c_state[5]_i_7_n_0\
     );
 \FSM_onehot_s_c_state[5]_i_8\: unisim.vcomponents.LUT4
@@ -422,10 +422,10 @@ begin
       INIT => X"FFFE"
     )
         port map (
-      I0 => s_idle_pulse_width(27),
-      I1 => s_idle_pulse_width(30),
-      I2 => s_idle_pulse_width(24),
-      I3 => s_idle_pulse_width(26),
+      I0 => s_idle_pulse_width(19),
+      I1 => s_idle_pulse_width(26),
+      I2 => s_idle_pulse_width(20),
+      I3 => s_idle_pulse_width(25),
       O => \FSM_onehot_s_c_state[5]_i_8_n_0\
     );
 \FSM_onehot_s_c_state[6]_i_1\: unisim.vcomponents.LUT4
@@ -2336,17 +2336,16 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity quad_interface_ppm_detect_gen_0_2_generate_fsm is
   port (
-    o_ppm : out STD_LOGIC;
     D : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_aclk : in STD_LOGIC;
-    s00_axi_aresetn : in STD_LOGIC;
-    Q : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Q : in STD_LOGIC_VECTOR ( 0 to 0 );
+    \next_state1_carry__2_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     \next_state1_inferred__0/i__carry__2_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     \next_state1_inferred__1/i__carry__2_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     \next_state1_inferred__2/i__carry__2_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     \next_state0_carry__2_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     \next_state1_inferred__3/i__carry__2_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    \idle_cntr_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
+    s00_axi_aclk : in STD_LOGIC;
+    s00_axi_aresetn : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_0_2_generate_fsm : entity is "generate_fsm";
@@ -2360,6 +2359,8 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal \FSM_onehot_current_state[1]_i_2_n_0\ : STD_LOGIC;
   signal \FSM_onehot_current_state[1]_i_3_n_0\ : STD_LOGIC;
   signal \FSM_onehot_current_state[1]_i_4_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_current_state[1]_i_5_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_current_state[1]_i_6_n_0\ : STD_LOGIC;
   signal \FSM_onehot_current_state[2]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_current_state[2]_i_2_n_0\ : STD_LOGIC;
   signal \FSM_onehot_current_state[3]_i_1_n_0\ : STD_LOGIC;
@@ -2375,9 +2376,10 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal \FSM_onehot_current_state_reg_n_0_[5]\ : STD_LOGIC;
   signal \FSM_onehot_current_state_reg_n_0_[6]\ : STD_LOGIC;
   signal \FSM_onehot_current_state_reg_n_0_[7]\ : STD_LOGIC;
-  signal current_state_reg : STD_LOGIC_VECTOR ( 0 to 0 );
   signal delay_cntr : STD_LOGIC_VECTOR ( 30 downto 0 );
   signal \delay_cntr[30]_i_2_n_0\ : STD_LOGIC;
+  signal \delay_cntr[30]_i_3_n_0\ : STD_LOGIC;
+  signal \delay_cntr[30]_i_4_n_0\ : STD_LOGIC;
   signal gap_cntr : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal \gap_cntr[0]_i_1_n_0\ : STD_LOGIC;
   signal \gap_cntr[1]_i_1_n_0\ : STD_LOGIC;
@@ -2511,6 +2513,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal \i__carry_i_8__2_n_0\ : STD_LOGIC;
   signal \i__carry_i_8_n_0\ : STD_LOGIC;
   signal \idle_cntr[19]_i_1_n_0\ : STD_LOGIC;
+  signal \idle_cntr[19]_i_3_n_0\ : STD_LOGIC;
   signal \idle_cntr_reg[12]_i_2_n_0\ : STD_LOGIC;
   signal \idle_cntr_reg[12]_i_2_n_1\ : STD_LOGIC;
   signal \idle_cntr_reg[12]_i_2_n_2\ : STD_LOGIC;
@@ -2519,8 +2522,8 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal \idle_cntr_reg[16]_i_2_n_1\ : STD_LOGIC;
   signal \idle_cntr_reg[16]_i_2_n_2\ : STD_LOGIC;
   signal \idle_cntr_reg[16]_i_2_n_3\ : STD_LOGIC;
-  signal \idle_cntr_reg[19]_i_5_n_2\ : STD_LOGIC;
-  signal \idle_cntr_reg[19]_i_5_n_3\ : STD_LOGIC;
+  signal \idle_cntr_reg[19]_i_4_n_2\ : STD_LOGIC;
+  signal \idle_cntr_reg[19]_i_4_n_3\ : STD_LOGIC;
   signal \idle_cntr_reg[4]_i_2_n_0\ : STD_LOGIC;
   signal \idle_cntr_reg[4]_i_2_n_1\ : STD_LOGIC;
   signal \idle_cntr_reg[4]_i_2_n_2\ : STD_LOGIC;
@@ -2550,10 +2553,8 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal \idle_cntr_reg_n_0_[8]\ : STD_LOGIC;
   signal \idle_cntr_reg_n_0_[9]\ : STD_LOGIC;
   signal next_delay_cntr : STD_LOGIC_VECTOR ( 30 downto 0 );
-  signal next_gap_cntr : STD_LOGIC_VECTOR ( 0 to 0 );
   signal next_idle_cntr : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal next_idle_cntr0 : STD_LOGIC_VECTOR ( 19 downto 1 );
-  signal next_o_ppm : STD_LOGIC;
   signal \next_state0_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \next_state0_carry__0_i_2_n_0\ : STD_LOGIC;
   signal \next_state0_carry__0_i_3_n_0\ : STD_LOGIC;
@@ -2742,17 +2743,13 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal next_state2_carry_n_1 : STD_LOGIC;
   signal next_state2_carry_n_2 : STD_LOGIC;
   signal next_state2_carry_n_3 : STD_LOGIC;
-  signal o_ppm_reg_i_2_n_0 : STD_LOGIC;
-  signal o_ppm_reg_i_3_n_0 : STD_LOGIC;
-  signal o_ppm_reg_i_4_n_0 : STD_LOGIC;
-  signal o_ppm_reg_i_5_n_0 : STD_LOGIC;
   signal \o_state[0]_i_1_n_0\ : STD_LOGIC;
   signal \o_state[1]_i_1_n_0\ : STD_LOGIC;
   signal \o_state[2]_i_1_n_0\ : STD_LOGIC;
   signal p_0_in : STD_LOGIC;
   signal p_0_in1_in : STD_LOGIC_VECTOR ( 30 downto 1 );
-  signal \NLW_idle_cntr_reg[19]_i_5_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW_idle_cntr_reg[19]_i_5_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \NLW_idle_cntr_reg[19]_i_4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal \NLW_idle_cntr_reg[19]_i_4_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal NLW_next_state0_carry_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_next_state0_carry__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_next_state0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -2789,30 +2786,30 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   attribute FSM_ENCODED_STATES of \FSM_onehot_current_state_reg[6]\ : label is "chan1:00000010,gap:00000100,idle:00000001,chan6:10000000,chan5:01000000,chan4:00100000,chan3:00010000,chan2:00001000";
   attribute FSM_ENCODED_STATES of \FSM_onehot_current_state_reg[7]\ : label is "chan1:00000010,gap:00000100,idle:00000001,chan6:10000000,chan5:01000000,chan4:00100000,chan3:00010000,chan2:00001000";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \idle_cntr[0]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \idle_cntr[10]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \idle_cntr[11]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \idle_cntr[12]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \idle_cntr[13]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \idle_cntr[14]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \idle_cntr[15]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \idle_cntr[16]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \idle_cntr[17]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \idle_cntr[18]_i_1\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \idle_cntr[19]_i_2\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \idle_cntr[1]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \idle_cntr[2]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \idle_cntr[3]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \idle_cntr[4]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \idle_cntr[5]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \idle_cntr[6]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \idle_cntr[7]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \idle_cntr[8]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \idle_cntr[9]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \idle_cntr[0]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \idle_cntr[10]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \idle_cntr[11]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \idle_cntr[12]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \idle_cntr[13]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \idle_cntr[14]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \idle_cntr[15]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \idle_cntr[16]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \idle_cntr[17]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \idle_cntr[18]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \idle_cntr[19]_i_2\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \idle_cntr[1]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \idle_cntr[2]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \idle_cntr[3]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \idle_cntr[4]_i_1\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \idle_cntr[5]_i_1\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \idle_cntr[6]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \idle_cntr[7]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \idle_cntr[8]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \idle_cntr[9]_i_1\ : label is "soft_lutpair48";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \idle_cntr_reg[12]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \idle_cntr_reg[16]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \idle_cntr_reg[19]_i_5\ : label is 35;
+  attribute ADDER_THRESHOLD of \idle_cntr_reg[19]_i_4\ : label is 35;
   attribute ADDER_THRESHOLD of \idle_cntr_reg[4]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \idle_cntr_reg[8]_i_2\ : label is 35;
   attribute COMPARATOR_THRESHOLD : integer;
@@ -2855,7 +2852,7 @@ begin
       INIT => X"FFD0"
     )
         port map (
-      I0 => \idle_cntr_reg[0]_0\(0),
+      I0 => Q(0),
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
       I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I3 => \FSM_onehot_current_state[0]_i_2_n_0\,
@@ -2863,52 +2860,49 @@ begin
     );
 \FSM_onehot_current_state[0]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8900FFFF89008900"
+      INIT => X"C100C100FFFFC100"
     )
         port map (
-      I0 => gap_cntr(1),
-      I1 => gap_cntr(2),
-      I2 => gap_cntr(0),
+      I0 => gap_cntr(0),
+      I1 => gap_cntr(1),
+      I2 => gap_cntr(2),
       I3 => \FSM_onehot_current_state_reg_n_0_[2]\,
-      I4 => p_0_in,
-      I5 => \FSM_onehot_current_state_reg_n_0_[7]\,
+      I4 => \FSM_onehot_current_state_reg_n_0_[7]\,
+      I5 => p_0_in,
       O => \FSM_onehot_current_state[0]_i_2_n_0\
     );
 \FSM_onehot_current_state[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"88F88888"
+      INIT => X"F222F000"
     )
         port map (
-      I0 => \FSM_onehot_current_state_reg_n_0_[1]\,
-      I1 => \next_state1_inferred__3/i__carry__2_n_0\,
-      I2 => \idle_cntr_reg[0]_0\(0),
-      I3 => \FSM_onehot_current_state[1]_i_2_n_0\,
+      I0 => Q(0),
+      I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
+      I2 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I3 => \next_state1_inferred__3/i__carry__2_n_0\,
       I4 => \FSM_onehot_current_state_reg_n_0_[0]\,
       O => \FSM_onehot_current_state[1]_i_1_n_0\
     );
 \FSM_onehot_current_state[1]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"777777777FFFFFFF"
+      INIT => X"AAAAAAAAFFFFAAFB"
     )
         port map (
-      I0 => \idle_cntr_reg_n_0_[18]\,
-      I1 => \idle_cntr_reg_n_0_[19]\,
-      I2 => \FSM_onehot_current_state[1]_i_3_n_0\,
-      I3 => \idle_cntr_reg_n_0_[15]\,
-      I4 => \idle_cntr_reg_n_0_[16]\,
+      I0 => \FSM_onehot_current_state[1]_i_3_n_0\,
+      I1 => \FSM_onehot_current_state[1]_i_4_n_0\,
+      I2 => \FSM_onehot_current_state[1]_i_5_n_0\,
+      I3 => \idle_cntr_reg_n_0_[14]\,
+      I4 => \FSM_onehot_current_state[1]_i_6_n_0\,
       I5 => \idle_cntr_reg_n_0_[17]\,
       O => \FSM_onehot_current_state[1]_i_2_n_0\
     );
-\FSM_onehot_current_state[1]_i_3\: unisim.vcomponents.LUT5
+\FSM_onehot_current_state[1]_i_3\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"EAAAAAAA"
+      INIT => X"7"
     )
         port map (
-      I0 => \idle_cntr_reg_n_0_[14]\,
-      I1 => \idle_cntr_reg_n_0_[13]\,
-      I2 => \idle_cntr_reg_n_0_[11]\,
-      I3 => \idle_cntr_reg_n_0_[12]\,
-      I4 => \FSM_onehot_current_state[1]_i_4_n_0\,
+      I0 => \idle_cntr_reg_n_0_[19]\,
+      I1 => \idle_cntr_reg_n_0_[18]\,
       O => \FSM_onehot_current_state[1]_i_3_n_0\
     );
 \FSM_onehot_current_state[1]_i_4\: unisim.vcomponents.LUT6
@@ -2923,6 +2917,25 @@ begin
       I4 => \idle_cntr_reg_n_0_[5]\,
       I5 => \idle_cntr_reg_n_0_[6]\,
       O => \FSM_onehot_current_state[1]_i_4_n_0\
+    );
+\FSM_onehot_current_state[1]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"7F"
+    )
+        port map (
+      I0 => \idle_cntr_reg_n_0_[13]\,
+      I1 => \idle_cntr_reg_n_0_[11]\,
+      I2 => \idle_cntr_reg_n_0_[12]\,
+      O => \FSM_onehot_current_state[1]_i_5_n_0\
+    );
+\FSM_onehot_current_state[1]_i_6\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"7"
+    )
+        port map (
+      I0 => \idle_cntr_reg_n_0_[16]\,
+      I1 => \idle_cntr_reg_n_0_[15]\,
+      O => \FSM_onehot_current_state[1]_i_6_n_0\
     );
 \FSM_onehot_current_state[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -2951,67 +2964,67 @@ begin
     );
 \FSM_onehot_current_state[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"888888888F888888"
+      INIT => X"8888888888F88888"
     )
         port map (
       I0 => \FSM_onehot_current_state_reg_n_0_[3]\,
       I1 => \next_state1_carry__2_n_0\,
-      I2 => gap_cntr(2),
-      I3 => gap_cntr(0),
-      I4 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I2 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I3 => gap_cntr(2),
+      I4 => gap_cntr(0),
       I5 => gap_cntr(1),
       O => \FSM_onehot_current_state[3]_i_1_n_0\
     );
 \FSM_onehot_current_state[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"888888888888F888"
+      INIT => X"888888888F888888"
     )
         port map (
       I0 => \FSM_onehot_current_state_reg_n_0_[4]\,
       I1 => \next_state1_inferred__0/i__carry__2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I2 => gap_cntr(0),
       I3 => gap_cntr(1),
-      I4 => gap_cntr(2),
-      I5 => gap_cntr(0),
+      I4 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I5 => gap_cntr(2),
       O => \FSM_onehot_current_state[4]_i_1_n_0\
     );
 \FSM_onehot_current_state[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8F88888888888888"
+      INIT => X"88888888F8888888"
     )
         port map (
       I0 => \FSM_onehot_current_state_reg_n_0_[5]\,
       I1 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I2 => gap_cntr(2),
+      I2 => gap_cntr(1),
       I3 => gap_cntr(0),
       I4 => \FSM_onehot_current_state_reg_n_0_[2]\,
-      I5 => gap_cntr(1),
+      I5 => gap_cntr(2),
       O => \FSM_onehot_current_state[5]_i_1_n_0\
     );
 \FSM_onehot_current_state[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"888888888F888888"
+      INIT => X"888F888888888888"
     )
         port map (
       I0 => \FSM_onehot_current_state_reg_n_0_[6]\,
       I1 => \next_state1_inferred__2/i__carry__2_n_0\,
-      I2 => gap_cntr(0),
-      I3 => gap_cntr(2),
+      I2 => gap_cntr(1),
+      I3 => gap_cntr(0),
       I4 => \FSM_onehot_current_state_reg_n_0_[2]\,
-      I5 => gap_cntr(1),
+      I5 => gap_cntr(2),
       O => \FSM_onehot_current_state[6]_i_1_n_0\
     );
 \FSM_onehot_current_state[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"88888888F8888888"
+      INIT => X"88F8888888888888"
     )
         port map (
       I0 => \FSM_onehot_current_state_reg_n_0_[7]\,
       I1 => p_0_in,
-      I2 => gap_cntr(2),
-      I3 => gap_cntr(0),
+      I2 => gap_cntr(0),
+      I3 => gap_cntr(1),
       I4 => \FSM_onehot_current_state_reg_n_0_[2]\,
-      I5 => gap_cntr(1),
+      I5 => gap_cntr(2),
       O => \FSM_onehot_current_state[7]_i_1_n_0\
     );
 \FSM_onehot_current_state_reg[0]\: unisim.vcomponents.FDPE
@@ -3108,11 +3121,11 @@ begin
     )
         port map (
       I0 => delay_cntr(0),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(0)
     );
 \delay_cntr[10]_i_1\: unisim.vcomponents.LUT6
@@ -3121,11 +3134,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(10),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(10)
     );
 \delay_cntr[11]_i_1\: unisim.vcomponents.LUT6
@@ -3134,11 +3147,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(11),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(11)
     );
 \delay_cntr[12]_i_1\: unisim.vcomponents.LUT6
@@ -3147,11 +3160,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(12),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(12)
     );
 \delay_cntr[13]_i_1\: unisim.vcomponents.LUT6
@@ -3160,11 +3173,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(13),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(13)
     );
 \delay_cntr[14]_i_1\: unisim.vcomponents.LUT6
@@ -3173,11 +3186,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(14),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(14)
     );
 \delay_cntr[15]_i_1\: unisim.vcomponents.LUT6
@@ -3186,11 +3199,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(15),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(15)
     );
 \delay_cntr[16]_i_1\: unisim.vcomponents.LUT6
@@ -3199,11 +3212,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(16),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(16)
     );
 \delay_cntr[17]_i_1\: unisim.vcomponents.LUT6
@@ -3212,11 +3225,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(17),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(17)
     );
 \delay_cntr[18]_i_1\: unisim.vcomponents.LUT6
@@ -3225,11 +3238,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(18),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(18)
     );
 \delay_cntr[19]_i_1\: unisim.vcomponents.LUT6
@@ -3238,11 +3251,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(19),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(19)
     );
 \delay_cntr[1]_i_1\: unisim.vcomponents.LUT6
@@ -3251,11 +3264,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(1),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(1)
     );
 \delay_cntr[20]_i_1\: unisim.vcomponents.LUT6
@@ -3264,11 +3277,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(20),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(20)
     );
 \delay_cntr[21]_i_1\: unisim.vcomponents.LUT6
@@ -3277,11 +3290,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(21),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(21)
     );
 \delay_cntr[22]_i_1\: unisim.vcomponents.LUT6
@@ -3290,11 +3303,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(22),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(22)
     );
 \delay_cntr[23]_i_1\: unisim.vcomponents.LUT6
@@ -3303,11 +3316,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(23),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(23)
     );
 \delay_cntr[24]_i_1\: unisim.vcomponents.LUT6
@@ -3316,11 +3329,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(24),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(24)
     );
 \delay_cntr[25]_i_1\: unisim.vcomponents.LUT6
@@ -3329,11 +3342,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(25),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(25)
     );
 \delay_cntr[26]_i_1\: unisim.vcomponents.LUT6
@@ -3342,11 +3355,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(26),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(26)
     );
 \delay_cntr[27]_i_1\: unisim.vcomponents.LUT6
@@ -3355,11 +3368,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(27),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(27)
     );
 \delay_cntr[28]_i_1\: unisim.vcomponents.LUT6
@@ -3368,11 +3381,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(28),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(28)
     );
 \delay_cntr[29]_i_1\: unisim.vcomponents.LUT6
@@ -3381,11 +3394,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(29),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(29)
     );
 \delay_cntr[2]_i_1\: unisim.vcomponents.LUT6
@@ -3394,11 +3407,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(2),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(2)
     );
 \delay_cntr[30]_i_1\: unisim.vcomponents.LUT6
@@ -3407,21 +3420,43 @@ begin
     )
         port map (
       I0 => p_0_in1_in(30),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(30)
     );
-\delay_cntr[30]_i_2\: unisim.vcomponents.LUT2
+\delay_cntr[30]_i_2\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \FSM_onehot_current_state_reg_n_0_[5]\,
+      I1 => \next_state1_inferred__1/i__carry__2_n_0\,
+      I2 => \FSM_onehot_current_state_reg_n_0_[4]\,
+      I3 => \next_state1_inferred__0/i__carry__2_n_0\,
+      O => \delay_cntr[30]_i_2_n_0\
+    );
+\delay_cntr[30]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"F888"
+    )
+        port map (
+      I0 => \FSM_onehot_current_state_reg_n_0_[7]\,
+      I1 => p_0_in,
+      I2 => \FSM_onehot_current_state_reg_n_0_[3]\,
+      I3 => \next_state1_carry__2_n_0\,
+      O => \delay_cntr[30]_i_3_n_0\
+    );
+\delay_cntr[30]_i_4\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
     )
         port map (
-      I0 => p_0_in,
-      I1 => \FSM_onehot_current_state_reg_n_0_[7]\,
-      O => \delay_cntr[30]_i_2_n_0\
+      I0 => \next_state1_inferred__2/i__carry__2_n_0\,
+      I1 => \FSM_onehot_current_state_reg_n_0_[6]\,
+      O => \delay_cntr[30]_i_4_n_0\
     );
 \delay_cntr[3]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -3429,11 +3464,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(3),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(3)
     );
 \delay_cntr[4]_i_1\: unisim.vcomponents.LUT6
@@ -3442,11 +3477,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(4),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(4)
     );
 \delay_cntr[5]_i_1\: unisim.vcomponents.LUT6
@@ -3455,11 +3490,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(5),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(5)
     );
 \delay_cntr[6]_i_1\: unisim.vcomponents.LUT6
@@ -3468,11 +3503,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(6),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(6)
     );
 \delay_cntr[7]_i_1\: unisim.vcomponents.LUT6
@@ -3481,11 +3516,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(7),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(7)
     );
 \delay_cntr[8]_i_1\: unisim.vcomponents.LUT6
@@ -3494,11 +3529,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(8),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(8)
     );
 \delay_cntr[9]_i_1\: unisim.vcomponents.LUT6
@@ -3507,11 +3542,11 @@ begin
     )
         port map (
       I0 => p_0_in1_in(9),
-      I1 => o_ppm_reg_i_3_n_0,
-      I2 => o_ppm_reg_i_4_n_0,
-      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I4 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I5 => \delay_cntr[30]_i_2_n_0\,
+      I1 => \delay_cntr[30]_i_2_n_0\,
+      I2 => \delay_cntr[30]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \next_state1_inferred__3/i__carry__2_n_0\,
+      I5 => \delay_cntr[30]_i_4_n_0\,
       O => next_delay_cntr(9)
     );
 \delay_cntr_reg[0]\: unisim.vcomponents.FDCE
@@ -5329,12 +5364,12 @@ begin
     );
 \idle_cntr[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"40"
+      INIT => X"08"
     )
         port map (
-      I0 => \idle_cntr_reg_n_0_[0]\,
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => \idle_cntr_reg_n_0_[0]\,
       O => next_idle_cntr(0)
     );
 \idle_cntr[10]_i_1\: unisim.vcomponents.LUT3
@@ -5342,9 +5377,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(10),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(10),
       O => next_idle_cntr(10)
     );
 \idle_cntr[11]_i_1\: unisim.vcomponents.LUT3
@@ -5352,9 +5387,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(11),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(11),
       O => next_idle_cntr(11)
     );
 \idle_cntr[12]_i_1\: unisim.vcomponents.LUT3
@@ -5362,9 +5397,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(12),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(12),
       O => next_idle_cntr(12)
     );
 \idle_cntr[13]_i_1\: unisim.vcomponents.LUT3
@@ -5372,9 +5407,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(13),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(13),
       O => next_idle_cntr(13)
     );
 \idle_cntr[14]_i_1\: unisim.vcomponents.LUT3
@@ -5382,9 +5417,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(14),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(14),
       O => next_idle_cntr(14)
     );
 \idle_cntr[15]_i_1\: unisim.vcomponents.LUT3
@@ -5392,9 +5427,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(15),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(15),
       O => next_idle_cntr(15)
     );
 \idle_cntr[16]_i_1\: unisim.vcomponents.LUT3
@@ -5402,9 +5437,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(16),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(16),
       O => next_idle_cntr(16)
     );
 \idle_cntr[17]_i_1\: unisim.vcomponents.LUT3
@@ -5412,9 +5447,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(17),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(17),
       O => next_idle_cntr(17)
     );
 \idle_cntr[18]_i_1\: unisim.vcomponents.LUT3
@@ -5422,21 +5457,22 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(18),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(18),
       O => next_idle_cntr(18)
     );
-\idle_cntr[19]_i_1\: unisim.vcomponents.LUT5
+\idle_cntr[19]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFEFAFA"
+      INIT => X"FFFFFFFFFFFFFFF8"
     )
         port map (
-      I0 => current_state_reg(0),
-      I1 => \idle_cntr_reg[0]_0\(0),
-      I2 => next_gap_cntr(0),
-      I3 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I4 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
+      I2 => \idle_cntr[19]_i_3_n_0\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I4 => \FSM_onehot_current_state_reg_n_0_[6]\,
+      I5 => \FSM_onehot_current_state_reg_n_0_[4]\,
       O => \idle_cntr[19]_i_1_n_0\
     );
 \idle_cntr[19]_i_2\: unisim.vcomponents.LUT3
@@ -5444,40 +5480,32 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(19),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(19),
       O => next_idle_cntr(19)
     );
-\idle_cntr[19]_i_3\: unisim.vcomponents.LUT4
+\idle_cntr[19]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFE"
+      INIT => X"FFFFFFFEFFFEFFFE"
     )
         port map (
-      I0 => \FSM_onehot_current_state_reg_n_0_[7]\,
-      I1 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[2]\,
-      I3 => \FSM_onehot_current_state_reg_n_0_[3]\,
-      O => current_state_reg(0)
-    );
-\idle_cntr[19]_i_4\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"FE"
-    )
-        port map (
-      I0 => \FSM_onehot_current_state_reg_n_0_[1]\,
-      I1 => \FSM_onehot_current_state_reg_n_0_[6]\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[4]\,
-      O => next_gap_cntr(0)
+      I0 => \FSM_onehot_current_state_reg_n_0_[3]\,
+      I1 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I2 => \FSM_onehot_current_state_reg_n_0_[5]\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[7]\,
+      I4 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I5 => Q(0),
+      O => \idle_cntr[19]_i_3_n_0\
     );
 \idle_cntr[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(1),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(1),
       O => next_idle_cntr(1)
     );
 \idle_cntr[2]_i_1\: unisim.vcomponents.LUT3
@@ -5485,9 +5513,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(2),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(2),
       O => next_idle_cntr(2)
     );
 \idle_cntr[3]_i_1\: unisim.vcomponents.LUT3
@@ -5495,9 +5523,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(3),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(3),
       O => next_idle_cntr(3)
     );
 \idle_cntr[4]_i_1\: unisim.vcomponents.LUT3
@@ -5505,9 +5533,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(4),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(4),
       O => next_idle_cntr(4)
     );
 \idle_cntr[5]_i_1\: unisim.vcomponents.LUT3
@@ -5515,9 +5543,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(5),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(5),
       O => next_idle_cntr(5)
     );
 \idle_cntr[6]_i_1\: unisim.vcomponents.LUT3
@@ -5525,9 +5553,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(6),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(6),
       O => next_idle_cntr(6)
     );
 \idle_cntr[7]_i_1\: unisim.vcomponents.LUT3
@@ -5535,9 +5563,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(7),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(7),
       O => next_idle_cntr(7)
     );
 \idle_cntr[8]_i_1\: unisim.vcomponents.LUT3
@@ -5545,9 +5573,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(8),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(8),
       O => next_idle_cntr(8)
     );
 \idle_cntr[9]_i_1\: unisim.vcomponents.LUT3
@@ -5555,9 +5583,9 @@ begin
       INIT => X"80"
     )
         port map (
-      I0 => next_idle_cntr0(9),
+      I0 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I2 => next_idle_cntr0(9),
       O => next_idle_cntr(9)
     );
 \idle_cntr_reg[0]\: unisim.vcomponents.FDCE
@@ -5711,15 +5739,15 @@ begin
       D => next_idle_cntr(19),
       Q => \idle_cntr_reg_n_0_[19]\
     );
-\idle_cntr_reg[19]_i_5\: unisim.vcomponents.CARRY4
+\idle_cntr_reg[19]_i_4\: unisim.vcomponents.CARRY4
      port map (
       CI => \idle_cntr_reg[16]_i_2_n_0\,
-      CO(3 downto 2) => \NLW_idle_cntr_reg[19]_i_5_CO_UNCONNECTED\(3 downto 2),
-      CO(1) => \idle_cntr_reg[19]_i_5_n_2\,
-      CO(0) => \idle_cntr_reg[19]_i_5_n_3\,
+      CO(3 downto 2) => \NLW_idle_cntr_reg[19]_i_4_CO_UNCONNECTED\(3 downto 2),
+      CO(1) => \idle_cntr_reg[19]_i_4_n_2\,
+      CO(0) => \idle_cntr_reg[19]_i_4_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3) => \NLW_idle_cntr_reg[19]_i_5_O_UNCONNECTED\(3),
+      O(3) => \NLW_idle_cntr_reg[19]_i_4_O_UNCONNECTED\(3),
       O(2 downto 0) => next_idle_cntr0(19 downto 17),
       S(3) => '0',
       S(2) => \idle_cntr_reg_n_0_[19]\,
@@ -6318,9 +6346,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(15),
+      I0 => \next_state1_carry__2_0\(15),
       I1 => p_0_in1_in(15),
-      I2 => Q(14),
+      I2 => \next_state1_carry__2_0\(14),
       I3 => p_0_in1_in(14),
       O => \next_state1_carry__0_i_1_n_0\
     );
@@ -6329,9 +6357,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(13),
+      I0 => \next_state1_carry__2_0\(13),
       I1 => p_0_in1_in(13),
-      I2 => Q(12),
+      I2 => \next_state1_carry__2_0\(12),
       I3 => p_0_in1_in(12),
       O => \next_state1_carry__0_i_2_n_0\
     );
@@ -6340,9 +6368,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(11),
+      I0 => \next_state1_carry__2_0\(11),
       I1 => p_0_in1_in(11),
-      I2 => Q(10),
+      I2 => \next_state1_carry__2_0\(10),
       I3 => p_0_in1_in(10),
       O => \next_state1_carry__0_i_3_n_0\
     );
@@ -6351,9 +6379,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(9),
+      I0 => \next_state1_carry__2_0\(9),
       I1 => p_0_in1_in(9),
-      I2 => Q(8),
+      I2 => \next_state1_carry__2_0\(8),
       I3 => p_0_in1_in(8),
       O => \next_state1_carry__0_i_4_n_0\
     );
@@ -6363,9 +6391,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(15),
-      I1 => Q(15),
+      I1 => \next_state1_carry__2_0\(15),
       I2 => p_0_in1_in(14),
-      I3 => Q(14),
+      I3 => \next_state1_carry__2_0\(14),
       O => \next_state1_carry__0_i_5_n_0\
     );
 \next_state1_carry__0_i_6\: unisim.vcomponents.LUT4
@@ -6374,9 +6402,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(13),
-      I1 => Q(13),
+      I1 => \next_state1_carry__2_0\(13),
       I2 => p_0_in1_in(12),
-      I3 => Q(12),
+      I3 => \next_state1_carry__2_0\(12),
       O => \next_state1_carry__0_i_6_n_0\
     );
 \next_state1_carry__0_i_7\: unisim.vcomponents.LUT4
@@ -6385,9 +6413,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(11),
-      I1 => Q(11),
+      I1 => \next_state1_carry__2_0\(11),
       I2 => p_0_in1_in(10),
-      I3 => Q(10),
+      I3 => \next_state1_carry__2_0\(10),
       O => \next_state1_carry__0_i_7_n_0\
     );
 \next_state1_carry__0_i_8\: unisim.vcomponents.LUT4
@@ -6396,9 +6424,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(9),
-      I1 => Q(9),
+      I1 => \next_state1_carry__2_0\(9),
       I2 => p_0_in1_in(8),
-      I3 => Q(8),
+      I3 => \next_state1_carry__2_0\(8),
       O => \next_state1_carry__0_i_8_n_0\
     );
 \next_state1_carry__1\: unisim.vcomponents.CARRY4
@@ -6424,9 +6452,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(23),
+      I0 => \next_state1_carry__2_0\(23),
       I1 => p_0_in1_in(23),
-      I2 => Q(22),
+      I2 => \next_state1_carry__2_0\(22),
       I3 => p_0_in1_in(22),
       O => \next_state1_carry__1_i_1_n_0\
     );
@@ -6435,9 +6463,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(21),
+      I0 => \next_state1_carry__2_0\(21),
       I1 => p_0_in1_in(21),
-      I2 => Q(20),
+      I2 => \next_state1_carry__2_0\(20),
       I3 => p_0_in1_in(20),
       O => \next_state1_carry__1_i_2_n_0\
     );
@@ -6446,9 +6474,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(19),
+      I0 => \next_state1_carry__2_0\(19),
       I1 => p_0_in1_in(19),
-      I2 => Q(18),
+      I2 => \next_state1_carry__2_0\(18),
       I3 => p_0_in1_in(18),
       O => \next_state1_carry__1_i_3_n_0\
     );
@@ -6457,9 +6485,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(17),
+      I0 => \next_state1_carry__2_0\(17),
       I1 => p_0_in1_in(17),
-      I2 => Q(16),
+      I2 => \next_state1_carry__2_0\(16),
       I3 => p_0_in1_in(16),
       O => \next_state1_carry__1_i_4_n_0\
     );
@@ -6469,9 +6497,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(23),
-      I1 => Q(23),
+      I1 => \next_state1_carry__2_0\(23),
       I2 => p_0_in1_in(22),
-      I3 => Q(22),
+      I3 => \next_state1_carry__2_0\(22),
       O => \next_state1_carry__1_i_5_n_0\
     );
 \next_state1_carry__1_i_6\: unisim.vcomponents.LUT4
@@ -6480,9 +6508,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(21),
-      I1 => Q(21),
+      I1 => \next_state1_carry__2_0\(21),
       I2 => p_0_in1_in(20),
-      I3 => Q(20),
+      I3 => \next_state1_carry__2_0\(20),
       O => \next_state1_carry__1_i_6_n_0\
     );
 \next_state1_carry__1_i_7\: unisim.vcomponents.LUT4
@@ -6491,9 +6519,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(19),
-      I1 => Q(19),
+      I1 => \next_state1_carry__2_0\(19),
       I2 => p_0_in1_in(18),
-      I3 => Q(18),
+      I3 => \next_state1_carry__2_0\(18),
       O => \next_state1_carry__1_i_7_n_0\
     );
 \next_state1_carry__1_i_8\: unisim.vcomponents.LUT4
@@ -6502,9 +6530,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(17),
-      I1 => Q(17),
+      I1 => \next_state1_carry__2_0\(17),
       I2 => p_0_in1_in(16),
-      I3 => Q(16),
+      I3 => \next_state1_carry__2_0\(16),
       O => \next_state1_carry__1_i_8_n_0\
     );
 \next_state1_carry__2\: unisim.vcomponents.CARRY4
@@ -6530,9 +6558,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"BA"
     )
         port map (
-      I0 => Q(31),
+      I0 => \next_state1_carry__2_0\(31),
       I1 => p_0_in1_in(30),
-      I2 => Q(30),
+      I2 => \next_state1_carry__2_0\(30),
       O => \next_state1_carry__2_i_1_n_0\
     );
 \next_state1_carry__2_i_2\: unisim.vcomponents.LUT4
@@ -6540,9 +6568,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(29),
+      I0 => \next_state1_carry__2_0\(29),
       I1 => p_0_in1_in(29),
-      I2 => Q(28),
+      I2 => \next_state1_carry__2_0\(28),
       I3 => p_0_in1_in(28),
       O => \next_state1_carry__2_i_2_n_0\
     );
@@ -6551,9 +6579,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(27),
+      I0 => \next_state1_carry__2_0\(27),
       I1 => p_0_in1_in(27),
-      I2 => Q(26),
+      I2 => \next_state1_carry__2_0\(26),
       I3 => p_0_in1_in(26),
       O => \next_state1_carry__2_i_3_n_0\
     );
@@ -6562,9 +6590,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(25),
+      I0 => \next_state1_carry__2_0\(25),
       I1 => p_0_in1_in(25),
-      I2 => Q(24),
+      I2 => \next_state1_carry__2_0\(24),
       I3 => p_0_in1_in(24),
       O => \next_state1_carry__2_i_4_n_0\
     );
@@ -6573,9 +6601,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
       INIT => X"41"
     )
         port map (
-      I0 => Q(31),
+      I0 => \next_state1_carry__2_0\(31),
       I1 => p_0_in1_in(30),
-      I2 => Q(30),
+      I2 => \next_state1_carry__2_0\(30),
       O => \next_state1_carry__2_i_5_n_0\
     );
 \next_state1_carry__2_i_6\: unisim.vcomponents.LUT4
@@ -6584,9 +6612,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(29),
-      I1 => Q(29),
+      I1 => \next_state1_carry__2_0\(29),
       I2 => p_0_in1_in(28),
-      I3 => Q(28),
+      I3 => \next_state1_carry__2_0\(28),
       O => \next_state1_carry__2_i_6_n_0\
     );
 \next_state1_carry__2_i_7\: unisim.vcomponents.LUT4
@@ -6595,9 +6623,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(27),
-      I1 => Q(27),
+      I1 => \next_state1_carry__2_0\(27),
       I2 => p_0_in1_in(26),
-      I3 => Q(26),
+      I3 => \next_state1_carry__2_0\(26),
       O => \next_state1_carry__2_i_7_n_0\
     );
 \next_state1_carry__2_i_8\: unisim.vcomponents.LUT4
@@ -6606,9 +6634,9 @@ next_state1_carry: unisim.vcomponents.CARRY4
     )
         port map (
       I0 => p_0_in1_in(25),
-      I1 => Q(25),
+      I1 => \next_state1_carry__2_0\(25),
       I2 => p_0_in1_in(24),
-      I3 => Q(24),
+      I3 => \next_state1_carry__2_0\(24),
       O => \next_state1_carry__2_i_8_n_0\
     );
 next_state1_carry_i_1: unisim.vcomponents.LUT4
@@ -6616,9 +6644,9 @@ next_state1_carry_i_1: unisim.vcomponents.LUT4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(7),
+      I0 => \next_state1_carry__2_0\(7),
       I1 => p_0_in1_in(7),
-      I2 => Q(6),
+      I2 => \next_state1_carry__2_0\(6),
       I3 => p_0_in1_in(6),
       O => next_state1_carry_i_1_n_0
     );
@@ -6627,9 +6655,9 @@ next_state1_carry_i_2: unisim.vcomponents.LUT4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(5),
+      I0 => \next_state1_carry__2_0\(5),
       I1 => p_0_in1_in(5),
-      I2 => Q(4),
+      I2 => \next_state1_carry__2_0\(4),
       I3 => p_0_in1_in(4),
       O => next_state1_carry_i_2_n_0
     );
@@ -6638,9 +6666,9 @@ next_state1_carry_i_3: unisim.vcomponents.LUT4
       INIT => X"22B2"
     )
         port map (
-      I0 => Q(3),
+      I0 => \next_state1_carry__2_0\(3),
       I1 => p_0_in1_in(3),
-      I2 => Q(2),
+      I2 => \next_state1_carry__2_0\(2),
       I3 => p_0_in1_in(2),
       O => next_state1_carry_i_3_n_0
     );
@@ -6649,9 +6677,9 @@ next_state1_carry_i_4: unisim.vcomponents.LUT4
       INIT => X"B222"
     )
         port map (
-      I0 => Q(1),
+      I0 => \next_state1_carry__2_0\(1),
       I1 => p_0_in1_in(1),
-      I2 => Q(0),
+      I2 => \next_state1_carry__2_0\(0),
       I3 => delay_cntr(0),
       O => next_state1_carry_i_4_n_0
     );
@@ -6661,9 +6689,9 @@ next_state1_carry_i_5: unisim.vcomponents.LUT4
     )
         port map (
       I0 => p_0_in1_in(7),
-      I1 => Q(7),
+      I1 => \next_state1_carry__2_0\(7),
       I2 => p_0_in1_in(6),
-      I3 => Q(6),
+      I3 => \next_state1_carry__2_0\(6),
       O => next_state1_carry_i_5_n_0
     );
 next_state1_carry_i_6: unisim.vcomponents.LUT4
@@ -6672,9 +6700,9 @@ next_state1_carry_i_6: unisim.vcomponents.LUT4
     )
         port map (
       I0 => p_0_in1_in(5),
-      I1 => Q(5),
+      I1 => \next_state1_carry__2_0\(5),
       I2 => p_0_in1_in(4),
-      I3 => Q(4),
+      I3 => \next_state1_carry__2_0\(4),
       O => next_state1_carry_i_6_n_0
     );
 next_state1_carry_i_7: unisim.vcomponents.LUT4
@@ -6683,9 +6711,9 @@ next_state1_carry_i_7: unisim.vcomponents.LUT4
     )
         port map (
       I0 => p_0_in1_in(3),
-      I1 => Q(3),
+      I1 => \next_state1_carry__2_0\(3),
       I2 => p_0_in1_in(2),
-      I3 => Q(2),
+      I3 => \next_state1_carry__2_0\(2),
       O => next_state1_carry_i_7_n_0
     );
 next_state1_carry_i_8: unisim.vcomponents.LUT4
@@ -6694,9 +6722,9 @@ next_state1_carry_i_8: unisim.vcomponents.LUT4
     )
         port map (
       I0 => delay_cntr(0),
-      I1 => Q(0),
+      I1 => \next_state1_carry__2_0\(0),
       I2 => p_0_in1_in(1),
-      I3 => Q(1),
+      I3 => \next_state1_carry__2_0\(1),
       O => next_state1_carry_i_8_n_0
     );
 \next_state1_inferred__0/i__carry\: unisim.vcomponents.CARRY4
@@ -7083,72 +7111,6 @@ next_state2_carry: unisim.vcomponents.CARRY4
       S(3 downto 2) => B"00",
       S(1 downto 0) => delay_cntr(30 downto 29)
     );
-o_ppm_reg_i_1: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFF2FFFF"
-    )
-        port map (
-      I0 => \FSM_onehot_current_state_reg_n_0_[2]\,
-      I1 => o_ppm_reg_i_2_n_0,
-      I2 => o_ppm_reg_i_3_n_0,
-      I3 => o_ppm_reg_i_4_n_0,
-      I4 => o_ppm_reg_i_5_n_0,
-      O => next_o_ppm
-    );
-o_ppm_reg_i_2: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"89"
-    )
-        port map (
-      I0 => gap_cntr(1),
-      I1 => gap_cntr(2),
-      I2 => gap_cntr(0),
-      O => o_ppm_reg_i_2_n_0
-    );
-o_ppm_reg_i_3: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => \FSM_onehot_current_state_reg_n_0_[3]\,
-      I1 => \next_state1_carry__2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[1]\,
-      I3 => \next_state1_inferred__3/i__carry__2_n_0\,
-      O => o_ppm_reg_i_3_n_0
-    );
-o_ppm_reg_i_4: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"F888"
-    )
-        port map (
-      I0 => \FSM_onehot_current_state_reg_n_0_[6]\,
-      I1 => \next_state1_inferred__2/i__carry__2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[4]\,
-      I3 => \next_state1_inferred__0/i__carry__2_n_0\,
-      O => o_ppm_reg_i_4_n_0
-    );
-o_ppm_reg_i_5: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0777"
-    )
-        port map (
-      I0 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I1 => \next_state1_inferred__1/i__carry__2_n_0\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[7]\,
-      I3 => p_0_in,
-      O => o_ppm_reg_i_5_n_0
-    );
-o_ppm_reg_reg: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => s00_axi_aclk,
-      CE => '1',
-      CLR => s00_axi_aresetn,
-      D => next_o_ppm,
-      Q => o_ppm
-    );
 \o_state[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFE0000FFFE"
@@ -7219,7 +7181,6 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_S00_AXI is
   port (
-    o_ppm : out STD_LOGIC;
     axi_wready_reg_0 : out STD_LOGIC;
     axi_awready_reg_0 : out STD_LOGIC;
     axi_arready_reg_0 : out STD_LOGIC;
@@ -7229,11 +7190,11 @@ entity quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_S00_AXI is
     s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     s00_axi_aclk : in STD_LOGIC;
     SR : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s00_axi_aresetn : in STD_LOGIC;
     axi_bvalid_reg_0 : in STD_LOGIC;
     aw_en_reg_1 : in STD_LOGIC;
     axi_rvalid_reg_0 : in STD_LOGIC;
     i_ppm : in STD_LOGIC;
+    s00_axi_aresetn : in STD_LOGIC;
     s00_axi_awaddr : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s00_axi_araddr : in STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -7746,7 +7707,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_
   signal \slv_reg0_reg_n_0_[7]\ : STD_LOGIC;
   signal \slv_reg0_reg_n_0_[8]\ : STD_LOGIC;
   signal \slv_reg0_reg_n_0_[9]\ : STD_LOGIC;
-  signal slv_reg1 : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal slv_reg1 : STD_LOGIC_VECTOR ( 28 downto 0 );
   signal slv_reg10 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \slv_reg10[15]_i_1_n_0\ : STD_LOGIC;
   signal \slv_reg10[23]_i_1_n_0\ : STD_LOGIC;
@@ -8315,7 +8276,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       I2 => sel0(1),
       I3 => slv_reg1(0),
       I4 => sel0(0),
-      I5 => slv_reg0(0),
+      I5 => \slv_reg0_reg[0]_rep_n_0\,
       O => \axi_rdata[0]_i_4_n_0\
     );
 \axi_rdata[0]_i_5\: unisim.vcomponents.LUT6
@@ -9327,16 +9288,17 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       I5 => slv_reg12(27),
       O => \axi_rdata[27]_i_7_n_0\
     );
-\axi_rdata[28]_i_4\: unisim.vcomponents.LUT5
+\axi_rdata[28]_i_4\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"A0A0CFC0"
+      INIT => X"AFA0CFCFAFA0C0C0"
     )
         port map (
       I0 => \slv_reg3_reg_n_0_[28]\,
       I1 => \slv_reg2_reg_n_0_[28]\,
       I2 => sel0(1),
-      I3 => \slv_reg0_reg_n_0_[28]\,
+      I3 => slv_reg1(28),
       I4 => sel0(0),
+      I5 => \slv_reg0_reg_n_0_[28]\,
       O => \axi_rdata[28]_i_4_n_0\
     );
 \axi_rdata[28]_i_5\: unisim.vcomponents.LUT6
@@ -10940,7 +10902,7 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_0_2_detect_fsm
       D(1) => detect_fsm_n_36,
       D(0) => detect_fsm_n_37,
       E(0) => slv_reg6,
-      Q(0) => slv_reg0(0),
+      \FSM_onehot_s_c_state_reg[1]_0\(0) => \slv_reg0_reg[0]_rep_n_0\,
       SR(0) => SR(0),
       i_ppm => i_ppm,
       s00_axi_aclk => s00_axi_aclk,
@@ -10985,14 +10947,13 @@ detect_fsm: entity work.quad_interface_ppm_detect_gen_0_2_detect_fsm
 generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
      port map (
       D(2 downto 0) => s_gen_state(2 downto 0),
-      Q(31 downto 0) => s_gen_reg21(31 downto 0),
-      \idle_cntr_reg[0]_0\(0) => slv_reg0(1),
+      Q(0) => slv_reg0(1),
       \next_state0_carry__2_0\(31 downto 0) => s_gen_reg25(31 downto 0),
+      \next_state1_carry__2_0\(31 downto 0) => s_gen_reg21(31 downto 0),
       \next_state1_inferred__0/i__carry__2_0\(31 downto 0) => s_gen_reg22(31 downto 0),
       \next_state1_inferred__1/i__carry__2_0\(31 downto 0) => s_gen_reg23(31 downto 0),
       \next_state1_inferred__2/i__carry__2_0\(31 downto 0) => s_gen_reg24(31 downto 0),
       \next_state1_inferred__3/i__carry__2_0\(31 downto 0) => s_gen_reg20(31 downto 0),
-      o_ppm => o_ppm,
       s00_axi_aclk => s00_axi_aclk,
       s00_axi_aresetn => s00_axi_aresetn
     );
@@ -16643,6 +16604,14 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       Q => slv_reg1(1),
       R => SR(0)
     );
+\slv_reg1_reg[28]\: unisim.vcomponents.FDRE
+     port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      D => \slv_reg0_reg[0]_rep_n_0\,
+      Q => slv_reg1(28),
+      R => SR(0)
+    );
 \slv_reg1_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
@@ -18810,7 +18779,6 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0 is
   port (
-    o_ppm : out STD_LOGIC;
     S_AXI_WREADY : out STD_LOGIC;
     S_AXI_AWREADY : out STD_LOGIC;
     S_AXI_ARREADY : out STD_LOGIC;
@@ -18842,7 +18810,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0 
   signal axi_awready_i_1_n_0 : STD_LOGIC;
   signal axi_bvalid_i_1_n_0 : STD_LOGIC;
   signal axi_rvalid_i_1_n_0 : STD_LOGIC;
-  signal ppm_detect_gen_v1_0_S00_AXI_inst_n_5 : STD_LOGIC;
+  signal ppm_detect_gen_v1_0_S00_AXI_inst_n_4 : STD_LOGIC;
   signal \^s00_axi_bvalid\ : STD_LOGIC;
   signal \^s00_axi_rvalid\ : STD_LOGIC;
 begin
@@ -18859,7 +18827,7 @@ aw_en_i_1: unisim.vcomponents.LUT6
       I0 => \^s_axi_awready\,
       I1 => s00_axi_awvalid,
       I2 => s00_axi_wvalid,
-      I3 => ppm_detect_gen_v1_0_S00_AXI_inst_n_5,
+      I3 => ppm_detect_gen_v1_0_S00_AXI_inst_n_4,
       I4 => s00_axi_bready,
       I5 => \^s00_axi_bvalid\,
       O => aw_en_i_1_n_0
@@ -18899,7 +18867,7 @@ axi_rvalid_i_1: unisim.vcomponents.LUT4
 ppm_detect_gen_v1_0_S00_AXI_inst: entity work.quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_S00_AXI
      port map (
       SR(0) => axi_awready_i_1_n_0,
-      aw_en_reg_0 => ppm_detect_gen_v1_0_S00_AXI_inst_n_5,
+      aw_en_reg_0 => ppm_detect_gen_v1_0_S00_AXI_inst_n_4,
       aw_en_reg_1 => aw_en_i_1_n_0,
       axi_arready_reg_0 => \^s_axi_arready\,
       axi_awready_reg_0 => \^s_axi_awready\,
@@ -18907,7 +18875,6 @@ ppm_detect_gen_v1_0_S00_AXI_inst: entity work.quad_interface_ppm_detect_gen_0_2_
       axi_rvalid_reg_0 => axi_rvalid_i_1_n_0,
       axi_wready_reg_0 => \^s_axi_wready\,
       i_ppm => i_ppm,
-      o_ppm => o_ppm,
       s00_axi_aclk => s00_axi_aclk,
       s00_axi_araddr(3 downto 0) => s00_axi_araddr(3 downto 0),
       s00_axi_aresetn => s00_axi_aresetn,
@@ -18964,6 +18931,7 @@ end quad_interface_ppm_detect_gen_0_2;
 
 architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2 is
   signal \<const0>\ : STD_LOGIC;
+  signal \<const1>\ : STD_LOGIC;
   attribute x_interface_info : string;
   attribute x_interface_info of s00_axi_aclk : signal is "xilinx.com:signal:clock:1.0 S00_AXI_CLK CLK";
   attribute x_interface_parameter : string;
@@ -18991,6 +18959,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2 is
   attribute x_interface_info of s00_axi_wdata : signal is "xilinx.com:interface:aximm:1.0 S00_AXI WDATA";
   attribute x_interface_info of s00_axi_wstrb : signal is "xilinx.com:interface:aximm:1.0 S00_AXI WSTRB";
 begin
+  o_ppm <= \<const1>\;
   s00_axi_bresp(1) <= \<const0>\;
   s00_axi_bresp(0) <= \<const0>\;
   s00_axi_rresp(1) <= \<const0>\;
@@ -19005,7 +18974,6 @@ U0: entity work.quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0
       S_AXI_AWREADY => s00_axi_awready,
       S_AXI_WREADY => s00_axi_wready,
       i_ppm => i_ppm,
-      o_ppm => o_ppm,
       s00_axi_aclk => s00_axi_aclk,
       s00_axi_araddr(3 downto 0) => s00_axi_araddr(5 downto 2),
       s00_axi_aresetn => s00_axi_aresetn,
@@ -19020,5 +18988,9 @@ U0: entity work.quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0
       s00_axi_wdata(31 downto 0) => s00_axi_wdata(31 downto 0),
       s00_axi_wstrb(3 downto 0) => s00_axi_wstrb(3 downto 0),
       s00_axi_wvalid => s00_axi_wvalid
+    );
+VCC: unisim.vcomponents.VCC
+     port map (
+      P => \<const1>\
     );
 end STRUCTURE;

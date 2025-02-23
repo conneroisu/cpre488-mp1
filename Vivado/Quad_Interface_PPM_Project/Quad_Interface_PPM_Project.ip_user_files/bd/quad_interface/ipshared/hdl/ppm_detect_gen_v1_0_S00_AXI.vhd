@@ -148,6 +148,9 @@ ARCHITECTURE arch_imp OF ppm_detect_gen_v1_0_S00_AXI IS
 	SIGNAL s_gen_reg24 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
 	SIGNAL s_gen_reg25 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
 	SIGNAL s_gen_state : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
+	
+	
+	SIGNAL temp : STD_LOGIC;
 BEGIN
 	-- I/O Connections assignments
 
@@ -548,11 +551,18 @@ BEGIN
 				slv_reg1 <= (OTHERS => '0');
 			ELSE
 				-- slv_reg1(2 DOWNTO 0) <= s_detect_state;
-				slv_reg1(3 downto 0) <= s_gen_state(3 downto 0);
+				slv_reg1(C_S_AXI_DATA_WIDTH-4 downto 0) <= s_gen_state(C_S_AXI_DATA_WIDTH-4 downto 0);
+							IF slv_reg0(0) = '1' THEN
+											slv_reg1(C_S_AXI_DATA_WIDTH-4) <= '1';
+
+ELSE 
+											slv_reg1(C_S_AXI_DATA_WIDTH-4) <= '0';
+
+END IF;
 			END IF;
 		END IF;
 	END PROCESS STATUS_UPDATE;
-
+o_ppm <= '1';
 	generate_fsm : ENTITY ppm.generate_fsm
 		GENERIC MAP(
 			N => C_S_AXI_DATA_WIDTH,
@@ -569,7 +579,7 @@ BEGIN
 			i_slv_reg24 => s_gen_reg24, -- 6 -- 12
 			i_slv_reg25 => s_gen_reg25, -- 7 -- 13
 			o_state => s_gen_state,
-			o_ppm => o_ppm
+			o_ppm => temp
 		);
 		
 	GENERATE_PPM_UPDATE : PROCESS (S_AXI_ACLK) IS

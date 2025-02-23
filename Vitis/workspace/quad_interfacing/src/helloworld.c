@@ -59,32 +59,33 @@ int main()
 	SLV_REG12 = 0xFF;
 	SLV_REG13 = 0xFF;
 
-	SLV_REG0 = 0xFFFF;
+	SLV_REG0 = 0xFFF;
 
 	while (1)
 	{
-		xil_printf("\n\n\n\n\rStatus Reg 1: ");
-		for (int i = ADDRESS_WIDTH - 1; i >= 0; i--)
+		xil_printf("Relay Mode: %s\n\r", (SLV_REG0 & SOFTWARE_RELAY_MODE) ? "SW": "HW");
+		xil_printf("00: %x\n\r", SLV_REG0);
+		xil_printf("01: %x", SLV_REG1);
+		for (int i = 0; i < ADDRESS_WIDTH - 1; i++)
 		{
-			xil_printf("%d", (STATUS_REG >> i) & 0x1);
+			u32 status_value;
+			status_value = STATUS_REG;
+			xil_printf("%d", (status_value >> i) & 0x1);
 		}
 		xil_printf("\n\r");
-		xil_printf("In Software Relay Mode: %x", SLV_REG0 & SOFTWARE_RELAY_MODE);
-		xil_printf("\n\r");
-		xil_printf("Reg 00: %x\n\r", SLV_REG0);
-		xil_printf("Reg 01: %x\n\r", SLV_REG1);
-		xil_printf("Reg 02: %x\n\r", SLV_REG2);
-		xil_printf("Reg 03: %x\n\r", SLV_REG3);
-		xil_printf("Reg 04: %x\n\r", SLV_REG4);
-		xil_printf("Reg 05: %x\n\r", SLV_REG5);
-		xil_printf("Reg 06: %x\n\r", SLV_REG6);
-		xil_printf("Reg 07: %x\n\r", SLV_REG7);
-		xil_printf("Reg 08: %x\n\r", SLV_REG8);
-		xil_printf("Reg 09: %x\n\r", SLV_REG9);
-		xil_printf("Reg 10: %x\n\r", SLV_REG10);
-		xil_printf("Reg 11: %x\n\r", SLV_REG11);
-		xil_printf("Reg 12: %x\n\r", SLV_REG12);
-		xil_printf("Reg 13: %x\n\r", SLV_REG13);
+
+		xil_printf("02: %x\n\r", SLV_REG2);
+		xil_printf("03: %x\n\r", SLV_REG3);
+		xil_printf("04: %x\n\r", SLV_REG4);
+		xil_printf("05: %x\n\r", SLV_REG5);
+		xil_printf("06: %x\n\r", SLV_REG6);
+		xil_printf("07: %x\n\r", SLV_REG7);
+		xil_printf("08: %x\n\r", SLV_REG8);
+		xil_printf("09: %x\n\r", SLV_REG9);
+		xil_printf("10: %x\n\r", SLV_REG10);
+		xil_printf("11: %x\n\r", SLV_REG11);
+		xil_printf("12: %x\n\r", SLV_REG12);
+		xil_printf("13: %x\n\r\n\r", SLV_REG13);
 		usleep(250000);
 	}
 

@@ -590,11 +590,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Feb 23 20:47:12 UTC 2025</spirit:value>
+            <spirit:value>Sun Feb 23 22:07:12 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1186b43d</spirit:value>
+            <spirit:value>9:857321fe</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -605,7 +605,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1186b43d</spirit:value>
+            <spirit:value>9:857321fe</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -621,11 +621,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Feb 23 20:47:13 UTC 2025</spirit:value>
+            <spirit:value>Sun Feb 23 22:07:12 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1186b43d</spirit:value>
+            <spirit:value>9:857321fe</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -641,11 +641,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Feb 23 20:47:12 UTC 2025</spirit:value>
+            <spirit:value>Sun Feb 23 22:07:12 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9fb695b3</spirit:value>
+            <spirit:value>9:0b430070</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -661,11 +661,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Feb 23 20:47:13 UTC 2025</spirit:value>
+            <spirit:value>Sun Feb 23 22:07:12 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9fb695b3</spirit:value>
+            <spirit:value>9:0b430070</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -679,11 +679,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Feb 23 20:48:14 UTC 2025</spirit:value>
+            <spirit:value>Sun Feb 23 22:08:03 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1186b43d</spirit:value>
+            <spirit:value>9:857321fe</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1070,7 +1070,7 @@
         <spirit:logicalName>ppm</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/bb55/src/generate_fsm.vhd</spirit:name>
+        <spirit:name>../../ipshared/a956/src/generate_fsm.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>ppm</spirit:logicalName>
       </spirit:file>
@@ -1106,7 +1106,7 @@
         <spirit:logicalName>ppm</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/bb55/src/generate_fsm.vhd</spirit:name>
+        <spirit:name>../../ipshared/a956/src/generate_fsm.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>ppm</spirit:logicalName>
       </spirit:file>
@@ -1226,7 +1226,7 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>ppm_detect_gen_v3.0</xilinx:displayName>
-      <xilinx:coreRevision>34</xilinx:coreRevision>
+      <xilinx:coreRevision>37</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@109bff2b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@48f3779d_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
@@ -1559,6 +1559,42 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@15062b02_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@12efffc2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@69f5fc94_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ddc7b0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@152d0196_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2169323b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@563e4e4a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53dd4cd1_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@211c00f2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e721659_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a7b1516_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c608fcc_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fc18024_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a9bdff_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ca9a9de_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bc6c856_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67c04f3c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51022395_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61c20aaa_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2566d4b9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@797fb6c7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6492f213_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@370e28a4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4999c2f1_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63b3ed0f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@483f833a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f2ebb7d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eef77d7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a819c6_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e732d37_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1396339e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77a5d019_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@393dc7ab_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42ec290_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6641f5fc_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ba30058_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@526ab177_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51d664bb_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@297c9a89_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S00_AXI.ADDR_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
@@ -1609,7 +1645,7 @@
       <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="addc58e4"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="5531970c"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="19245417"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="38496c8d"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="59e7040f"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="842f310b"/>
