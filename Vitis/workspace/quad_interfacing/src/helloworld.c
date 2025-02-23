@@ -60,6 +60,22 @@ int main()
     init_platform();
 
     CONTROL_REG = 0x0;
+	SLV_REG2 = 0xFF;
+	SLV_REG3 = 0xFF;
+	SLV_REG4 = 0xFF;
+	SLV_REG5 = 0xFF;
+	SLV_REG6 = 0xFF;
+	SLV_REG7 = 0xFF;
+	SLV_REG8 = 0xFF;
+	SLV_REG9 = 0xFF;
+	SLV_REG10 = 0xFF;
+	SLV_REG11 = 0xFF;
+	SLV_REG12 = 0xFF;
+	SLV_REG13 = 0xFF;
+	SLV_REG14 = 0xFF;
+	
+
+	SLV_REG0 = 0xFFF;
 
 	print("Hello World\n\r");
     while(1)
