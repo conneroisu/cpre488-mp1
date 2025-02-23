@@ -85,9 +85,9 @@ BEGIN
         -- **Test 1: Reset Behavior**
         REPORT "TEST 1: Resetting the FSM";
         i_rst <= '1';
-        WAIT FOR 20 ns;
+        WAIT FOR 5 ns;
         i_rst <= '0';
-        WAIT FOR 20 ns;
+        WAIT FOR 5 ns;
 
         -- **Test 2: Standard Timing Test**
         REPORT "TEST 2: Applying standard pulse widths";
@@ -97,7 +97,7 @@ BEGIN
         s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(125000, 32));
         s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(200000, 32));
         s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(175000, 32));
-        WAIT FOR 1 sec;
+        WAIT FOR 5 ms;
 
         -- **Test 3: Minimum Pulse Widths**
         REPORT "TEST 3: Setting minimum valid pulse widths";
@@ -107,7 +107,7 @@ BEGIN
         s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
         s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
         s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
-        WAIT FOR 1 sec;
+        WAIT FOR 5 ms;
 
         -- **Test 4: Zero Pulse Widths (Idle Mode)**
         REPORT "TEST 4: Setting zero pulse widths - FSM should remain idle";
@@ -117,7 +117,7 @@ BEGIN
         s_slv_reg23 <= (OTHERS => '0');
         s_slv_reg24 <= (OTHERS => '0');
         s_slv_reg25 <= (OTHERS => '0');
-        WAIT FOR 1 sec;
+        WAIT FOR 5 ms;
 
         -- **Test 5: Maximum Pulse Widths**
         REPORT "TEST 5: Setting maximum possible pulse widths";
