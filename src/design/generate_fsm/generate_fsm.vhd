@@ -5,7 +5,7 @@ use IEEE.numeric_std.all;
 entity generate_fsm is
     generic (
         N               : natural := 32;
-        IDLE_FRAME_TIME : time    := 9 ms
+        IDLE_FRAME_TIME : time    := 1 ms
     );
     port (
         i_clk        : in  std_logic;
@@ -33,7 +33,7 @@ architecture arc of generate_fsm is
     signal idle_cntr  : natural;
     
     -- Constants
-    constant CLK_PERIOD     : time    := 10 ns;
+    constant CLK_PERIOD     : time    := 1 ns; -- 1000 MHz
     constant GAP_TIME_CNT   : natural := integer(0.40 ms / CLK_PERIOD);
     constant IDLE_FRAME_CNT : natural := integer(IDLE_FRAME_TIME / CLK_PERIOD);
 
