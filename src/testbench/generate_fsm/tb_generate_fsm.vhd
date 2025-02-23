@@ -97,7 +97,7 @@ BEGIN
         s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(125000, 32));
         s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(200000, 32));
         s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(175000, 32));
-        WAIT FOR 5 ms;
+        WAIT FOR 15 ms;
 
         -- **Test 3: Minimum Pulse Widths**
         REPORT "TEST 3: Setting minimum valid pulse widths";
@@ -107,7 +107,7 @@ BEGIN
         s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
         s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
         s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
-        WAIT FOR 5 ms;
+        WAIT FOR 15 ms;
 
         -- **Test 4: Zero Pulse Widths (Idle Mode)**
         REPORT "TEST 4: Setting zero pulse widths - FSM should remain idle";
@@ -117,7 +117,7 @@ BEGIN
         s_slv_reg23 <= (OTHERS => '0');
         s_slv_reg24 <= (OTHERS => '0');
         s_slv_reg25 <= (OTHERS => '0');
-        WAIT FOR 5 ms;
+        WAIT FOR 15 ms;
 
         -- **Test 5: Maximum Pulse Widths**
         REPORT "TEST 5: Setting maximum possible pulse widths";
@@ -127,11 +127,11 @@ BEGIN
         s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
         s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
         s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
-        WAIT FOR 2 sec;
+        WAIT FOR 15 sec;
 
         -- **Test 6: Ensuring Idle Frame Length is Respected**
         REPORT "TEST 6: Checking idle frame length enforcement";
-        WAIT FOR 5 ms;
+        WAIT FOR 15 ms;
 
         -- **Test 7: Multiple Frames Test**
         REPORT "TEST 7: Running multiple PPM frames to verify long-term operation";
