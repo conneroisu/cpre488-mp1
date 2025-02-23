@@ -66,7 +66,7 @@ int main()
 	SLV_REG14 = 0xFF;
 
 
-	SLV_REG0 = SOFTWARE_RELAY_MODE;
+	SLV_REG0 = 0xFFF;
 	SLV_REG1 = 0xFFF;
 
     while(1)

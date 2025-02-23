@@ -40,7 +40,7 @@
 -makelib xcelium_lib/ppm \
   "../../../bd/quad_interface/ipshared/src/user_defines.vhd" \
   "../../../bd/quad_interface/ipshared/src/detect_fsm.vhd" \
-  "../../../bd/quad_interface/ipshared/7883/src/generate_fsm.vhd" \
+  "../../../bd/quad_interface/ipshared/83c3/src/generate_fsm.vhd" \
 -endlib
 -makelib xcelium_lib/axi \
   "../../../bd/quad_interface/ipshared/hdl/ppm_detect_gen_v1_0_S00_AXI.vhd" \
