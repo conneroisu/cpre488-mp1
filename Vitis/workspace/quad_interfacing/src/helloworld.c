@@ -61,7 +61,7 @@ int main()
 
 
 	SLV_REG0 = 0xFFF;
-	SLV_REG1 = 0xFFF;
+
 
     while(1)
     {
