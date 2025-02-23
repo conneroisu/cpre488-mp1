@@ -91,9 +91,9 @@ begin
         -- **Test 1: Reset Behavior**
         report "TEST 1: Resetting the FSM";
         i_rst <= '1';
-        wait for 5 ns;
+        wait for 1 ns;
         i_rst <= '0';
-        wait for 5 ns;
+        wait for 1 ns;
 
         -- **Test 2: Standard Timing Test**
         report "TEST 2: Applying standard pulse widths";
