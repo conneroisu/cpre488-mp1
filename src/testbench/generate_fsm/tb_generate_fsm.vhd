@@ -32,7 +32,8 @@ architecture rtl of tb_generate_fsm is
     end component;
 
     constant CLK_PERIOD     : time      := 10 ns;
-    constant GAP_TIME_CNT   : natural   := integer(0.40 ms / CLK_PERIOD);
+    constant GAP_TIME       : time      := 0.40 ms;
+    constant GAP_TIME_CNT   : natural   := integer(GAP_TIME / CLK_PERIOD);
     constant IDLE_FRAME_CNT : natural   := integer(IDLE_FRAME_TIME / CLK_PERIOD);
     signal i_clk            : std_logic := '0';
     signal i_rst            : std_logic;
@@ -104,6 +105,17 @@ begin
         s_slv_reg24 <= std_logic_vector(to_unsigned(200000, 32));
         s_slv_reg25 <= std_logic_vector(to_unsigned(175000, 32));
         wait for IDLE_FRAME_TIME;
+        wait for to_integer(unsigned(s_slv_reg20)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg21)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg22)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg23)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg24)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg25)) * 1 ns;
 
         -- **Test 3: Minimum Pulse Widths**
         report "TEST 3: Setting minimum valid pulse widths";
@@ -113,7 +125,18 @@ begin
         s_slv_reg23 <= std_logic_vector(to_unsigned(10, 32));
         s_slv_reg24 <= std_logic_vector(to_unsigned(10, 32));
         s_slv_reg25 <= std_logic_vector(to_unsigned(10, 32));
-        wait for 15 ms;
+        wait for IDLE_FRAME_TIME;
+        wait for to_integer(unsigned(s_slv_reg20)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg21)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg22)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg23)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg24)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg25)) * 1 ns;
 
         -- **Test 4: Zero Pulse Widths (Idle Mode)**
         report "TEST 4: Setting zero pulse widths - FSM should remain idle";
@@ -123,7 +146,18 @@ begin
         s_slv_reg23 <= (others => '0');
         s_slv_reg24 <= (others => '0');
         s_slv_reg25 <= (others => '0');
-        wait for 15 ms;
+        wait for IDLE_FRAME_TIME;
+        wait for to_integer(unsigned(s_slv_reg20)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg21)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg22)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg23)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg24)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg25)) * 1 ns;
 
 
         -- **Test 5: Multiple Frames Test**
@@ -134,7 +168,18 @@ begin
         s_slv_reg23 <= std_logic_vector(to_unsigned(175000, 32));
         s_slv_reg24 <= std_logic_vector(to_unsigned(150000, 32));
         s_slv_reg25 <= std_logic_vector(to_unsigned(200000, 32));
-        wait for 15 ms;
+        wait for IDLE_FRAME_TIME;
+        wait for to_integer(unsigned(s_slv_reg20)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg21)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg22)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg23)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg24)) * 1 ns;
+        wait for GAP_TIME;
+        wait for to_integer(unsigned(s_slv_reg25)) * 1 ns;
         
         -- Test completed
         report "ALL TEST CASES PASSED SUCCESSFULLY!" severity note;
