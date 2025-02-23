@@ -275,9 +275,8 @@ begin
         report "Waiting for: to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD" & time'image(to_integer(unsigned(s_slv_reg25)) * CLK_PERIOD);
         wait for
             to_integer(unsigned(s_slv_reg25)) * CLK_PERIOD;
-
-            wait for
-                IDLE_FRAME_TIME;
+        wait for
+            IDLE_FRAME_TIME;
         -- Test completed
         report "ALL TEST CASES PASSED SUCCESSFULLY!" severity note;
 
