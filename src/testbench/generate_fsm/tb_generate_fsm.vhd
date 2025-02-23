@@ -235,6 +235,8 @@ begin
         assert
             o_ppm = '1'
             report "TEST FAILED" severity failure;
+        wait for
+            GAP_TIME;
 
         test_case   <= 4;
         -- **Test 4: Multiple Frames Test**
