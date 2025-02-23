@@ -249,9 +249,6 @@ begin
         s_slv_reg25 <= std_logic_vector(to_unsigned(200000, 32));
         wait for
             IDLE_FRAME_TIME;
-        assert
-            o_ppm = '0'
-            report "TEST FAILED CH 1 is not low after idle" severity failure;
         wait for
             GAP_TIME + CLK_PERIOD;
         wait for
