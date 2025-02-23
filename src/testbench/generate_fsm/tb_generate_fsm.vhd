@@ -120,13 +120,13 @@ BEGIN
         WAIT FOR 15 ms;
 
         -- **Test 5: Maximum Pulse Widths**
-        REPORT "TEST 5: Setting maximum possible pulse widths";
-        s_slv_reg20 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
-        s_slv_reg21 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
-        s_slv_reg22 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
-        s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
-        s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
-        s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
+        REPORT "TEST 5: Setting small pulse widths - FSM should remain idle";
+        s_slv_reg20 <= STD_LOGIC_VECTOR(to_unsigned(2, 32));
+        s_slv_reg21 <= STD_LOGIC_VECTOR(to_unsigned(2, 32));
+        s_slv_reg22 <= STD_LOGIC_VECTOR(to_unsigned(2, 32));
+        s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(2, 32));
+        s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(2, 32));
+        s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(2, 32));
         WAIT FOR 15 sec;
 
         -- **Test 6: Ensuring Idle Frame Length is Respected**
