@@ -13,8 +13,8 @@ architecture rtl of tb_generate_fsm is
     -- Component declaration for the DUT
     component generate_fsm is
         generic (
-            N               : natural := N;
-            IDLE_FRAME_TIME : time    := IDLE_FRAME_TIME
+            N               : natural := 32;
+            IDLE_FRAME_TIME : time    := 2 ms
             );
         port (
             i_clk        : in  std_logic;
