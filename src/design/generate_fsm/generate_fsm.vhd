@@ -49,7 +49,7 @@ begin
         if i_rst = '1' then
             s_state <= (others => '0');
         elsif rising_edge(i_clk) then
-            s_state <= std_logic_vector(to_unsigned(current_state, N));
+            s_state <= std_logic_vector(to_hex_string(current_state, N));
         end if;
       end process;
 
