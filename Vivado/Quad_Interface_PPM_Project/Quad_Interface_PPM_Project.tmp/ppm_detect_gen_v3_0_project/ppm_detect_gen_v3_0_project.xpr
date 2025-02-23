@@ -6,7 +6,7 @@
 <Project Version="7" Minor="49" Path="c:/users/connero/downloads/cpre488-mp1/vivado/quad_interface_ppm_project/quad_interface_ppm_project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="f2c776e1abf44b0bba4765678882840f"/>
+    <Option Name="Id" Val="2350ce8910b2453185af6799a338286b"/>
     <Option Name="Part" Val="xc7z020clg484-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -122,8 +122,6 @@
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1">
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="ppm_detect_gen_v1_0"/>
-        <Option Name="TopLib" Val="axi"/>
         <Option Name="TopAutoSet" Val="TRUE"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
