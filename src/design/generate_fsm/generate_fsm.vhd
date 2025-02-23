@@ -56,7 +56,6 @@ begin
         if rising_edge(i_clk) then
             if i_rst = '1' then
                 current_state <= IDLE;
-                next_state <= IDLE;  -- Initialize next_state on reset
             else
                 current_state <= next_state;
             end if;
