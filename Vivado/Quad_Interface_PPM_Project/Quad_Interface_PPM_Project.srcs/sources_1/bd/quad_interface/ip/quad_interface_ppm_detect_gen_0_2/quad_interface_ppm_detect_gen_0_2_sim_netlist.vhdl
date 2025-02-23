@@ -1,7 +1,7 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Sun Feb 23 13:30:40 2025
+-- Date        : Sun Feb 23 13:41:16 2025
 -- Host        : CO2041-08 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/Users/connero/Downloads/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_ppm_detect_gen_0_2/quad_interface_ppm_detect_gen_0_2_sim_netlist.vhdl
@@ -16,6 +16,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity quad_interface_ppm_detect_gen_0_2_detect_fsm is
   port (
+    SR : out STD_LOGIC_VECTOR ( 0 to 0 );
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
     \s_chan_reg[0]_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
     \s_chan_reg[2]_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -25,8 +26,8 @@ entity quad_interface_ppm_detect_gen_0_2_detect_fsm is
     D : out STD_LOGIC_VECTOR ( 31 downto 0 );
     \s_count_reg[31]_0\ : out STD_LOGIC_VECTOR ( 31 downto 0 );
     s00_axi_aclk : in STD_LOGIC;
-    SR : in STD_LOGIC_VECTOR ( 0 to 0 );
     i_ppm : in STD_LOGIC;
+    s00_axi_aresetn : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -54,6 +55,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_detect_fsm is
   signal \FSM_onehot_s_c_state_reg_n_0_[4]\ : STD_LOGIC;
   signal \FSM_onehot_s_c_state_reg_n_0_[5]\ : STD_LOGIC;
   signal \FSM_onehot_s_c_state_reg_n_0_[6]\ : STD_LOGIC;
+  signal \^sr\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal p_1_in : STD_LOGIC;
   signal \p_1_in__0\ : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal \s_chan[0]_i_1_n_0\ : STD_LOGIC;
@@ -265,6 +267,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_detect_fsm is
   attribute SOFT_HLUTNM of \slv_reg6[9]_i_1\ : label is "soft_lutpair33";
   attribute SOFT_HLUTNM of \slv_reg7[31]_i_1\ : label is "soft_lutpair5";
 begin
+  SR(0) <= \^sr\(0);
 \FSM_onehot_s_c_state[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"8"
@@ -364,10 +367,10 @@ begin
       INIT => X"7FFF"
     )
         port map (
-      I0 => s_idle_pulse_width(17),
-      I1 => s_idle_pulse_width(18),
-      I2 => s_idle_pulse_width(15),
-      I3 => s_idle_pulse_width(16),
+      I0 => s_idle_pulse_width(15),
+      I1 => s_idle_pulse_width(16),
+      I2 => s_idle_pulse_width(17),
+      I3 => s_idle_pulse_width(18),
       O => \FSM_onehot_s_c_state[5]_i_3_n_0\
     );
 \FSM_onehot_s_c_state[5]_i_4\: unisim.vcomponents.LUT5
@@ -398,10 +401,10 @@ begin
       INIT => X"FFFE"
     )
         port map (
-      I0 => s_idle_pulse_width(11),
-      I1 => s_idle_pulse_width(12),
-      I2 => s_idle_pulse_width(9),
-      I3 => s_idle_pulse_width(10),
+      I0 => s_idle_pulse_width(9),
+      I1 => s_idle_pulse_width(10),
+      I2 => s_idle_pulse_width(11),
+      I3 => s_idle_pulse_width(12),
       O => \FSM_onehot_s_c_state[5]_i_6_n_0\
     );
 \FSM_onehot_s_c_state[5]_i_7\: unisim.vcomponents.LUT6
@@ -446,7 +449,7 @@ begin
         port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \FSM_onehot_s_c_state[0]_i_1_n_0\,
       Q => \FSM_onehot_s_c_state_reg_n_0_[0]\
     );
@@ -458,7 +461,7 @@ begin
       C => s00_axi_aclk,
       CE => '1',
       D => \FSM_onehot_s_c_state[1]_i_1_n_0\,
-      PRE => SR(0),
+      PRE => \^sr\(0),
       Q => \FSM_onehot_s_c_state_reg_n_0_[1]\
     );
 \FSM_onehot_s_c_state_reg[2]\: unisim.vcomponents.FDCE
@@ -468,7 +471,7 @@ begin
         port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \FSM_onehot_s_c_state[2]_i_1_n_0\,
       Q => \FSM_onehot_s_c_state_reg_n_0_[2]\
     );
@@ -479,7 +482,7 @@ begin
         port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \FSM_onehot_s_c_state[3]_i_1_n_0\,
       Q => p_1_in
     );
@@ -490,7 +493,7 @@ begin
         port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_idle_read,
       Q => \FSM_onehot_s_c_state_reg_n_0_[4]\
     );
@@ -501,7 +504,7 @@ begin
         port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \FSM_onehot_s_c_state[5]_i_1_n_0\,
       Q => \FSM_onehot_s_c_state_reg_n_0_[5]\
     );
@@ -512,9 +515,17 @@ begin
         port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \FSM_onehot_s_c_state[6]_i_1_n_0\,
       Q => \FSM_onehot_s_c_state_reg_n_0_[6]\
+    );
+axi_awready_i_1: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => s00_axi_aresetn,
+      O => \^sr\(0)
     );
 \s_chan[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -556,7 +567,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_chan[0]_i_1_n_0\,
       Q => s_detect_reg_sel(0)
     );
@@ -564,7 +575,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_chan[1]_i_1_n_0\,
       Q => s_detect_reg_sel(1)
     );
@@ -572,7 +583,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_chan[2]_i_1_n_0\,
       Q => s_detect_reg_sel(2)
     );
@@ -991,7 +1002,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(10),
       Q => s_idle_pulse_width(10)
     );
@@ -999,7 +1010,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(11),
       Q => s_idle_pulse_width(11)
     );
@@ -1007,7 +1018,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(12),
       Q => s_idle_pulse_width(12)
     );
@@ -1015,7 +1026,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(13),
       Q => s_idle_pulse_width(13)
     );
@@ -1023,7 +1034,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(14),
       Q => s_idle_pulse_width(14)
     );
@@ -1031,7 +1042,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(15),
       Q => s_idle_pulse_width(15)
     );
@@ -1039,7 +1050,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(16),
       Q => s_idle_pulse_width(16)
     );
@@ -1047,7 +1058,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(17),
       Q => s_idle_pulse_width(17)
     );
@@ -1055,7 +1066,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(18),
       Q => s_idle_pulse_width(18)
     );
@@ -1063,7 +1074,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(19),
       Q => s_idle_pulse_width(19)
     );
@@ -1071,7 +1082,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(20),
       Q => s_idle_pulse_width(20)
     );
@@ -1079,7 +1090,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(21),
       Q => s_idle_pulse_width(21)
     );
@@ -1087,7 +1098,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(22),
       Q => s_idle_pulse_width(22)
     );
@@ -1095,7 +1106,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(23),
       Q => s_idle_pulse_width(23)
     );
@@ -1103,7 +1114,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(24),
       Q => s_idle_pulse_width(24)
     );
@@ -1111,7 +1122,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(25),
       Q => s_idle_pulse_width(25)
     );
@@ -1119,7 +1130,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(26),
       Q => s_idle_pulse_width(26)
     );
@@ -1127,7 +1138,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(27),
       Q => s_idle_pulse_width(27)
     );
@@ -1135,7 +1146,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(28),
       Q => s_idle_pulse_width(28)
     );
@@ -1143,7 +1154,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(29),
       Q => s_idle_pulse_width(29)
     );
@@ -1151,7 +1162,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(30),
       Q => s_idle_pulse_width(30)
     );
@@ -1159,7 +1170,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(31),
       Q => s_idle_pulse_width(31)
     );
@@ -1167,7 +1178,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(5),
       Q => s_idle_pulse_width(5)
     );
@@ -1175,7 +1186,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(6),
       Q => s_idle_pulse_width(6)
     );
@@ -1183,7 +1194,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(7),
       Q => s_idle_pulse_width(7)
     );
@@ -1191,7 +1202,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(8),
       Q => s_idle_pulse_width(8)
     );
@@ -1199,7 +1210,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => s_idle_read,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_ppm_count(9),
       Q => s_idle_pulse_width(9)
     );
@@ -1362,7 +1373,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_end_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_end_count[0]_i_1_n_0\,
       Q => s_ppm_end_count(0)
     );
@@ -1370,7 +1381,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_end_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_end_count[1]_i_1_n_0\,
       Q => s_ppm_end_count(1)
     );
@@ -1378,7 +1389,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_end_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_end_count[2]_i_1_n_0\,
       Q => s_ppm_end_count(2)
     );
@@ -1386,7 +1397,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_end_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_end_count[3]_i_1_n_0\,
       Q => s_ppm_end_count(3)
     );
@@ -1394,7 +1405,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_end_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_end_count[4]_i_1_n_0\,
       Q => s_ppm_end_count(4)
     );
@@ -1402,7 +1413,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_end_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_end_count[5]_i_1_n_0\,
       Q => s_ppm_end_count(5)
     );
@@ -1410,7 +1421,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_end_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_end_count[6]_i_1_n_0\,
       Q => s_ppm_end_count(6)
     );
@@ -1418,7 +1429,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_end_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_end_count[7]_i_2_n_0\,
       Q => s_ppm_end_count(7)
     );
@@ -1581,7 +1592,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_start_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \p_1_in__0\(0),
       Q => s_ppm_start_count(0)
     );
@@ -1589,7 +1600,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_start_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \p_1_in__0\(1),
       Q => s_ppm_start_count(1)
     );
@@ -1597,7 +1608,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_start_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_start_count[2]_i_1_n_0\,
       Q => s_ppm_start_count(2)
     );
@@ -1605,7 +1616,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_start_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_start_count[3]_i_1_n_0\,
       Q => s_ppm_start_count(3)
     );
@@ -1613,7 +1624,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_start_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_start_count[4]_i_1_n_0\,
       Q => s_ppm_start_count(4)
     );
@@ -1621,7 +1632,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_start_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_start_count[5]_i_1_n_0\,
       Q => s_ppm_start_count(5)
     );
@@ -1629,7 +1640,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_start_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \p_1_in__0\(6),
       Q => s_ppm_start_count(6)
     );
@@ -1637,7 +1648,7 @@ begin
      port map (
       C => s00_axi_aclk,
       CE => \s_ppm_start_count[7]_i_1_n_0\,
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => \s_ppm_start_count[7]_i_2_n_0\,
       Q => s_ppm_start_count(7)
     );
@@ -1657,7 +1668,7 @@ s_pulse_end_reg: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_pulse_end_i_1_n_0,
       Q => s_pulse_end_reg_n_0
     );
@@ -1677,7 +1688,7 @@ s_pulse_start_reg: unisim.vcomponents.FDCE
      port map (
       C => s00_axi_aclk,
       CE => '1',
-      CLR => SR(0),
+      CLR => \^sr\(0),
       D => s_pulse_start_i_1_n_0,
       Q => s_pulse_start_reg_n_0
     );
@@ -2337,6 +2348,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity quad_interface_ppm_detect_gen_0_2_generate_fsm is
   port (
     o_ppm : out STD_LOGIC;
+    s_gen_state : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s00_axi_aclk : in STD_LOGIC;
     s00_axi_aresetn : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -2345,7 +2357,7 @@ entity quad_interface_ppm_detect_gen_0_2_generate_fsm is
     \next_state1_inferred__2/i__carry__2_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     \next_state0_carry__2_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     \next_state1_inferred__3/i__carry__2_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    \FSM_onehot_current_state_reg[1]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
+    \idle_cntr_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of quad_interface_ppm_detect_gen_0_2_generate_fsm : entity is "generate_fsm";
@@ -2373,6 +2385,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal \FSM_onehot_current_state_reg_n_0_[5]\ : STD_LOGIC;
   signal \FSM_onehot_current_state_reg_n_0_[6]\ : STD_LOGIC;
   signal \FSM_onehot_current_state_reg_n_0_[7]\ : STD_LOGIC;
+  signal current_state_reg : STD_LOGIC_VECTOR ( 0 to 0 );
   signal delay_cntr : STD_LOGIC_VECTOR ( 30 downto 0 );
   signal \delay_cntr[30]_i_2_n_0\ : STD_LOGIC;
   signal gap_cntr : STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -2508,7 +2521,6 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal \i__carry_i_8__2_n_0\ : STD_LOGIC;
   signal \i__carry_i_8_n_0\ : STD_LOGIC;
   signal \idle_cntr[19]_i_1_n_0\ : STD_LOGIC;
-  signal \idle_cntr[19]_i_3_n_0\ : STD_LOGIC;
   signal \idle_cntr_reg[12]_i_2_n_0\ : STD_LOGIC;
   signal \idle_cntr_reg[12]_i_2_n_1\ : STD_LOGIC;
   signal \idle_cntr_reg[12]_i_2_n_2\ : STD_LOGIC;
@@ -2517,8 +2529,8 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal \idle_cntr_reg[16]_i_2_n_1\ : STD_LOGIC;
   signal \idle_cntr_reg[16]_i_2_n_2\ : STD_LOGIC;
   signal \idle_cntr_reg[16]_i_2_n_3\ : STD_LOGIC;
-  signal \idle_cntr_reg[19]_i_4_n_2\ : STD_LOGIC;
-  signal \idle_cntr_reg[19]_i_4_n_3\ : STD_LOGIC;
+  signal \idle_cntr_reg[19]_i_5_n_2\ : STD_LOGIC;
+  signal \idle_cntr_reg[19]_i_5_n_3\ : STD_LOGIC;
   signal \idle_cntr_reg[4]_i_2_n_0\ : STD_LOGIC;
   signal \idle_cntr_reg[4]_i_2_n_1\ : STD_LOGIC;
   signal \idle_cntr_reg[4]_i_2_n_2\ : STD_LOGIC;
@@ -2548,6 +2560,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal \idle_cntr_reg_n_0_[8]\ : STD_LOGIC;
   signal \idle_cntr_reg_n_0_[9]\ : STD_LOGIC;
   signal next_delay_cntr : STD_LOGIC_VECTOR ( 30 downto 0 );
+  signal next_gap_cntr : STD_LOGIC_VECTOR ( 0 to 0 );
   signal next_idle_cntr : STD_LOGIC_VECTOR ( 19 downto 0 );
   signal next_idle_cntr0 : STD_LOGIC_VECTOR ( 19 downto 1 );
   signal next_o_ppm : STD_LOGIC;
@@ -2743,10 +2756,13 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   signal o_ppm_reg_i_3_n_0 : STD_LOGIC;
   signal o_ppm_reg_i_4_n_0 : STD_LOGIC;
   signal o_ppm_reg_i_5_n_0 : STD_LOGIC;
+  signal \o_state[0]_i_1_n_0\ : STD_LOGIC;
+  signal \o_state[1]_i_1_n_0\ : STD_LOGIC;
   signal p_0_in : STD_LOGIC;
   signal p_0_in1_in : STD_LOGIC_VECTOR ( 30 downto 1 );
-  signal \NLW_idle_cntr_reg[19]_i_4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW_idle_cntr_reg[19]_i_4_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \^s_gen_state\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal \NLW_idle_cntr_reg[19]_i_5_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal \NLW_idle_cntr_reg[19]_i_5_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal NLW_next_state0_carry_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_next_state0_carry__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_next_state0_carry__1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -2806,7 +2822,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \idle_cntr_reg[12]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \idle_cntr_reg[16]_i_2\ : label is 35;
-  attribute ADDER_THRESHOLD of \idle_cntr_reg[19]_i_4\ : label is 35;
+  attribute ADDER_THRESHOLD of \idle_cntr_reg[19]_i_5\ : label is 35;
   attribute ADDER_THRESHOLD of \idle_cntr_reg[4]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \idle_cntr_reg[8]_i_2\ : label is 35;
   attribute COMPARATOR_THRESHOLD : integer;
@@ -2843,12 +2859,13 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_generate_fsm is
   attribute ADDER_THRESHOLD of \next_state2_carry__5\ : label is 35;
   attribute ADDER_THRESHOLD of \next_state2_carry__6\ : label is 35;
 begin
+  s_gen_state(1 downto 0) <= \^s_gen_state\(1 downto 0);
 \FSM_onehot_current_state[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"FFD0"
     )
         port map (
-      I0 => \FSM_onehot_current_state_reg[1]_0\(0),
+      I0 => \idle_cntr_reg[0]_0\(0),
       I1 => \FSM_onehot_current_state[1]_i_2_n_0\,
       I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
       I3 => \FSM_onehot_current_state[0]_i_2_n_0\,
@@ -2874,7 +2891,7 @@ begin
         port map (
       I0 => \FSM_onehot_current_state_reg_n_0_[1]\,
       I1 => \next_state1_inferred__3/i__carry__2_n_0\,
-      I2 => \FSM_onehot_current_state_reg[1]_0\(0),
+      I2 => \idle_cntr_reg[0]_0\(0),
       I3 => \FSM_onehot_current_state[1]_i_2_n_0\,
       I4 => \FSM_onehot_current_state_reg_n_0_[0]\,
       O => \FSM_onehot_current_state[1]_i_1_n_0\
@@ -2962,8 +2979,8 @@ begin
         port map (
       I0 => \FSM_onehot_current_state_reg_n_0_[4]\,
       I1 => \next_state1_inferred__0/i__carry__2_n_0\,
-      I2 => gap_cntr(1),
-      I3 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I2 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I3 => gap_cntr(1),
       I4 => gap_cntr(2),
       I5 => gap_cntr(0),
       O => \FSM_onehot_current_state[4]_i_1_n_0\
@@ -2977,8 +2994,8 @@ begin
       I1 => \next_state1_inferred__1/i__carry__2_n_0\,
       I2 => gap_cntr(2),
       I3 => gap_cntr(0),
-      I4 => gap_cntr(1),
-      I5 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I4 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I5 => gap_cntr(1),
       O => \FSM_onehot_current_state[5]_i_1_n_0\
     );
 \FSM_onehot_current_state[6]_i_1\: unisim.vcomponents.LUT6
@@ -5420,17 +5437,16 @@ begin
       I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
       O => next_idle_cntr(18)
     );
-\idle_cntr[19]_i_1\: unisim.vcomponents.LUT6
+\idle_cntr[19]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFFFFFFEFFFCFFFC"
+      INIT => X"FFFEFAFA"
     )
         port map (
-      I0 => \FSM_onehot_current_state_reg[1]_0\(0),
-      I1 => \FSM_onehot_current_state_reg_n_0_[2]\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[7]\,
-      I3 => \idle_cntr[19]_i_3_n_0\,
-      I4 => \FSM_onehot_current_state[1]_i_2_n_0\,
-      I5 => \FSM_onehot_current_state_reg_n_0_[0]\,
+      I0 => current_state_reg(0),
+      I1 => \idle_cntr_reg[0]_0\(0),
+      I2 => next_gap_cntr(0),
+      I3 => \FSM_onehot_current_state[1]_i_2_n_0\,
+      I4 => \FSM_onehot_current_state_reg_n_0_[0]\,
       O => \idle_cntr[19]_i_1_n_0\
     );
 \idle_cntr[19]_i_2\: unisim.vcomponents.LUT3
@@ -5443,17 +5459,26 @@ begin
       I2 => \FSM_onehot_current_state_reg_n_0_[0]\,
       O => next_idle_cntr(19)
     );
-\idle_cntr[19]_i_3\: unisim.vcomponents.LUT5
+\idle_cntr[19]_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FFFFFFFE"
+      INIT => X"FFFE"
+    )
+        port map (
+      I0 => \FSM_onehot_current_state_reg_n_0_[7]\,
+      I1 => \FSM_onehot_current_state_reg_n_0_[3]\,
+      I2 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
+      O => current_state_reg(0)
+    );
+\idle_cntr[19]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"FE"
     )
         port map (
       I0 => \FSM_onehot_current_state_reg_n_0_[4]\,
-      I1 => \FSM_onehot_current_state_reg_n_0_[3]\,
-      I2 => \FSM_onehot_current_state_reg_n_0_[5]\,
-      I3 => \FSM_onehot_current_state_reg_n_0_[6]\,
-      I4 => \FSM_onehot_current_state_reg_n_0_[1]\,
-      O => \idle_cntr[19]_i_3_n_0\
+      I1 => \FSM_onehot_current_state_reg_n_0_[6]\,
+      I2 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      O => next_gap_cntr(0)
     );
 \idle_cntr[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -5696,15 +5721,15 @@ begin
       D => next_idle_cntr(19),
       Q => \idle_cntr_reg_n_0_[19]\
     );
-\idle_cntr_reg[19]_i_4\: unisim.vcomponents.CARRY4
+\idle_cntr_reg[19]_i_5\: unisim.vcomponents.CARRY4
      port map (
       CI => \idle_cntr_reg[16]_i_2_n_0\,
-      CO(3 downto 2) => \NLW_idle_cntr_reg[19]_i_4_CO_UNCONNECTED\(3 downto 2),
-      CO(1) => \idle_cntr_reg[19]_i_4_n_2\,
-      CO(0) => \idle_cntr_reg[19]_i_4_n_3\,
+      CO(3 downto 2) => \NLW_idle_cntr_reg[19]_i_5_CO_UNCONNECTED\(3 downto 2),
+      CO(1) => \idle_cntr_reg[19]_i_5_n_2\,
+      CO(0) => \idle_cntr_reg[19]_i_5_n_3\,
       CYINIT => '0',
       DI(3 downto 0) => B"0000",
-      O(3) => \NLW_idle_cntr_reg[19]_i_4_O_UNCONNECTED\(3),
+      O(3) => \NLW_idle_cntr_reg[19]_i_5_O_UNCONNECTED\(3),
       O(2 downto 0) => next_idle_cntr0(19 downto 17),
       S(3) => '0',
       S(2) => \idle_cntr_reg_n_0_[19]\,
@@ -7134,6 +7159,48 @@ o_ppm_reg_reg: unisim.vcomponents.FDCE
       D => next_o_ppm,
       Q => o_ppm
     );
+\o_state[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFE0000FFFE"
+    )
+        port map (
+      I0 => \FSM_onehot_current_state_reg_n_0_[7]\,
+      I1 => \FSM_onehot_current_state_reg_n_0_[3]\,
+      I2 => \FSM_onehot_current_state_reg_n_0_[2]\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[5]\,
+      I4 => s00_axi_aresetn,
+      I5 => \^s_gen_state\(0),
+      O => \o_state[0]_i_1_n_0\
+    );
+\o_state[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFE0000FFFE"
+    )
+        port map (
+      I0 => \FSM_onehot_current_state_reg_n_0_[6]\,
+      I1 => \FSM_onehot_current_state_reg_n_0_[1]\,
+      I2 => \FSM_onehot_current_state_reg_n_0_[7]\,
+      I3 => \FSM_onehot_current_state_reg_n_0_[3]\,
+      I4 => s00_axi_aresetn,
+      I5 => \^s_gen_state\(1),
+      O => \o_state[1]_i_1_n_0\
+    );
+\o_state_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      D => \o_state[0]_i_1_n_0\,
+      Q => \^s_gen_state\(0),
+      R => '0'
+    );
+\o_state_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      D => \o_state[1]_i_1_n_0\,
+      Q => \^s_gen_state\(1),
+      R => '0'
+    );
 end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -7150,7 +7217,6 @@ entity quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_S00_AXI is
     s00_axi_rvalid : out STD_LOGIC;
     s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     s00_axi_aclk : in STD_LOGIC;
-    SR : in STD_LOGIC_VECTOR ( 0 to 0 );
     s00_axi_aresetn : in STD_LOGIC;
     axi_bvalid_reg_0 : in STD_LOGIC;
     aw_en_reg_1 : in STD_LOGIC;
@@ -7368,6 +7434,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_
   signal \axi_rdata_reg[9]_i_3_n_0\ : STD_LOGIC;
   signal axi_wready0 : STD_LOGIC;
   signal \^axi_wready_reg_0\ : STD_LOGIC;
+  signal detect_fsm_n_0 : STD_LOGIC;
   signal detect_fsm_n_10 : STD_LOGIC;
   signal detect_fsm_n_11 : STD_LOGIC;
   signal detect_fsm_n_12 : STD_LOGIC;
@@ -7418,7 +7485,6 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_
   signal detect_fsm_n_57 : STD_LOGIC;
   signal detect_fsm_n_58 : STD_LOGIC;
   signal detect_fsm_n_59 : STD_LOGIC;
-  signal detect_fsm_n_6 : STD_LOGIC;
   signal detect_fsm_n_60 : STD_LOGIC;
   signal detect_fsm_n_61 : STD_LOGIC;
   signal detect_fsm_n_62 : STD_LOGIC;
@@ -7430,6 +7496,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_
   signal detect_fsm_n_68 : STD_LOGIC;
   signal detect_fsm_n_69 : STD_LOGIC;
   signal detect_fsm_n_7 : STD_LOGIC;
+  signal detect_fsm_n_70 : STD_LOGIC;
   signal detect_fsm_n_8 : STD_LOGIC;
   signal detect_fsm_n_9 : STD_LOGIC;
   signal p_0_in : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -7634,6 +7701,7 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_
   signal \s_gen_reg25[7]_i_1_n_0\ : STD_LOGIC;
   signal \s_gen_reg25[8]_i_1_n_0\ : STD_LOGIC;
   signal \s_gen_reg25[9]_i_1_n_0\ : STD_LOGIC;
+  signal s_gen_state : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal sel0 : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal slv_reg0 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal \slv_reg0_reg[0]_rep_n_0\ : STD_LOGIC;
@@ -7667,7 +7735,6 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_
   signal \slv_reg0_reg_n_0_[7]\ : STD_LOGIC;
   signal \slv_reg0_reg_n_0_[8]\ : STD_LOGIC;
   signal \slv_reg0_reg_n_0_[9]\ : STD_LOGIC;
-  signal slv_reg1 : STD_LOGIC_VECTOR ( 4 to 4 );
   signal slv_reg10 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \slv_reg10[15]_i_1_n_0\ : STD_LOGIC;
   signal \slv_reg10[23]_i_1_n_0\ : STD_LOGIC;
@@ -7698,6 +7765,11 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_
   signal \slv_reg15[23]_i_1_n_0\ : STD_LOGIC;
   signal \slv_reg15[31]_i_1_n_0\ : STD_LOGIC;
   signal \slv_reg15[7]_i_1_n_0\ : STD_LOGIC;
+  signal \slv_reg1[0]_i_1_n_0\ : STD_LOGIC;
+  signal \slv_reg1[1]_i_1_n_0\ : STD_LOGIC;
+  signal \slv_reg1_reg_n_0_[0]\ : STD_LOGIC;
+  signal \slv_reg1_reg_n_0_[1]\ : STD_LOGIC;
+  signal \slv_reg1_reg_n_0_[4]\ : STD_LOGIC;
   signal slv_reg2 : STD_LOGIC;
   signal \slv_reg2_reg_n_0_[0]\ : STD_LOGIC;
   signal \slv_reg2_reg_n_0_[10]\ : STD_LOGIC;
@@ -8104,6 +8176,8 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_
   attribute ORIG_CELL_NAME : string;
   attribute ORIG_CELL_NAME of \slv_reg0_reg[0]\ : label is "slv_reg0_reg[0]";
   attribute ORIG_CELL_NAME of \slv_reg0_reg[0]_rep\ : label is "slv_reg0_reg[0]";
+  attribute SOFT_HLUTNM of \slv_reg1[0]_i_1\ : label is "soft_lutpair149";
+  attribute SOFT_HLUTNM of \slv_reg1[1]_i_1\ : label is "soft_lutpair149";
 begin
   aw_en_reg_0 <= \^aw_en_reg_0\;
   axi_arready_reg_0 <= \^axi_arready_reg_0\;
@@ -8116,7 +8190,7 @@ aw_en_reg: unisim.vcomponents.FDSE
       CE => '1',
       D => aw_en_reg_1,
       Q => \^aw_en_reg_0\,
-      S => SR(0)
+      S => detect_fsm_n_0
     );
 \axi_araddr_reg[2]\: unisim.vcomponents.FDSE
      port map (
@@ -8124,7 +8198,7 @@ aw_en_reg: unisim.vcomponents.FDSE
       CE => axi_arready0,
       D => s00_axi_araddr(0),
       Q => sel0(0),
-      S => SR(0)
+      S => detect_fsm_n_0
     );
 \axi_araddr_reg[3]\: unisim.vcomponents.FDSE
      port map (
@@ -8132,7 +8206,7 @@ aw_en_reg: unisim.vcomponents.FDSE
       CE => axi_arready0,
       D => s00_axi_araddr(1),
       Q => sel0(1),
-      S => SR(0)
+      S => detect_fsm_n_0
     );
 \axi_araddr_reg[4]\: unisim.vcomponents.FDSE
      port map (
@@ -8140,7 +8214,7 @@ aw_en_reg: unisim.vcomponents.FDSE
       CE => axi_arready0,
       D => s00_axi_araddr(2),
       Q => sel0(2),
-      S => SR(0)
+      S => detect_fsm_n_0
     );
 \axi_araddr_reg[5]\: unisim.vcomponents.FDSE
      port map (
@@ -8148,7 +8222,7 @@ aw_en_reg: unisim.vcomponents.FDSE
       CE => axi_arready0,
       D => s00_axi_araddr(3),
       Q => sel0(3),
-      S => SR(0)
+      S => detect_fsm_n_0
     );
 axi_arready_i_1: unisim.vcomponents.LUT2
     generic map(
@@ -8165,7 +8239,7 @@ axi_arready_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => axi_arready0,
       Q => \^axi_arready_reg_0\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_awaddr_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -8173,7 +8247,7 @@ axi_arready_reg: unisim.vcomponents.FDRE
       CE => axi_awready0,
       D => s00_axi_awaddr(0),
       Q => p_0_in(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_awaddr_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -8181,7 +8255,7 @@ axi_arready_reg: unisim.vcomponents.FDRE
       CE => axi_awready0,
       D => s00_axi_awaddr(1),
       Q => p_0_in(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_awaddr_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -8189,7 +8263,7 @@ axi_arready_reg: unisim.vcomponents.FDRE
       CE => axi_awready0,
       D => s00_axi_awaddr(2),
       Q => p_0_in(2),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_awaddr_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -8197,7 +8271,7 @@ axi_arready_reg: unisim.vcomponents.FDRE
       CE => axi_awready0,
       D => s00_axi_awaddr(3),
       Q => p_0_in(3),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 axi_awready_i_2: unisim.vcomponents.LUT4
     generic map(
@@ -8216,7 +8290,7 @@ axi_awready_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => axi_awready0,
       Q => \^axi_awready_reg_0\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 axi_bvalid_reg: unisim.vcomponents.FDRE
      port map (
@@ -8224,7 +8298,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => axi_bvalid_reg_0,
       Q => s00_axi_bvalid,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata[0]_i_4\: unisim.vcomponents.LUT6
     generic map(
@@ -8234,7 +8308,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       I0 => \slv_reg3_reg_n_0_[0]\,
       I1 => \slv_reg2_reg_n_0_[0]\,
       I2 => sel0(1),
-      I3 => slv_reg1(4),
+      I3 => \slv_reg1_reg_n_0_[0]\,
       I4 => sel0(0),
       I5 => slv_reg0(0),
       O => \axi_rdata[0]_i_4_n_0\
@@ -8796,7 +8870,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       I0 => \slv_reg3_reg_n_0_[1]\,
       I1 => \slv_reg2_reg_n_0_[1]\,
       I2 => sel0(1),
-      I3 => slv_reg1(4),
+      I3 => \slv_reg1_reg_n_0_[1]\,
       I4 => sel0(0),
       I5 => slv_reg0(1),
       O => \axi_rdata[1]_i_4_n_0\
@@ -9358,7 +9432,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       I0 => \slv_reg3_reg_n_0_[2]\,
       I1 => \slv_reg2_reg_n_0_[2]\,
       I2 => sel0(1),
-      I3 => slv_reg1(4),
+      I3 => \slv_reg1_reg_n_0_[4]\,
       I4 => sel0(0),
       I5 => \slv_reg0_reg_n_0_[2]\,
       O => \axi_rdata[2]_i_4_n_0\
@@ -9522,7 +9596,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       I0 => \slv_reg3_reg_n_0_[3]\,
       I1 => \slv_reg2_reg_n_0_[3]\,
       I2 => sel0(1),
-      I3 => slv_reg1(4),
+      I3 => \slv_reg1_reg_n_0_[4]\,
       I4 => sel0(0),
       I5 => \slv_reg0_reg_n_0_[3]\,
       O => \axi_rdata[3]_i_4_n_0\
@@ -9574,7 +9648,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       I0 => \slv_reg3_reg_n_0_[4]\,
       I1 => \slv_reg2_reg_n_0_[4]\,
       I2 => sel0(1),
-      I3 => slv_reg1(4),
+      I3 => \slv_reg1_reg_n_0_[4]\,
       I4 => sel0(0),
       I5 => \slv_reg0_reg_n_0_[4]\,
       O => \axi_rdata[4]_i_4_n_0\
@@ -9879,7 +9953,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(0),
       Q => s00_axi_rdata(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[0]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -9908,7 +9982,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(10),
       Q => s00_axi_rdata(10),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[10]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -9937,7 +10011,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(11),
       Q => s00_axi_rdata(11),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[11]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -9966,7 +10040,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(12),
       Q => s00_axi_rdata(12),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[12]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -9995,7 +10069,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(13),
       Q => s00_axi_rdata(13),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[13]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10024,7 +10098,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(14),
       Q => s00_axi_rdata(14),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[14]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10053,7 +10127,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(15),
       Q => s00_axi_rdata(15),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[15]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10082,7 +10156,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(16),
       Q => s00_axi_rdata(16),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[16]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10111,7 +10185,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(17),
       Q => s00_axi_rdata(17),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[17]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10140,7 +10214,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(18),
       Q => s00_axi_rdata(18),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[18]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10169,7 +10243,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(19),
       Q => s00_axi_rdata(19),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[19]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10198,7 +10272,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(1),
       Q => s00_axi_rdata(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[1]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10227,7 +10301,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(20),
       Q => s00_axi_rdata(20),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[20]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10256,7 +10330,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(21),
       Q => s00_axi_rdata(21),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[21]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10285,7 +10359,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(22),
       Q => s00_axi_rdata(22),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[22]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10314,7 +10388,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(23),
       Q => s00_axi_rdata(23),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[23]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10343,7 +10417,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(24),
       Q => s00_axi_rdata(24),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[24]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10372,7 +10446,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(25),
       Q => s00_axi_rdata(25),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[25]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10401,7 +10475,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(26),
       Q => s00_axi_rdata(26),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[26]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10430,7 +10504,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(27),
       Q => s00_axi_rdata(27),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[27]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10459,7 +10533,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(28),
       Q => s00_axi_rdata(28),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[28]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10488,7 +10562,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(29),
       Q => s00_axi_rdata(29),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[29]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10517,7 +10591,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(2),
       Q => s00_axi_rdata(2),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[2]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10546,7 +10620,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(30),
       Q => s00_axi_rdata(30),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[30]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10575,7 +10649,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(31),
       Q => s00_axi_rdata(31),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[31]_i_2\: unisim.vcomponents.MUXF8
      port map (
@@ -10604,7 +10678,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(3),
       Q => s00_axi_rdata(3),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[3]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10633,7 +10707,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(4),
       Q => s00_axi_rdata(4),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[4]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10662,7 +10736,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(5),
       Q => s00_axi_rdata(5),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[5]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10691,7 +10765,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(6),
       Q => s00_axi_rdata(6),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[6]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10720,7 +10794,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(7),
       Q => s00_axi_rdata(7),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[7]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10749,7 +10823,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(8),
       Q => s00_axi_rdata(8),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[8]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10778,7 +10852,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
       CE => slv_reg_rden,
       D => reg_data_out(9),
       Q => s00_axi_rdata(9),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \axi_rdata_reg[9]_i_1\: unisim.vcomponents.MUXF8
      port map (
@@ -10807,7 +10881,7 @@ axi_rvalid_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => axi_rvalid_reg_0,
       Q => \^s00_axi_rvalid\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 axi_wready_i_1: unisim.vcomponents.LUT4
     generic map(
@@ -10826,89 +10900,90 @@ axi_wready_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => axi_wready0,
       Q => \^axi_wready_reg_0\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 detect_fsm: entity work.quad_interface_ppm_detect_gen_0_2_detect_fsm
      port map (
-      D(31) => detect_fsm_n_6,
-      D(30) => detect_fsm_n_7,
-      D(29) => detect_fsm_n_8,
-      D(28) => detect_fsm_n_9,
-      D(27) => detect_fsm_n_10,
-      D(26) => detect_fsm_n_11,
-      D(25) => detect_fsm_n_12,
-      D(24) => detect_fsm_n_13,
-      D(23) => detect_fsm_n_14,
-      D(22) => detect_fsm_n_15,
-      D(21) => detect_fsm_n_16,
-      D(20) => detect_fsm_n_17,
-      D(19) => detect_fsm_n_18,
-      D(18) => detect_fsm_n_19,
-      D(17) => detect_fsm_n_20,
-      D(16) => detect_fsm_n_21,
-      D(15) => detect_fsm_n_22,
-      D(14) => detect_fsm_n_23,
-      D(13) => detect_fsm_n_24,
-      D(12) => detect_fsm_n_25,
-      D(11) => detect_fsm_n_26,
-      D(10) => detect_fsm_n_27,
-      D(9) => detect_fsm_n_28,
-      D(8) => detect_fsm_n_29,
-      D(7) => detect_fsm_n_30,
-      D(6) => detect_fsm_n_31,
-      D(5) => detect_fsm_n_32,
-      D(4) => detect_fsm_n_33,
-      D(3) => detect_fsm_n_34,
-      D(2) => detect_fsm_n_35,
-      D(1) => detect_fsm_n_36,
-      D(0) => detect_fsm_n_37,
+      D(31) => detect_fsm_n_7,
+      D(30) => detect_fsm_n_8,
+      D(29) => detect_fsm_n_9,
+      D(28) => detect_fsm_n_10,
+      D(27) => detect_fsm_n_11,
+      D(26) => detect_fsm_n_12,
+      D(25) => detect_fsm_n_13,
+      D(24) => detect_fsm_n_14,
+      D(23) => detect_fsm_n_15,
+      D(22) => detect_fsm_n_16,
+      D(21) => detect_fsm_n_17,
+      D(20) => detect_fsm_n_18,
+      D(19) => detect_fsm_n_19,
+      D(18) => detect_fsm_n_20,
+      D(17) => detect_fsm_n_21,
+      D(16) => detect_fsm_n_22,
+      D(15) => detect_fsm_n_23,
+      D(14) => detect_fsm_n_24,
+      D(13) => detect_fsm_n_25,
+      D(12) => detect_fsm_n_26,
+      D(11) => detect_fsm_n_27,
+      D(10) => detect_fsm_n_28,
+      D(9) => detect_fsm_n_29,
+      D(8) => detect_fsm_n_30,
+      D(7) => detect_fsm_n_31,
+      D(6) => detect_fsm_n_32,
+      D(5) => detect_fsm_n_33,
+      D(4) => detect_fsm_n_34,
+      D(3) => detect_fsm_n_35,
+      D(2) => detect_fsm_n_36,
+      D(1) => detect_fsm_n_37,
+      D(0) => detect_fsm_n_38,
       E(0) => slv_reg6,
       Q(0) => slv_reg0(0),
-      SR(0) => SR(0),
+      SR(0) => detect_fsm_n_0,
       i_ppm => i_ppm,
       s00_axi_aclk => s00_axi_aclk,
+      s00_axi_aresetn => s00_axi_aresetn,
       \s_chan_reg[0]_0\(0) => slv_reg2,
       \s_chan_reg[2]_0\(0) => slv_reg7,
       \s_chan_reg[2]_1\(0) => slv_reg3,
-      \s_count_reg[31]_0\(31) => detect_fsm_n_38,
-      \s_count_reg[31]_0\(30) => detect_fsm_n_39,
-      \s_count_reg[31]_0\(29) => detect_fsm_n_40,
-      \s_count_reg[31]_0\(28) => detect_fsm_n_41,
-      \s_count_reg[31]_0\(27) => detect_fsm_n_42,
-      \s_count_reg[31]_0\(26) => detect_fsm_n_43,
-      \s_count_reg[31]_0\(25) => detect_fsm_n_44,
-      \s_count_reg[31]_0\(24) => detect_fsm_n_45,
-      \s_count_reg[31]_0\(23) => detect_fsm_n_46,
-      \s_count_reg[31]_0\(22) => detect_fsm_n_47,
-      \s_count_reg[31]_0\(21) => detect_fsm_n_48,
-      \s_count_reg[31]_0\(20) => detect_fsm_n_49,
-      \s_count_reg[31]_0\(19) => detect_fsm_n_50,
-      \s_count_reg[31]_0\(18) => detect_fsm_n_51,
-      \s_count_reg[31]_0\(17) => detect_fsm_n_52,
-      \s_count_reg[31]_0\(16) => detect_fsm_n_53,
-      \s_count_reg[31]_0\(15) => detect_fsm_n_54,
-      \s_count_reg[31]_0\(14) => detect_fsm_n_55,
-      \s_count_reg[31]_0\(13) => detect_fsm_n_56,
-      \s_count_reg[31]_0\(12) => detect_fsm_n_57,
-      \s_count_reg[31]_0\(11) => detect_fsm_n_58,
-      \s_count_reg[31]_0\(10) => detect_fsm_n_59,
-      \s_count_reg[31]_0\(9) => detect_fsm_n_60,
-      \s_count_reg[31]_0\(8) => detect_fsm_n_61,
-      \s_count_reg[31]_0\(7) => detect_fsm_n_62,
-      \s_count_reg[31]_0\(6) => detect_fsm_n_63,
-      \s_count_reg[31]_0\(5) => detect_fsm_n_64,
-      \s_count_reg[31]_0\(4) => detect_fsm_n_65,
-      \s_count_reg[31]_0\(3) => detect_fsm_n_66,
-      \s_count_reg[31]_0\(2) => detect_fsm_n_67,
-      \s_count_reg[31]_0\(1) => detect_fsm_n_68,
-      \s_count_reg[31]_0\(0) => detect_fsm_n_69,
+      \s_count_reg[31]_0\(31) => detect_fsm_n_39,
+      \s_count_reg[31]_0\(30) => detect_fsm_n_40,
+      \s_count_reg[31]_0\(29) => detect_fsm_n_41,
+      \s_count_reg[31]_0\(28) => detect_fsm_n_42,
+      \s_count_reg[31]_0\(27) => detect_fsm_n_43,
+      \s_count_reg[31]_0\(26) => detect_fsm_n_44,
+      \s_count_reg[31]_0\(25) => detect_fsm_n_45,
+      \s_count_reg[31]_0\(24) => detect_fsm_n_46,
+      \s_count_reg[31]_0\(23) => detect_fsm_n_47,
+      \s_count_reg[31]_0\(22) => detect_fsm_n_48,
+      \s_count_reg[31]_0\(21) => detect_fsm_n_49,
+      \s_count_reg[31]_0\(20) => detect_fsm_n_50,
+      \s_count_reg[31]_0\(19) => detect_fsm_n_51,
+      \s_count_reg[31]_0\(18) => detect_fsm_n_52,
+      \s_count_reg[31]_0\(17) => detect_fsm_n_53,
+      \s_count_reg[31]_0\(16) => detect_fsm_n_54,
+      \s_count_reg[31]_0\(15) => detect_fsm_n_55,
+      \s_count_reg[31]_0\(14) => detect_fsm_n_56,
+      \s_count_reg[31]_0\(13) => detect_fsm_n_57,
+      \s_count_reg[31]_0\(12) => detect_fsm_n_58,
+      \s_count_reg[31]_0\(11) => detect_fsm_n_59,
+      \s_count_reg[31]_0\(10) => detect_fsm_n_60,
+      \s_count_reg[31]_0\(9) => detect_fsm_n_61,
+      \s_count_reg[31]_0\(8) => detect_fsm_n_62,
+      \s_count_reg[31]_0\(7) => detect_fsm_n_63,
+      \s_count_reg[31]_0\(6) => detect_fsm_n_64,
+      \s_count_reg[31]_0\(5) => detect_fsm_n_65,
+      \s_count_reg[31]_0\(4) => detect_fsm_n_66,
+      \s_count_reg[31]_0\(3) => detect_fsm_n_67,
+      \s_count_reg[31]_0\(2) => detect_fsm_n_68,
+      \s_count_reg[31]_0\(1) => detect_fsm_n_69,
+      \s_count_reg[31]_0\(0) => detect_fsm_n_70,
       s_pulse_end_reg_0(0) => slv_reg4,
       s_pulse_end_reg_1(0) => slv_reg5
     );
 generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
      port map (
-      \FSM_onehot_current_state_reg[1]_0\(0) => slv_reg0(1),
       Q(31 downto 0) => s_gen_reg21(31 downto 0),
+      \idle_cntr_reg[0]_0\(0) => slv_reg0(1),
       \next_state0_carry__2_0\(31 downto 0) => s_gen_reg25(31 downto 0),
       \next_state1_inferred__0/i__carry__2_0\(31 downto 0) => s_gen_reg22(31 downto 0),
       \next_state1_inferred__1/i__carry__2_0\(31 downto 0) => s_gen_reg23(31 downto 0),
@@ -10916,7 +10991,8 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       \next_state1_inferred__3/i__carry__2_0\(31 downto 0) => s_gen_reg20(31 downto 0),
       o_ppm => o_ppm,
       s00_axi_aclk => s00_axi_aclk,
-      s00_axi_aresetn => s00_axi_aresetn
+      s00_axi_aresetn => s00_axi_aresetn,
+      s_gen_state(1 downto 0) => s_gen_state(1 downto 0)
     );
 \s_gen_reg20[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -14443,7 +14519,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(7),
       D => s00_axi_wdata(0),
       Q => slv_reg0(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[0]_rep\: unisim.vcomponents.FDRE
      port map (
@@ -14451,7 +14527,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(7),
       D => s00_axi_wdata(0),
       Q => \slv_reg0_reg[0]_rep_n_0\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -14459,7 +14535,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(15),
       D => s00_axi_wdata(10),
       Q => \slv_reg0_reg_n_0_[10]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -14467,7 +14543,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(15),
       D => s00_axi_wdata(11),
       Q => \slv_reg0_reg_n_0_[11]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -14475,7 +14551,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(15),
       D => s00_axi_wdata(12),
       Q => \slv_reg0_reg_n_0_[12]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -14483,7 +14559,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(15),
       D => s00_axi_wdata(13),
       Q => \slv_reg0_reg_n_0_[13]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -14491,7 +14567,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(15),
       D => s00_axi_wdata(14),
       Q => \slv_reg0_reg_n_0_[14]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -14499,7 +14575,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(15),
       D => s00_axi_wdata(15),
       Q => \slv_reg0_reg_n_0_[15]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -14507,7 +14583,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(23),
       D => s00_axi_wdata(16),
       Q => \slv_reg0_reg_n_0_[16]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -14515,7 +14591,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(23),
       D => s00_axi_wdata(17),
       Q => \slv_reg0_reg_n_0_[17]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -14523,7 +14599,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(23),
       D => s00_axi_wdata(18),
       Q => \slv_reg0_reg_n_0_[18]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -14531,7 +14607,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(23),
       D => s00_axi_wdata(19),
       Q => \slv_reg0_reg_n_0_[19]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -14539,7 +14615,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(7),
       D => s00_axi_wdata(1),
       Q => slv_reg0(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -14547,7 +14623,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(23),
       D => s00_axi_wdata(20),
       Q => \slv_reg0_reg_n_0_[20]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -14555,7 +14631,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(23),
       D => s00_axi_wdata(21),
       Q => \slv_reg0_reg_n_0_[21]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -14563,7 +14639,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(23),
       D => s00_axi_wdata(22),
       Q => \slv_reg0_reg_n_0_[22]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -14571,7 +14647,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(23),
       D => s00_axi_wdata(23),
       Q => \slv_reg0_reg_n_0_[23]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -14579,7 +14655,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(31),
       D => s00_axi_wdata(24),
       Q => \slv_reg0_reg_n_0_[24]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -14587,7 +14663,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(31),
       D => s00_axi_wdata(25),
       Q => \slv_reg0_reg_n_0_[25]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -14595,7 +14671,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(31),
       D => s00_axi_wdata(26),
       Q => \slv_reg0_reg_n_0_[26]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -14603,7 +14679,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(31),
       D => s00_axi_wdata(27),
       Q => \slv_reg0_reg_n_0_[27]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -14611,7 +14687,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(31),
       D => s00_axi_wdata(28),
       Q => \slv_reg0_reg_n_0_[28]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -14619,7 +14695,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(31),
       D => s00_axi_wdata(29),
       Q => \slv_reg0_reg_n_0_[29]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -14627,7 +14703,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(7),
       D => s00_axi_wdata(2),
       Q => \slv_reg0_reg_n_0_[2]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -14635,7 +14711,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(31),
       D => s00_axi_wdata(30),
       Q => \slv_reg0_reg_n_0_[30]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -14643,7 +14719,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(31),
       D => s00_axi_wdata(31),
       Q => \slv_reg0_reg_n_0_[31]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -14651,7 +14727,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(7),
       D => s00_axi_wdata(3),
       Q => \slv_reg0_reg_n_0_[3]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -14659,7 +14735,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(7),
       D => s00_axi_wdata(4),
       Q => \slv_reg0_reg_n_0_[4]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -14667,7 +14743,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(7),
       D => s00_axi_wdata(5),
       Q => \slv_reg0_reg_n_0_[5]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -14675,7 +14751,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(7),
       D => s00_axi_wdata(6),
       Q => \slv_reg0_reg_n_0_[6]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -14683,7 +14759,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(7),
       D => s00_axi_wdata(7),
       Q => \slv_reg0_reg_n_0_[7]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -14691,7 +14767,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(15),
       D => s00_axi_wdata(8),
       Q => \slv_reg0_reg_n_0_[8]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg0_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -14699,7 +14775,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => p_1_in(15),
       D => s00_axi_wdata(9),
       Q => \slv_reg0_reg_n_0_[9]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -14759,7 +14835,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[7]_i_1_n_0\,
       D => s00_axi_wdata(0),
       Q => slv_reg10(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -14767,7 +14843,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[15]_i_1_n_0\,
       D => s00_axi_wdata(10),
       Q => slv_reg10(10),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -14775,7 +14851,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[15]_i_1_n_0\,
       D => s00_axi_wdata(11),
       Q => slv_reg10(11),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -14783,7 +14859,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[15]_i_1_n_0\,
       D => s00_axi_wdata(12),
       Q => slv_reg10(12),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -14791,7 +14867,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[15]_i_1_n_0\,
       D => s00_axi_wdata(13),
       Q => slv_reg10(13),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -14799,7 +14875,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[15]_i_1_n_0\,
       D => s00_axi_wdata(14),
       Q => slv_reg10(14),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -14807,7 +14883,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[15]_i_1_n_0\,
       D => s00_axi_wdata(15),
       Q => slv_reg10(15),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -14815,7 +14891,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[23]_i_1_n_0\,
       D => s00_axi_wdata(16),
       Q => slv_reg10(16),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -14823,7 +14899,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[23]_i_1_n_0\,
       D => s00_axi_wdata(17),
       Q => slv_reg10(17),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -14831,7 +14907,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[23]_i_1_n_0\,
       D => s00_axi_wdata(18),
       Q => slv_reg10(18),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -14839,7 +14915,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[23]_i_1_n_0\,
       D => s00_axi_wdata(19),
       Q => slv_reg10(19),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -14847,7 +14923,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[7]_i_1_n_0\,
       D => s00_axi_wdata(1),
       Q => slv_reg10(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -14855,7 +14931,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[23]_i_1_n_0\,
       D => s00_axi_wdata(20),
       Q => slv_reg10(20),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -14863,7 +14939,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[23]_i_1_n_0\,
       D => s00_axi_wdata(21),
       Q => slv_reg10(21),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -14871,7 +14947,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[23]_i_1_n_0\,
       D => s00_axi_wdata(22),
       Q => slv_reg10(22),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -14879,7 +14955,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[23]_i_1_n_0\,
       D => s00_axi_wdata(23),
       Q => slv_reg10(23),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -14887,7 +14963,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[31]_i_1_n_0\,
       D => s00_axi_wdata(24),
       Q => slv_reg10(24),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -14895,7 +14971,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[31]_i_1_n_0\,
       D => s00_axi_wdata(25),
       Q => slv_reg10(25),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -14903,7 +14979,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[31]_i_1_n_0\,
       D => s00_axi_wdata(26),
       Q => slv_reg10(26),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -14911,7 +14987,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[31]_i_1_n_0\,
       D => s00_axi_wdata(27),
       Q => slv_reg10(27),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -14919,7 +14995,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[31]_i_1_n_0\,
       D => s00_axi_wdata(28),
       Q => slv_reg10(28),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -14927,7 +15003,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[31]_i_1_n_0\,
       D => s00_axi_wdata(29),
       Q => slv_reg10(29),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -14935,7 +15011,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[7]_i_1_n_0\,
       D => s00_axi_wdata(2),
       Q => slv_reg10(2),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -14943,7 +15019,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[31]_i_1_n_0\,
       D => s00_axi_wdata(30),
       Q => slv_reg10(30),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -14951,7 +15027,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[31]_i_1_n_0\,
       D => s00_axi_wdata(31),
       Q => slv_reg10(31),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -14959,7 +15035,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[7]_i_1_n_0\,
       D => s00_axi_wdata(3),
       Q => slv_reg10(3),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -14967,7 +15043,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[7]_i_1_n_0\,
       D => s00_axi_wdata(4),
       Q => slv_reg10(4),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -14975,7 +15051,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[7]_i_1_n_0\,
       D => s00_axi_wdata(5),
       Q => slv_reg10(5),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -14983,7 +15059,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[7]_i_1_n_0\,
       D => s00_axi_wdata(6),
       Q => slv_reg10(6),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -14991,7 +15067,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[7]_i_1_n_0\,
       D => s00_axi_wdata(7),
       Q => slv_reg10(7),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -14999,7 +15075,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[15]_i_1_n_0\,
       D => s00_axi_wdata(8),
       Q => slv_reg10(8),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg10_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -15007,7 +15083,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg10[15]_i_1_n_0\,
       D => s00_axi_wdata(9),
       Q => slv_reg10(9),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -15067,7 +15143,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[7]_i_1_n_0\,
       D => s00_axi_wdata(0),
       Q => slv_reg11(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -15075,7 +15151,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[15]_i_1_n_0\,
       D => s00_axi_wdata(10),
       Q => slv_reg11(10),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -15083,7 +15159,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[15]_i_1_n_0\,
       D => s00_axi_wdata(11),
       Q => slv_reg11(11),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -15091,7 +15167,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[15]_i_1_n_0\,
       D => s00_axi_wdata(12),
       Q => slv_reg11(12),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -15099,7 +15175,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[15]_i_1_n_0\,
       D => s00_axi_wdata(13),
       Q => slv_reg11(13),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -15107,7 +15183,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[15]_i_1_n_0\,
       D => s00_axi_wdata(14),
       Q => slv_reg11(14),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -15115,7 +15191,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[15]_i_1_n_0\,
       D => s00_axi_wdata(15),
       Q => slv_reg11(15),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -15123,7 +15199,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[23]_i_1_n_0\,
       D => s00_axi_wdata(16),
       Q => slv_reg11(16),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -15131,7 +15207,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[23]_i_1_n_0\,
       D => s00_axi_wdata(17),
       Q => slv_reg11(17),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -15139,7 +15215,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[23]_i_1_n_0\,
       D => s00_axi_wdata(18),
       Q => slv_reg11(18),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -15147,7 +15223,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[23]_i_1_n_0\,
       D => s00_axi_wdata(19),
       Q => slv_reg11(19),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -15155,7 +15231,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[7]_i_1_n_0\,
       D => s00_axi_wdata(1),
       Q => slv_reg11(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -15163,7 +15239,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[23]_i_1_n_0\,
       D => s00_axi_wdata(20),
       Q => slv_reg11(20),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -15171,7 +15247,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[23]_i_1_n_0\,
       D => s00_axi_wdata(21),
       Q => slv_reg11(21),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -15179,7 +15255,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[23]_i_1_n_0\,
       D => s00_axi_wdata(22),
       Q => slv_reg11(22),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -15187,7 +15263,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[23]_i_1_n_0\,
       D => s00_axi_wdata(23),
       Q => slv_reg11(23),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -15195,7 +15271,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[31]_i_1_n_0\,
       D => s00_axi_wdata(24),
       Q => slv_reg11(24),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -15203,7 +15279,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[31]_i_1_n_0\,
       D => s00_axi_wdata(25),
       Q => slv_reg11(25),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -15211,7 +15287,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[31]_i_1_n_0\,
       D => s00_axi_wdata(26),
       Q => slv_reg11(26),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -15219,7 +15295,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[31]_i_1_n_0\,
       D => s00_axi_wdata(27),
       Q => slv_reg11(27),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -15227,7 +15303,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[31]_i_1_n_0\,
       D => s00_axi_wdata(28),
       Q => slv_reg11(28),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -15235,7 +15311,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[31]_i_1_n_0\,
       D => s00_axi_wdata(29),
       Q => slv_reg11(29),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -15243,7 +15319,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[7]_i_1_n_0\,
       D => s00_axi_wdata(2),
       Q => slv_reg11(2),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -15251,7 +15327,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[31]_i_1_n_0\,
       D => s00_axi_wdata(30),
       Q => slv_reg11(30),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -15259,7 +15335,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[31]_i_1_n_0\,
       D => s00_axi_wdata(31),
       Q => slv_reg11(31),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -15267,7 +15343,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[7]_i_1_n_0\,
       D => s00_axi_wdata(3),
       Q => slv_reg11(3),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -15275,7 +15351,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[7]_i_1_n_0\,
       D => s00_axi_wdata(4),
       Q => slv_reg11(4),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -15283,7 +15359,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[7]_i_1_n_0\,
       D => s00_axi_wdata(5),
       Q => slv_reg11(5),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -15291,7 +15367,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[7]_i_1_n_0\,
       D => s00_axi_wdata(6),
       Q => slv_reg11(6),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -15299,7 +15375,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[7]_i_1_n_0\,
       D => s00_axi_wdata(7),
       Q => slv_reg11(7),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -15307,7 +15383,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[15]_i_1_n_0\,
       D => s00_axi_wdata(8),
       Q => slv_reg11(8),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg11_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -15315,7 +15391,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg11[15]_i_1_n_0\,
       D => s00_axi_wdata(9),
       Q => slv_reg11(9),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -15375,7 +15451,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[7]_i_1_n_0\,
       D => s00_axi_wdata(0),
       Q => slv_reg12(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -15383,7 +15459,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[15]_i_1_n_0\,
       D => s00_axi_wdata(10),
       Q => slv_reg12(10),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -15391,7 +15467,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[15]_i_1_n_0\,
       D => s00_axi_wdata(11),
       Q => slv_reg12(11),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -15399,7 +15475,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[15]_i_1_n_0\,
       D => s00_axi_wdata(12),
       Q => slv_reg12(12),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -15407,7 +15483,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[15]_i_1_n_0\,
       D => s00_axi_wdata(13),
       Q => slv_reg12(13),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -15415,7 +15491,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[15]_i_1_n_0\,
       D => s00_axi_wdata(14),
       Q => slv_reg12(14),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -15423,7 +15499,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[15]_i_1_n_0\,
       D => s00_axi_wdata(15),
       Q => slv_reg12(15),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -15431,7 +15507,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[23]_i_1_n_0\,
       D => s00_axi_wdata(16),
       Q => slv_reg12(16),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -15439,7 +15515,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[23]_i_1_n_0\,
       D => s00_axi_wdata(17),
       Q => slv_reg12(17),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -15447,7 +15523,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[23]_i_1_n_0\,
       D => s00_axi_wdata(18),
       Q => slv_reg12(18),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -15455,7 +15531,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[23]_i_1_n_0\,
       D => s00_axi_wdata(19),
       Q => slv_reg12(19),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -15463,7 +15539,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[7]_i_1_n_0\,
       D => s00_axi_wdata(1),
       Q => slv_reg12(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -15471,7 +15547,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[23]_i_1_n_0\,
       D => s00_axi_wdata(20),
       Q => slv_reg12(20),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -15479,7 +15555,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[23]_i_1_n_0\,
       D => s00_axi_wdata(21),
       Q => slv_reg12(21),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -15487,7 +15563,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[23]_i_1_n_0\,
       D => s00_axi_wdata(22),
       Q => slv_reg12(22),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -15495,7 +15571,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[23]_i_1_n_0\,
       D => s00_axi_wdata(23),
       Q => slv_reg12(23),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -15503,7 +15579,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[31]_i_1_n_0\,
       D => s00_axi_wdata(24),
       Q => slv_reg12(24),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -15511,7 +15587,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[31]_i_1_n_0\,
       D => s00_axi_wdata(25),
       Q => slv_reg12(25),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -15519,7 +15595,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[31]_i_1_n_0\,
       D => s00_axi_wdata(26),
       Q => slv_reg12(26),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -15527,7 +15603,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[31]_i_1_n_0\,
       D => s00_axi_wdata(27),
       Q => slv_reg12(27),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -15535,7 +15611,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[31]_i_1_n_0\,
       D => s00_axi_wdata(28),
       Q => slv_reg12(28),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -15543,7 +15619,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[31]_i_1_n_0\,
       D => s00_axi_wdata(29),
       Q => slv_reg12(29),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -15551,7 +15627,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[7]_i_1_n_0\,
       D => s00_axi_wdata(2),
       Q => slv_reg12(2),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -15559,7 +15635,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[31]_i_1_n_0\,
       D => s00_axi_wdata(30),
       Q => slv_reg12(30),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -15567,7 +15643,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[31]_i_1_n_0\,
       D => s00_axi_wdata(31),
       Q => slv_reg12(31),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -15575,7 +15651,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[7]_i_1_n_0\,
       D => s00_axi_wdata(3),
       Q => slv_reg12(3),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -15583,7 +15659,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[7]_i_1_n_0\,
       D => s00_axi_wdata(4),
       Q => slv_reg12(4),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -15591,7 +15667,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[7]_i_1_n_0\,
       D => s00_axi_wdata(5),
       Q => slv_reg12(5),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -15599,7 +15675,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[7]_i_1_n_0\,
       D => s00_axi_wdata(6),
       Q => slv_reg12(6),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -15607,7 +15683,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[7]_i_1_n_0\,
       D => s00_axi_wdata(7),
       Q => slv_reg12(7),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -15615,7 +15691,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[15]_i_1_n_0\,
       D => s00_axi_wdata(8),
       Q => slv_reg12(8),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg12_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -15623,7 +15699,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg12[15]_i_1_n_0\,
       D => s00_axi_wdata(9),
       Q => slv_reg12(9),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -15683,7 +15759,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[7]_i_1_n_0\,
       D => s00_axi_wdata(0),
       Q => slv_reg13(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -15691,7 +15767,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[15]_i_1_n_0\,
       D => s00_axi_wdata(10),
       Q => slv_reg13(10),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -15699,7 +15775,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[15]_i_1_n_0\,
       D => s00_axi_wdata(11),
       Q => slv_reg13(11),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -15707,7 +15783,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[15]_i_1_n_0\,
       D => s00_axi_wdata(12),
       Q => slv_reg13(12),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -15715,7 +15791,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[15]_i_1_n_0\,
       D => s00_axi_wdata(13),
       Q => slv_reg13(13),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -15723,7 +15799,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[15]_i_1_n_0\,
       D => s00_axi_wdata(14),
       Q => slv_reg13(14),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -15731,7 +15807,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[15]_i_1_n_0\,
       D => s00_axi_wdata(15),
       Q => slv_reg13(15),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -15739,7 +15815,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[23]_i_1_n_0\,
       D => s00_axi_wdata(16),
       Q => slv_reg13(16),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -15747,7 +15823,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[23]_i_1_n_0\,
       D => s00_axi_wdata(17),
       Q => slv_reg13(17),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -15755,7 +15831,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[23]_i_1_n_0\,
       D => s00_axi_wdata(18),
       Q => slv_reg13(18),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -15763,7 +15839,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[23]_i_1_n_0\,
       D => s00_axi_wdata(19),
       Q => slv_reg13(19),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -15771,7 +15847,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[7]_i_1_n_0\,
       D => s00_axi_wdata(1),
       Q => slv_reg13(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -15779,7 +15855,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[23]_i_1_n_0\,
       D => s00_axi_wdata(20),
       Q => slv_reg13(20),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -15787,7 +15863,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[23]_i_1_n_0\,
       D => s00_axi_wdata(21),
       Q => slv_reg13(21),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -15795,7 +15871,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[23]_i_1_n_0\,
       D => s00_axi_wdata(22),
       Q => slv_reg13(22),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -15803,7 +15879,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[23]_i_1_n_0\,
       D => s00_axi_wdata(23),
       Q => slv_reg13(23),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -15811,7 +15887,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[31]_i_1_n_0\,
       D => s00_axi_wdata(24),
       Q => slv_reg13(24),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -15819,7 +15895,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[31]_i_1_n_0\,
       D => s00_axi_wdata(25),
       Q => slv_reg13(25),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -15827,7 +15903,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[31]_i_1_n_0\,
       D => s00_axi_wdata(26),
       Q => slv_reg13(26),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -15835,7 +15911,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[31]_i_1_n_0\,
       D => s00_axi_wdata(27),
       Q => slv_reg13(27),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -15843,7 +15919,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[31]_i_1_n_0\,
       D => s00_axi_wdata(28),
       Q => slv_reg13(28),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -15851,7 +15927,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[31]_i_1_n_0\,
       D => s00_axi_wdata(29),
       Q => slv_reg13(29),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -15859,7 +15935,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[7]_i_1_n_0\,
       D => s00_axi_wdata(2),
       Q => slv_reg13(2),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -15867,7 +15943,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[31]_i_1_n_0\,
       D => s00_axi_wdata(30),
       Q => slv_reg13(30),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -15875,7 +15951,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[31]_i_1_n_0\,
       D => s00_axi_wdata(31),
       Q => slv_reg13(31),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -15883,7 +15959,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[7]_i_1_n_0\,
       D => s00_axi_wdata(3),
       Q => slv_reg13(3),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -15891,7 +15967,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[7]_i_1_n_0\,
       D => s00_axi_wdata(4),
       Q => slv_reg13(4),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -15899,7 +15975,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[7]_i_1_n_0\,
       D => s00_axi_wdata(5),
       Q => slv_reg13(5),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -15907,7 +15983,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[7]_i_1_n_0\,
       D => s00_axi_wdata(6),
       Q => slv_reg13(6),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -15915,7 +15991,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[7]_i_1_n_0\,
       D => s00_axi_wdata(7),
       Q => slv_reg13(7),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -15923,7 +15999,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[15]_i_1_n_0\,
       D => s00_axi_wdata(8),
       Q => slv_reg13(8),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg13_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -15931,7 +16007,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg13[15]_i_1_n_0\,
       D => s00_axi_wdata(9),
       Q => slv_reg13(9),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -15991,7 +16067,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[7]_i_1_n_0\,
       D => s00_axi_wdata(0),
       Q => slv_reg14(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -15999,7 +16075,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[15]_i_1_n_0\,
       D => s00_axi_wdata(10),
       Q => slv_reg14(10),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -16007,7 +16083,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[15]_i_1_n_0\,
       D => s00_axi_wdata(11),
       Q => slv_reg14(11),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -16015,7 +16091,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[15]_i_1_n_0\,
       D => s00_axi_wdata(12),
       Q => slv_reg14(12),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -16023,7 +16099,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[15]_i_1_n_0\,
       D => s00_axi_wdata(13),
       Q => slv_reg14(13),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -16031,7 +16107,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[15]_i_1_n_0\,
       D => s00_axi_wdata(14),
       Q => slv_reg14(14),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -16039,7 +16115,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[15]_i_1_n_0\,
       D => s00_axi_wdata(15),
       Q => slv_reg14(15),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -16047,7 +16123,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[23]_i_1_n_0\,
       D => s00_axi_wdata(16),
       Q => slv_reg14(16),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -16055,7 +16131,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[23]_i_1_n_0\,
       D => s00_axi_wdata(17),
       Q => slv_reg14(17),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -16063,7 +16139,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[23]_i_1_n_0\,
       D => s00_axi_wdata(18),
       Q => slv_reg14(18),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -16071,7 +16147,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[23]_i_1_n_0\,
       D => s00_axi_wdata(19),
       Q => slv_reg14(19),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -16079,7 +16155,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[7]_i_1_n_0\,
       D => s00_axi_wdata(1),
       Q => slv_reg14(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -16087,7 +16163,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[23]_i_1_n_0\,
       D => s00_axi_wdata(20),
       Q => slv_reg14(20),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -16095,7 +16171,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[23]_i_1_n_0\,
       D => s00_axi_wdata(21),
       Q => slv_reg14(21),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -16103,7 +16179,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[23]_i_1_n_0\,
       D => s00_axi_wdata(22),
       Q => slv_reg14(22),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -16111,7 +16187,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[23]_i_1_n_0\,
       D => s00_axi_wdata(23),
       Q => slv_reg14(23),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -16119,7 +16195,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[31]_i_1_n_0\,
       D => s00_axi_wdata(24),
       Q => slv_reg14(24),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -16127,7 +16203,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[31]_i_1_n_0\,
       D => s00_axi_wdata(25),
       Q => slv_reg14(25),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -16135,7 +16211,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[31]_i_1_n_0\,
       D => s00_axi_wdata(26),
       Q => slv_reg14(26),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -16143,7 +16219,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[31]_i_1_n_0\,
       D => s00_axi_wdata(27),
       Q => slv_reg14(27),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -16151,7 +16227,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[31]_i_1_n_0\,
       D => s00_axi_wdata(28),
       Q => slv_reg14(28),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -16159,7 +16235,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[31]_i_1_n_0\,
       D => s00_axi_wdata(29),
       Q => slv_reg14(29),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -16167,7 +16243,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[7]_i_1_n_0\,
       D => s00_axi_wdata(2),
       Q => slv_reg14(2),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -16175,7 +16251,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[31]_i_1_n_0\,
       D => s00_axi_wdata(30),
       Q => slv_reg14(30),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -16183,7 +16259,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[31]_i_1_n_0\,
       D => s00_axi_wdata(31),
       Q => slv_reg14(31),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -16191,7 +16267,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[7]_i_1_n_0\,
       D => s00_axi_wdata(3),
       Q => slv_reg14(3),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -16199,7 +16275,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[7]_i_1_n_0\,
       D => s00_axi_wdata(4),
       Q => slv_reg14(4),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -16207,7 +16283,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[7]_i_1_n_0\,
       D => s00_axi_wdata(5),
       Q => slv_reg14(5),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -16215,7 +16291,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[7]_i_1_n_0\,
       D => s00_axi_wdata(6),
       Q => slv_reg14(6),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -16223,7 +16299,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[7]_i_1_n_0\,
       D => s00_axi_wdata(7),
       Q => slv_reg14(7),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -16231,7 +16307,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[15]_i_1_n_0\,
       D => s00_axi_wdata(8),
       Q => slv_reg14(8),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg14_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -16239,7 +16315,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg14[15]_i_1_n_0\,
       D => s00_axi_wdata(9),
       Q => slv_reg14(9),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -16299,7 +16375,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[7]_i_1_n_0\,
       D => s00_axi_wdata(0),
       Q => slv_reg15(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -16307,7 +16383,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[15]_i_1_n_0\,
       D => s00_axi_wdata(10),
       Q => slv_reg15(10),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -16315,7 +16391,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[15]_i_1_n_0\,
       D => s00_axi_wdata(11),
       Q => slv_reg15(11),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -16323,7 +16399,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[15]_i_1_n_0\,
       D => s00_axi_wdata(12),
       Q => slv_reg15(12),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -16331,7 +16407,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[15]_i_1_n_0\,
       D => s00_axi_wdata(13),
       Q => slv_reg15(13),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -16339,7 +16415,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[15]_i_1_n_0\,
       D => s00_axi_wdata(14),
       Q => slv_reg15(14),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -16347,7 +16423,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[15]_i_1_n_0\,
       D => s00_axi_wdata(15),
       Q => slv_reg15(15),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -16355,7 +16431,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[23]_i_1_n_0\,
       D => s00_axi_wdata(16),
       Q => slv_reg15(16),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -16363,7 +16439,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[23]_i_1_n_0\,
       D => s00_axi_wdata(17),
       Q => slv_reg15(17),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -16371,7 +16447,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[23]_i_1_n_0\,
       D => s00_axi_wdata(18),
       Q => slv_reg15(18),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -16379,7 +16455,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[23]_i_1_n_0\,
       D => s00_axi_wdata(19),
       Q => slv_reg15(19),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -16387,7 +16463,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[7]_i_1_n_0\,
       D => s00_axi_wdata(1),
       Q => slv_reg15(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -16395,7 +16471,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[23]_i_1_n_0\,
       D => s00_axi_wdata(20),
       Q => slv_reg15(20),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -16403,7 +16479,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[23]_i_1_n_0\,
       D => s00_axi_wdata(21),
       Q => slv_reg15(21),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -16411,7 +16487,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[23]_i_1_n_0\,
       D => s00_axi_wdata(22),
       Q => slv_reg15(22),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -16419,7 +16495,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[23]_i_1_n_0\,
       D => s00_axi_wdata(23),
       Q => slv_reg15(23),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -16427,7 +16503,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[31]_i_1_n_0\,
       D => s00_axi_wdata(24),
       Q => slv_reg15(24),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -16435,7 +16511,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[31]_i_1_n_0\,
       D => s00_axi_wdata(25),
       Q => slv_reg15(25),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -16443,7 +16519,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[31]_i_1_n_0\,
       D => s00_axi_wdata(26),
       Q => slv_reg15(26),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -16451,7 +16527,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[31]_i_1_n_0\,
       D => s00_axi_wdata(27),
       Q => slv_reg15(27),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -16459,7 +16535,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[31]_i_1_n_0\,
       D => s00_axi_wdata(28),
       Q => slv_reg15(28),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -16467,7 +16543,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[31]_i_1_n_0\,
       D => s00_axi_wdata(29),
       Q => slv_reg15(29),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -16475,7 +16551,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[7]_i_1_n_0\,
       D => s00_axi_wdata(2),
       Q => slv_reg15(2),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -16483,7 +16559,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[31]_i_1_n_0\,
       D => s00_axi_wdata(30),
       Q => slv_reg15(30),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -16491,7 +16567,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[31]_i_1_n_0\,
       D => s00_axi_wdata(31),
       Q => slv_reg15(31),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -16499,7 +16575,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[7]_i_1_n_0\,
       D => s00_axi_wdata(3),
       Q => slv_reg15(3),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -16507,7 +16583,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[7]_i_1_n_0\,
       D => s00_axi_wdata(4),
       Q => slv_reg15(4),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -16515,7 +16591,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[7]_i_1_n_0\,
       D => s00_axi_wdata(5),
       Q => slv_reg15(5),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -16523,7 +16599,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[7]_i_1_n_0\,
       D => s00_axi_wdata(6),
       Q => slv_reg15(6),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -16531,7 +16607,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[7]_i_1_n_0\,
       D => s00_axi_wdata(7),
       Q => slv_reg15(7),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -16539,7 +16615,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[15]_i_1_n_0\,
       D => s00_axi_wdata(8),
       Q => slv_reg15(8),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg15_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -16547,1551 +16623,1585 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg15[15]_i_1_n_0\,
       D => s00_axi_wdata(9),
       Q => slv_reg15(9),
-      R => SR(0)
+      R => detect_fsm_n_0
+    );
+\slv_reg1[0]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => s00_axi_aresetn,
+      I1 => s_gen_state(0),
+      O => \slv_reg1[0]_i_1_n_0\
+    );
+\slv_reg1[1]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => s00_axi_aresetn,
+      I1 => s_gen_state(1),
+      O => \slv_reg1[1]_i_1_n_0\
+    );
+\slv_reg1_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      D => \slv_reg1[0]_i_1_n_0\,
+      Q => \slv_reg1_reg_n_0_[0]\,
+      R => '0'
+    );
+\slv_reg1_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => s00_axi_aclk,
+      CE => '1',
+      D => \slv_reg1[1]_i_1_n_0\,
+      Q => \slv_reg1_reg_n_0_[1]\,
+      R => '0'
     );
 \slv_reg1_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => '1',
-      D => '1',
-      Q => slv_reg1(4),
-      R => SR(0)
+      D => s00_axi_aresetn,
+      Q => \slv_reg1_reg_n_0_[4]\,
+      R => '0'
     );
 \slv_reg2_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_37,
+      D => detect_fsm_n_38,
       Q => \slv_reg2_reg_n_0_[0]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_27,
+      D => detect_fsm_n_28,
       Q => \slv_reg2_reg_n_0_[10]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_26,
+      D => detect_fsm_n_27,
       Q => \slv_reg2_reg_n_0_[11]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_25,
+      D => detect_fsm_n_26,
       Q => \slv_reg2_reg_n_0_[12]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_24,
+      D => detect_fsm_n_25,
       Q => \slv_reg2_reg_n_0_[13]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_23,
+      D => detect_fsm_n_24,
       Q => \slv_reg2_reg_n_0_[14]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_22,
+      D => detect_fsm_n_23,
       Q => \slv_reg2_reg_n_0_[15]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_21,
+      D => detect_fsm_n_22,
       Q => \slv_reg2_reg_n_0_[16]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_20,
+      D => detect_fsm_n_21,
       Q => \slv_reg2_reg_n_0_[17]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_19,
+      D => detect_fsm_n_20,
       Q => \slv_reg2_reg_n_0_[18]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_18,
+      D => detect_fsm_n_19,
       Q => \slv_reg2_reg_n_0_[19]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_36,
+      D => detect_fsm_n_37,
       Q => \slv_reg2_reg_n_0_[1]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_17,
+      D => detect_fsm_n_18,
       Q => \slv_reg2_reg_n_0_[20]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_16,
+      D => detect_fsm_n_17,
       Q => \slv_reg2_reg_n_0_[21]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_15,
+      D => detect_fsm_n_16,
       Q => \slv_reg2_reg_n_0_[22]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_14,
+      D => detect_fsm_n_15,
       Q => \slv_reg2_reg_n_0_[23]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_13,
+      D => detect_fsm_n_14,
       Q => \slv_reg2_reg_n_0_[24]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_12,
+      D => detect_fsm_n_13,
       Q => \slv_reg2_reg_n_0_[25]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_11,
+      D => detect_fsm_n_12,
       Q => \slv_reg2_reg_n_0_[26]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_10,
+      D => detect_fsm_n_11,
       Q => \slv_reg2_reg_n_0_[27]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_9,
+      D => detect_fsm_n_10,
       Q => \slv_reg2_reg_n_0_[28]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_8,
+      D => detect_fsm_n_9,
       Q => \slv_reg2_reg_n_0_[29]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_35,
+      D => detect_fsm_n_36,
       Q => \slv_reg2_reg_n_0_[2]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_7,
+      D => detect_fsm_n_8,
       Q => \slv_reg2_reg_n_0_[30]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_6,
+      D => detect_fsm_n_7,
       Q => \slv_reg2_reg_n_0_[31]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_34,
+      D => detect_fsm_n_35,
       Q => \slv_reg2_reg_n_0_[3]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_33,
+      D => detect_fsm_n_34,
       Q => \slv_reg2_reg_n_0_[4]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_32,
+      D => detect_fsm_n_33,
       Q => \slv_reg2_reg_n_0_[5]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_31,
+      D => detect_fsm_n_32,
       Q => \slv_reg2_reg_n_0_[6]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_30,
+      D => detect_fsm_n_31,
       Q => \slv_reg2_reg_n_0_[7]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_29,
+      D => detect_fsm_n_30,
       Q => \slv_reg2_reg_n_0_[8]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg2_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg2,
-      D => detect_fsm_n_28,
+      D => detect_fsm_n_29,
       Q => \slv_reg2_reg_n_0_[9]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_37,
+      D => detect_fsm_n_38,
       Q => \slv_reg3_reg_n_0_[0]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_27,
+      D => detect_fsm_n_28,
       Q => \slv_reg3_reg_n_0_[10]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_26,
+      D => detect_fsm_n_27,
       Q => \slv_reg3_reg_n_0_[11]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_25,
+      D => detect_fsm_n_26,
       Q => \slv_reg3_reg_n_0_[12]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_24,
+      D => detect_fsm_n_25,
       Q => \slv_reg3_reg_n_0_[13]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_23,
+      D => detect_fsm_n_24,
       Q => \slv_reg3_reg_n_0_[14]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_22,
+      D => detect_fsm_n_23,
       Q => \slv_reg3_reg_n_0_[15]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_21,
+      D => detect_fsm_n_22,
       Q => \slv_reg3_reg_n_0_[16]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_20,
+      D => detect_fsm_n_21,
       Q => \slv_reg3_reg_n_0_[17]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_19,
+      D => detect_fsm_n_20,
       Q => \slv_reg3_reg_n_0_[18]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_18,
+      D => detect_fsm_n_19,
       Q => \slv_reg3_reg_n_0_[19]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_36,
+      D => detect_fsm_n_37,
       Q => \slv_reg3_reg_n_0_[1]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_17,
+      D => detect_fsm_n_18,
       Q => \slv_reg3_reg_n_0_[20]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_16,
+      D => detect_fsm_n_17,
       Q => \slv_reg3_reg_n_0_[21]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_15,
+      D => detect_fsm_n_16,
       Q => \slv_reg3_reg_n_0_[22]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_14,
+      D => detect_fsm_n_15,
       Q => \slv_reg3_reg_n_0_[23]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_13,
+      D => detect_fsm_n_14,
       Q => \slv_reg3_reg_n_0_[24]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_12,
+      D => detect_fsm_n_13,
       Q => \slv_reg3_reg_n_0_[25]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_11,
+      D => detect_fsm_n_12,
       Q => \slv_reg3_reg_n_0_[26]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_10,
+      D => detect_fsm_n_11,
       Q => \slv_reg3_reg_n_0_[27]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_9,
+      D => detect_fsm_n_10,
       Q => \slv_reg3_reg_n_0_[28]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_8,
+      D => detect_fsm_n_9,
       Q => \slv_reg3_reg_n_0_[29]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_35,
+      D => detect_fsm_n_36,
       Q => \slv_reg3_reg_n_0_[2]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_7,
+      D => detect_fsm_n_8,
       Q => \slv_reg3_reg_n_0_[30]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_6,
+      D => detect_fsm_n_7,
       Q => \slv_reg3_reg_n_0_[31]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_34,
+      D => detect_fsm_n_35,
       Q => \slv_reg3_reg_n_0_[3]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_33,
+      D => detect_fsm_n_34,
       Q => \slv_reg3_reg_n_0_[4]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_32,
+      D => detect_fsm_n_33,
       Q => \slv_reg3_reg_n_0_[5]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_31,
+      D => detect_fsm_n_32,
       Q => \slv_reg3_reg_n_0_[6]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_30,
+      D => detect_fsm_n_31,
       Q => \slv_reg3_reg_n_0_[7]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_29,
+      D => detect_fsm_n_30,
       Q => \slv_reg3_reg_n_0_[8]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg3_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg3,
-      D => detect_fsm_n_28,
+      D => detect_fsm_n_29,
       Q => \slv_reg3_reg_n_0_[9]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_37,
+      D => detect_fsm_n_38,
       Q => \slv_reg4_reg_n_0_[0]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_27,
+      D => detect_fsm_n_28,
       Q => \slv_reg4_reg_n_0_[10]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_26,
+      D => detect_fsm_n_27,
       Q => \slv_reg4_reg_n_0_[11]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_25,
+      D => detect_fsm_n_26,
       Q => \slv_reg4_reg_n_0_[12]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_24,
+      D => detect_fsm_n_25,
       Q => \slv_reg4_reg_n_0_[13]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_23,
+      D => detect_fsm_n_24,
       Q => \slv_reg4_reg_n_0_[14]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_22,
+      D => detect_fsm_n_23,
       Q => \slv_reg4_reg_n_0_[15]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_21,
+      D => detect_fsm_n_22,
       Q => \slv_reg4_reg_n_0_[16]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_20,
+      D => detect_fsm_n_21,
       Q => \slv_reg4_reg_n_0_[17]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_19,
+      D => detect_fsm_n_20,
       Q => \slv_reg4_reg_n_0_[18]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_18,
+      D => detect_fsm_n_19,
       Q => \slv_reg4_reg_n_0_[19]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_36,
+      D => detect_fsm_n_37,
       Q => \slv_reg4_reg_n_0_[1]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_17,
+      D => detect_fsm_n_18,
       Q => \slv_reg4_reg_n_0_[20]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_16,
+      D => detect_fsm_n_17,
       Q => \slv_reg4_reg_n_0_[21]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_15,
+      D => detect_fsm_n_16,
       Q => \slv_reg4_reg_n_0_[22]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_14,
+      D => detect_fsm_n_15,
       Q => \slv_reg4_reg_n_0_[23]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_13,
+      D => detect_fsm_n_14,
       Q => \slv_reg4_reg_n_0_[24]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_12,
+      D => detect_fsm_n_13,
       Q => \slv_reg4_reg_n_0_[25]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_11,
+      D => detect_fsm_n_12,
       Q => \slv_reg4_reg_n_0_[26]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_10,
+      D => detect_fsm_n_11,
       Q => \slv_reg4_reg_n_0_[27]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_9,
+      D => detect_fsm_n_10,
       Q => \slv_reg4_reg_n_0_[28]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_8,
+      D => detect_fsm_n_9,
       Q => \slv_reg4_reg_n_0_[29]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_35,
+      D => detect_fsm_n_36,
       Q => \slv_reg4_reg_n_0_[2]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_7,
+      D => detect_fsm_n_8,
       Q => \slv_reg4_reg_n_0_[30]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_6,
+      D => detect_fsm_n_7,
       Q => \slv_reg4_reg_n_0_[31]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_34,
+      D => detect_fsm_n_35,
       Q => \slv_reg4_reg_n_0_[3]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_33,
+      D => detect_fsm_n_34,
       Q => \slv_reg4_reg_n_0_[4]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_32,
+      D => detect_fsm_n_33,
       Q => \slv_reg4_reg_n_0_[5]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_31,
+      D => detect_fsm_n_32,
       Q => \slv_reg4_reg_n_0_[6]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_30,
+      D => detect_fsm_n_31,
       Q => \slv_reg4_reg_n_0_[7]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_29,
+      D => detect_fsm_n_30,
       Q => \slv_reg4_reg_n_0_[8]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg4_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg4,
-      D => detect_fsm_n_28,
+      D => detect_fsm_n_29,
       Q => \slv_reg4_reg_n_0_[9]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_37,
+      D => detect_fsm_n_38,
       Q => \slv_reg5_reg_n_0_[0]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_27,
+      D => detect_fsm_n_28,
       Q => \slv_reg5_reg_n_0_[10]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_26,
+      D => detect_fsm_n_27,
       Q => \slv_reg5_reg_n_0_[11]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_25,
+      D => detect_fsm_n_26,
       Q => \slv_reg5_reg_n_0_[12]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_24,
+      D => detect_fsm_n_25,
       Q => \slv_reg5_reg_n_0_[13]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_23,
+      D => detect_fsm_n_24,
       Q => \slv_reg5_reg_n_0_[14]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_22,
+      D => detect_fsm_n_23,
       Q => \slv_reg5_reg_n_0_[15]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_21,
+      D => detect_fsm_n_22,
       Q => \slv_reg5_reg_n_0_[16]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_20,
+      D => detect_fsm_n_21,
       Q => \slv_reg5_reg_n_0_[17]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_19,
+      D => detect_fsm_n_20,
       Q => \slv_reg5_reg_n_0_[18]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_18,
+      D => detect_fsm_n_19,
       Q => \slv_reg5_reg_n_0_[19]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_36,
+      D => detect_fsm_n_37,
       Q => \slv_reg5_reg_n_0_[1]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_17,
+      D => detect_fsm_n_18,
       Q => \slv_reg5_reg_n_0_[20]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_16,
+      D => detect_fsm_n_17,
       Q => \slv_reg5_reg_n_0_[21]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_15,
+      D => detect_fsm_n_16,
       Q => \slv_reg5_reg_n_0_[22]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_14,
+      D => detect_fsm_n_15,
       Q => \slv_reg5_reg_n_0_[23]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_13,
+      D => detect_fsm_n_14,
       Q => \slv_reg5_reg_n_0_[24]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_12,
+      D => detect_fsm_n_13,
       Q => \slv_reg5_reg_n_0_[25]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_11,
+      D => detect_fsm_n_12,
       Q => \slv_reg5_reg_n_0_[26]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_10,
+      D => detect_fsm_n_11,
       Q => \slv_reg5_reg_n_0_[27]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_9,
+      D => detect_fsm_n_10,
       Q => \slv_reg5_reg_n_0_[28]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_8,
+      D => detect_fsm_n_9,
       Q => \slv_reg5_reg_n_0_[29]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_35,
+      D => detect_fsm_n_36,
       Q => \slv_reg5_reg_n_0_[2]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_7,
+      D => detect_fsm_n_8,
       Q => \slv_reg5_reg_n_0_[30]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_6,
+      D => detect_fsm_n_7,
       Q => \slv_reg5_reg_n_0_[31]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_34,
+      D => detect_fsm_n_35,
       Q => \slv_reg5_reg_n_0_[3]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_33,
+      D => detect_fsm_n_34,
       Q => \slv_reg5_reg_n_0_[4]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_32,
+      D => detect_fsm_n_33,
       Q => \slv_reg5_reg_n_0_[5]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_31,
+      D => detect_fsm_n_32,
       Q => \slv_reg5_reg_n_0_[6]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_30,
+      D => detect_fsm_n_31,
       Q => \slv_reg5_reg_n_0_[7]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_29,
+      D => detect_fsm_n_30,
       Q => \slv_reg5_reg_n_0_[8]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg5_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg5,
-      D => detect_fsm_n_28,
+      D => detect_fsm_n_29,
       Q => \slv_reg5_reg_n_0_[9]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_69,
+      D => detect_fsm_n_70,
       Q => \slv_reg6_reg_n_0_[0]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_59,
+      D => detect_fsm_n_60,
       Q => \slv_reg6_reg_n_0_[10]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_58,
+      D => detect_fsm_n_59,
       Q => \slv_reg6_reg_n_0_[11]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_57,
+      D => detect_fsm_n_58,
       Q => \slv_reg6_reg_n_0_[12]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_56,
+      D => detect_fsm_n_57,
       Q => \slv_reg6_reg_n_0_[13]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_55,
+      D => detect_fsm_n_56,
       Q => \slv_reg6_reg_n_0_[14]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_54,
+      D => detect_fsm_n_55,
       Q => \slv_reg6_reg_n_0_[15]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_53,
+      D => detect_fsm_n_54,
       Q => \slv_reg6_reg_n_0_[16]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_52,
+      D => detect_fsm_n_53,
       Q => \slv_reg6_reg_n_0_[17]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_51,
+      D => detect_fsm_n_52,
       Q => \slv_reg6_reg_n_0_[18]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_50,
+      D => detect_fsm_n_51,
       Q => \slv_reg6_reg_n_0_[19]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_68,
+      D => detect_fsm_n_69,
       Q => \slv_reg6_reg_n_0_[1]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_49,
+      D => detect_fsm_n_50,
       Q => \slv_reg6_reg_n_0_[20]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_48,
+      D => detect_fsm_n_49,
       Q => \slv_reg6_reg_n_0_[21]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_47,
+      D => detect_fsm_n_48,
       Q => \slv_reg6_reg_n_0_[22]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_46,
+      D => detect_fsm_n_47,
       Q => \slv_reg6_reg_n_0_[23]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_45,
+      D => detect_fsm_n_46,
       Q => \slv_reg6_reg_n_0_[24]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_44,
+      D => detect_fsm_n_45,
       Q => \slv_reg6_reg_n_0_[25]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_43,
+      D => detect_fsm_n_44,
       Q => \slv_reg6_reg_n_0_[26]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_42,
+      D => detect_fsm_n_43,
       Q => \slv_reg6_reg_n_0_[27]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_41,
+      D => detect_fsm_n_42,
       Q => \slv_reg6_reg_n_0_[28]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_40,
+      D => detect_fsm_n_41,
       Q => \slv_reg6_reg_n_0_[29]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_67,
+      D => detect_fsm_n_68,
       Q => \slv_reg6_reg_n_0_[2]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_39,
+      D => detect_fsm_n_40,
       Q => \slv_reg6_reg_n_0_[30]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_38,
+      D => detect_fsm_n_39,
       Q => \slv_reg6_reg_n_0_[31]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_66,
+      D => detect_fsm_n_67,
       Q => \slv_reg6_reg_n_0_[3]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_65,
+      D => detect_fsm_n_66,
       Q => \slv_reg6_reg_n_0_[4]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_64,
+      D => detect_fsm_n_65,
       Q => \slv_reg6_reg_n_0_[5]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_63,
+      D => detect_fsm_n_64,
       Q => \slv_reg6_reg_n_0_[6]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_62,
+      D => detect_fsm_n_63,
       Q => \slv_reg6_reg_n_0_[7]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_61,
+      D => detect_fsm_n_62,
       Q => \slv_reg6_reg_n_0_[8]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg6_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg6,
-      D => detect_fsm_n_60,
+      D => detect_fsm_n_61,
       Q => \slv_reg6_reg_n_0_[9]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_69,
+      D => detect_fsm_n_70,
       Q => \slv_reg7_reg_n_0_[0]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_59,
+      D => detect_fsm_n_60,
       Q => \slv_reg7_reg_n_0_[10]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_58,
+      D => detect_fsm_n_59,
       Q => \slv_reg7_reg_n_0_[11]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_57,
+      D => detect_fsm_n_58,
       Q => \slv_reg7_reg_n_0_[12]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_56,
+      D => detect_fsm_n_57,
       Q => \slv_reg7_reg_n_0_[13]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_55,
+      D => detect_fsm_n_56,
       Q => \slv_reg7_reg_n_0_[14]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_54,
+      D => detect_fsm_n_55,
       Q => \slv_reg7_reg_n_0_[15]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_53,
+      D => detect_fsm_n_54,
       Q => \slv_reg7_reg_n_0_[16]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_52,
+      D => detect_fsm_n_53,
       Q => \slv_reg7_reg_n_0_[17]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_51,
+      D => detect_fsm_n_52,
       Q => \slv_reg7_reg_n_0_[18]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_50,
+      D => detect_fsm_n_51,
       Q => \slv_reg7_reg_n_0_[19]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_68,
+      D => detect_fsm_n_69,
       Q => \slv_reg7_reg_n_0_[1]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_49,
+      D => detect_fsm_n_50,
       Q => \slv_reg7_reg_n_0_[20]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_48,
+      D => detect_fsm_n_49,
       Q => \slv_reg7_reg_n_0_[21]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_47,
+      D => detect_fsm_n_48,
       Q => \slv_reg7_reg_n_0_[22]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_46,
+      D => detect_fsm_n_47,
       Q => \slv_reg7_reg_n_0_[23]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_45,
+      D => detect_fsm_n_46,
       Q => \slv_reg7_reg_n_0_[24]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_44,
+      D => detect_fsm_n_45,
       Q => \slv_reg7_reg_n_0_[25]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_43,
+      D => detect_fsm_n_44,
       Q => \slv_reg7_reg_n_0_[26]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_42,
+      D => detect_fsm_n_43,
       Q => \slv_reg7_reg_n_0_[27]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_41,
+      D => detect_fsm_n_42,
       Q => \slv_reg7_reg_n_0_[28]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_40,
+      D => detect_fsm_n_41,
       Q => \slv_reg7_reg_n_0_[29]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_67,
+      D => detect_fsm_n_68,
       Q => \slv_reg7_reg_n_0_[2]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_39,
+      D => detect_fsm_n_40,
       Q => \slv_reg7_reg_n_0_[30]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_38,
+      D => detect_fsm_n_39,
       Q => \slv_reg7_reg_n_0_[31]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_66,
+      D => detect_fsm_n_67,
       Q => \slv_reg7_reg_n_0_[3]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_65,
+      D => detect_fsm_n_66,
       Q => \slv_reg7_reg_n_0_[4]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_64,
+      D => detect_fsm_n_65,
       Q => \slv_reg7_reg_n_0_[5]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_63,
+      D => detect_fsm_n_64,
       Q => \slv_reg7_reg_n_0_[6]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_62,
+      D => detect_fsm_n_63,
       Q => \slv_reg7_reg_n_0_[7]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_61,
+      D => detect_fsm_n_62,
       Q => \slv_reg7_reg_n_0_[8]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg7_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => s00_axi_aclk,
       CE => slv_reg7,
-      D => detect_fsm_n_60,
+      D => detect_fsm_n_61,
       Q => \slv_reg7_reg_n_0_[9]\,
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -18151,7 +18261,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[7]_i_1_n_0\,
       D => s00_axi_wdata(0),
       Q => slv_reg8(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -18159,7 +18269,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[15]_i_1_n_0\,
       D => s00_axi_wdata(10),
       Q => slv_reg8(10),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -18167,7 +18277,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[15]_i_1_n_0\,
       D => s00_axi_wdata(11),
       Q => slv_reg8(11),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -18175,7 +18285,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[15]_i_1_n_0\,
       D => s00_axi_wdata(12),
       Q => slv_reg8(12),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -18183,7 +18293,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[15]_i_1_n_0\,
       D => s00_axi_wdata(13),
       Q => slv_reg8(13),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -18191,7 +18301,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[15]_i_1_n_0\,
       D => s00_axi_wdata(14),
       Q => slv_reg8(14),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -18199,7 +18309,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[15]_i_1_n_0\,
       D => s00_axi_wdata(15),
       Q => slv_reg8(15),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -18207,7 +18317,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[23]_i_1_n_0\,
       D => s00_axi_wdata(16),
       Q => slv_reg8(16),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -18215,7 +18325,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[23]_i_1_n_0\,
       D => s00_axi_wdata(17),
       Q => slv_reg8(17),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -18223,7 +18333,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[23]_i_1_n_0\,
       D => s00_axi_wdata(18),
       Q => slv_reg8(18),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -18231,7 +18341,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[23]_i_1_n_0\,
       D => s00_axi_wdata(19),
       Q => slv_reg8(19),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -18239,7 +18349,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[7]_i_1_n_0\,
       D => s00_axi_wdata(1),
       Q => slv_reg8(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -18247,7 +18357,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[23]_i_1_n_0\,
       D => s00_axi_wdata(20),
       Q => slv_reg8(20),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -18255,7 +18365,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[23]_i_1_n_0\,
       D => s00_axi_wdata(21),
       Q => slv_reg8(21),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -18263,7 +18373,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[23]_i_1_n_0\,
       D => s00_axi_wdata(22),
       Q => slv_reg8(22),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -18271,7 +18381,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[23]_i_1_n_0\,
       D => s00_axi_wdata(23),
       Q => slv_reg8(23),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -18279,7 +18389,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[31]_i_1_n_0\,
       D => s00_axi_wdata(24),
       Q => slv_reg8(24),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -18287,7 +18397,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[31]_i_1_n_0\,
       D => s00_axi_wdata(25),
       Q => slv_reg8(25),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -18295,7 +18405,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[31]_i_1_n_0\,
       D => s00_axi_wdata(26),
       Q => slv_reg8(26),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -18303,7 +18413,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[31]_i_1_n_0\,
       D => s00_axi_wdata(27),
       Q => slv_reg8(27),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -18311,7 +18421,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[31]_i_1_n_0\,
       D => s00_axi_wdata(28),
       Q => slv_reg8(28),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -18319,7 +18429,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[31]_i_1_n_0\,
       D => s00_axi_wdata(29),
       Q => slv_reg8(29),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -18327,7 +18437,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[7]_i_1_n_0\,
       D => s00_axi_wdata(2),
       Q => slv_reg8(2),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -18335,7 +18445,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[31]_i_1_n_0\,
       D => s00_axi_wdata(30),
       Q => slv_reg8(30),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -18343,7 +18453,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[31]_i_1_n_0\,
       D => s00_axi_wdata(31),
       Q => slv_reg8(31),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -18351,7 +18461,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[7]_i_1_n_0\,
       D => s00_axi_wdata(3),
       Q => slv_reg8(3),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -18359,7 +18469,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[7]_i_1_n_0\,
       D => s00_axi_wdata(4),
       Q => slv_reg8(4),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -18367,7 +18477,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[7]_i_1_n_0\,
       D => s00_axi_wdata(5),
       Q => slv_reg8(5),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -18375,7 +18485,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[7]_i_1_n_0\,
       D => s00_axi_wdata(6),
       Q => slv_reg8(6),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -18383,7 +18493,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[7]_i_1_n_0\,
       D => s00_axi_wdata(7),
       Q => slv_reg8(7),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -18391,7 +18501,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[15]_i_1_n_0\,
       D => s00_axi_wdata(8),
       Q => slv_reg8(8),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg8_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -18399,7 +18509,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg8[15]_i_1_n_0\,
       D => s00_axi_wdata(9),
       Q => slv_reg8(9),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9[15]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -18459,7 +18569,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[7]_i_1_n_0\,
       D => s00_axi_wdata(0),
       Q => slv_reg9(0),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -18467,7 +18577,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[15]_i_1_n_0\,
       D => s00_axi_wdata(10),
       Q => slv_reg9(10),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -18475,7 +18585,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[15]_i_1_n_0\,
       D => s00_axi_wdata(11),
       Q => slv_reg9(11),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -18483,7 +18593,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[15]_i_1_n_0\,
       D => s00_axi_wdata(12),
       Q => slv_reg9(12),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -18491,7 +18601,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[15]_i_1_n_0\,
       D => s00_axi_wdata(13),
       Q => slv_reg9(13),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -18499,7 +18609,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[15]_i_1_n_0\,
       D => s00_axi_wdata(14),
       Q => slv_reg9(14),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -18507,7 +18617,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[15]_i_1_n_0\,
       D => s00_axi_wdata(15),
       Q => slv_reg9(15),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -18515,7 +18625,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[23]_i_1_n_0\,
       D => s00_axi_wdata(16),
       Q => slv_reg9(16),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -18523,7 +18633,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[23]_i_1_n_0\,
       D => s00_axi_wdata(17),
       Q => slv_reg9(17),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -18531,7 +18641,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[23]_i_1_n_0\,
       D => s00_axi_wdata(18),
       Q => slv_reg9(18),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -18539,7 +18649,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[23]_i_1_n_0\,
       D => s00_axi_wdata(19),
       Q => slv_reg9(19),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -18547,7 +18657,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[7]_i_1_n_0\,
       D => s00_axi_wdata(1),
       Q => slv_reg9(1),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -18555,7 +18665,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[23]_i_1_n_0\,
       D => s00_axi_wdata(20),
       Q => slv_reg9(20),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -18563,7 +18673,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[23]_i_1_n_0\,
       D => s00_axi_wdata(21),
       Q => slv_reg9(21),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -18571,7 +18681,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[23]_i_1_n_0\,
       D => s00_axi_wdata(22),
       Q => slv_reg9(22),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -18579,7 +18689,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[23]_i_1_n_0\,
       D => s00_axi_wdata(23),
       Q => slv_reg9(23),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -18587,7 +18697,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[31]_i_1_n_0\,
       D => s00_axi_wdata(24),
       Q => slv_reg9(24),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -18595,7 +18705,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[31]_i_1_n_0\,
       D => s00_axi_wdata(25),
       Q => slv_reg9(25),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -18603,7 +18713,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[31]_i_1_n_0\,
       D => s00_axi_wdata(26),
       Q => slv_reg9(26),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -18611,7 +18721,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[31]_i_1_n_0\,
       D => s00_axi_wdata(27),
       Q => slv_reg9(27),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -18619,7 +18729,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[31]_i_1_n_0\,
       D => s00_axi_wdata(28),
       Q => slv_reg9(28),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -18627,7 +18737,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[31]_i_1_n_0\,
       D => s00_axi_wdata(29),
       Q => slv_reg9(29),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -18635,7 +18745,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[7]_i_1_n_0\,
       D => s00_axi_wdata(2),
       Q => slv_reg9(2),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -18643,7 +18753,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[31]_i_1_n_0\,
       D => s00_axi_wdata(30),
       Q => slv_reg9(30),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -18651,7 +18761,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[31]_i_1_n_0\,
       D => s00_axi_wdata(31),
       Q => slv_reg9(31),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -18659,7 +18769,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[7]_i_1_n_0\,
       D => s00_axi_wdata(3),
       Q => slv_reg9(3),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -18667,7 +18777,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[7]_i_1_n_0\,
       D => s00_axi_wdata(4),
       Q => slv_reg9(4),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -18675,7 +18785,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[7]_i_1_n_0\,
       D => s00_axi_wdata(5),
       Q => slv_reg9(5),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -18683,7 +18793,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[7]_i_1_n_0\,
       D => s00_axi_wdata(6),
       Q => slv_reg9(6),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -18691,7 +18801,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[7]_i_1_n_0\,
       D => s00_axi_wdata(7),
       Q => slv_reg9(7),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -18699,7 +18809,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[15]_i_1_n_0\,
       D => s00_axi_wdata(8),
       Q => slv_reg9(8),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 \slv_reg9_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -18707,7 +18817,7 @@ generate_fsm: entity work.quad_interface_ppm_detect_gen_0_2_generate_fsm
       CE => \slv_reg9[15]_i_1_n_0\,
       D => s00_axi_wdata(9),
       Q => slv_reg9(9),
-      R => SR(0)
+      R => detect_fsm_n_0
     );
 end STRUCTURE;
 library IEEE;
@@ -18745,7 +18855,6 @@ architecture STRUCTURE of quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0 
   signal \^s_axi_awready\ : STD_LOGIC;
   signal \^s_axi_wready\ : STD_LOGIC;
   signal aw_en_i_1_n_0 : STD_LOGIC;
-  signal axi_awready_i_1_n_0 : STD_LOGIC;
   signal axi_bvalid_i_1_n_0 : STD_LOGIC;
   signal axi_rvalid_i_1_n_0 : STD_LOGIC;
   signal ppm_detect_gen_v1_0_S00_AXI_inst_n_5 : STD_LOGIC;
@@ -18769,14 +18878,6 @@ aw_en_i_1: unisim.vcomponents.LUT6
       I4 => s00_axi_bready,
       I5 => \^s00_axi_bvalid\,
       O => aw_en_i_1_n_0
-    );
-axi_awready_i_1: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => s00_axi_aresetn,
-      O => axi_awready_i_1_n_0
     );
 axi_bvalid_i_1: unisim.vcomponents.LUT6
     generic map(
@@ -18804,7 +18905,6 @@ axi_rvalid_i_1: unisim.vcomponents.LUT4
     );
 ppm_detect_gen_v1_0_S00_AXI_inst: entity work.quad_interface_ppm_detect_gen_0_2_ppm_detect_gen_v1_0_S00_AXI
      port map (
-      SR(0) => axi_awready_i_1_n_0,
       aw_en_reg_0 => ppm_detect_gen_v1_0_S00_AXI_inst_n_5,
       aw_en_reg_1 => aw_en_i_1_n_0,
       axi_arready_reg_0 => \^s_axi_arready\,

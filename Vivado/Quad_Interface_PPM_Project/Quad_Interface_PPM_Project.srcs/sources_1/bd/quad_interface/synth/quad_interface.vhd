@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Sun Feb 23 13:29:49 2025
+--Date        : Sun Feb 23 13:40:46 2025
 --Host        : CO2041-08 running 64-bit major release  (build 9200)
 --Command     : generate_target quad_interface.bd
 --Design      : quad_interface

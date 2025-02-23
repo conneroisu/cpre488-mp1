@@ -549,7 +549,7 @@ BEGIN
 			ELSE
 				-- slv_reg1(2 DOWNTO 0) <= s_detect_state;
 				slv_reg1(2 DOWNTO 0) <= s_gen_state(2 DOWNTO 0);
-				slv_reg1(4 DOWNTO 0) <= (OTHERS => '1');
+				slv_reg1(4 DOWNTO 2) <= (OTHERS => '1');
 			END IF;
 		END IF;
 	END PROCESS STATUS_UPDATE;
