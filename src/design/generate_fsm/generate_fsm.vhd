@@ -3,6 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 entity generate_fsm is
+  
     generic (
         N               : natural := 32;
         IDLE_FRAME_TIME : time    := 9 ms
@@ -20,6 +21,7 @@ entity generate_fsm is
         o_state      : out std_logic_vector(N - 1 downto 0);
         o_ppm        : out std_logic
         );
+    
 end generate_fsm;
 
 architecture arc of generate_fsm is
@@ -65,9 +67,18 @@ begin
     end process;
 
     -- Process 2: Next State & Output Logic (combinational process)
-    next_state_proc : process(current_state, i_slv_reg0_1, i_slv_reg20, i_slv_reg21,
-                              i_slv_reg22, i_slv_reg23, i_slv_reg24, i_slv_reg25,
-                              delay_cntr, idle_cntr, gap_cntr)
+    next_state_proc : process(current_state,
+                              i_slv_reg0_1,
+                              i_slv_reg20,
+                              i_slv_reg21,
+                              i_slv_reg22,
+                              i_slv_reg23,
+                              i_slv_reg24,
+                              i_slv_reg25,
+                              delay_cntr,
+                              idle_cntr,
+                              gap_cntr
+                              )
     begin
         -- Default assignments
         next_state      <= current_state;
