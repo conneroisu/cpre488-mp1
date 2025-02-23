@@ -31,6 +31,9 @@ architecture arc of generate_fsm is
     signal delay_cntr : natural;
     signal gap_cntr   : natural;
     signal idle_cntr  : natural;
+
+    -- Linked signals
+    signal o_ppm_int : std_logic;
     
     -- Constants
     constant CLK_PERIOD     : time    := 10 ns;
@@ -44,6 +47,9 @@ architecture arc of generate_fsm is
     constant FLAGS_BITS    : natural := 4;  -- Bits [23:20] for flags
 
 begin
+
+    -- Process 0: PPM output
+    o_ppm <= o_ppm_int;
     -- Process 1: Sequential state register
     STATE_REG : process(i_clk)
     begin
@@ -62,7 +68,7 @@ begin
     begin
         -- Default assignments (prevent latches)
         next_state <= current_state;
-        o_ppm <= '0';
+        o_ppm_int <= '0';
 
         case current_state is
             when IDLE =>
@@ -73,37 +79,37 @@ begin
                 end if;
 
             when CHAN1 =>
-                o_ppm <= '1';
+                o_ppm_int <= '1';
                 if delay_cntr + 1 >= to_integer(unsigned(i_slv_reg20)) then
                     next_state <= GAP;
                 end if;
 
             when CHAN2 =>
-                o_ppm <= '1';
+                o_ppm_int <= '1';
                 if delay_cntr + 1 >= to_integer(unsigned(i_slv_reg21)) then
                     next_state <= GAP;
                 end if;
 
             when CHAN3 =>
-                o_ppm <= '1';
+                o_ppm_int <= '1';
                 if delay_cntr + 1 >= to_integer(unsigned(i_slv_reg22)) then
                     next_state <= GAP;
                 end if;
 
             when CHAN4 =>
-                o_ppm <= '1';
+                o_ppm_int <= '1';
                 if delay_cntr + 1 >= to_integer(unsigned(i_slv_reg23)) then
                     next_state <= GAP;
                 end if;
 
             when CHAN5 =>
-                o_ppm <= '1';
+                o_ppm_int <= '1';
                 if delay_cntr + 1 >= to_integer(unsigned(i_slv_reg24)) then
                     next_state <= GAP;
                 end if;
 
             when CHAN6 =>
-                o_ppm <= '1';
+                o_ppm_int <= '1';
                 if delay_cntr + 1 >= to_integer(unsigned(i_slv_reg25)) then
                     next_state <= IDLE;
                 end if;
@@ -222,7 +228,7 @@ begin
 
             -- Generate flags
             flags := (others => '0');
-            flags(0) := o_ppm;  -- Current PPM output
+            flags(0) := o_ppm_int;  -- Current PPM output
             
             -- State transition flag without conditional assignment
             if current_state /= next_state then
