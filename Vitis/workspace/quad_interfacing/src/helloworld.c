@@ -53,11 +53,14 @@ int is_software_relay_mode ()
 	return SLV_REG0 & SOFTWARE_RELAY_MODE;
 }
 
+char* sw_r()
+{
+	return is_software_relay_mode() ? "Enabled" : "Disabled";
+}
+
 int main()
 {
     init_platform();
-
-    CONTROL_REG = 0x0;
 	SLV_REG2 = 0xFF;
 	SLV_REG3 = 0xFF;
 	SLV_REG4 = 0xFF;
@@ -73,34 +76,30 @@ int main()
 	SLV_REG14 = 0xFF;
 
 
-	SLV_REG0 = 0xFFF;
+	SLV_REG0 = SOFTWARE_RELAY_MODE;
+	SLV_REG1 = 0xFFF;
 
-	print("Hello World\n\r");
     while(1)
     {
-    	// Read from channel 5.
-    	CONTROL_REG = 0x1;
-    	while(!STATUS_REG)
-    	{
-
-    	}
-
-    	CONTROL_REG = 0x0;
-
-    	while(STATUS_REG)
-    	{
-
-    	}
-
-    	xil_printf("\n\n\n\n\rChannel 1: %x\n\r", CHANNEL_1);
-    	xil_printf("Channel 2: %x\n\r", CHANNEL_2);
-    	xil_printf("Channel 3: %x\n\r", CHANNEL_3);
-    	xil_printf("Channel 4: %x\n\r", CHANNEL_4);
-    	xil_printf("Channel 5: %x\n\r", CHANNEL_5);
-    	xil_printf("Channel 6: %x\n\r", CHANNEL_6);
-
+    	SLV_REG0 = 0xFF;
+    	xil_printf("\n\n\n\n\rStatus Reg 1: %x\n\r", STATUS_REG);
+		xil_printf("In Software Relay Mode: ",  sw_r(), "\n\r");
+		xil_printf("Reg 00: %x\n\r", SLV_REG0);
+		xil_printf("Reg 01: %x\n\r", SLV_REG1);
+		xil_printf("Reg 02: %x\n\r", SLV_REG2);
+		xil_printf("Reg 03: %x\n\r", SLV_REG3);
+		xil_printf("Reg 04: %x\n\r", SLV_REG4);
+		xil_printf("Reg 05: %x\n\r", SLV_REG5);
+		xil_printf("Reg 06: %x\n\r", SLV_REG6);
+		xil_printf("Reg 07: %x\n\r", SLV_REG7);
+		xil_printf("Reg 08: %x\n\r", SLV_REG8);
+		xil_printf("Reg 09: %x\n\r", SLV_REG9);
+		xil_printf("Reg 10: %x\n\r", SLV_REG10);
+		xil_printf("Reg 11: %x\n\r", SLV_REG11);
+		xil_printf("Reg 12: %x\n\r", SLV_REG12);
+		xil_printf("Reg 13: %x\n\r", SLV_REG13);
+		xil_printf("Reg 14: %x\n\r", SLV_REG14);
     	usleep(250000);
-
     }
 
     cleanup_platform();

@@ -147,6 +147,7 @@ ARCHITECTURE arch_imp OF ppm_detect_gen_v1_0_S00_AXI IS
 	SIGNAL s_gen_reg23 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
 	SIGNAL s_gen_reg24 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
 	SIGNAL s_gen_reg25 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
+  SIGNAL s_gen_state : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
 BEGIN
 	-- I/O Connections assignments
 
@@ -546,7 +547,9 @@ BEGIN
 			IF (S_AXI_ARESETN = '0') THEN
 				slv_reg1 <= (OTHERS => '0');
 			ELSE
-				slv_reg1(2 DOWNTO 0) <= s_detect_state;
+--				slv_reg1(2 DOWNTO 0) <= s_detect_state;
+				slv_reg1(2 DOWNTO 0) <= s_gen_state(2 downto 0);
+				slv_reg1(4 DOWNTO 0) <= (OTHERS => '1');
 			END IF;
 		END IF;
 	END PROCESS STATUS_UPDATE;
@@ -566,6 +569,7 @@ BEGIN
 			i_slv_reg23 => s_gen_reg23, -- 5 -- 11
 			i_slv_reg24 => s_gen_reg24, -- 6 -- 12
 			i_slv_reg25 => s_gen_reg25, -- 7 -- 13
+      o_state => s_gen_state,
 			o_ppm => o_ppm
 		);
 	GENERATE_PPM_UPDATE : PROCESS (S_AXI_ACLK) IS

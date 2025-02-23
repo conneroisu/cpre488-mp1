@@ -547,8 +547,9 @@ BEGIN
 			IF (S_AXI_ARESETN = '0') THEN
 				slv_reg1 <= (OTHERS => '0');
 			ELSE
-				slv_reg1(2 DOWNTO 0) <= s_detect_state;
-        slv_reg1(5 DOWNTO 3) <= s_gen_state(2 downto 0);
+--				slv_reg1(2 DOWNTO 0) <= s_detect_state;
+				slv_reg1(2 DOWNTO 0) <= s_gen_state(2 downto 0);
+				slv_reg1(4 DOWNTO 0) <= (OTHERS => '1');
 			END IF;
 		END IF;
 	END PROCESS STATUS_UPDATE;

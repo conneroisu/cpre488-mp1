@@ -1,0 +1,183 @@
+{
+  "main": {
+    "id": "2fd335b179529e34",
+    "type": "split",
+    "children": [
+      {
+        "id": "795313193150b653",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "599e1c431e458a31",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "docs/ZedBoard/ZedBoard_HW_UG_v1_9.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "ZedBoard_HW_UG_v1_9"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "47a00afeb561ab3f",
+    "type": "split",
+    "children": [
+      {
+        "id": "eaa810bdee12d5c8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "34e21776642d1ebe",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "df63471d8166d710",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "823696b77da2dd27",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f4e3e7871804ebc9",
+    "type": "split",
+    "children": [
+      {
+        "id": "24c9e8565e9cdc72",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0e70d85bbaa6295e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/ZedBoard/ZedBoard_HW_UG_v1_9.pdf",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for ZedBoard_HW_UG_v1_9"
+            }
+          },
+          {
+            "id": "afbbc8cdd0a3510a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/ZedBoard/ZedBoard_HW_UG_v1_9.pdf",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from ZedBoard_HW_UG_v1_9"
+            }
+          },
+          {
+            "id": "787456a03d552806",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7026eb4f84f51082",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/ZedBoard/ZedBoard_HW_UG_v1_9.pdf",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of ZedBoard_HW_UG_v1_9"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "599e1c431e458a31",
+  "lastOpenFiles": [
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.cache/wt/synthesis.wdf",
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/__synthesis_is_running__",
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/ppm_detect_gen_v1_0.vds",
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/vivado.jou",
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/vivado.pb",
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/runme.log",
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/job.id.log",
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/project.wdf",
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/gen_run.xml",
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.cache/wt/webtalk_pa.xml",
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.cache/wt/gui_handlers.wdf"
+  ]
+}
