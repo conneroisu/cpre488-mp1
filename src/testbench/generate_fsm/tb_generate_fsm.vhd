@@ -27,7 +27,7 @@ ARCHITECTURE rtl OF tb_generate_fsm IS
             i_slv_reg24 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
             i_slv_reg25 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
             o_state : OUT STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
-            o_ppm : OUT STD_LOGIC
+            o_ppm : INOUT STD_LOGIC
         );
     END COMPONENT;
 
@@ -42,7 +42,7 @@ ARCHITECTURE rtl OF tb_generate_fsm IS
     SIGNAL s_slv_reg24 : STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
     SIGNAL s_slv_reg25 : STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
     SIGNAL o_state : STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
-    SIGNAL o_ppm : STD_LOGIC;
+    SIGNAL s_PPM : STD_LOGIC;
     SIGNAL CYCLES : NATURAL := 0;
 
 BEGIN
@@ -64,7 +64,7 @@ BEGIN
         i_slv_reg24 => s_slv_reg24,
         i_slv_reg25 => s_slv_reg25,
         o_state => o_state,
-        o_ppm => o_ppm
+        o_ppm => s_PPM
     );
 
     -- Clock process
