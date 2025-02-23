@@ -47,6 +47,7 @@ architecture rtl of tb_generate_fsm is
     signal o_ppm            : std_logic;
     signal CYCLES           : natural   := 0;
     signal s_state          : std_logic_vector(N - 1 downto 0);
+    signal test_case        : integer   := 0;
 
 begin
 
@@ -89,13 +90,15 @@ begin
     -- Stimulus process for extended testing
     p_stim : process
     begin
+        test_case <= 1;
         -- **Test 1: Reset Behavior**
         report "TEST 1: Resetting the FSM";
-        i_rst <= '1';
+        i_rst     <= '1';
         wait for 1 ns;
-        i_rst <= '0';
+        i_rst     <= '0';
         wait for 1 ns;
 
+        test_case   <= 2;
         -- **Test 2: Standard Timing Test**
         report "TEST 2: Applying standard pulse widths";
         s_slv_reg20 <= std_logic_vector(to_unsigned(150000, 32));
@@ -153,6 +156,7 @@ begin
             o_ppm = '1'
             report "TEST FAILED" severity failure;
 
+        test_case   <= 3;
         -- **Test 3: Minimum Pulse Widths**
         report "TEST 3: Setting minimum valid pulse widths";
         s_slv_reg20 <= std_logic_vector(to_unsigned(10, 32));
@@ -212,6 +216,7 @@ begin
             o_ppm = '1'
             report "TEST FAILED CH 6 is not high within frame" severity failure;
 
+        test_case   <= 4;
         -- **Test 4: Multiple Frames Test**
         report "TEST 4: Running multiple PPM frames to verify long-term operation";
         s_slv_reg20 <= std_logic_vector(to_unsigned(80000, 32));
