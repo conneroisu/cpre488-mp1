@@ -47,10 +47,10 @@
 #define HARDWARE_CH5 SLV_REG13
 #define HARDWARE_CH6 SLV_REG14
 
-// Software relay mode is enabled when the least significant bit of SLV_REG0 is set.
+
 int is_software_relay_mode ()
 {
-	return SLV_REG0 & SOFTWARE_RELAY_MODE;
+	return SLV_REG0 & SOFTWARE_RELAY_MODE ? 1 : 0;
 }
 
 char* sw_r()
@@ -83,7 +83,8 @@ int main()
     {
     	SLV_REG0 = 0xFF;
     	xil_printf("\n\n\n\n\rStatus Reg 1: %x\n\r", STATUS_REG);
-		xil_printf("In Software Relay Mode: ",  sw_r(), "\n\r");
+		xil_printf("In Software Relay Mode: %x",  SLV_REG0 & SOFTWARE_RELAY_MODE);
+		xil_printf("\n\r");
 		xil_printf("Reg 00: %x\n\r", SLV_REG0);
 		xil_printf("Reg 01: %x\n\r", SLV_REG1);
 		xil_printf("Reg 02: %x\n\r", SLV_REG2);
