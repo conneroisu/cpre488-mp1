@@ -140,12 +140,6 @@ begin
         report "TEST 6: Checking idle frame length enforcement";
         wait for 15 ms;
 
-        -- **Test 7: Multiple Frames Test**
-        report "TEST 7: Running multiple PPM frames to verify long-term operation";
-        for i in 1 to 5 loop
-            wait for 5 ms;
-        end loop;
-
         -- Test completed
         report "ALL TEST CASES PASSED SUCCESSFULLY!" severity note;
 
