@@ -71,7 +71,6 @@ int main()
 
     while(1)
     {
-    	SLV_REG0 = 0xFF;
     	xil_printf("\n\n\n\n\rStatus Reg 1: %x\n\r", STATUS_REG);
 		xil_printf("In Software Relay Mode: %x",  SLV_REG0 & SOFTWARE_RELAY_MODE);
 		xil_printf("\n\r");
