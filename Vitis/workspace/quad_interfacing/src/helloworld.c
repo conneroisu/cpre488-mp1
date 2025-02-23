@@ -47,8 +47,6 @@
 #define HARDWARE_CH5 SLV_REG13
 #define HARDWARE_CH6 SLV_REG14
 
-
-
 // Software relay mode is enabled when the least significant bit of SLV_REG0 is set.
 int is_software_relay_mode ()
 {
@@ -73,7 +71,7 @@ int main()
 	SLV_REG12 = 0xFF;
 	SLV_REG13 = 0xFF;
 	SLV_REG14 = 0xFF;
-	
+
 
 	SLV_REG0 = 0xFFF;
 
