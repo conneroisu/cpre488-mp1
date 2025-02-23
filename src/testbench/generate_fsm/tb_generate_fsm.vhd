@@ -8,12 +8,13 @@ END tb_generate_fsm;
 
 ARCHITECTURE rtl OF tb_generate_fsm IS
     CONSTANT N : NATURAL := 32;
+    CONSTANT IDLE_FRAME_TIME : TIME := 1 ms;
 
     -- Component declaration for the DUT
     COMPONENT generate_fsm IS
         GENERIC (
             N : NATURAL := 32;
-            IDLE_FRAME_TIME : TIME := 2 ms
+            IDLE_FRAME_TIME : TIME := 1 ms
         );
         PORT (
             i_clk : IN STD_LOGIC;
@@ -48,7 +49,10 @@ BEGIN
 
     -- DUT instance
     inst_generate_fsm : generate_fsm
-    GENERIC MAP(N => N)
+    GENERIC MAP(
+                 N => N,
+                 IDLE_FRAME_TIME => IDLE_FRAME_TIME
+               )
     PORT MAP(
         i_clk => i_clk,
         i_rst => i_rst,
@@ -91,12 +95,12 @@ BEGIN
 
         -- **Test 2: Standard Timing Test**
         REPORT "TEST 2: Applying standard pulse widths";
-        s_slv_reg20 <= STD_LOGIC_VECTOR(to_unsigned(150000, 32));
-        s_slv_reg21 <= STD_LOGIC_VECTOR(to_unsigned(80000, 32));
-        s_slv_reg22 <= STD_LOGIC_VECTOR(to_unsigned(100000, 32));
-        s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(125000, 32));
-        s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(200000, 32));
-        s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(175000, 32));
+        s_slv_reg20 <= STD_LOGIC_VECTOR(to_unsigned(15000, 32));
+        s_slv_reg21 <= STD_LOGIC_VECTOR(to_unsigned(8000, 32));
+        s_slv_reg22 <= STD_LOGIC_VECTOR(to_unsigned(10000, 32));
+        s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(12500, 32));
+        s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(20000, 32));
+        s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(17500, 32));
         WAIT FOR 1 sec;
 
         -- **Test 3: Minimum Pulse Widths**
