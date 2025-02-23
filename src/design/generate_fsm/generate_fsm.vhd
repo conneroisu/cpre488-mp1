@@ -37,8 +37,8 @@ ARCHITECTURE arc OF generate_fsm IS
     CONSTANT CLK_PERIOD : TIME := 10 ns;
     CONSTANT GAP_TIME_CNT : NATURAL := INTEGER(0.40 ms / CLK_PERIOD);
     CONSTANT IDLE_FRAME_CNT : NATURAL := INTEGER(IDLE_FRAME_TIME / CLK_PERIOD);
-                        -- in hw set 6 
-                        -- in sw set 7
+    -- in hw set 6 
+    -- in sw set 7
 BEGIN
 
     PROCESS (i_clk, i_rst, o_ppm, delay_cntr, gap_cntr, idle_cntr, current_state)
@@ -46,6 +46,7 @@ BEGIN
         IF i_rst = '1' THEN
             current_state <= IDLE;
             delay_cntr <= 0;
+            gap_cntr <= 0;
             idle_cntr <= 0;
             o_ppm <= '0';
 
@@ -68,6 +69,7 @@ BEGIN
                 WHEN CHAN1 =>
                     idle_cntr <= 0;
                     gap_cntr <= 1;
+
                     IF delay_cntr + 1 < to_integer(unsigned(i_slv_reg20)) THEN
                         current_state <= CHAN1;
                         delay_cntr <= delay_cntr + 1;
@@ -94,6 +96,7 @@ BEGIN
                 WHEN CHAN3 =>
                     idle_cntr <= 0;
                     gap_cntr <= 3;
+
                     IF delay_cntr + 1 < to_integer(unsigned(i_slv_reg22)) THEN
                         current_state <= CHAN3;
                         delay_cntr <= delay_cntr + 1;
@@ -107,6 +110,7 @@ BEGIN
                 WHEN CHAN4 =>
                     idle_cntr <= 0;
                     gap_cntr <= 4;
+
                     IF delay_cntr + 1 < to_integer(unsigned(i_slv_reg23)) THEN
                         current_state <= CHAN4;
                         delay_cntr <= delay_cntr + 1;
@@ -120,6 +124,7 @@ BEGIN
                 WHEN CHAN5 =>
                     idle_cntr <= 0;
                     gap_cntr <= 5;
+
                     IF delay_cntr + 1 < to_integer(unsigned(i_slv_reg24)) THEN
                         current_state <= CHAN5;
                         delay_cntr <= delay_cntr + 1;
