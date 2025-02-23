@@ -232,6 +232,7 @@ begin
         end if;
     end process;
 
+    -- Process 4: Log the current state (clocked process)
     log_state_proc : process(i_clk, i_rst)
     begin
         if i_rst = '1' then
