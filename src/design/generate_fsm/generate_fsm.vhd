@@ -6,7 +6,7 @@ entity generate_fsm is
     generic (
         N               : natural := 32;
         IDLE_FRAME_TIME : time    := 9 ms
-    );
+        );
     port (
         i_clk        : in  std_logic;
         i_rst        : in  std_logic;
@@ -19,7 +19,7 @@ entity generate_fsm is
         i_slv_reg25  : in  std_logic_vector(N - 1 downto 0);  -- Channel 6 pulse width
         o_state      : out std_logic_vector(N - 1 downto 0);
         o_ppm        : out std_logic
-    );
+        );
 end generate_fsm;
 
 architecture arc of generate_fsm is
@@ -30,10 +30,10 @@ architecture arc of generate_fsm is
     signal next_state    : state_type := IDLE;
 
     -- Counters and registers signals
-    signal delay_cntr     : natural := 0;
-    signal idle_cntr      : natural := 0;
-    signal gap_cntr       : natural := 0;
-    
+    signal delay_cntr : natural := 0;
+    signal idle_cntr  : natural := 0;
+    signal gap_cntr   : natural := 0;
+
     signal next_delay_cntr : natural := 0;
     signal next_idle_cntr  : natural := 0;
     signal next_gap_cntr   : natural := 0;
@@ -43,7 +43,7 @@ architecture arc of generate_fsm is
     signal next_o_ppm : std_logic := '0';
 
     -- For debugging: output state as an encoded std_logic_vector
-    signal s_state    : std_logic_vector(N - 1 downto 0);
+    signal s_state : std_logic_vector(N - 1 downto 0);
 
     constant CLK_PERIOD     : time    := 10 ns;
     constant GAP_TIME_CNT   : natural := integer(0.40 ms / CLK_PERIOD);
@@ -65,17 +65,17 @@ begin
     end process;
 
     -- Process 2: Next State & Output Logic (combinational process)
-    next_state_proc : process(current_state, i_slv_reg0_1, i_slv_reg20, i_slv_reg21, 
+    next_state_proc : process(current_state, i_slv_reg0_1, i_slv_reg20, i_slv_reg21,
                               i_slv_reg22, i_slv_reg23, i_slv_reg24, i_slv_reg25,
                               delay_cntr, idle_cntr, gap_cntr)
     begin
         -- Default assignments
-        next_state       <= current_state;
-        next_delay_cntr  <= delay_cntr;
-        next_idle_cntr   <= idle_cntr;
-        next_gap_cntr    <= gap_cntr;
-        next_o_ppm       <= o_ppm_reg;
-        
+        next_state      <= current_state;
+        next_delay_cntr <= delay_cntr;
+        next_idle_cntr  <= idle_cntr;
+        next_gap_cntr   <= gap_cntr;
+        next_o_ppm      <= o_ppm_reg;
+
         case current_state is
             when IDLE =>
                 next_delay_cntr <= 0;
@@ -89,7 +89,7 @@ begin
                 else
                     next_state <= IDLE;
                 end if;
-                
+
             when CHAN1 =>
                 next_idle_cntr <= 0;
                 next_gap_cntr  <= 1;
@@ -102,7 +102,7 @@ begin
                     next_delay_cntr <= 0;
                     next_o_ppm      <= '0';
                 end if;
-                
+
             when CHAN2 =>
                 next_idle_cntr <= 0;
                 next_gap_cntr  <= 2;
@@ -115,7 +115,7 @@ begin
                     next_delay_cntr <= 0;
                     next_o_ppm      <= '0';
                 end if;
-                
+
             when CHAN3 =>
                 next_idle_cntr <= 0;
                 next_gap_cntr  <= 3;
@@ -128,7 +128,7 @@ begin
                     next_delay_cntr <= 0;
                     next_o_ppm      <= '0';
                 end if;
-                
+
             when CHAN4 =>
                 next_idle_cntr <= 0;
                 next_gap_cntr  <= 4;
@@ -141,7 +141,7 @@ begin
                     next_delay_cntr <= 0;
                     next_o_ppm      <= '0';
                 end if;
-                
+
             when CHAN5 =>
                 next_idle_cntr <= 0;
                 next_gap_cntr  <= 5;
@@ -154,7 +154,7 @@ begin
                     next_delay_cntr <= 0;
                     next_o_ppm      <= '0';
                 end if;
-                
+
             when CHAN6 =>
                 next_idle_cntr <= 0;
                 if delay_cntr + 1 < to_integer(unsigned(i_slv_reg25)) then
@@ -166,7 +166,7 @@ begin
                     next_delay_cntr <= 0;
                     next_o_ppm      <= '0';
                 end if;
-                
+
             when GAP =>
                 next_idle_cntr <= 0;
                 if delay_cntr < GAP_TIME_CNT then
@@ -196,12 +196,12 @@ begin
                             next_o_ppm <= '0';
                     end case;
                 end if;
-                
+
             when others =>
-                next_state       <= IDLE;
-                next_delay_cntr  <= 0;
-                next_idle_cntr   <= 0;
-                next_o_ppm       <= '0';
+                next_state      <= IDLE;
+                next_delay_cntr <= 0;
+                next_idle_cntr  <= 0;
+                next_o_ppm      <= '0';
         end case;
     end process;
 
@@ -221,7 +221,6 @@ begin
         end if;
     end process;
 
-    -- Optional: Process to drive an encoded state output for debugging
     log_state_proc : process(i_clk, i_rst)
     begin
         if i_rst = '1' then
