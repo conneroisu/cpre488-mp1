@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: EastburnOhnesorge:user:ppm_detect_gen:3.0
--- IP Revision: 27
+-- IP Revision: 28
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

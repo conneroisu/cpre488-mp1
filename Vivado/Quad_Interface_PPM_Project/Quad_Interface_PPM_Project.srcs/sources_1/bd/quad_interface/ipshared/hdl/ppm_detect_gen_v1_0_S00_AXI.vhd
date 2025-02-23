@@ -486,7 +486,7 @@ BEGIN
 			END IF;
 		END IF;
 	END PROCESS;
-	-- Add user logic here
+	
 	-- Instantiate the Detector FSM
 	detect_fsm : ENTITY ppm.detect_fsm PORT MAP
 		(
@@ -556,7 +556,7 @@ BEGIN
 
 	generate_fsm : ENTITY ppm.generate_fsm
 		GENERIC MAP(
-			N => 32,
+			N => C_S_AXI_ADDR_WIDTH,
 			IDLE_FRAME_TIME => 9 ms
 		)
 		PORT MAP(
@@ -572,6 +572,7 @@ BEGIN
 			o_state => s_gen_state,
 			o_ppm => o_ppm
 		);
+		
 	GENERATE_PPM_UPDATE : PROCESS (S_AXI_ACLK) IS
 	BEGIN
 		IF rising_edge(S_AXI_ACLK) THEN
