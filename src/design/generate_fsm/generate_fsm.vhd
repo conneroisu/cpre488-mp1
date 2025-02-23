@@ -18,6 +18,9 @@ ENTITY generate_fsm IS
         i_slv_reg23 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
         i_slv_reg24 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
         i_slv_reg25 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0); -- 7 -- 13
+
+        o_state : OUT STD_LOGIC_VECTOR(N - 1 DOWNTO 0); -- 7 -- 13
+      
         o_ppm : OUT STD_LOGIC
     );
 
@@ -37,8 +40,6 @@ ARCHITECTURE arc OF generate_fsm IS
     CONSTANT CLK_PERIOD : TIME := 10 ns;
     CONSTANT GAP_TIME_CNT : NATURAL := INTEGER(0.40 ms / CLK_PERIOD);
     CONSTANT IDLE_FRAME_CNT : NATURAL := INTEGER(IDLE_FRAME_TIME / CLK_PERIOD);
-    -- in hw set 6 
-    -- in sw set 7
 BEGIN
 
     PROCESS (i_clk, i_rst, o_ppm, delay_cntr, gap_cntr, idle_cntr, current_state)
