@@ -44,15 +44,24 @@ begin
 
     o_state <= s_state;
 
-    log_state : process (i_clk, i_rst)
-    begin
-        if i_rst = '1' then
-            s_state <= (others => '0');
-        elsif rising_edge(i_clk) then
-            s_state <= std_logic_vector(to_hex_string(current_state, N));
-        end if;
-      end process;
-
+log_state : process (i_clk, i_rst)
+begin
+    if i_rst = '1' then
+        s_state <= (others => '0');
+    elsif rising_edge(i_clk) then
+        case current_state is
+            when IDLE  => s_state <= std_logic_vector(to_unsigned(0, N));
+            when GAP   => s_state <= std_logic_vector(to_unsigned(1, N));
+            when CHAN1 => s_state <= std_logic_vector(to_unsigned(2, N));
+            when CHAN2 => s_state <= std_logic_vector(to_unsigned(3, N));
+            when CHAN3 => s_state <= std_logic_vector(to_unsigned(4, N));
+            when CHAN4 => s_state <= std_logic_vector(to_unsigned(5, N));
+            when CHAN5 => s_state <= std_logic_vector(to_unsigned(6, N));
+            when CHAN6 => s_state <= std_logic_vector(to_unsigned(7, N));
+            when others => s_state <= (others => '0');
+        end case;
+    end if;
+end process;
     delay_counter : process (i_clk, i_rst)
     begin
         if i_rst = '1' then
