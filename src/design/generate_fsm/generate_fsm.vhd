@@ -32,6 +32,7 @@ architecture arc of generate_fsm is
     
     -- Counter signals
     signal gap_cntr      : natural;
+    signal next_gap_cntr : natural;
     signal delay_cntr    : natural;
     signal idle_cntr     : natural;
     signal s_state       : std_logic_vector(N - 1 downto 0);
@@ -55,8 +56,10 @@ begin
     begin
         if i_rst = '1' then
             current_state <= IDLE;
+            gap_cntr <= 0;
         elsif rising_edge(i_clk) then
             current_state <= next_state;
+            gap_cntr <= next_gap_cntr;
         end if;
     end process;
 
@@ -65,6 +68,7 @@ begin
     begin
         -- Default assignments
         next_state <= current_state;
+        next_gap_cntr <= gap_cntr;
         next_ppm <= '0';
         clear_counter <= '0';
         inc_counter <= '0';
@@ -77,10 +81,12 @@ begin
                 elsif i_slv_reg0_1 = '1' then
                     next_state <= CHAN1;
                     clear_counter <= '1';
+                    next_gap_cntr <= 0;
                 end if;
 
             when CHAN1 =>
                 next_ppm <= '1';
+                next_gap_cntr <= 1;
                 if delay_cntr + 1 < to_integer(unsigned(i_slv_reg20)) then
                     inc_counter <= '1';
                 else
@@ -90,6 +96,7 @@ begin
 
             when CHAN2 =>
                 next_ppm <= '1';
+                next_gap_cntr <= 2;
                 if delay_cntr + 1 < to_integer(unsigned(i_slv_reg21)) then
                     inc_counter <= '1';
                 else
@@ -99,6 +106,7 @@ begin
 
             when CHAN3 =>
                 next_ppm <= '1';
+                next_gap_cntr <= 3;
                 if delay_cntr + 1 < to_integer(unsigned(i_slv_reg22)) then
                     inc_counter <= '1';
                 else
@@ -108,6 +116,7 @@ begin
 
             when CHAN4 =>
                 next_ppm <= '1';
+                next_gap_cntr <= 4;
                 if delay_cntr + 1 < to_integer(unsigned(i_slv_reg23)) then
                     inc_counter <= '1';
                 else
@@ -117,6 +126,7 @@ begin
 
             when CHAN5 =>
                 next_ppm <= '1';
+                next_gap_cntr <= 5;
                 if delay_cntr + 1 < to_integer(unsigned(i_slv_reg24)) then
                     inc_counter <= '1';
                 else
@@ -129,8 +139,9 @@ begin
                 if delay_cntr + 1 < to_integer(unsigned(i_slv_reg25)) then
                     inc_counter <= '1';
                 else
-                    next_state <= IDLE;
+                    next_state <= IDLE;  -- Go back to IDLE after last channel
                     clear_counter <= '1';
+                    next_gap_cntr <= 0;
                 end if;
 
             when GAP =>
@@ -156,7 +167,6 @@ begin
         if i_rst = '1' then
             o_ppm <= '0';
             delay_cntr <= 0;
-            gap_cntr <= 0;
             idle_cntr <= 0;
             s_state <= (others => '0');
         elsif rising_edge(i_clk) then
@@ -183,19 +193,11 @@ begin
                 delay_cntr <= delay_cntr + 1;
             end if;
 
-            -- Gap counter management
-            case current_state is
-                when CHAN1 => gap_cntr <= 1;
-                when CHAN2 => gap_cntr <= 2;
-                when CHAN3 => gap_cntr <= 3;
-                when CHAN4 => gap_cntr <= 4;
-                when CHAN5 => gap_cntr <= 5;
-                when others => gap_cntr <= 0;
-            end case;
-
             -- Idle counter management
-            if current_state = IDLE and idle_cntr < IDLE_FRAME_CNT then
-                idle_cntr <= idle_cntr + 1;
+            if current_state = IDLE then
+                if idle_cntr < IDLE_FRAME_CNT and i_slv_reg0_1 = '0' then
+                    idle_cntr <= idle_cntr + 1;
+                end if;
             else
                 idle_cntr <= 0;
             end if;
