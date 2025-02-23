@@ -5,33 +5,34 @@
 #include <xil_types.h>
 #include "sleep.h"
 
+#define ADDRESS_WIDTH 32
 #define SOFTWARE_RELAY_MODE 0x1
 #define PPM_MODULE_BASEADDR XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR
 
-#define CONTROL_REG *((volatile u32*) (PPM_MODULE_BASEADDR + 0x0))
-#define STATUS_REG *((volatile u32*) (PPM_MODULE_BASEADDR + 0x4))
-#define CHANNEL_1 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x8))
-#define CHANNEL_2 *((volatile u32*) (PPM_MODULE_BASEADDR + 0xC))
-#define CHANNEL_3 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x10))
-#define CHANNEL_4 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x14))
-#define CHANNEL_5 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x18))
-#define CHANNEL_6 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x1C))
+#define CONTROL_REG *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x0))
+#define STATUS_REG *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x4))
+#define CHANNEL_1 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x8))
+#define CHANNEL_2 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0xC))
+#define CHANNEL_3 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x10))
+#define CHANNEL_4 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x14))
+#define CHANNEL_5 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x18))
+#define CHANNEL_6 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x1C))
 
-#define SLV_REG0 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x0))
-#define SLV_REG1 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x4))
-#define SLV_REG2 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x8))
-#define SLV_REG3 *((volatile u32*) (PPM_MODULE_BASEADDR + 0xC))
-#define SLV_REG4 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x10))
-#define SLV_REG5 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x14))
-#define SLV_REG6 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x18))
-#define SLV_REG7 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x1C))
-#define SLV_REG8 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x20))
-#define SLV_REG9 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x24))
-#define SLV_REG10 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x28))
-#define SLV_REG11 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x2C))
-#define SLV_REG12 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x30))
-#define SLV_REG13 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x34))
-#define SLV_REG14 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x38))
+#define SLV_REG0 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x0))
+#define SLV_REG1 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x4))
+#define SLV_REG2 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x8))
+#define SLV_REG3 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0xC))
+#define SLV_REG4 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x10))
+#define SLV_REG5 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x14))
+#define SLV_REG6 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x18))
+#define SLV_REG7 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x1C))
+#define SLV_REG8 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x20))
+#define SLV_REG9 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x24))
+#define SLV_REG10 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x28))
+#define SLV_REG11 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x2C))
+#define SLV_REG12 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x30))
+#define SLV_REG13 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x34))
+#define SLV_REG14 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x38))
 
 #define SOFTWARE_CH1 SLV_REG2
 #define SOFTWARE_CH2 SLV_REG3
@@ -47,10 +48,9 @@
 #define HARDWARE_CH5 SLV_REG13
 #define HARDWARE_CH6 SLV_REG14
 
-
 int main()
 {
-    init_platform();
+	init_platform();
 
 	SLV_REG8 = 0xFF;
 	SLV_REG9 = 0xFF;
@@ -59,14 +59,17 @@ int main()
 	SLV_REG12 = 0xFF;
 	SLV_REG13 = 0xFF;
 
-
 	SLV_REG0 = 0xFFFF;
 
-
-    while(1)
-    {
-    	xil_printf("\n\n\n\n\rStatus Reg 1: %x\n\r", STATUS_REG);
-		xil_printf("In Software Relay Mode: %x",  SLV_REG0 & SOFTWARE_RELAY_MODE);
+	while (1)
+	{
+		xil_printf("\n\n\n\n\rStatus Reg 1: ");
+		for (int i = ADDRESS_WIDTH - 1; i >= 0; i--)
+		{
+			xil_printf("%d", (STATUS_REG >> i) & 0x1);
+		}
+		xil_printf("\n\r");
+		xil_printf("In Software Relay Mode: %x", SLV_REG0 & SOFTWARE_RELAY_MODE);
 		xil_printf("\n\r");
 		xil_printf("Reg 00: %x\n\r", SLV_REG0);
 		xil_printf("Reg 01: %x\n\r", SLV_REG1);
@@ -82,9 +85,9 @@ int main()
 		xil_printf("Reg 11: %x\n\r", SLV_REG11);
 		xil_printf("Reg 12: %x\n\r", SLV_REG12);
 		xil_printf("Reg 13: %x\n\r", SLV_REG13);
-    	usleep(250000);
-    }
+		usleep(250000);
+	}
 
-    cleanup_platform();
-    return 0;
+	cleanup_platform();
+	return 0;
 }

@@ -548,7 +548,7 @@ BEGIN
 				slv_reg1 <= (OTHERS => '0');
 			ELSE
 				-- slv_reg1(2 DOWNTO 0) <= s_detect_state;
-				slv_reg1 <= s_gen_state;
+				slv_reg1(3 downto 0) <= s_gen_state(3 downto 0);
 			END IF;
 		END IF;
 	END PROCESS STATUS_UPDATE;
