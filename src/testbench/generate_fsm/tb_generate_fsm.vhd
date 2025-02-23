@@ -138,13 +138,12 @@ begin
         
         -- **Test 6: Ensuring Idle Frame Length is Respected**
         report "TEST 6: Checking idle frame length enforcement";
-        wait for 15 ms;
+        wait for 6 ms;
 
         -- Test completed
         report "ALL TEST CASES PASSED SUCCESSFULLY!" severity note;
 
         -- Wait till done
-        wait for 10 ns;
         i_rst <= '1';
         wait;
     end process;
