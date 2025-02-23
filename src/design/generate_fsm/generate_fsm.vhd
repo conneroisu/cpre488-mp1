@@ -18,6 +18,7 @@ entity generate_fsm is
         i_slv_reg23  : in std_logic_vector(N - 1 downto 0);
         i_slv_reg24  : in std_logic_vector(N - 1 downto 0);
         i_slv_reg25  : in std_logic_vector(N - 1 downto 0);  -- 7 -- 13
+        o_state : out std_logic_vector(N - 1 downto 0);  
         o_ppm : out std_logic
         );
 
@@ -34,11 +35,23 @@ architecture arc of generate_fsm is
     signal delay_cntr    : natural   := 0;
     signal idle_cntr_en  : std_logic := '0';
     signal idle_cntr     : natural   := 0;
+    signal s_state       : std_logic_vector(N - 1 downto 0);
 
     constant CLK_PERIOD     : time    := 10 ns;
     constant GAP_TIME_CNT   : natural := integer(0.40 ms / CLK_PERIOD);
     constant IDLE_FRAME_CNT : natural := integer(IDLE_FRAME_TIME / CLK_PERIOD);
 begin
+
+    o_state <= s_state;
+
+    log_state : process (i_clk, i_rst)
+    begin
+        if i_rst = '1' then
+            s_state <= (others => '0');
+        elsif rising_edge(i_clk) then
+            s_state <= std_logic_vector(to_unsigned(current_state, N));
+        end if;
+      end process;
 
     delay_counter : process (i_clk, i_rst)
     begin
