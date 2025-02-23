@@ -8,13 +8,12 @@ END tb_generate_fsm;
 
 ARCHITECTURE rtl OF tb_generate_fsm IS
     CONSTANT N : NATURAL := 32;
-    CONSTANT IDLE_FRAME_TIME : TIME := 1 ms;
 
     -- Component declaration for the DUT
     COMPONENT generate_fsm IS
         GENERIC (
             N : NATURAL := 32;
-            IDLE_FRAME_TIME : TIME := 1 ms
+            IDLE_FRAME_TIME : TIME := 2 ms
         );
         PORT (
             i_clk : IN STD_LOGIC;
@@ -31,7 +30,7 @@ ARCHITECTURE rtl OF tb_generate_fsm IS
         );
     END COMPONENT;
 
-    CONSTANT clk_period : TIME := 1 ns; -- 1000 MHz clock period
+    CONSTANT clk_period : TIME := 10 ns; -- 100 MHz clock period
     SIGNAL i_clk : STD_LOGIC := '0';
     SIGNAL i_rst : STD_LOGIC;
     SIGNAL s_slv_reg0_1 : STD_LOGIC;
@@ -41,18 +40,15 @@ ARCHITECTURE rtl OF tb_generate_fsm IS
     SIGNAL s_slv_reg23 : STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
     SIGNAL s_slv_reg24 : STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
     SIGNAL s_slv_reg25 : STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
-    SIGNAL o_state : STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
     SIGNAL o_ppm : STD_LOGIC;
     SIGNAL CYCLES : NATURAL := 0;
+    SIGNAL s_state : STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
 
 BEGIN
 
     -- DUT instance
     inst_generate_fsm : generate_fsm
-    GENERIC MAP(
-                 N => N,
-                 IDLE_FRAME_TIME => IDLE_FRAME_TIME
-               )
+    GENERIC MAP(N => N)
     PORT MAP(
         i_clk => i_clk,
         i_rst => i_rst,
@@ -63,7 +59,7 @@ BEGIN
         i_slv_reg23 => s_slv_reg23,
         i_slv_reg24 => s_slv_reg24,
         i_slv_reg25 => s_slv_reg25,
-        o_state => o_state,
+        o_state => s_state,
         o_ppm => o_ppm
     );
 
@@ -95,13 +91,13 @@ BEGIN
 
         -- **Test 2: Standard Timing Test**
         REPORT "TEST 2: Applying standard pulse widths";
-        s_slv_reg20 <= STD_LOGIC_VECTOR(to_unsigned(15000, 32));
-        s_slv_reg21 <= STD_LOGIC_VECTOR(to_unsigned(8000, 32));
-        s_slv_reg22 <= STD_LOGIC_VECTOR(to_unsigned(10000, 32));
-        s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(12500, 32));
-        s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(20000, 32));
-        s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(17500, 32));
-        WAIT FOR 15 ms;
+        s_slv_reg20 <= STD_LOGIC_VECTOR(to_unsigned(150000, 32));
+        s_slv_reg21 <= STD_LOGIC_VECTOR(to_unsigned(80000, 32));
+        s_slv_reg22 <= STD_LOGIC_VECTOR(to_unsigned(100000, 32));
+        s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(125000, 32));
+        s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(200000, 32));
+        s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(175000, 32));
+        WAIT FOR 1 sec;
 
         -- **Test 3: Minimum Pulse Widths**
         REPORT "TEST 3: Setting minimum valid pulse widths";
@@ -111,7 +107,7 @@ BEGIN
         s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
         s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
         s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
-        WAIT FOR 15 ms;
+        WAIT FOR 1 sec;
 
         -- **Test 4: Zero Pulse Widths (Idle Mode)**
         REPORT "TEST 4: Setting zero pulse widths - FSM should remain idle";
@@ -121,7 +117,7 @@ BEGIN
         s_slv_reg23 <= (OTHERS => '0');
         s_slv_reg24 <= (OTHERS => '0');
         s_slv_reg25 <= (OTHERS => '0');
-        WAIT FOR 15 ms;
+        WAIT FOR 1 sec;
 
         -- **Test 5: Maximum Pulse Widths**
         REPORT "TEST 5: Setting maximum possible pulse widths";
@@ -131,7 +127,7 @@ BEGIN
         s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
         s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
         s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
-        WAIT FOR 30 ms;
+        WAIT FOR 2 sec;
 
         -- **Test 6: Ensuring Idle Frame Length is Respected**
         REPORT "TEST 6: Checking idle frame length enforcement";
@@ -145,6 +141,7 @@ BEGIN
 
         -- Test completed
         REPORT "ALL TEST CASES PASSED SUCCESSFULLY!" SEVERITY note;
+        WAIT;
     END PROCESS;
 
 END rtl;
