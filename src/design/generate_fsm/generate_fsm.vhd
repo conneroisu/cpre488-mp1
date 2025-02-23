@@ -48,7 +48,8 @@ architecture arc of generate_fsm is
     signal s_state : std_logic_vector(N - 1 downto 0);
 
     constant CLK_PERIOD     : time    := 10 ns;
-    constant GAP_TIME_CNT   : natural := integer(0.40 ms / CLK_PERIOD);
+    constant GAP_TIME : time := 0.40 ns;
+    constant GAP_TIME_CNT   : natural := integer(GAP_TIME / CLK_PERIOD);
     constant IDLE_FRAME_CNT : natural := integer(IDLE_FRAME_TIME / CLK_PERIOD);
 
 begin
@@ -77,7 +78,8 @@ begin
                               i_slv_reg25,
                               delay_cntr,
                               idle_cntr,
-                              gap_cntr
+                              gap_cntr,
+                              o_ppm_reg
                               )
     begin
         -- Default assignments
