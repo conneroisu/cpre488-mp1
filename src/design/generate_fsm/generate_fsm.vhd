@@ -179,7 +179,7 @@ begin
                         delay_cntr_en <= '1';
                         o_ppm         <= '0';
                     else
-                        delay_cntr <= 0;
+                        delay_cntr_en <= '0';
                         case gap_cntr is
                             when 1 =>
                                 current_state <= CHAN2;
