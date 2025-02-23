@@ -41,7 +41,7 @@ ARCHITECTURE arc OF generate_fsm IS
     -- in sw set 7
 BEGIN
 
-    PROCESS (i_clk, i_rst, o_ppm, delay_cntr, gap_cntr, idle_cntr, current_state)
+    PROCESS (i_clk, i_rst,  delay_cntr, gap_cntr, idle_cntr, current_state)
     BEGIN
         IF i_rst = '1' THEN
             current_state <= IDLE;
