@@ -5,6 +5,7 @@
 #include <xil_types.h>
 #include "sleep.h"
 
+#define SOFTWARE_RELAY_MODE 0x1
 #define PPM_MODULE_BASEADDR XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR
 
 #define CONTROL_REG *((volatile u32*) (PPM_MODULE_BASEADDR + 0x0))
@@ -32,10 +33,26 @@
 #define SLV_REG13 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x34))
 #define SLV_REG14 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x38))
 
+#define SOFTWARE_CH1 SLV_REG2
+#define SOFTWARE_CH2 SLV_REG3
+#define SOFTWARE_CH3 SLV_REG4
+#define SOFTWARE_CH4 SLV_REG5
+#define SOFTWARE_CH5 SLV_REG6
+#define SOFTWARE_CH6 SLV_REG7
+
+#define HARDWARE_CH1 SLV_REG9
+#define HARDWARE_CH2 SLV_REG10
+#define HARDWARE_CH3 SLV_REG11
+#define HARDWARE_CH4 SLV_REG12
+#define HARDWARE_CH5 SLV_REG13
+#define HARDWARE_CH6 SLV_REG14
+
+
+
 // Software relay mode is enabled when the least significant bit of SLV_REG0 is set.
 int is_software_relay_mode ()
 {
-	return SLV_REG0 & 0x1;
+	return SLV_REG0 & SOFTWARE_RELAY_MODE;
 }
 
 int main()
