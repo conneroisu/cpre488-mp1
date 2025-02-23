@@ -141,6 +141,10 @@ BEGIN
 
         -- Test completed
         REPORT "ALL TEST CASES PASSED SUCCESSFULLY!" SEVERITY note;
+
+        -- Wait till done
+        WAIT FOR 10 ns;
+        i_rst <= '1';
         WAIT;
     END PROCESS;
 
