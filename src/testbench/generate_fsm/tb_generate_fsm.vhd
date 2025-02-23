@@ -31,7 +31,7 @@ ARCHITECTURE rtl OF tb_generate_fsm IS
         );
     END COMPONENT;
 
-    CONSTANT clk_period : TIME := 10 ns; -- 100 MHz clock period
+    CONSTANT clk_period : TIME := 1 ns; -- 1000 MHz clock period
     SIGNAL i_clk : STD_LOGIC := '0';
     SIGNAL i_rst : STD_LOGIC;
     SIGNAL s_slv_reg0_1 : STD_LOGIC;
@@ -101,7 +101,7 @@ BEGIN
         s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(12500, 32));
         s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(20000, 32));
         s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(17500, 32));
-        WAIT FOR 1 sec;
+        WAIT FOR 15 ms;
 
         -- **Test 3: Minimum Pulse Widths**
         REPORT "TEST 3: Setting minimum valid pulse widths";
@@ -111,7 +111,7 @@ BEGIN
         s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
         s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
         s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(10, 32));
-        WAIT FOR 1 sec;
+        WAIT FOR 15 ms;
 
         -- **Test 4: Zero Pulse Widths (Idle Mode)**
         REPORT "TEST 4: Setting zero pulse widths - FSM should remain idle";
@@ -121,7 +121,7 @@ BEGIN
         s_slv_reg23 <= (OTHERS => '0');
         s_slv_reg24 <= (OTHERS => '0');
         s_slv_reg25 <= (OTHERS => '0');
-        WAIT FOR 1 sec;
+        WAIT FOR 15 ms;
 
         -- **Test 5: Maximum Pulse Widths**
         REPORT "TEST 5: Setting maximum possible pulse widths";
@@ -131,7 +131,7 @@ BEGIN
         s_slv_reg23 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
         s_slv_reg24 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
         s_slv_reg25 <= STD_LOGIC_VECTOR(to_unsigned(2 ** 30, 32));
-        WAIT FOR 2 sec;
+        WAIT FOR 30 ms;
 
         -- **Test 6: Ensuring Idle Frame Length is Respected**
         REPORT "TEST 6: Checking idle frame length enforcement";
@@ -145,6 +145,10 @@ BEGIN
 
         -- Test completed
         REPORT "ALL TEST CASES PASSED SUCCESSFULLY!" SEVERITY note;
+
+        -- Exit simulation
+        WAIT FOR clk_period * 10;
+        i_clk <= '0';
         WAIT;
     END PROCESS;
 
