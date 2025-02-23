@@ -60,7 +60,7 @@ int main()
 	SLV_REG13 = 0xFF;
 
 
-	SLV_REG0 = 0xFFF;
+	SLV_REG0 = 0xFFFF;
 
 
     while(1)
@@ -82,7 +82,6 @@ int main()
 		xil_printf("Reg 11: %x\n\r", SLV_REG11);
 		xil_printf("Reg 12: %x\n\r", SLV_REG12);
 		xil_printf("Reg 13: %x\n\r", SLV_REG13);
-		xil_printf("Reg 14: %x\n\r", SLV_REG14);
     	usleep(250000);
     }
 
