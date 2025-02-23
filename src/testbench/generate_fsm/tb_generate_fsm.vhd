@@ -275,8 +275,7 @@ begin
         report "ALL TEST CASES PASSED SUCCESSFULLY!" severity note;
 
         -- Wait till done
-        assert false report "TEST SUCCESSFUL" severity note;
-        wait;
+        assert false report "TEST SUCCESSFUL" severity failure;
     end process;
 
 end rtl;
