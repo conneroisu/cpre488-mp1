@@ -33,8 +33,6 @@ architecture rtl of tb_generate_fsm is
 
     constant CLK_PERIOD     : time      := 10 ns;
     constant GAP_TIME       : time      := 0.40 ms;
-    constant GAP_TIME_CNT   : natural   := integer(GAP_TIME / CLK_PERIOD);
-    constant IDLE_FRAME_CNT : natural   := integer(IDLE_FRAME_TIME / CLK_PERIOD);
     signal i_clk            : std_logic := '0';
     signal i_rst            : std_logic;
     signal s_slv_reg0_1     : std_logic;
@@ -107,51 +105,63 @@ begin
         s_slv_reg23 <= std_logic_vector(to_unsigned(125000, 32));
         s_slv_reg24 <= std_logic_vector(to_unsigned(200000, 32));
         s_slv_reg25 <= std_logic_vector(to_unsigned(175000, 32));
-        wait for IDLE_FRAME_TIME;
+        wait for
+            IDLE_FRAME_TIME;
         assert
             o_ppm = '0'
             report "TEST FAILED CH 1 is not low after idle" severity failure;
-        wait for to_integer(unsigned(s_slv_reg20)) * CLK_PERIOD;
+        wait for
+            to_integer(unsigned(s_slv_reg20)) * CLK_PERIOD;
         assert
             o_ppm = '1'
             report "TEST FAILED CH 1 is not high within frame" severity failure;
-        wait for GAP_TIME;
+        wait for
+            GAP_TIME;
         assert
             o_ppm = '0'
             report "TEST FAILED CH 1 is not low after gap" severity failure;
-        wait for to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD;
+        wait for
+            to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD;
         assert
             o_ppm = '1'
             report "TEST FAILED CH 2 is not high within frame" severity failure;
-        wait for GAP_TIME;
+        wait for
+            GAP_TIME;
         assert
             o_ppm = '0'
             report "TEST FAILED CH 2 is not low after gap" severity failure;
-        wait for to_integer(unsigned(s_slv_reg22)) * CLK_PERIOD;
+        wait for
+            to_integer(unsigned(s_slv_reg22)) * CLK_PERIOD;
         assert
             o_ppm = '1'
             report "TEST FAILED CH 3 is not high within frame" severity failure;
-        wait for GAP_TIME;
+        wait for
+            GAP_TIME;
         assert
             o_ppm = '0'
             report "TEST FAILED CH 3 is not low after gap" severity failure;
-        wait for to_integer(unsigned(s_slv_reg23)) * CLK_PERIOD;
+        wait for
+            to_integer(unsigned(s_slv_reg23)) * CLK_PERIOD;
         assert
             o_ppm = '1'
             report "TEST FAILED CH 4 is not high within frame" severity failure;
-        wait for GAP_TIME;
+        wait for
+            GAP_TIME;
         assert
             o_ppm = '0'
             report "TEST FAILED CH 4 is not low after gap" severity failure;
-        wait for to_integer(unsigned(s_slv_reg24)) * CLK_PERIOD;
+        wait for
+            to_integer(unsigned(s_slv_reg24)) * CLK_PERIOD;
         assert
             o_ppm = '1'
             report "TEST FAILED" severity failure;
-        wait for GAP_TIME;
+        wait for
+            GAP_TIME;
         assert
             o_ppm = '0'
             report "TEST FAILED" severity failure;
-        wait for to_integer(unsigned(s_slv_reg25)) * CLK_PERIOD;
+        wait for
+            to_integer(unsigned(s_slv_reg25)) * CLK_PERIOD;
         assert
             o_ppm = '1'
             report "TEST FAILED" severity failure;
@@ -165,56 +175,66 @@ begin
         s_slv_reg23 <= std_logic_vector(to_unsigned(10, 32));
         s_slv_reg24 <= std_logic_vector(to_unsigned(10, 32));
         s_slv_reg25 <= std_logic_vector(to_unsigned(10, 32));
-        wait for IDLE_FRAME_TIME;
+        wait for
+            IDLE_FRAME_TIME;
         assert
-
             o_ppm = '0'
-            report "TEST FAILED CH 1 is not low after idle" severity error;
-        wait for to_integer(unsigned(s_slv_reg20)) * CLK_PERIOD;
+            report "TEST FAILED CH 1 is not low after idle" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg20)) * CLK_PERIOD;
         assert
-
             o_ppm = '1'
             report "TEST FAILED CH 1 is not high within frame" severity failure;
-        wait for GAP_TIME;
+        wait for
+            GAP_TIME;
         assert
             o_ppm = '0'
-            report "TEST FAILED CH 1 is not low after gap" severity error;
-        wait for to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD;
+            report "TEST FAILED CH 1 is not low after gap" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD;
         assert
             o_ppm = '1'
             report "TEST FAILED CH 2 is not high within frame" severity failure;
-        wait for GAP_TIME;
+        wait for
+            GAP_TIME;
         assert
             o_ppm = '0'
-            report "TEST FAILED CH 2 is not low after gap" severity error;
-        wait for to_integer(unsigned(s_slv_reg22)) * CLK_PERIOD;
+            report "TEST FAILED CH 2 is not low after gap" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg22)) * CLK_PERIOD;
         assert
             o_ppm = '1'
             report "TEST FAILED CH 3 is not high within frame" severity failure;
-        wait for GAP_TIME;
+        wait for
+            GAP_TIME;
         assert
             o_ppm = '0'
-            report "TEST FAILED CH 3 is not low after gap" severity error;
-        wait for to_integer(unsigned(s_slv_reg23)) * CLK_PERIOD;
+            report "TEST FAILED CH 3 is not low after gap" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg23)) * CLK_PERIOD;
         assert
             o_ppm = '1'
             report "TEST FAILED CH 4 is not high within frame" severity failure;
-        wait for GAP_TIME;
+        wait for
+            GAP_TIME;
         assert
             o_ppm = '0'
-            report "TEST FAILED CH 4 is not low after gap" severity error;
-        wait for to_integer(unsigned(s_slv_reg24)) * CLK_PERIOD;
+            report "TEST FAILED CH 4 is not low after gap" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg24)) * CLK_PERIOD;
         assert
             o_ppm = '1'
-            report "TEST FAILED CH 5 is not high within frame" severity failure;
-        wait for GAP_TIME;
+            report "TEST FAILED" severity failure;
+        wait for
+            GAP_TIME;
         assert
             o_ppm = '0'
-            report "TEST FAILED CH 5 is not low after gap" severity error;
-        wait for to_integer(unsigned(s_slv_reg25)) * CLK_PERIOD;
+            report "TEST FAILED" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg25)) * CLK_PERIOD;
         assert
             o_ppm = '1'
-            report "TEST FAILED CH 6 is not high within frame" severity failure;
+            report "TEST FAILED" severity failure;
 
         test_case   <= 4;
         -- **Test 4: Multiple Frames Test**
@@ -225,22 +245,66 @@ begin
         s_slv_reg23 <= std_logic_vector(to_unsigned(175000, 32));
         s_slv_reg24 <= std_logic_vector(to_unsigned(150000, 32));
         s_slv_reg25 <= std_logic_vector(to_unsigned(200000, 32));
-        wait for IDLE_FRAME_TIME;
-        wait for (to_integer(unsigned(s_slv_reg20)) * CLK_PERIOD) - 10 ns;
-        wait for GAP_TIME;
-        wait for to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD;
-        wait for GAP_TIME;
-        wait for to_integer(unsigned(s_slv_reg22)) * CLK_PERIOD;
+        wait for
+            IDLE_FRAME_TIME;
+        assert
+            o_ppm = '0'
+            report "TEST FAILED CH 1 is not low after idle" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg20)) * CLK_PERIOD;
+        assert
+            o_ppm = '1'
+            report "TEST FAILED CH 1 is not high within frame" severity failure;
+        wait for
+            GAP_TIME;
+        assert
+            o_ppm = '0'
+            report "TEST FAILED CH 1 is not low after gap" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD;
+        assert
+            o_ppm = '1'
+            report "TEST FAILED CH 2 is not high within frame" severity failure;
+        wait for
+            GAP_TIME;
+        assert
+            o_ppm = '0'
+            report "TEST FAILED CH 2 is not low after gap" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg22)) * CLK_PERIOD;
         assert
             o_ppm = '1'
             report "TEST FAILED CH 3 is not high within frame" severity failure;
-        wait for GAP_TIME;
-        wait for to_integer(unsigned(s_slv_reg23)) * CLK_PERIOD;
-        wait for GAP_TIME;
-        wait for to_integer(unsigned(s_slv_reg24)) * CLK_PERIOD;
-        wait for GAP_TIME;
-        wait for CLK_PERIOD;
-        wait for to_integer(unsigned(s_slv_reg25)) * CLK_PERIOD;
+        wait for
+            GAP_TIME;
+        assert
+            o_ppm = '0'
+            report "TEST FAILED CH 3 is not low after gap" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg23)) * CLK_PERIOD;
+        assert
+            o_ppm = '1'
+            report "TEST FAILED CH 4 is not high within frame" severity failure;
+        wait for
+            GAP_TIME;
+        assert
+            o_ppm = '0'
+            report "TEST FAILED CH 4 is not low after gap" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg24)) * CLK_PERIOD;
+        assert
+            o_ppm = '1'
+            report "TEST FAILED" severity failure;
+        wait for
+            GAP_TIME;
+        assert
+            o_ppm = '0'
+            report "TEST FAILED" severity failure;
+        wait for
+            to_integer(unsigned(s_slv_reg25)) * CLK_PERIOD;
+        assert
+            o_ppm = '1'
+            report "TEST FAILED" severity failure;
 
         -- Test completed
         report "ALL TEST CASES PASSED SUCCESSFULLY!" severity note;
