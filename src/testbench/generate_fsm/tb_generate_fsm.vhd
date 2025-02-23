@@ -31,21 +31,21 @@ architecture rtl of tb_generate_fsm is
             );
     end component;
 
-    constant CLK_PERIOD     : time      := 10 ns;
-    constant GAP_TIME       : time      := 0.40 ms;
-    signal i_clk            : std_logic := '0';
-    signal i_rst            : std_logic;
-    signal s_slv_reg0_1     : std_logic;
-    signal s_slv_reg20      : std_logic_vector(N - 1 downto 0);
-    signal s_slv_reg21      : std_logic_vector(N - 1 downto 0);
-    signal s_slv_reg22      : std_logic_vector(N - 1 downto 0);
-    signal s_slv_reg23      : std_logic_vector(N - 1 downto 0);
-    signal s_slv_reg24      : std_logic_vector(N - 1 downto 0);
-    signal s_slv_reg25      : std_logic_vector(N - 1 downto 0);
-    signal o_ppm            : std_logic;
-    signal CYCLES           : natural   := 0;
-    signal s_state          : std_logic_vector(N - 1 downto 0);
-    signal test_case        : integer   := 0;
+    constant CLK_PERIOD : time      := 10 ns;
+    constant GAP_TIME   : time      := 0.40 ms;
+    signal i_clk        : std_logic := '0';
+    signal i_rst        : std_logic;
+    signal s_slv_reg0_1 : std_logic;
+    signal s_slv_reg20  : std_logic_vector(N - 1 downto 0);
+    signal s_slv_reg21  : std_logic_vector(N - 1 downto 0);
+    signal s_slv_reg22  : std_logic_vector(N - 1 downto 0);
+    signal s_slv_reg23  : std_logic_vector(N - 1 downto 0);
+    signal s_slv_reg24  : std_logic_vector(N - 1 downto 0);
+    signal s_slv_reg25  : std_logic_vector(N - 1 downto 0);
+    signal o_ppm        : std_logic;
+    signal CYCLES       : natural   := 0;
+    signal s_state      : std_logic_vector(N - 1 downto 0);
+    signal test_case    : integer   := 0;
 
 begin
 
@@ -169,12 +169,12 @@ begin
         test_case   <= 3;
         -- **Test 3: Minimum Pulse Widths**
         report "TEST 3: Setting minimum valid pulse widths";
-        s_slv_reg20 <= std_logic_vector(to_unsigned(10, 32));
-        s_slv_reg21 <= std_logic_vector(to_unsigned(10, 32));
-        s_slv_reg22 <= std_logic_vector(to_unsigned(10, 32));
-        s_slv_reg23 <= std_logic_vector(to_unsigned(10, 32));
-        s_slv_reg24 <= std_logic_vector(to_unsigned(10, 32));
-        s_slv_reg25 <= std_logic_vector(to_unsigned(10, 32));
+        s_slv_reg20 <= std_logic_vector(to_unsigned(20, 32));
+        s_slv_reg21 <= std_logic_vector(to_unsigned(20, 32));
+        s_slv_reg22 <= std_logic_vector(to_unsigned(20, 32));
+        s_slv_reg23 <= std_logic_vector(to_unsigned(20, 32));
+        s_slv_reg24 <= std_logic_vector(to_unsigned(20, 32));
+        s_slv_reg25 <= std_logic_vector(to_unsigned(20, 32));
         wait for
             IDLE_FRAME_TIME;
         assert
@@ -235,13 +235,10 @@ begin
         assert
             o_ppm = '1'
             report "TEST FAILED" severity failure;
-        wait for
-            GAP_TIME;
-
         test_case   <= 4;
         -- **Test 4: Multiple Frames Test**
         report "TEST 4: Running multiple PPM frames to verify long-term operation";
-        s_slv_reg20 <= std_logic_vector(to_unsigned(80000, 32));
+        s_slv_reg20 <= std_logic_vector(to_unsigned(20000, 32));
         s_slv_reg21 <= std_logic_vector(to_unsigned(100000, 32));
         s_slv_reg22 <= std_logic_vector(to_unsigned(125000, 32));
         s_slv_reg23 <= std_logic_vector(to_unsigned(175000, 32));
@@ -249,27 +246,38 @@ begin
         s_slv_reg25 <= std_logic_vector(to_unsigned(200000, 32));
         wait for
             IDLE_FRAME_TIME;
+        report "Waiting for: to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD" & time'image(to_integer(unsigned(s_slv_reg20)) * CLK_PERIOD);
         wait for
-            GAP_TIME + CLK_PERIOD;
+            to_integer(unsigned(s_slv_reg20)) * CLK_PERIOD;
+        wait for
+            GAP_TIME;
+        report "Waiting for: to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD" & time'image(to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD);
         wait for
             to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD;
         wait for
             GAP_TIME;
+        report "Waiting for: to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD" & time'image(to_integer(unsigned(s_slv_reg22)) * CLK_PERIOD);
         wait for
             to_integer(unsigned(s_slv_reg22)) * CLK_PERIOD;
         wait for
             GAP_TIME;
+
+        report "Waiting for: to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD" & time'image(to_integer(unsigned(s_slv_reg23)) * CLK_PERIOD);
         wait for
             to_integer(unsigned(s_slv_reg23)) * CLK_PERIOD;
         wait for
             GAP_TIME;
+        report "Waiting for: to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD" & time'image(to_integer(unsigned(s_slv_reg24)) * CLK_PERIOD);
         wait for
             to_integer(unsigned(s_slv_reg24)) * CLK_PERIOD;
         wait for
             GAP_TIME;
+        report "Waiting for: to_integer(unsigned(s_slv_reg21)) * CLK_PERIOD" & time'image(to_integer(unsigned(s_slv_reg25)) * CLK_PERIOD);
         wait for
             to_integer(unsigned(s_slv_reg25)) * CLK_PERIOD;
 
+            wait for
+                IDLE_FRAME_TIME;
         -- Test completed
         report "ALL TEST CASES PASSED SUCCESSFULLY!" severity note;
 
