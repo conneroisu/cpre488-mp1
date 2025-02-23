@@ -140,7 +140,7 @@ begin
         report "ALL TEST CASES PASSED SUCCESSFULLY!" severity note;
 
         -- Wait till done
-        i_rst <= '1';
+            assert false report "TEST SUCCESSFUL" severity failure;
     end process;
 
 end rtl;
