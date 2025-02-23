@@ -556,7 +556,7 @@ BEGIN
 
 	generate_fsm : ENTITY ppm.generate_fsm
 		GENERIC MAP(
-			N => C_S_AXI_ADDR_WIDTH,
+			N => C_S_AXI_DATA_WIDTH,
 			IDLE_FRAME_TIME => 9 ms
 		)
 		PORT MAP(

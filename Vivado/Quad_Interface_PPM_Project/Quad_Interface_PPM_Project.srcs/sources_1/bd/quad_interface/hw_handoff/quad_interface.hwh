@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Feb 23 13:27:33 2025" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Feb 23 13:29:49 2025" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.4" DEVICE="7z020" NAME="quad_interface" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -876,7 +876,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="28" FULLNAME="/ppm_detect_gen_0" HWVERSION="3.0" INSTANCE="ppm_detect_gen_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ppm_detect_gen" VLNV="EastburnOhnesorge:user:ppm_detect_gen:3.0">
+    <MODULE COREREVISION="29" FULLNAME="/ppm_detect_gen_0" HWVERSION="3.0" INSTANCE="ppm_detect_gen_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ppm_detect_gen" VLNV="EastburnOhnesorge:user:ppm_detect_gen:3.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S00_AXI" NAME="S00_AXI_reg" RANGE="4096" USAGE="register"/>

@@ -75,7 +75,7 @@ vcom -work xil_defaultlib -93 \
 vcom -work ppm -93 \
 "../../../bd/quad_interface/ipshared/src/user_defines.vhd" \
 "../../../bd/quad_interface/ipshared/src/detect_fsm.vhd" \
-"../../../bd/quad_interface/ipshared/b7ce/src/generate_fsm.vhd" \
+"../../../bd/quad_interface/ipshared/1931/src/generate_fsm.vhd" \
 
 vcom -work axi -93 \
 "../../../bd/quad_interface/ipshared/hdl/ppm_detect_gen_v1_0_S00_AXI.vhd" \
