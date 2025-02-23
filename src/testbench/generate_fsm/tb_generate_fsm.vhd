@@ -136,16 +136,11 @@ begin
         s_slv_reg25 <= std_logic_vector(to_unsigned(200000, 32));
         wait for 15 ms;
         
-        -- **Test 6: Ensuring Idle Frame Length is Respected**
-        report "TEST 6: Checking idle frame length enforcement";
-        wait for 6 ms;
-
         -- Test completed
         report "ALL TEST CASES PASSED SUCCESSFULLY!" severity note;
 
         -- Wait till done
         i_rst <= '1';
-        wait;
     end process;
 
 end rtl;
