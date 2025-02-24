@@ -1,7 +1,0 @@
-verilog xil_defaultlib --include "../../../../Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ipshared/ec67/hdl" --include "../../../../Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ipshared/6b56/hdl" \
-"../../../bd/quad_interface/ip/quad_interface_processing_system7_0_0/sim/quad_interface_processing_system7_0_0.v" \
-"../../../bd/quad_interface/ip/quad_interface_auto_pc_0/sim/quad_interface_auto_pc_0.v" \
-
-verilog xil_defaultlib "glbl.v"
-
-nosort
