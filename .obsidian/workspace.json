@@ -11,12 +11,14 @@
             "id": "599e1c431e458a31",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "docs/ZedBoard/ZedBoard_HW_UG_v1_9.pdf"
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "ZedBoard_HW_UG_v1_9"
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -168,6 +170,8 @@
   },
   "active": "599e1c431e458a31",
   "lastOpenFiles": [
+    "mermaid-diagram-2025-02-24-173015.png",
+    "docs/ZedBoard/ZedBoard_HW_UG_v1_9.pdf",
     "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.cache/wt/synthesis.wdf",
     "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/__synthesis_is_running__",
     "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/ppm_detect_gen_v1_0.vds",
@@ -176,8 +180,6 @@
     "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/runme.log",
     "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/job.id.log",
     "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/project.wdf",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/gen_run.xml",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.cache/wt/webtalk_pa.xml",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.cache/wt/gui_handlers.wdf"
+    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/gen_run.xml"
   ]
 }

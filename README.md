@@ -1,7 +1,9 @@
 # cpre488-mp1
 
-mp1
 
+
+Generate State Machine:
+![[mermaid-diagram-2025-02-24-173015.png]]
 ## Development
 
 ### Workflow
