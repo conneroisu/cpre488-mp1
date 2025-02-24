@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="quad_interface" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1740412734"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1740412734"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1740412734"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1740412734"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1740432801"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1740432801"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1740432801"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1740432801"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\quad_interface_processing_system7_0_0\quad_interface_processing_system7_0_0.xci" Type="IP">
         <Instance HierarchyPath="processing_system7_0"/>
@@ -39,14 +39,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\quad_interface_auto_pc_0\quad_interface_auto_pc_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_interconnect_0/s00_couplers/auto_pc"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="synth\quad_interface.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
@@ -55,6 +47,62 @@
       <File Name="sim\quad_interface.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\quad_interface_xbar_0\quad_interface_xbar_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_interconnect_0/xbar"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\quad_interface_axi_gpio_0_0\quad_interface_axi_gpio_0_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_gpio_buttons"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\quad_interface_axi_gpio_buttons_0\quad_interface_axi_gpio_buttons_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_gpio_switches"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\quad_interface_xlslice_0_0\quad_interface_xlslice_0_0.xci" Type="IP">
+        <Instance HierarchyPath="xlslice_ppm"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\quad_interface_xlslice_ppm_0\quad_interface_xlslice_ppm_0.xci" Type="IP">
+        <Instance HierarchyPath="xlslice_buttons"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\quad_interface_xlslice_ppm1_0\quad_interface_xlslice_ppm1_0.xci" Type="IP">
+        <Instance HierarchyPath="xlslice_switches"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\quad_interface_auto_pc_0\quad_interface_auto_pc_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_interconnect_0/s00_couplers/auto_pc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="quad_interface_ooc.xdc" Type="XDC">

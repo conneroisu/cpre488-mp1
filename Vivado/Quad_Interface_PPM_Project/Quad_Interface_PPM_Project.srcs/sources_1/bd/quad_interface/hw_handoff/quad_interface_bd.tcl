@@ -160,15 +160,38 @@ proc create_root_design { parentCell } {
 
   set FIXED_IO [ create_bd_intf_port -mode Master -vlnv xilinx.com:display_processing_system7:fixedio_rtl:1.0 FIXED_IO ]
 
+  set btns_5bits [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 btns_5bits ]
+
+  set sws_8bits [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 sws_8bits ]
+
 
   # Create ports
   set PPM_IN [ create_bd_port -dir I PPM_IN ]
   set PPM_OUT [ create_bd_port -dir O PPM_OUT ]
 
+  # Create instance: axi_gpio_buttons, and set properties
+  set axi_gpio_buttons [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_buttons ]
+  set_property -dict [ list \
+   CONFIG.C_ALL_INPUTS {1} \
+   CONFIG.C_GPIO_WIDTH {5} \
+   CONFIG.GPIO_BOARD_INTERFACE {btns_5bits} \
+   CONFIG.USE_BOARD_FLOW {true} \
+ ] $axi_gpio_buttons
+
+  # Create instance: axi_gpio_switches, and set properties
+  set axi_gpio_switches [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_switches ]
+  set_property -dict [ list \
+   CONFIG.C_ALL_INPUTS {1} \
+   CONFIG.C_ALL_OUTPUTS {0} \
+   CONFIG.C_GPIO_WIDTH {8} \
+   CONFIG.GPIO_BOARD_INTERFACE {sws_8bits} \
+   CONFIG.USE_BOARD_FLOW {true} \
+ ] $axi_gpio_switches
+
   # Create instance: axi_interconnect_0, and set properties
   set axi_interconnect_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect_0 ]
   set_property -dict [ list \
-   CONFIG.NUM_MI {1} \
+   CONFIG.NUM_MI {3} \
  ] $axi_interconnect_0
 
   # Create instance: ppm_detect_gen_0, and set properties
@@ -176,6 +199,9 @@ proc create_root_design { parentCell } {
 
   # Create instance: proc_sys_reset_0, and set properties
   set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]
+  set_property -dict [ list \
+   CONFIG.C_NUM_PERP_ARESETN {3} \
+ ] $proc_sys_reset_0
 
   # Create instance: processing_system7_0, and set properties
   set processing_system7_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0 ]
@@ -572,21 +598,53 @@ proc create_root_design { parentCell } {
    CONFIG.preset {ZedBoard} \
  ] $processing_system7_0
 
+  # Create instance: xlslice_buttons, and set properties
+  set xlslice_buttons [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_buttons ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {1} \
+   CONFIG.DIN_TO {1} \
+   CONFIG.DIN_WIDTH {3} \
+ ] $xlslice_buttons
+
+  # Create instance: xlslice_ppm, and set properties
+  set xlslice_ppm [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_ppm ]
+  set_property -dict [ list \
+   CONFIG.DIN_WIDTH {3} \
+ ] $xlslice_ppm
+
+  # Create instance: xlslice_switches, and set properties
+  set xlslice_switches [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_switches ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {2} \
+   CONFIG.DIN_TO {2} \
+   CONFIG.DIN_WIDTH {3} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $xlslice_switches
+
   # Create interface connections
   connect_bd_intf_net -intf_net S00_AXI_1 [get_bd_intf_pins axi_interconnect_0/S00_AXI] [get_bd_intf_pins processing_system7_0/M_AXI_GP0]
+  connect_bd_intf_net -intf_net axi_gpio_buttons_GPIO [get_bd_intf_ports btns_5bits] [get_bd_intf_pins axi_gpio_buttons/GPIO]
+  connect_bd_intf_net -intf_net axi_gpio_switches_GPIO [get_bd_intf_ports sws_8bits] [get_bd_intf_pins axi_gpio_switches/GPIO]
   connect_bd_intf_net -intf_net axi_interconnect_0_M00_AXI [get_bd_intf_pins axi_interconnect_0/M00_AXI] [get_bd_intf_pins ppm_detect_gen_0/S00_AXI]
+  connect_bd_intf_net -intf_net axi_interconnect_0_M01_AXI [get_bd_intf_pins axi_gpio_buttons/S_AXI] [get_bd_intf_pins axi_interconnect_0/M01_AXI]
+  connect_bd_intf_net -intf_net axi_interconnect_0_M02_AXI [get_bd_intf_pins axi_gpio_switches/S_AXI] [get_bd_intf_pins axi_interconnect_0/M02_AXI]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
 
   # Create port connections
   connect_bd_net -net PPM_IN_1 [get_bd_ports PPM_IN] [get_bd_pins ppm_detect_gen_0/i_ppm]
   connect_bd_net -net ppm_detect_gen_0_o_ppm [get_bd_ports PPM_OUT] [get_bd_pins ppm_detect_gen_0/o_ppm]
-  connect_bd_net -net proc_sys_reset_0_interconnect_aresetn [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins proc_sys_reset_0/interconnect_aresetn]
-  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins ppm_detect_gen_0/s00_axi_aresetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins ppm_detect_gen_0/s00_axi_aclk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK]
+  connect_bd_net -net proc_sys_reset_0_interconnect_aresetn [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/M01_ARESETN] [get_bd_pins axi_interconnect_0/M02_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins proc_sys_reset_0/interconnect_aresetn]
+  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins proc_sys_reset_0/peripheral_aresetn] [get_bd_pins xlslice_buttons/Din] [get_bd_pins xlslice_ppm/Din] [get_bd_pins xlslice_switches/Din]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_gpio_buttons/s_axi_aclk] [get_bd_pins axi_gpio_switches/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins ppm_detect_gen_0/s00_axi_aclk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
+  connect_bd_net -net xlslice_buttons_Dout [get_bd_pins axi_gpio_buttons/s_axi_aresetn] [get_bd_pins xlslice_buttons/Dout]
+  connect_bd_net -net xlslice_ppm_Dout [get_bd_pins ppm_detect_gen_0/s00_axi_aresetn] [get_bd_pins xlslice_ppm/Dout]
+  connect_bd_net -net xlslice_switches_Dout [get_bd_pins axi_gpio_switches/s_axi_aresetn] [get_bd_pins xlslice_switches/Dout]
 
   # Create address segments
+  assign_bd_address -offset 0x41200000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_buttons/S_AXI/Reg] -force
+  assign_bd_address -offset 0x41210000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_switches/S_AXI/Reg] -force
   assign_bd_address -offset 0x43C00000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs ppm_detect_gen_0/S00_AXI/S00_AXI_reg] -force
 
 

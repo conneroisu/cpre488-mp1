@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Mon Feb 24 13:21:46 2025
--- Host        : CO2041-13 running 64-bit major release  (build 9200)
+-- Date        : Mon Feb 24 15:34:24 2025
+-- Host        : DESKTOP-EGO35HT running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_proc_sys_reset_0_0/quad_interface_proc_sys_reset_0_0_sim_netlist.vhdl
+--               e:/ISU/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_proc_sys_reset_0_0/quad_interface_proc_sys_reset_0_0_sim_netlist.vhdl
 -- Design      : quad_interface_proc_sys_reset_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -911,7 +911,7 @@ entity quad_interface_proc_sys_reset_0_0_proc_sys_reset is
     bus_struct_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     interconnect_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
+    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 2 )
   );
   attribute C_AUX_RESET_HIGH : string;
   attribute C_AUX_RESET_HIGH of quad_interface_proc_sys_reset_0_0_proc_sys_reset : entity is "1'b0";
@@ -928,7 +928,7 @@ entity quad_interface_proc_sys_reset_0_0_proc_sys_reset is
   attribute C_NUM_INTERCONNECT_ARESETN : integer;
   attribute C_NUM_INTERCONNECT_ARESETN of quad_interface_proc_sys_reset_0_0_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_ARESETN : integer;
-  attribute C_NUM_PERP_ARESETN of quad_interface_proc_sys_reset_0_0_proc_sys_reset : entity is 1;
+  attribute C_NUM_PERP_ARESETN of quad_interface_proc_sys_reset_0_0_proc_sys_reset : entity is 3;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of quad_interface_proc_sys_reset_0_0_proc_sys_reset : entity is 1;
   attribute ORIG_REF_NAME : string;
@@ -945,6 +945,8 @@ architecture STRUCTURE of quad_interface_proc_sys_reset_0_0_proc_sys_reset is
   attribute box_type : string;
   attribute box_type of \ACTIVE_LOW_BSR_OUT_DFF[0].FDRE_BSR_N\ : label is "PRIMITIVE";
   attribute box_type of \ACTIVE_LOW_PR_OUT_DFF[0].FDRE_PER_N\ : label is "PRIMITIVE";
+  attribute box_type of \ACTIVE_LOW_PR_OUT_DFF[1].FDRE_PER_N\ : label is "PRIMITIVE";
+  attribute box_type of \ACTIVE_LOW_PR_OUT_DFF[2].FDRE_PER_N\ : label is "PRIMITIVE";
   attribute box_type of \BSR_OUT_DFF[0].FDRE_BSR\ : label is "PRIMITIVE";
   attribute box_type of FDRE_inst : label is "PRIMITIVE";
   attribute box_type of \PR_OUT_DFF[0].FDRE_PER\ : label is "PRIMITIVE";
@@ -975,6 +977,34 @@ begin
       CE => '1',
       D => SEQ_n_4,
       Q => peripheral_aresetn(0),
+      R => '0'
+    );
+\ACTIVE_LOW_PR_OUT_DFF[1].FDRE_PER_N\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0',
+      IS_C_INVERTED => '0',
+      IS_D_INVERTED => '0',
+      IS_R_INVERTED => '0'
+    )
+        port map (
+      C => slowest_sync_clk,
+      CE => '1',
+      D => SEQ_n_4,
+      Q => peripheral_aresetn(1),
+      R => '0'
+    );
+\ACTIVE_LOW_PR_OUT_DFF[2].FDRE_PER_N\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0',
+      IS_C_INVERTED => '0',
+      IS_D_INVERTED => '0',
+      IS_R_INVERTED => '0'
+    )
+        port map (
+      C => slowest_sync_clk,
+      CE => '1',
+      D => SEQ_n_4,
+      Q => peripheral_aresetn(2),
       R => '0'
     );
 \BSR_OUT_DFF[0].FDRE_BSR\: unisim.vcomponents.FDRE
@@ -1054,7 +1084,7 @@ entity quad_interface_proc_sys_reset_0_0 is
     bus_struct_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     interconnect_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
+    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 2 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of quad_interface_proc_sys_reset_0_0 : entity is true;
@@ -1082,7 +1112,7 @@ architecture STRUCTURE of quad_interface_proc_sys_reset_0_0 is
   attribute C_NUM_INTERCONNECT_ARESETN : integer;
   attribute C_NUM_INTERCONNECT_ARESETN of U0 : label is 1;
   attribute C_NUM_PERP_ARESETN : integer;
-  attribute C_NUM_PERP_ARESETN of U0 : label is 1;
+  attribute C_NUM_PERP_ARESETN of U0 : label is 3;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of U0 : label is 1;
   attribute x_interface_info : string;
@@ -1115,7 +1145,7 @@ U0: entity work.quad_interface_proc_sys_reset_0_0_proc_sys_reset
       interconnect_aresetn(0) => interconnect_aresetn(0),
       mb_debug_sys_rst => mb_debug_sys_rst,
       mb_reset => mb_reset,
-      peripheral_aresetn(0) => peripheral_aresetn(0),
+      peripheral_aresetn(0 to 2) => peripheral_aresetn(0 to 2),
       peripheral_reset(0) => peripheral_reset(0),
       slowest_sync_clk => slowest_sync_clk
     );
