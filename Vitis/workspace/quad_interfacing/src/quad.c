@@ -4,6 +4,7 @@
 #include "xil_printf.h"
 #include <xil_types.h>
 #include "sleep.h"
+#include "gpio_interface.h"
 
 #define CHANNEL_COUNT 6
 #define ADDRESS_WIDTH 32
@@ -22,20 +23,65 @@ int main()
 {
 	init_platform();
 
+	init_interface();
+
+	u32 button_state, switch_state = 0;
+
 	u32 hw_widths[CHANNEL_COUNT];
 
-	// Enable HW passthrough.
-	CONTROL_REG = 0x0;
+	// Clear screen.
+	for(int i = 0; i < 10; ++i)
+	{
+		xil_printf("\n\r");
+	}
 
-	// Write out HW values.
 	while(1)
 	{
 		get_hw_channel_widths(hw_widths);
+		button_state = get_button_states();
+		switch_state = get_switch_states();
 
-		for(int i = 0; i < CHANNEL_COUNT; ++i)
+		// Exit when center is pressed.
+		if(button_pressed(CENTER, button_state))
 		{
-			xil_printf("HW Channel %d: %x\n\r", i + 1, hw_widths[i]);
+			break;
 		}
+
+		// SW0 determines HW or SW mode.
+		CONTROL_REG = switch_state & 0x1;
+
+
+		// SW1 determines if we are in SW debug mode.
+		if(switch_state & 0x2)
+		{
+			for(int i = 1; i <= 6; ++i)
+			{
+				xil_printf("HW Channel %01d: %08x\n\r", i, HW_CHANNEL(i));
+			}
+
+			for(int i = 1; i <= CHANNEL_COUNT ; ++i)
+			{
+				xil_printf("SW Channel %01d: %08x\n\r", i, SW_CHANNEL(i));
+			}
+
+			// Move up 12 lines.
+			for(int i = 0; i < 12; ++i)
+			{
+				xil_printf("\033[A");
+			}
+
+			xil_printf("\r");
+
+		}
+
+	}
+
+	// Set to SW mode and set all SW regs to 0.
+	CONTROL_REG = 0x0;
+
+	for(int i = 1; i <= CHANNEL_COUNT; ++i)
+	{
+		SW_CHANNEL(i) = 0x0;
 	}
 
 	cleanup_platform();
@@ -63,7 +109,7 @@ void get_hw_channel_widths(u32* widths)
 	}
 
 	// Populate data.
-	for(int i = 0; i < CHANNEL_COUNT; ++i)
+	for(int i = 1; i <= CHANNEL_COUNT; ++i)
 	{
 		widths[i] = HW_CHANNEL(i);
 	}

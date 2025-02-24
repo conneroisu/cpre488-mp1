@@ -21,22 +21,16 @@
 
 typedef enum buttons
 {
-	CENTER = 0x1, LEFT = 0x2, RIGHT = 0x4, UP = 0x8, DOWN = 0x10, NONE = 0x0
+	CENTER = 0x1, DOWN = 0x2, LEFT = 0x4, RIGHT = 0x8, UP = 0x10, NONE = 0x0
 } t_buttons;
 
-// Array of button states.
-typedef struct button_states
-{
-	t_buttons* states;
-	int len;
-} t_button_states;
 
 void init_interface();
 
-void get_button_states(t_button_states* state);
+u32 get_button_states();
 
-void get_switch_states(u32* states);
+u32 get_switch_states();
 
-int button_pressed(t_buttons button, t_button_states* state);
+int button_pressed(t_buttons button, u32 state);
 
 #endif
