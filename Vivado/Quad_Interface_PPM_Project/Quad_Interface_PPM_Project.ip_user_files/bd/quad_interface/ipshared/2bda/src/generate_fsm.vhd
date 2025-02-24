@@ -3,11 +3,12 @@ USE IEEE.numeric_std.ALL;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_ARITH.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+use work.user_defines.all;
 
 ENTITY generate_fsm IS
 
     GENERIC (
-        N : INTEGER := 32
+        N : INTEGER := REG_SIZE
     );
     PORT (
         i_clk : IN STD_LOGIC;
@@ -21,16 +22,6 @@ ENTITY generate_fsm IS
 END generate_fsm;
 
 ARCHITECTURE Behavioral OF generate_fsm IS
-
-    TYPE pulse_width_array IS ARRAY(0 TO 5) OF STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
-    TYPE state_type IS (
-        IDLE, IDLE_LOW_PULSE,
-        CHANNEL,
-        GAP_LOW,
-        PULSE_HIGH,
-        NEXT_CHANNEL,
-        FRAME_COMPLETE
-    );
 
     CONSTANT GAP_COUNT : STD_LOGIC_VECTOR(15 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(40000, 16));
     CONSTANT FRAME_COUNT : STD_LOGIC_VECTOR(20 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(200000, 21));
@@ -54,7 +45,6 @@ BEGIN
         END IF;
     END PROCESS;
 
-    -- Next State Logic
     PROCESS (PS, i_rst)
     BEGIN
         CASE PS IS
@@ -108,7 +98,6 @@ BEGIN
         END CASE;
     END PROCESS;
 
-    -- Output Logic with synchronous reset
     PROCESS (i_clk)
     BEGIN
         IF rising_edge(i_clk) THEN
@@ -169,7 +158,6 @@ BEGIN
         END IF;
     END PROCESS;
 
-    -- Register updates with synchronous reset
     PROCESS (i_clk)
     BEGIN
         IF rising_edge(i_clk) THEN

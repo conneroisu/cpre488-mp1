@@ -54,7 +54,6 @@ BEGIN
         END IF;
     END PROCESS;
 
-    -- Next State Logic
     PROCESS (PS, i_rst)
     BEGIN
         CASE PS IS
