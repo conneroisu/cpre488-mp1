@@ -59,7 +59,7 @@ int main()
 	SLV_REG12 = 0x4FFF;
 	SLV_REG13 = 0x5FFF;
 
-	SLV_REG0 = 0xFFF;
+	SLV_REG0 = 0x1;
 
 	while (1)
 	{

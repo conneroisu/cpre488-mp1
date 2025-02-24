@@ -486,7 +486,7 @@ BEGIN
 		i_clk => S_AXI_ACLK,
 		i_rst_n => S_AXI_ARESETN,
 		i_ppm => i_ppm,
-		i_start => slv_reg0(0),
+		i_start => slv_reg0(1),
 		o_channel_read => s_channel_read,
 		o_state => s_detect_state,
 		o_count => s_ppm_count,
