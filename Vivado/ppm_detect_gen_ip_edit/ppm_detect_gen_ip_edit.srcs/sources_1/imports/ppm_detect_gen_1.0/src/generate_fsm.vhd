@@ -168,7 +168,6 @@ BEGIN
         END IF;
     END PROCESS;
 
-    -- Register updates with synchronous reset
     PROCESS (i_clk)
     BEGIN
         IF rising_edge(i_clk) THEN
