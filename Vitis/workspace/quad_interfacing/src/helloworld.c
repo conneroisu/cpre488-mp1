@@ -59,10 +59,26 @@ int main()
 	SLV_REG12 = 0x4FFF;
 	SLV_REG13 = 0x5FFF;
 
-	SLV_REG0 = 0x1;
+	SLV_REG0 = 0x0;
 
 	while (1)
 	{
+		// Read from controller
+		CONTROL_REG = 0x2;
+
+		while(!STATUS_REG)
+		{
+
+		}
+
+		// Terminate read
+		CONTROL_REG = 0x0;
+
+		while(STATUS_REG)
+		{
+
+		}
+
 		xil_printf("Relay Mode: %s\n\r", (SLV_REG0 & SOFTWARE_RELAY_MODE) ? "SW": "HW");
 		xil_printf("00: %x\n\r", SLV_REG0);
 		xil_printf("01: %x", SLV_REG1);
