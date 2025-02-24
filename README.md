@@ -3,7 +3,7 @@
 
 
 Generate State Machine:
-![[mermaid-diagram-2025-02-24-173015.png]]
+![generate-state-machine-diagram.png](generate-state-machine-diagram.png)
 ## Development
 
 ### Workflow
