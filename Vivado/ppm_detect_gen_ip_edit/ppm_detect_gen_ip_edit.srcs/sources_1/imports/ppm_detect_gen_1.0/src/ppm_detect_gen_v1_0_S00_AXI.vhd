@@ -6,24 +6,15 @@ USE ppm.user_defines.ALL;
 
 ENTITY ppm_detect_gen_v1_0_S00_AXI IS
 	GENERIC (
-		-- Users to add parameters here
-
-		-- User parameters ends
-		-- Do not modify the parameters beyond this line
-
 		-- Width of S_AXI data bus
 		C_S_AXI_DATA_WIDTH : INTEGER := 32;
 		-- Width of S_AXI address bus
 		C_S_AXI_ADDR_WIDTH : INTEGER := 6
 	);
 	PORT (
-		-- Users to add ports here
-
-		-- User ports ends
 		i_ppm : IN STD_LOGIC;
 		o_ppm : OUT STD_LOGIC;
 		-- Do not modify the ports beyond this line
-
 		-- Global Clock Signal
 		S_AXI_ACLK : IN STD_LOGIC;
 		-- Global Reset Signal. This Signal is Active LOW
@@ -549,27 +540,23 @@ BEGIN
 			ELSE
 				-- slv_reg1(2 DOWNTO 0) <= s_detect_state;
 				slv_reg1(2 DOWNTO 0) <= s_gen_state(2 DOWNTO 0);
-				slv_reg1(4 DOWNTO 0) <= (OTHERS => '1');
 			END IF;
 		END IF;
 	END PROCESS STATUS_UPDATE;
 
 	generate_fsm : ENTITY ppm.generate_fsm
 		GENERIC MAP(
-			N => 32,
-			IDLE_FRAME_TIME => 9 ms
+			N => 32
 		)
 		PORT MAP(
 			i_clk => S_AXI_ACLK,
 			i_rst => S_AXI_ARESETN,
-			i_slv_reg0_1 => slv_reg0(1),
 			i_slv_reg20 => s_gen_reg20, -- 2 -- 8
 			i_slv_reg21 => s_gen_reg21, -- 3 -- 9
 			i_slv_reg22 => s_gen_reg22, -- 4 -- 10
 			i_slv_reg23 => s_gen_reg23, -- 5 -- 11
 			i_slv_reg24 => s_gen_reg24, -- 6 -- 12
 			i_slv_reg25 => s_gen_reg25, -- 7 -- 13
-			o_state => s_gen_state,
 			o_ppm => o_ppm
 		);
 	GENERATE_PPM_UPDATE : PROCESS (S_AXI_ACLK) IS
@@ -594,6 +581,4 @@ BEGIN
 			END IF;
 		END IF;
 	END PROCESS GENERATE_PPM_UPDATE;
-	-- User logic ends
-
 END arch_imp;

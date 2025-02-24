@@ -148,9 +148,8 @@ ARCHITECTURE arch_imp OF ppm_detect_gen_v1_0_S00_AXI IS
 	SIGNAL s_gen_reg24 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
 	SIGNAL s_gen_reg25 : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
 	SIGNAL s_gen_state : STD_LOGIC_VECTOR(C_S_AXI_DATA_WIDTH - 1 DOWNTO 0);
-	
-	
-	SIGNAL temp : STD_LOGIC;
+	SIGNAL s_cntr : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL s_gen_done : STD_LOGIC;
 BEGIN
 	-- I/O Connections assignments
 
@@ -254,7 +253,6 @@ BEGIN
 				slv_reg11 <= (OTHERS => '0');
 				slv_reg12 <= (OTHERS => '0');
 				slv_reg13 <= (OTHERS => '0');
-				slv_reg14 <= (OTHERS => '0');
 				slv_reg15 <= (OTHERS => '0');
 			ELSE
 				loc_addr := axi_awaddr(ADDR_LSB + OPT_MEM_ADDR_BITS DOWNTO ADDR_LSB);
@@ -316,14 +314,7 @@ BEGIN
 									slv_reg13(byte_index * 8 + 7 DOWNTO byte_index * 8) <= S_AXI_WDATA(byte_index * 8 + 7 DOWNTO byte_index * 8);
 								END IF;
 							END LOOP;
-						WHEN b"1110" =>
-							FOR byte_index IN 0 TO (C_S_AXI_DATA_WIDTH/8 - 1) LOOP
-								IF (S_AXI_WSTRB(byte_index) = '1') THEN
-									-- Respective byte enables are asserted as per write strobes                   
-									-- slave registor 14
-									slv_reg14(byte_index * 8 + 7 DOWNTO byte_index * 8) <= S_AXI_WDATA(byte_index * 8 + 7 DOWNTO byte_index * 8);
-								END IF;
-							END LOOP;
+					
 						WHEN b"1111" =>
 							FOR byte_index IN 0 TO (C_S_AXI_DATA_WIDTH/8 - 1) LOOP
 								IF (S_AXI_WSTRB(byte_index) = '1') THEN
@@ -340,7 +331,6 @@ BEGIN
 							slv_reg11 <= slv_reg11;
 							slv_reg12 <= slv_reg12;
 							slv_reg13 <= slv_reg13;
-							slv_reg14 <= slv_reg14;
 							slv_reg15 <= slv_reg15;
 					END CASE;
 				END IF;
@@ -489,7 +479,7 @@ BEGIN
 			END IF;
 		END IF;
 	END PROCESS;
-	
+
 	-- Instantiate the Detector FSM
 	detect_fsm : ENTITY ppm.detect_fsm PORT MAP
 		(
@@ -550,38 +540,28 @@ BEGIN
 			IF (S_AXI_ARESETN = '0') THEN
 				slv_reg1 <= (OTHERS => '0');
 			ELSE
-				-- slv_reg1(2 DOWNTO 0) <= s_detect_state;
-				slv_reg1(C_S_AXI_DATA_WIDTH-4 downto 0) <= s_gen_state(C_S_AXI_DATA_WIDTH-4 downto 0);
-							IF slv_reg0(0) = '1' THEN
-											slv_reg1(C_S_AXI_DATA_WIDTH-4) <= '1';
-
-ELSE 
-											slv_reg1(C_S_AXI_DATA_WIDTH-4) <= '0';
-
-END IF;
+				slv_reg1(2 DOWNTO 0) <= s_detect_state;
 			END IF;
 		END IF;
 	END PROCESS STATUS_UPDATE;
-o_ppm <= '1';
+
 	generate_fsm : ENTITY ppm.generate_fsm
 		GENERIC MAP(
-			N => C_S_AXI_DATA_WIDTH,
-			IDLE_FRAME_TIME => 9 ms
+			N => C_S_AXI_DATA_WIDTH
 		)
 		PORT MAP(
 			i_clk => S_AXI_ACLK,
 			i_rst => S_AXI_ARESETN,
-			i_slv_reg0_1 => slv_reg0(1),
 			i_slv_reg20 => s_gen_reg20, -- 2 -- 8
 			i_slv_reg21 => s_gen_reg21, -- 3 -- 9
 			i_slv_reg22 => s_gen_reg22, -- 4 -- 10
 			i_slv_reg23 => s_gen_reg23, -- 5 -- 11
 			i_slv_reg24 => s_gen_reg24, -- 6 -- 12
 			i_slv_reg25 => s_gen_reg25, -- 7 -- 13
-			o_state => s_gen_state,
-			o_ppm => temp
+			o_done => s_gen_done,
+			o_ppm => o_ppm
 		);
-		
+
 	GENERATE_PPM_UPDATE : PROCESS (S_AXI_ACLK) IS
 	BEGIN
 		IF rising_edge(S_AXI_ACLK) THEN
@@ -604,6 +584,5 @@ o_ppm <= '1';
 			END IF;
 		END IF;
 	END PROCESS GENERATE_PPM_UPDATE;
-	-- User logic ends
 
 END arch_imp;

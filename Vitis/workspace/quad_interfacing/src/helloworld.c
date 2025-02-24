@@ -85,7 +85,8 @@ int main()
 		xil_printf("10: %x\n\r", SLV_REG10);
 		xil_printf("11: %x\n\r", SLV_REG11);
 		xil_printf("12: %x\n\r", SLV_REG12);
-		xil_printf("13: %x\n\r\n\r", SLV_REG13);
+		xil_printf("13: %x\n\r", SLV_REG13);
+		xil_printf("14: %x\n\r", SLV_REG14);
 		usleep(250000);
 	}
 

@@ -1,257 +1,189 @@
 LIBRARY IEEE;
-USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_ARITH.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 ENTITY generate_fsm IS
 
     GENERIC (
-        N : NATURAL := 32;
-        IDLE_FRAME_TIME : TIME := 9 ms
+        N : INTEGER := 32
     );
     PORT (
         i_clk : IN STD_LOGIC;
         i_rst : IN STD_LOGIC;
-        i_slv_reg0_1 : IN STD_LOGIC;
-        i_slv_reg20 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0); -- Channel 1 pulse width
-        i_slv_reg21 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0); -- Channel 2 pulse width
-        i_slv_reg22 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0); -- Channel 3 pulse width
-        i_slv_reg23 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0); -- Channel 4 pulse width
-        i_slv_reg24 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0); -- Channel 5 pulse width
-        i_slv_reg25 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0); -- Channel 6 pulse width
-        o_state : OUT STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
+        i_slv_reg20, i_slv_reg21, i_slv_reg22 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
+        i_slv_reg23, i_slv_reg24, i_slv_reg25 : IN STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
+        o_done : OUT STD_LOGIC;
         o_ppm : OUT STD_LOGIC
     );
 
 END generate_fsm;
 
-ARCHITECTURE arc OF generate_fsm IS
+ARCHITECTURE Behavioral OF generate_fsm IS
 
-    -- Define the state type and state signals
-    TYPE state_type IS (IDLE, GAP, CHAN1, CHAN2, CHAN3, CHAN4, CHAN5, CHAN6);
-    SIGNAL current_state : state_type := IDLE;
-    SIGNAL next_state : state_type := IDLE;
+    TYPE pulse_width_array IS ARRAY(0 TO 5) OF STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
+    TYPE state_type IS (
+        IDLE, IDLE_LOW_PULSE,
+        CHANNEL,
+        GAP_LOW,
+        PULSE_HIGH,
+        NEXT_CHANNEL,
+        FRAME_COMPLETE
+    );
 
-    -- Counters and registers signals
-    SIGNAL delay_cntr : NATURAL := 0;
-    SIGNAL idle_cntr : NATURAL := 0;
-    SIGNAL gap_cntr : NATURAL := 0;
+    CONSTANT GAP_COUNT : STD_LOGIC_VECTOR(15 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(40000, 16));
+    CONSTANT FRAME_COUNT : STD_LOGIC_VECTOR(20 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(200000, 21));
 
-    SIGNAL next_delay_cntr : NATURAL := 0;
-    SIGNAL next_idle_cntr : NATURAL := 0;
-    SIGNAL next_gap_cntr : NATURAL := 0;
-
-    -- Registered output for the PPM signal
-    SIGNAL o_ppm_reg : STD_LOGIC := '0';
-    SIGNAL next_o_ppm : STD_LOGIC := '0';
-
-    -- For debugging: output state as an encoded std_logic_vector
-    SIGNAL s_state : STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
-
-    CONSTANT CLK_PERIOD : TIME := 10 ns;
-    CONSTANT GAP_TIME : TIME := 0.40 ns;
-    CONSTANT GAP_TIME_CNT : NATURAL := INTEGER(GAP_TIME / CLK_PERIOD);
-    CONSTANT IDLE_FRAME_CNT : NATURAL := INTEGER(IDLE_FRAME_TIME / CLK_PERIOD);
+    SIGNAL PS, NS : state_type;
+    SIGNAL cycle_counter : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL cycle_counter_total : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL channel_index : INTEGER RANGE 0 TO 5;
+    SIGNAL pulse_widths : pulse_width_array;
 
 BEGIN
 
-    o_state <= s_state;
-    o_ppm <= o_ppm_reg;
-
-    -- Process 1: State Register (clocked process for state assignment)
-    state_reg_proc : PROCESS (i_clk, i_rst)
+    PROCESS (i_clk)
     BEGIN
-        IF i_rst = '1' THEN
-            current_state <= IDLE;
-        ELSIF rising_edge(i_clk) THEN
-            current_state <= next_state;
+        IF rising_edge(i_clk) THEN
+            IF i_rst = '0' THEN
+                PS <= IDLE;
+            ELSE
+                PS <= NS;
+            END IF;
         END IF;
     END PROCESS;
 
-    -- Process 2: Next State & Output Logic (combinational process)
-    next_state_proc : PROCESS (current_state,
-        i_slv_reg0_1,
-        i_slv_reg20,
-        i_slv_reg21,
-        i_slv_reg22,
-        i_slv_reg23,
-        i_slv_reg24,
-        i_slv_reg25,
-        delay_cntr,
-        idle_cntr,
-        gap_cntr,
-        o_ppm_reg
-        )
+    -- Next State Logic
+    PROCESS (PS, i_rst)
     BEGIN
-        -- Default assignments
-        next_state <= current_state;
-        next_delay_cntr <= delay_cntr;
-        next_idle_cntr <= idle_cntr;
-        next_gap_cntr <= gap_cntr;
-        next_o_ppm <= o_ppm_reg;
+        CASE PS IS
+            WHEN CHANNEL =>
+                IF cycle_counter_total < FRAME_COUNT THEN
+                    NS <= CHANNEL;
+                ELSE
+                    NS <= IDLE;
+                END IF;
 
-        CASE current_state IS
             WHEN IDLE =>
-                next_delay_cntr <= 0;
-                next_o_ppm <= '0';
-                IF idle_cntr < IDLE_FRAME_CNT THEN
-                    next_state <= IDLE;
-                    next_idle_cntr <= idle_cntr + 1;
-                ELSIF i_slv_reg0_1 = '1' THEN
-                    next_state <= CHAN1;
-                    next_idle_cntr <= 0;
+                IF i_rst = '0' THEN
+                    NS <= IDLE;
                 ELSE
-                    next_state <= IDLE;
+                    NS <= GAP_LOW;
                 END IF;
 
-            WHEN CHAN1 =>
-                next_idle_cntr <= 0;
-                next_gap_cntr <= 1;
-                IF delay_cntr + 1 < to_integer(unsigned(i_slv_reg20)) THEN
-                    next_state <= CHAN1;
-                    next_delay_cntr <= delay_cntr + 1;
-                    next_o_ppm <= '1';
+            WHEN IDLE_LOW_PULSE =>
+                IF cycle_counter >= GAP_COUNT THEN
+                    NS <= CHANNEL;
                 ELSE
-                    next_state <= GAP;
-                    next_delay_cntr <= 0;
-                    next_o_ppm <= '0';
+                    NS <= IDLE_LOW_PULSE;
                 END IF;
 
-            WHEN CHAN2 =>
-                next_idle_cntr <= 0;
-                next_gap_cntr <= 2;
-                IF delay_cntr + 1 < to_integer(unsigned(i_slv_reg21)) THEN
-                    next_state <= CHAN2;
-                    next_delay_cntr <= delay_cntr + 1;
-                    next_o_ppm <= '1';
+            WHEN GAP_LOW =>
+                IF cycle_counter >= GAP_COUNT THEN
+                    NS <= PULSE_HIGH;
                 ELSE
-                    next_state <= GAP;
-                    next_delay_cntr <= 0;
-                    next_o_ppm <= '0';
+                    NS <= GAP_LOW;
                 END IF;
 
-            WHEN CHAN3 =>
-                next_idle_cntr <= 0;
-                next_gap_cntr <= 3;
-                IF delay_cntr + 1 < to_integer(unsigned(i_slv_reg22)) THEN
-                    next_state <= CHAN3;
-                    next_delay_cntr <= delay_cntr + 1;
-                    next_o_ppm <= '1';
+            WHEN PULSE_HIGH =>
+                IF (cycle_counter - GAP_COUNT) >= pulse_widths(channel_index)(31 DOWNTO 0) THEN
+                    IF channel_index = 5 THEN
+                        NS <= FRAME_COMPLETE;
+                    ELSE
+                        NS <= NEXT_CHANNEL;
+                    END IF;
                 ELSE
-                    next_state <= GAP;
-                    next_delay_cntr <= 0;
-                    next_o_ppm <= '0';
+                    NS <= PULSE_HIGH;
                 END IF;
 
-            WHEN CHAN4 =>
-                next_idle_cntr <= 0;
-                next_gap_cntr <= 4;
-                IF delay_cntr + 1 < to_integer(unsigned(i_slv_reg23)) THEN
-                    next_state <= CHAN4;
-                    next_delay_cntr <= delay_cntr + 1;
-                    next_o_ppm <= '1';
-                ELSE
-                    next_state <= GAP;
-                    next_delay_cntr <= 0;
-                    next_o_ppm <= '0';
-                END IF;
+            WHEN NEXT_CHANNEL =>
+                NS <= GAP_LOW;
 
-            WHEN CHAN5 =>
-                next_idle_cntr <= 0;
-                next_gap_cntr <= 5;
-                IF delay_cntr + 1 < to_integer(unsigned(i_slv_reg24)) THEN
-                    next_state <= CHAN5;
-                    next_delay_cntr <= delay_cntr + 1;
-                    next_o_ppm <= '1';
-                ELSE
-                    next_state <= GAP;
-                    next_delay_cntr <= 0;
-                    next_o_ppm <= '0';
-                END IF;
-
-            WHEN CHAN6 =>
-                next_idle_cntr <= 0;
-                IF delay_cntr + 1 < to_integer(unsigned(i_slv_reg25)) THEN
-                    next_state <= CHAN6;
-                    next_delay_cntr <= delay_cntr + 1;
-                    next_o_ppm <= '1';
-                ELSE
-                    next_state <= IDLE;
-                    next_delay_cntr <= 0;
-                    next_o_ppm <= '0';
-                END IF;
-
-            WHEN GAP =>
-                next_idle_cntr <= 0;
-                IF delay_cntr < GAP_TIME_CNT THEN
-                    next_state <= GAP;
-                    next_delay_cntr <= delay_cntr + 1;
-                    next_o_ppm <= '0';
-                ELSE
-                    next_delay_cntr <= 0;
-                    CASE gap_cntr IS
-                        WHEN 1 =>
-                            next_state <= CHAN2;
-                            next_o_ppm <= '1';
-                        WHEN 2 =>
-                            next_state <= CHAN3;
-                            next_o_ppm <= '1';
-                        WHEN 3 =>
-                            next_state <= CHAN4;
-                            next_o_ppm <= '1';
-                        WHEN 4 =>
-                            next_state <= CHAN5;
-                            next_o_ppm <= '1';
-                        WHEN 5 =>
-                            next_state <= CHAN6;
-                            next_o_ppm <= '1';
-                        WHEN OTHERS =>
-                            next_state <= IDLE;
-                            next_o_ppm <= '0';
-                    END CASE;
-                END IF;
+            WHEN FRAME_COMPLETE =>
+                NS <= IDLE_LOW_PULSE;
 
             WHEN OTHERS =>
-                next_state <= IDLE;
-                next_delay_cntr <= 0;
-                next_idle_cntr <= 0;
-                next_o_ppm <= '0';
+                NS <= IDLE;
         END CASE;
     END PROCESS;
 
-    -- Process 3: Counters and Registers Update (clocked process)
-    counters_proc : PROCESS (i_clk, i_rst)
+    -- Output Logic with synchronous reset
+    PROCESS (i_clk)
     BEGIN
-        IF i_rst = '1' THEN
-            delay_cntr <= 0;
-            idle_cntr <= 0;
-            gap_cntr <= 0;
-            o_ppm_reg <= '0';
-        ELSIF rising_edge(i_clk) THEN
-            delay_cntr <= next_delay_cntr;
-            idle_cntr <= next_idle_cntr;
-            gap_cntr <= next_gap_cntr;
-            o_ppm_reg <= next_o_ppm;
+        IF rising_edge(i_clk) THEN
+            IF i_rst = '0' THEN
+                cycle_counter <= (OTHERS => '0');
+                cycle_counter_total <= (OTHERS => '0');
+                channel_index <= 0;
+                o_ppm <= '1';
+                o_done <= '0';
+            ELSE
+                CASE PS IS
+                    WHEN IDLE =>
+                        o_ppm <= '1';
+                        o_done <= '0';
+                        channel_index <= 0;
+                        cycle_counter <= (OTHERS => '0');
+                        cycle_counter_total <= (OTHERS => '0');
+
+                    WHEN CHANNEL =>
+                        o_ppm <= '1';
+                        o_done <= '1';
+                        channel_index <= 0;
+                        cycle_counter <= (OTHERS => '0');
+                        cycle_counter_total <= cycle_counter_total + 1;
+
+                    WHEN IDLE_LOW_PULSE =>
+                        o_ppm <= '0';
+                        o_done <= '0';
+                        cycle_counter <= cycle_counter + 1;
+                        cycle_counter_total <= cycle_counter_total + 1;
+
+                    WHEN GAP_LOW =>
+                        o_ppm <= '0';
+                        o_done <= '0';
+                        cycle_counter <= cycle_counter + 1;
+                        cycle_counter_total <= cycle_counter_total + 1;
+
+                    WHEN PULSE_HIGH =>
+                        o_ppm <= '1';
+                        o_done <= '0';
+                        cycle_counter <= cycle_counter + 1;
+                        cycle_counter_total <= cycle_counter_total + 1;
+
+                    WHEN NEXT_CHANNEL =>
+                        channel_index <= channel_index + 1;
+                        cycle_counter <= (OTHERS => '0');
+                        o_done <= '0';
+
+                    WHEN FRAME_COMPLETE =>
+                        cycle_counter <= (OTHERS => '0');
+                        channel_index <= 0;
+                        o_done <= '0';
+
+                    WHEN OTHERS =>
+                        cycle_counter <= (OTHERS => '0');
+                END CASE;
+            END IF;
         END IF;
     END PROCESS;
 
-    -- Process 4: Log the current state (clocked process)
-    log_state_proc : PROCESS (i_clk, i_rst)
+    -- Register updates with synchronous reset
+    PROCESS (i_clk)
     BEGIN
-        IF i_rst = '1' THEN
-            s_state <= (OTHERS => '0');
-        ELSIF rising_edge(i_clk) THEN
-            CASE current_state IS
-                WHEN IDLE => s_state <= STD_LOGIC_VECTOR(to_unsigned(0, N));
-                WHEN GAP => s_state <= STD_LOGIC_VECTOR(to_unsigned(1, N));
-                WHEN CHAN1 => s_state <= STD_LOGIC_VECTOR(to_unsigned(2, N));
-                WHEN CHAN2 => s_state <= STD_LOGIC_VECTOR(to_unsigned(3, N));
-                WHEN CHAN3 => s_state <= STD_LOGIC_VECTOR(to_unsigned(4, N));
-                WHEN CHAN4 => s_state <= STD_LOGIC_VECTOR(to_unsigned(5, N));
-                WHEN CHAN5 => s_state <= STD_LOGIC_VECTOR(to_unsigned(6, N));
-                WHEN CHAN6 => s_state <= STD_LOGIC_VECTOR(to_unsigned(7, N));
-                WHEN OTHERS => s_state <= (OTHERS => '0');
-            END CASE;
+        IF rising_edge(i_clk) THEN
+            IF i_rst = '0' THEN
+                pulse_widths <= (OTHERS => (OTHERS => '0'));
+            ELSE
+                pulse_widths(0) <= i_slv_reg20;
+                pulse_widths(1) <= i_slv_reg21;
+                pulse_widths(2) <= i_slv_reg22;
+                pulse_widths(3) <= i_slv_reg23;
+                pulse_widths(4) <= i_slv_reg24;
+                pulse_widths(5) <= i_slv_reg25;
+            END IF;
         END IF;
     END PROCESS;
 
-END arc;
+END Behavioral;
