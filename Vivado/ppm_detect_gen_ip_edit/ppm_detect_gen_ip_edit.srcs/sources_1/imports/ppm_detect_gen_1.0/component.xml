@@ -266,7 +266,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>ef85f6e7</spirit:value>
+            <spirit:value>8786b0d2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -282,7 +282,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>ef85f6e7</spirit:value>
+            <spirit:value>8786b0d2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -322,7 +322,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -335,7 +335,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -348,7 +348,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -361,7 +361,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -378,7 +378,7 @@
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -395,7 +395,7 @@
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -408,7 +408,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -421,7 +421,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -438,7 +438,7 @@
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -455,7 +455,7 @@
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -468,7 +468,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -481,7 +481,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -498,7 +498,7 @@
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -511,7 +511,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -524,7 +524,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -541,7 +541,7 @@
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -558,7 +558,7 @@
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -571,7 +571,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -584,7 +584,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -601,7 +601,7 @@
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -618,7 +618,7 @@
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -631,7 +631,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -644,7 +644,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
               <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -653,13 +653,13 @@
       </spirit:port>
     </spirit:ports>
     <spirit:modelParameters>
-      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="INTEGER">
         <spirit:name>C_S00_AXI_DATA_WIDTH</spirit:name>
         <spirit:displayName>C S00 AXI DATA WIDTH</spirit:displayName>
         <spirit:description>Width of S_AXI data bus</spirit:description>
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXI_DATA_WIDTH" spirit:order="3" spirit:rangeType="long">32</spirit:value>
       </spirit:modelParameter>
-      <spirit:modelParameter spirit:dataType="integer">
+      <spirit:modelParameter spirit:dataType="INTEGER">
         <spirit:name>C_S00_AXI_ADDR_WIDTH</spirit:name>
         <spirit:displayName>C S00 AXI ADDR WIDTH</spirit:displayName>
         <spirit:description>Width of S_AXI address bus</spirit:description>
@@ -697,6 +697,11 @@
         <spirit:logicalName>ppm</spirit:logicalName>
       </spirit:file>
       <spirit:file>
+        <spirit:name>src/generate_fsm.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>ppm</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>../hdl/ppm_detect_gen_v1_0_S00_AXI.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>axi</spirit:logicalName>
@@ -704,7 +709,7 @@
       <spirit:file>
         <spirit:name>../hdl/ppm_detect_gen_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_db4e5ab1</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_0c833a09</spirit:userFileType>
         <spirit:logicalName>axi</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
@@ -717,6 +722,11 @@
       </spirit:file>
       <spirit:file>
         <spirit:name>../src/detect_fsm.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>ppm</spirit:logicalName>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/generate_fsm.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>ppm</spirit:logicalName>
       </spirit:file>
@@ -814,8 +824,8 @@
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>ppm_detect_gen_v3.0</xilinx:displayName>
-      <xilinx:coreRevision>15</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2025-02-22T22:23:06Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>54</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2025-02-24T15:58:44Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@109bff2b_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@48f3779d_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
@@ -929,15 +939,440 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2432e861_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1bdcb756_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1f5e6bf8_ARCHIVE_LOCATION">c:/Users/neastbur/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25ea2e39_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70cb4088_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@196dcbb0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b58aee2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b947d4e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@485475b5_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@228cdbea_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d8ea3b4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c5ca54f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@134b8fee_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@607878_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2773e517_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4cc87895_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@543f122e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@546860e4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4caad918_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@558257b3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4af72a3a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e60d6c9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60c59263_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3822707b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@688b27c5_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6598eae8_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59c44ef4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@468616_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60465f1b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c7f1e57_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45cd2ccc_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a19abbe_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e174b1b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@fc68419_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d4f95f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e2e3f88_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b749d73_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61ea476c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f1018ad_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18ae3e03_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@243129b4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4da195aa_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@133f492d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e4c1c46_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3417bcee_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52692381_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@294ada95_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38e45740_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6433f85d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c13d97a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45932c12_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@670e0e12_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ddd280a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39230f42_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d10c61d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76d30e2c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c93004c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21e77c28_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@233bec8c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e3efb34_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17b8f719_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ca7643f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f15f0ac_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1bf63c06_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41ee3005_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d144f80_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56ba0560_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ca87a0c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49455338_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4551a0d9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66364fe4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56166fd2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d034a09_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38887a43_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54a971a6_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f4aa597_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6619b85d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1138f227_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@521f95f7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44e9c9d1_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3af79b18_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c3b28ca_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a5dc797_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7568997_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45e7f2a6_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22ba42c6_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@170298b6_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@98cef10_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60e33419_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e964b6f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e5d5c5c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48850782_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17d89ec5_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48b9042d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50c46a73_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57d042c0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b312fde_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a8eda8c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@538036ed_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@779b9ae9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3350a0e7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78064249_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@263cd74_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bad6f5c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1055a447_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6486c52_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a35eec7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1116ca2b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60b14657_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@35b8197f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cecfe23_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70af1cfb_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37d5ce8d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@62b48b6b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5096addc_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60f2305e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e779c7c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f3091f3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c22a01b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1669390f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@347109a7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@905a300_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c20dad_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bdc3b48_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@711462eb_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b330db0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f2d36ba_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b7fb33d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c322c7b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@638e5e3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@294f0576_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@701781d7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27f0868_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@45b63828_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57f7b303_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7934ecea_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30f58c27_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7659e023_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@565229de_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@419b25e8_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@616b9116_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f64fd9a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d136a2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a02a931_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cd032f3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7939a979_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26790f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d31523c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77ed5843_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18164ec3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6142770e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69a491e7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19d3a0bf_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d58dee2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30c24e45_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e21f26f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ea80ec6_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4893735a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@731aaa72_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70d351ca_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@541f3e58_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64c6e44_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63e910af_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4863cdb0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d90fd6c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c296e9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2380c02_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@310a2fe9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24e0c2e0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55d14dc6_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a3ff10b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21f2e0a6_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@375fbb86_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e1ec743_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@40fbef65_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@20f3176a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a9fd350_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d858b46_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10103882_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bb241a7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cb12f8c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2991249_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@608e8a82_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@127bc413_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@733734c3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6583c336_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a8b3a82_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19c8e363_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c3c6735_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cfb7682_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e645265_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69f14c39_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@20dc9d94_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5728ca4b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@270d5043_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ec64de2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5253b6ed_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c0e02c8_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a06dcfc_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f6e34ce_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@467bde87_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63d69896_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3eb9fdad_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31446599_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33978311_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52965f87_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7dfddb60_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30fe3a5d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@be92b3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@dbba29e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29f1b01e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6db9cb4f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12b38262_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ac3770e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2944c67_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a0809ea_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70f80b70_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e051a7b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c882013_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15062b02_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12efffc2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69f5fc94_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ddc7b0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@152d0196_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2169323b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@563e4e4a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@53dd4cd1_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@211c00f2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6e721659_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a7b1516_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c608fcc_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fc18024_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a9bdff_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ca9a9de_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bc6c856_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67c04f3c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51022395_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@61c20aaa_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2566d4b9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@797fb6c7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6492f213_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@370e28a4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4999c2f1_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@63b3ed0f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@483f833a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f2ebb7d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eef77d7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a819c6_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e732d37_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1396339e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77a5d019_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@393dc7ab_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42ec290_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6641f5fc_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ba30058_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@526ab177_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51d664bb_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@297c9a89_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5119835a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1fbfc5a3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4438b78b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@128341d4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c08facd_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@104bd4a4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70ced4de_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23232911_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d56fe99_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a0e64c9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42b87e8f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73b3863b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57f08a21_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58a439e7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e378123_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@667bd3a7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fb914c5_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@11c8c6c7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a923b0c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8be6568_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@127cc0a1_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ca2fac4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a29da97_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b1bd7a3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4afb46c8_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54fbe7e1_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41d34fef_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5624e92c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7572b8be_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@681061ea_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@708f6d4d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f4998ed_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d84e3b5_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f34e411_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@344119a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@123a18c7_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7655330c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39bf5a27_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a3cea5f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5dd024c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7158460d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@9d49a03_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b413d1b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b72bd09_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c26801d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@765043a5_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@540474cb_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e905772_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75497e17_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c3050dd_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79515ca2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d3c0dc_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32c48885_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ca60670_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51143a5d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c92beda_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7495f3ae_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@492924f0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52550e94_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6be67a84_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bd0a379_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5628c73c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@210b6029_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e06decd_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41cd4f46_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1dad26d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fb07469_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a64a2a0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1095f618_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f605cb0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@484da2e8_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b54e68_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c7054e3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79ad493c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d84ff42_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a4237f0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7100afff_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15a9c7a9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@124d7c57_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cb3bc7a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@392e3dd3_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2cb043ff_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a7e931a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@640e1260_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d0ebdd6_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ba8e8d5_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d39d093_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b81bd43_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d043fc5_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f14af4a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46943fce_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57b1bd7d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d2328b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@69bfda23_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71e8cf23_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77cfc3d9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79bec92f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c0d3ea4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a2cdb89_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66f16f2a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e4aae5b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1626375_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e0a4200_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@908b21e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2e31a637_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75ffe509_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29cb6a75_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cea09b4_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75bb1f53_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26c37b0b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71be7700_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7256fe83_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72df7ac2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@666a5fe0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ce6bfcb_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55db2329_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54b097d2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7afe6745_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c7708f5_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d287f7c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f093213_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@682de9fa_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10a362da_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7635b5dd_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3badeb17_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@259ccfe8_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d8a2844_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e5ef268_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60924aa2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1287ab07_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13182eb9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c43529f_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bf3b811_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@726814b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bf8bc93_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e00cb14_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b31afae_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ace5708_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@77e681b8_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5459f326_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bde9baa_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f277ffc_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@228f2839_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a5d02e2_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ed04825_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d97f148_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a265c47_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76c03720_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a5fe0b8_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a7d795d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7268117e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f4438d0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@410d51f9_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56b0e13c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5598a605_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f055a91_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5314114c_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@658e7f8e_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f95ae19_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@715c3ef8_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59b816dd_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33977fdd_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cf73f1d_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b4727f0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5972be32_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cd5da4a_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@d9bf0e8_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56a88e83_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75c6c3b0_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70d3987b_ARCHIVE_LOCATION">c:/Users/connero/Downloads/cpre488-mp1/Vivado/ppm_detect_gen_ip_edit/ppm_detect_gen_ip_edit.srcs/sources_1/imports/ppm_detect_gen_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="addc58e4"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="6c866c8a"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="832acd20"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="e7b50784"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="4ca80420"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="38496c8d"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="59e7040f"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="842f310b"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>

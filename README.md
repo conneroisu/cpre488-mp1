@@ -107,3 +107,10 @@ If you have a system wide board part or IP repository, you will need to add it m
 #### ccls
 
 At the root of the project exists a `.ccls` file. This file is used to configure ccls.
+
+reset_run synth_1
+launch_runs synth_1 -jobs 19
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 19
+set_property pfm_name {} [get_files -all {C:/Users/connero/Downloads/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/quad_interface.bd}]
+write_hw_platform -fixed -include_bit -force -file C:/Users/connero/Downloads/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/quad_interface_wrapper.xsa

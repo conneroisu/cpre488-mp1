@@ -1,0 +1,1 @@
+C:/questasim64_2024.2/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 20791584 work.tb_generate_fsm -quiet -auto_acc_if_foreign -work work +acc -allow_unnamed -o _opt -id 1-7486e2283879-67bbd42f-1c0-1c34 +__design_bin_path+C:/Users/connero/Downloads/cpre488-mp1/src/testbench/generate_fsm +__betafsm

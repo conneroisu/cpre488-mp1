@@ -5,33 +5,34 @@
 #include <xil_types.h>
 #include "sleep.h"
 
+#define ADDRESS_WIDTH 32
 #define SOFTWARE_RELAY_MODE 0x1
 #define PPM_MODULE_BASEADDR XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR
 
-#define CONTROL_REG *((volatile u32*) (PPM_MODULE_BASEADDR + 0x0))
-#define STATUS_REG *((volatile u32*) (PPM_MODULE_BASEADDR + 0x4))
-#define CHANNEL_1 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x8))
-#define CHANNEL_2 *((volatile u32*) (PPM_MODULE_BASEADDR + 0xC))
-#define CHANNEL_3 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x10))
-#define CHANNEL_4 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x14))
-#define CHANNEL_5 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x18))
-#define CHANNEL_6 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x1C))
+#define CONTROL_REG *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x0))
+#define STATUS_REG *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x4))
+#define CHANNEL_1 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x8))
+#define CHANNEL_2 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0xC))
+#define CHANNEL_3 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x10))
+#define CHANNEL_4 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x14))
+#define CHANNEL_5 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x18))
+#define CHANNEL_6 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x1C))
 
-#define SLV_REG0 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x0))
-#define SLV_REG1 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x4))
-#define SLV_REG2 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x8))
-#define SLV_REG3 *((volatile u32*) (PPM_MODULE_BASEADDR + 0xC))
-#define SLV_REG4 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x10))
-#define SLV_REG5 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x14))
-#define SLV_REG6 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x18))
-#define SLV_REG7 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x1C))
-#define SLV_REG8 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x20))
-#define SLV_REG9 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x24))
-#define SLV_REG10 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x28))
-#define SLV_REG11 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x2C))
-#define SLV_REG12 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x30))
-#define SLV_REG13 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x34))
-#define SLV_REG14 *((volatile u32*) (PPM_MODULE_BASEADDR + 0x38))
+#define SLV_REG0 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x0))
+#define SLV_REG1 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x4))
+#define SLV_REG2 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x8))
+#define SLV_REG3 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0xC))
+#define SLV_REG4 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x10))
+#define SLV_REG5 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x14))
+#define SLV_REG6 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x18))
+#define SLV_REG7 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x1C))
+#define SLV_REG8 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x20))
+#define SLV_REG9 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x24))
+#define SLV_REG10 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x28))
+#define SLV_REG11 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x2C))
+#define SLV_REG12 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x30))
+#define SLV_REG13 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x34))
+#define SLV_REG14 *((volatile u32 *)(PPM_MODULE_BASEADDR + 0x38))
 
 #define SOFTWARE_CH1 SLV_REG2
 #define SOFTWARE_CH2 SLV_REG3
@@ -47,48 +48,62 @@
 #define HARDWARE_CH5 SLV_REG13
 #define HARDWARE_CH6 SLV_REG14
 
-
-
-// Software relay mode is enabled when the least significant bit of SLV_REG0 is set.
-int is_software_relay_mode ()
-{
-	return SLV_REG0 & SOFTWARE_RELAY_MODE;
-}
-
 int main()
 {
-    init_platform();
+	init_platform();
 
-    CONTROL_REG = 0x0;
+	SLV_REG8 = 0x0FFF;
+	SLV_REG9 = 0x1FFF;
+	SLV_REG10 = 0x2FFF;
+	SLV_REG11 = 0x3FFF;
+	SLV_REG12 = 0x4FFF;
+	SLV_REG13 = 0x5FFF;
 
-	print("Hello World\n\r");
-    while(1)
-    {
-    	// Read from channel 5.
-    	CONTROL_REG = 0x1;
-    	while(!STATUS_REG)
-    	{
+	SLV_REG0 = 0x0;
 
-    	}
+	while (1)
+	{
+		// Read from controller
+		CONTROL_REG = 0x2;
 
-    	CONTROL_REG = 0x0;
+		while (!STATUS_REG)
+		{
+		}
 
-    	while(STATUS_REG)
-    	{
+		// Terminate read
+		CONTROL_REG = 0x0;
 
-    	}
+		while (STATUS_REG)
+		{
+		}
 
-    	xil_printf("\n\n\n\n\rChannel 1: %x\n\r", CHANNEL_1);
-    	xil_printf("Channel 2: %x\n\r", CHANNEL_2);
-    	xil_printf("Channel 3: %x\n\r", CHANNEL_3);
-    	xil_printf("Channel 4: %x\n\r", CHANNEL_4);
-    	xil_printf("Channel 5: %x\n\r", CHANNEL_5);
-    	xil_printf("Channel 6: %x\n\r", CHANNEL_6);
+		//		xil_printf("Relay Mode: %s\n\r", (SLV_REG0 & SOFTWARE_RELAY_MODE) ? "SW": "HW");
+		//		xil_printf("00: %x\n\r", SLV_REG0);
+		//		xil_printf("01: %x", SLV_REG1);
+		//		for (int i = 0; i < ADDRESS_WIDTH - 1; i++)
+		//		{
+		//			u32 status_value;
+		//			status_value = STATUS_REG;
+		//			xil_printf("%d", (status_value >> i) & 0x1);
+		//		}
+		//		xil_printf("\n\r");
+		//
+		//		xil_printf("02: %x\n\r", SLV_REG2);
+		//		xil_printf("03: %x\n\r", SLV_REG3);
+		//		xil_printf("04: %x\n\r", SLV_REG4);
+		//		xil_printf("05: %x\n\r", SLV_REG5);
+		//		xil_printf("06: %x\n\r", SLV_REG6);
+		//		xil_printf("07: %x\n\r", SLV_REG7);
+		//		xil_printf("08: %x\n\r", SLV_REG8);
+		//		xil_printf("09: %x\n\r", SLV_REG9);
+		//		xil_printf("10: %x\n\r", SLV_REG10);
+		//		xil_printf("11: %x\n\r", SLV_REG11);
+		//		xil_printf("12: %x\n\r", SLV_REG12);
+		//		xil_printf("13: %x\n\r", SLV_REG13);
+		//		xil_printf("14: %x\n\r", SLV_REG14);
+		// usleep(250000);
+	}
 
-    	usleep(250000);
-
-    }
-
-    cleanup_platform();
-    return 0;
+	cleanup_platform();
+	return 0;
 }

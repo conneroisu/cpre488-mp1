@@ -1,0 +1,17 @@
+vhdl xil_defaultlib  \
+"../../../bd/quad_interface/ip/quad_interface_proc_sys_reset_0_0/sim/quad_interface_proc_sys_reset_0_0.vhd" \
+
+vhdl ppm  \
+"../../../bd/quad_interface/ipshared/src/user_defines.vhd" \
+"../../../bd/quad_interface/ipshared/src/detect_fsm.vhd" \
+"../../../bd/quad_interface/ipshared/88df/src/generate_fsm.vhd" \
+
+vhdl axi  \
+"../../../bd/quad_interface/ipshared/hdl/ppm_detect_gen_v1_0_S00_AXI.vhd" \
+"../../../bd/quad_interface/ipshared/hdl/ppm_detect_gen_v1_0.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../bd/quad_interface/ip/quad_interface_ppm_detect_gen_0_2/sim/quad_interface_ppm_detect_gen_0_2.vhd" \
+"../../../bd/quad_interface/sim/quad_interface.vhd" \
+
+nosort
