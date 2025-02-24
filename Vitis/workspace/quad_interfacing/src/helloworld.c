@@ -5,7 +5,6 @@
 #include <xil_types.h>
 #include "sleep.h"
 
-#define ADDRESS_WIDTH 32
 #define SOFTWARE_RELAY_MODE 0x1
 #define PPM_MODULE_BASEADDR XPAR_PPM_DETECT_GEN_0_S00_AXI_BASEADDR
 
@@ -101,7 +100,7 @@ int main()
 		//		xil_printf("12: %x\n\r", SLV_REG12);
 		//		xil_printf("13: %x\n\r", SLV_REG13);
 		//		xil_printf("14: %x\n\r", SLV_REG14);
-		// usleep(250000);
+		// 		usleep(250000);
 	}
 
 	cleanup_platform();
