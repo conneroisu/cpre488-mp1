@@ -64,9 +64,9 @@ loc_addr := axi_araddr(ADDR_LSB + OPT_MEM_ADDR_BITS DOWNTO ADDR_LSB);
 The design uses address bits [ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] to select which register to access:
 
 - `ADDR_LSB` is set to (`C_S_AXI_DATA_WIDTH`/32) + 1, which is typically 2 for 32-bit buses (addressing by words)
-- `OPT_MEM_ADDR_BITS` is set to 3, allowing for 16 registers (2^4 = 16)
+- `OPT_MEM_ADDR_BITS` is set to 3, allowing for 16 registers ($2^4 = 16$)
 
-For example, with a 32-bit data bus, the design decodes address bits [5:2] to select among the 16 registers. The decoded value creates a 4-bit index (b"0000" to b"1111") that selects registers slv_reg0 through slv_reg15.
+For example, with a 32-bit data bus, the design decodes address bits `[5:2]` to select among the 16 registers. The decoded value creates a 4-bit index (b"0000" to b"1111") that selects registers slv_reg0 through slv_reg15.
 
 - [x] How does the PPM state machine get access to the IP core's Memory Mapped registers:
 
@@ -94,7 +94,7 @@ The detector FSM:
 - Indicates which register to update via `s_detect_reg_sel`
 - Signals when a channel has been read via `s_channel_read`
 
-The results from the detector are then written to the appropriate registers (slv_reg2 through slv_reg7) in a dedicated process:
+The results from the detector are then written to the appropriate registers (`slv_reg2` through `slv_reg7`) in a dedicated process:
 
 ```vhdl
 DETECT_PPM_UPDATE : PROCESS (S_AXI_ACLK) IS
@@ -354,5 +354,4 @@ BEGIN
     END PROCESS;
 
 END Behavioral;
-
 ```
