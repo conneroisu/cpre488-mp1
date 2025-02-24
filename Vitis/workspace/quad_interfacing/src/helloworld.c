@@ -66,44 +66,42 @@ int main()
 		// Read from controller
 		CONTROL_REG = 0x2;
 
-		while(!STATUS_REG)
+		while (!STATUS_REG)
 		{
-
 		}
 
 		// Terminate read
 		CONTROL_REG = 0x0;
 
-		while(STATUS_REG)
+		while (STATUS_REG)
 		{
-
 		}
 
-		xil_printf("Relay Mode: %s\n\r", (SLV_REG0 & SOFTWARE_RELAY_MODE) ? "SW": "HW");
-		xil_printf("00: %x\n\r", SLV_REG0);
-		xil_printf("01: %x", SLV_REG1);
-		for (int i = 0; i < ADDRESS_WIDTH - 1; i++)
-		{
-			u32 status_value;
-			status_value = STATUS_REG;
-			xil_printf("%d", (status_value >> i) & 0x1);
-		}
-		xil_printf("\n\r");
-
-		xil_printf("02: %x\n\r", SLV_REG2);
-		xil_printf("03: %x\n\r", SLV_REG3);
-		xil_printf("04: %x\n\r", SLV_REG4);
-		xil_printf("05: %x\n\r", SLV_REG5);
-		xil_printf("06: %x\n\r", SLV_REG6);
-		xil_printf("07: %x\n\r", SLV_REG7);
-		xil_printf("08: %x\n\r", SLV_REG8);
-		xil_printf("09: %x\n\r", SLV_REG9);
-		xil_printf("10: %x\n\r", SLV_REG10);
-		xil_printf("11: %x\n\r", SLV_REG11);
-		xil_printf("12: %x\n\r", SLV_REG12);
-		xil_printf("13: %x\n\r", SLV_REG13);
-		xil_printf("14: %x\n\r", SLV_REG14);
-		usleep(250000);
+		//		xil_printf("Relay Mode: %s\n\r", (SLV_REG0 & SOFTWARE_RELAY_MODE) ? "SW": "HW");
+		//		xil_printf("00: %x\n\r", SLV_REG0);
+		//		xil_printf("01: %x", SLV_REG1);
+		//		for (int i = 0; i < ADDRESS_WIDTH - 1; i++)
+		//		{
+		//			u32 status_value;
+		//			status_value = STATUS_REG;
+		//			xil_printf("%d", (status_value >> i) & 0x1);
+		//		}
+		//		xil_printf("\n\r");
+		//
+		//		xil_printf("02: %x\n\r", SLV_REG2);
+		//		xil_printf("03: %x\n\r", SLV_REG3);
+		//		xil_printf("04: %x\n\r", SLV_REG4);
+		//		xil_printf("05: %x\n\r", SLV_REG5);
+		//		xil_printf("06: %x\n\r", SLV_REG6);
+		//		xil_printf("07: %x\n\r", SLV_REG7);
+		//		xil_printf("08: %x\n\r", SLV_REG8);
+		//		xil_printf("09: %x\n\r", SLV_REG9);
+		//		xil_printf("10: %x\n\r", SLV_REG10);
+		//		xil_printf("11: %x\n\r", SLV_REG11);
+		//		xil_printf("12: %x\n\r", SLV_REG12);
+		//		xil_printf("13: %x\n\r", SLV_REG13);
+		//		xil_printf("14: %x\n\r", SLV_REG14);
+		// usleep(250000);
 	}
 
 	cleanup_platform();
