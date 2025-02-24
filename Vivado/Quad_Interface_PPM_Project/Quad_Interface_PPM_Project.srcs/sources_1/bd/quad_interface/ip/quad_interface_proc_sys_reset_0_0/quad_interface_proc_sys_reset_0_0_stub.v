@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Sat Feb 22 18:19:30 2025
-// Host        : CO2041-08 running 64-bit major release  (build 9200)
+// Date        : Mon Feb 24 13:21:46 2025
+// Host        : CO2041-13 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
-//               c:/Users/connero/Downloads/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_proc_sys_reset_0_0/quad_interface_proc_sys_reset_0_0_stub.v
+//               c:/Users/neastbur/cpre488-mp1/Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.srcs/sources_1/bd/quad_interface/ip/quad_interface_proc_sys_reset_0_0/quad_interface_proc_sys_reset_0_0_stub.v
 // Design      : quad_interface_proc_sys_reset_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1
