@@ -52,12 +52,12 @@ int main()
 {
 	init_platform();
 
-	SLV_REG8 = 0xFF;
-	SLV_REG9 = 0xFF;
-	SLV_REG10 = 0xFF;
-	SLV_REG11 = 0xFF;
-	SLV_REG12 = 0xFF;
-	SLV_REG13 = 0xFF;
+	SLV_REG8 = 0x0FFF;
+	SLV_REG9 = 0x1FFF;
+	SLV_REG10 = 0x2FFF;
+	SLV_REG11 = 0x3FFF;
+	SLV_REG12 = 0x4FFF;
+	SLV_REG13 = 0x5FFF;
 
 	SLV_REG0 = 0xFFF;
 
