@@ -287,49 +287,41 @@ BEGIN
                 o_done <= '0';
             ELSE
                 CASE s_prev_state IS
-
                     WHEN IDLE_PULSE =>
                         o_ppm <= '1';
                         o_done <= '1';
                         s_channel_index <= 0;
                         s_cycle_counter <= (OTHERS => '0');
                         s_cycle_counter_total <= s_cycle_counter_total + 1;
-
                     WHEN PULSE_HIGH =>
                         o_ppm <= '1';
                         o_done <= '0';
                         s_cycle_counter <= s_cycle_counter + 1;
                         s_cycle_counter_total <= s_cycle_counter_total + 1;
-
                     WHEN IDLE =>
                         o_ppm <= '1';
                         o_done <= '0';
                         s_channel_index <= 0;
                         s_cycle_counter <= (OTHERS => '0');
                         s_cycle_counter_total <= (OTHERS => '0');
-
                     WHEN IDLE_LOW_PULSE =>
                         o_ppm <= '0';
                         o_done <= '0';
                         s_cycle_counter <= s_cycle_counter + 1;
                         s_cycle_counter_total <= s_cycle_counter_total + 1;
-
                     WHEN GAP_LOW =>
                         o_ppm <= '0';
                         o_done <= '0';
                         s_cycle_counter <= s_cycle_counter + 1;
                         s_cycle_counter_total <= s_cycle_counter_total + 1;
-
                     WHEN NEXT_CHANNEL =>
                         s_channel_index <= s_channel_index + 1;
                         s_cycle_counter <= (OTHERS => '0');
                         o_done <= '0';
-
                     WHEN FRAME_COMPLETE =>
                         s_cycle_counter <= (OTHERS => '0');
                         s_channel_index <= 0;
                         o_done <= '0';
-
                     WHEN OTHERS =>
                         s_cycle_counter <= (OTHERS => '0');
                 END CASE;
