@@ -347,3 +347,10 @@ BEGIN
 
 END Behavioral;
 ```
+
+Our testbench implementation further proved our functionality:
+![Generate-Old-Waveform.png](Generate-Old-Waveform.png)
+
+- [ ] Detection implementation
+
+![channel_shifting.png](channel_shifting.png)

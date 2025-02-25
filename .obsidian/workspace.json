@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "fcde04698ed9fca3",
+        "id": "5c319800cfe5ce63",
         "type": "tabs",
         "children": [
           {
-            "id": "58d227755beee4bb",
+            "id": "294c1b7813a86b5c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "README"
+              "title": "New tab"
             }
           }
         ]
@@ -78,8 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f4e3e7871804ebc9",
@@ -170,19 +165,21 @@
       "vim-toggle:Toggle Vim Mode": false
     }
   },
-  "active": "58d227755beee4bb",
+  "active": "294c1b7813a86b5c",
   "lastOpenFiles": [
-    "MP-1.pdf",
     "README.md",
-    "generate-state-machine-diagram.png",
-    "docs/ZedBoard/ZedBoard_HW_UG_v1_9.pdf",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.cache/wt/synthesis.wdf",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/__synthesis_is_running__",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/ppm_detect_gen_v1_0.vds",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/vivado.jou",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/vivado.pb",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/runme.log",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/job.id.log",
-    "Vivado/Quad_Interface_PPM_Project/Quad_Interface_PPM_Project.tmp/ppm_detect_gen_v3_0_project/ppm_detect_gen_v3_0_project.runs/synth_1/project.wdf"
+    "assets/channel_shifting.png",
+    "assets/Generate-Old-Waveform.png",
+    "assets/20250223_235635.mp4",
+    "assets/20250224_002626.mp4",
+    "assets/20250224_003117.mp4",
+    "assets/20250224_003809.mp4",
+    "assets/20250223_234746.mp4",
+    "assets",
+    "MP1 Pics-Vids/20250224_003117.mp4",
+    "MP1 Pics-Vids/20250223_234746.mp4",
+    "MP1 Pics-Vids/20250224_002626.mp4",
+    "MP1 Pics-Vids/20250223_235635.mp4",
+    "assets/generate-state-machine-diagram.png"
   ]
 }
