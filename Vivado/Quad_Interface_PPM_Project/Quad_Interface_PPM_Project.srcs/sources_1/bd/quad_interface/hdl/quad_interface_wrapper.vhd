@@ -1,8 +1,8 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
---Date        : Mon Feb 24 09:58:54 2025
---Host        : CO2041-08 running 64-bit major release  (build 9200)
+--Date        : Mon Feb 24 15:33:21 2025
+--Host        : DESKTOP-EGO35HT running 64-bit major release  (build 9200)
 --Command     : generate_target quad_interface_wrapper.bd
 --Design      : quad_interface_wrapper
 --Purpose     : IP block netlist
@@ -35,7 +35,9 @@ entity quad_interface_wrapper is
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     PPM_IN : in STD_LOGIC;
-    PPM_OUT : out STD_LOGIC
+    PPM_OUT : out STD_LOGIC;
+    btns_5bits_tri_i : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    sws_8bits_tri_i : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
 end quad_interface_wrapper;
 
@@ -64,7 +66,9 @@ architecture STRUCTURE of quad_interface_wrapper is
     FIXED_IO_ddr_vrp : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     FIXED_IO_ps_clk : inout STD_LOGIC;
-    FIXED_IO_ps_porb : inout STD_LOGIC
+    FIXED_IO_ps_porb : inout STD_LOGIC;
+    btns_5bits_tri_i : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    sws_8bits_tri_i : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component quad_interface;
 begin
@@ -92,6 +96,8 @@ quad_interface_i: component quad_interface
       FIXED_IO_ps_porb => FIXED_IO_ps_porb,
       FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
       PPM_IN => PPM_IN,
-      PPM_OUT => PPM_OUT
+      PPM_OUT => PPM_OUT,
+      btns_5bits_tri_i(4 downto 0) => btns_5bits_tri_i(4 downto 0),
+      sws_8bits_tri_i(7 downto 0) => sws_8bits_tri_i(7 downto 0)
     );
 end STRUCTURE;

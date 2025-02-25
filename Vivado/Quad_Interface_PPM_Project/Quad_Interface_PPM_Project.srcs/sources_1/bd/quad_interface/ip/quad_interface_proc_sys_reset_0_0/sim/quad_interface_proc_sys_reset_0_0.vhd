@@ -67,7 +67,7 @@ ENTITY quad_interface_proc_sys_reset_0_0 IS
     bus_struct_reset : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
     peripheral_reset : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
     interconnect_aresetn : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-    peripheral_aresetn : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
+    peripheral_aresetn : OUT STD_LOGIC_VECTOR(0 TO 2)
   );
 END quad_interface_proc_sys_reset_0_0;
 
@@ -96,7 +96,7 @@ ARCHITECTURE quad_interface_proc_sys_reset_0_0_arch OF quad_interface_proc_sys_r
       bus_struct_reset : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
       peripheral_reset : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
       interconnect_aresetn : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-      peripheral_aresetn : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
+      peripheral_aresetn : OUT STD_LOGIC_VECTOR(0 TO 2)
     );
   END COMPONENT proc_sys_reset;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -130,7 +130,7 @@ BEGIN
       C_NUM_BUS_RST => 1,
       C_NUM_PERP_RST => 1,
       C_NUM_INTERCONNECT_ARESETN => 1,
-      C_NUM_PERP_ARESETN => 1
+      C_NUM_PERP_ARESETN => 3
     )
     PORT MAP (
       slowest_sync_clk => slowest_sync_clk,
